@@ -1,0 +1,61 @@
+/* 
+ * background #343434
+ * foreground rgb(230, 230, 230)
+ * arch-color rgb(100, 205, 255)
+ * border-color #FFC371
+*/
+
+* {
+    font-family: "FiraCode Nerd Font";
+    font-size: 16px;
+}
+#window {
+    border: 3px solid;
+    border-color: #FFC371;
+    background-color: #343434;
+    border-radius: 15px;
+}
+
+#outer-box {
+}
+
+#input {
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 3px #FFC371;
+    padding: 18px 15px 8px 15px;
+}
+
+#scroll {
+    padding-bottom: 10px;
+}
+
+#inner-box {
+    padding: 20px;
+}
+
+#img:selected {
+    background-color: transparent;
+}
+
+#text {
+    margin-left: 10px;
+}
+
+#text:selected {
+    background-color: transparent;
+    color: #343434;
+}
+#unselected {
+}
+
+#entry {
+}
+
+#entry:selected {
+    background-color: rgb(100, 205, 255);
+    outline: none;
+    border-radius: 15px;
+}
+
+

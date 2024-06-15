@@ -1,0 +1,80 @@
+#!/bin/bash
+
+activews=$(hyprctl activeworkspace | grep 'workspace ID' | awk -F '[()]' '{print $2}')
+workspaceLiteral="(box :class 'workspaces' :orientation 'horizontal' :sapcing '50px' :space-evenly true "
+icon=""
+
+setIcon(){
+    case "${1}" in
+	1)
+	    icon="󰈹"
+	    ;;
+	2)
+	    icon=""
+	    ;;
+	3)
+	    icon=""
+	    ;;
+	4)
+	    icon="󰊗"
+	    ;;
+	5)
+	    icon=""
+	    ;;
+	*)
+	    icon="󱁤"
+	    ;;
+    esac
+}
+createWorkspace(){
+    activeClass=""
+    activelblClass=""
+    if [ $3 == "true" ]
+    then
+	activeClass=" activews"
+	activelblClass=" activewslbl"
+    fi
+    workspaceLiteral="$workspaceLiteral (button :class 'ws$1$activeClass ws' :onclick "\"'$(hyprctl dispatch workspace '$1')'\"" (label :class 'wslbl$1$activelblClass wslbl' :text '$2'))"
+}
+
+createWorkspaceLiteral(){
+   i=1
+    activews=$(hyprctl activeworkspace | grep 'workspace ID' | awk -F '[()]' '{print $2}')
+    workspaceLiteral="(box :class 'workspaces' :orientation 'horizontal' :sapcing '50px' :space-evenly true "
+   while [ $i -le 6 ]
+   do
+       wsactive="false"
+       if [ $activews == $i ]
+       then
+	   wsactive="true"
+       fi
+       setIcon $i
+       createWorkspace $i $icon $wsactive
+       i=$((i+1))
+   done
+   workspaceLiteral="$workspaceLiteral)"
+}
+
+printYuck(){
+    createWorkspaceLiteral
+    echo $workspaceLiteral
+}
+
+changeLoop(){
+    loopactive=$(hyprctl activeworkspace | grep 'workspace ID' | awk -F '[()]' '{print $2}')
+    while true; do
+	sleep 0.2
+	loopactive=$(hyprctl activeworkspace | grep 'workspace ID' | awk -F '[()]' '{print $2}')
+	if [ $loopactive == $activews ]
+	then
+	    continue
+	fi
+	activews=$loopactive
+	printYuck
+    done
+}
+
+printYuck
+changeLoop
+
+exit

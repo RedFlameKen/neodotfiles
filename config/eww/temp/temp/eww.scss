@@ -1,0 +1,242 @@
+$background: #343434;
+$foreground: rgb(230, 230, 230);
+$border-color: #FFC371;
+$fullcharge-color: rgb(25, 230, 25);
+$charging-color: rgb(230, 230, 25);
+$arch-color: rgb(100, 205, 255);
+$red: rgb(250, 75, 75);
+$purple: rgb(200, 100, 250);
+$green: rgb(80, 220, 80);
+
+* {
+    font-size: 16px;
+    font-family: "JetBrainsMono Nerd Font";
+}
+
+.volumeWindow,
+.playerWindow,
+.dateWindow {
+  background-color: $background;
+  border: solid;
+  border-width: 3px;
+  border-color: $border-color;
+  border-radius: 12px;
+}
+
+.volumeControlWidgets,
+.powerWidgets,
+.powerReveal,
+.playerWidgets,
+.widgetList {
+  background-color: transparent;
+  border: none;
+}
+
+.powerWindow {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.musicImage,
+.playerControls,
+.date {
+  padding: 10px;
+}
+
+.bar,
+.calendar {
+  background-color: transparent;
+  border: none;
+}
+
+
+.mixerButton,
+.powerRevealButton,
+.workspaces,
+.clock,
+.changeTheme,
+.tray,
+.volume,
+.battery, 
+.appmenu {
+  background-color: $background;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.appmenu {
+  padding: 0px;
+}
+
+.appmenuLabel {
+  color: $arch-color;
+  padding: 3px 14px 3px 12px;
+}
+
+.mixerButtonLabel,
+.changeThemeLabel,
+.clockLabel,
+.powerRevealLabel,
+.batteryLabel,
+.volumeLabel {
+  padding: 3px 10px;
+}
+.workspaces {
+  padding: 1px 10px;
+}
+
+.batteryLabel {
+  color: $arch-color;
+}
+
+.bat_low,
+.powerRevealLabel {
+  color: $red;
+}
+
+.appmenuEventbox:hover .appmenuLabel{
+  background-color: $arch-color;
+  opacity: 0.8;
+  border-radius: 12px;
+  color: $background;
+}
+
+.logout,
+.activewslbl {
+  color: $arch-color;
+}
+
+.ws {
+  background: transparent;
+  border: none;
+  padding: 1px 12px 1px 12px;
+}
+
+.ws:hover {
+  background-color: $arch-color;
+  opacity: 0.8;
+}
+
+.ws:hover .wslbl {
+  color: $background;
+}
+
+calendar:selected {
+  color: $arch-color;
+  font-weight: bold;
+}
+
+calendar:indeterminate {
+  color: gray;
+}
+calendar.button {
+  color: $purple;
+}
+calendar.header {
+  color: $arch-color;
+}
+
+calendar.highlight {
+  color: $purple;
+}
+
+
+.volumeScrollLabel,
+.micScrollLabel {
+  padding: 0px 10px;
+}
+
+.volumeScroller,
+.micScroller {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.playerInfoLabel,
+.changeThemeLabel {
+  padding: 3px 15px;
+}
+
+.playerScroll{
+  padding: 10px 30px 10px 30px;
+}
+
+.playerButton {
+  background: transparent;
+  border: solid 2px;
+  border-color: $arch-color;
+  border-radius: 50px;
+}
+.playerButton:hover {
+  background-color: $charging-color;
+}
+.playerButton:hover .playerButtonLabel {
+  color:  $background;
+}
+.playerButtonLabel {
+  color: $arch-color;
+}
+
+.scroller slider {
+  all: unset;
+  color: $arch-color;
+}
+
+.scroller scale trough highlight {
+  all: unset;
+  background-color: $arch-color;
+  color: #000000;
+  border-radius: 10px;
+}
+
+.scroller scale trough {
+  all: unset;
+  background-color: gray;
+  border-radius: 50px;
+  min-height: 8px;
+}
+
+.volume {
+  color: $green;
+}
+
+.changeTheme {
+  color: $purple;
+}
+
+.changeTheme:hover .changeThemeLabel{
+  background-color: $arch-color;
+  opacity: 0.8;
+  border-radius: 12px;
+  color: $background;
+}
+
+.batcharging {
+  color: $charging-color;
+}
+.restart,
+.batfull {
+  color: $fullcharge-color;
+}
+
+.powerButton {
+  background-color: $background;
+  border-radius: 30px;
+  border: $foreground solid 1px;
+}
+
+.powerButtonLabel {
+  font-size: 30px;
+}
+
+.powerButton:hover .powerButtonLabel{
+  font-size: 50px;
+  padding: 25px;
+}
+
+.shutdown {
+  color: $red;
+}
+
+.sleep {
+  color: $purple;
+}
+

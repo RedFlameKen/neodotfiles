@@ -1,0 +1,39 @@
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+#My Custom Aliases
+alias ppssppwine="WINEARCH=win64 WINEPREFIX=~/wine/kennethWine wine /run/media/kenneth/TRANSCEND/newpsp/PPSSPP/PPSSPPWindows64.exe"
+alias runwine="WINEARCH=win64 WINEPREFIX=~/wine/kennethWine wine"
+alias wineprefix="WINEARCH=win64 WINEPREFIX=~/wine/kennethWine"
+alias wineprefix32="WINEARCH=win32 WINEPREFIX=~/wine/kennethWine32"
+alias ovpncon="sudo openvpn --config ~/Documents/RedFlameKen2.ovpn"
+alias zerotierleave="sudo zerotier-one -q leave 1c33c1ced0e294b8"
+alias zerotierjoin="sudo zerotier-one -q join 1c33c1ced0e294b8"
+alias xfdisplay="xfce4-display-settings"
+alias kys="shutdown now"
+
+alias vga-connect="xrandr --output VGA1 --mode '1280x1024' --auto --above LVDS1"
+alias vga-disconnect="xrandr --output VGA1 --off"
+alias hdmi-connect="xrandr --output HDMI1 --auto --right-of LVDS1"
+alias hdmi-disconnect="xrandr --output HDMI1 --off"
+
+alias echo-cancel="pactl load-module module-echo-cancel aec_args='analog_gain_control=0'"
+alias listen-mic="pactl load-module module-loopback latency_msec=2"
+
+alias :q="exit"
+
+alias mousemap="systemctl start input-remapper && sudo input-remapper-control --command start --device \"USB OPTICAL MOUSE \" --preset "
+alias cmain="g++ main.cpp -o main && chmod +x main && ./main"
+alias checkpower="~/.scripts/checkPower.sh"
+alias gitkey="wl-copy < Documents/githubkey"
+alias resetconky="/home/kenneth/AppImages/.scripts/resetConky.sh"
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+

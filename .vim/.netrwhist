@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/kenneth'
+let g:netrw_dirhist_7='/home/kenneth/.config'
+let g:netrw_dirhist_6='/home/kenneth/.config/i3'
+let g:netrw_dirhist_5='/home/kenneth/Documents/test/cpp'
+let g:netrw_dirhist_4='/home/kenneth/Documents/test'
+let g:netrw_dirhist_3='/home/kenneth/Documents/test/lua'
+let g:netrw_dirhist_2='/home/kenneth/.config/eww/scripts'
+let g:netrw_dirhist_1='/home/kenneth/.vim/pack/vendor/start/goyo.vim/autoload'
+let g:netrw_dirhist_0='/home/kenneth/.vim/pack/vendor/start/goyo.vim'
+let g:netrw_dirhist_9='/home/kenneth/.vim/pack/vendor/start/goyo.vim/plugin'

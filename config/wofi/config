@@ -1,0 +1,12 @@
+width= 500
+height= 450
+
+lines= 10
+columns= 1
+dynamic_lines= false
+allow_images= true
+
+prompt= ❯ Run Application
+term= kitty
+hide_scroll= true
+
