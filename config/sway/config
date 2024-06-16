@@ -3,7 +3,7 @@ set $alt Mod1
 
 font pango:monospace 8
 
-set $refresh_i3status killall -SIGUSR1 i3status
+set $refresh_swaystatus killall -SIGUSR1 i3status
 
 # workspace names
 set $ws1 "1"
@@ -27,7 +27,7 @@ floating_modifier $mod
 exec --no-startup-id dex --autostart --environment sway
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 # exec_always
 exec_always --no-startup-id ~/.scripts/runProgs.sh
@@ -40,10 +40,10 @@ exec_always --no-startup-id autotiling
 # custom keybindings
 
 # volume keybinds
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_swaystatus
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_swaystatus
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_swaystatus
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_swaystatus
 
 # brightness keybinds
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 5%-
