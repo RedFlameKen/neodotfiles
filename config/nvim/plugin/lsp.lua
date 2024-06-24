@@ -14,6 +14,7 @@ require('mason-lspconfig').setup({
     ensure_installed = {
         "tsserver",
         "rust_analyzer",
+        "jdtls",
         "clangd",
         "lua_ls",
     },

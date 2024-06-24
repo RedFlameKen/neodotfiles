@@ -21,6 +21,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+workspace $ws1 output LVDS-1
+workspace $ws2 output VGA-1
+workspace $ws5 output LVDS-1
+workspace $ws6 output LVDS-1
 # startup settings
 
 # i3 startup

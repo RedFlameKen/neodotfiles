@@ -1,9 +1,16 @@
 /* 
- * background #343434
- * foreground rgb(230, 230, 230)
- * arch-color rgb(100, 205, 255)
- * border-color #FFC371
+ * background #1C1B19
+ * foreground #FCE8C3
+ * arch-color #519F50
+ * border-color #FCE8C3
 */
+/* 
+ * background   #1C1B19
+ * foreground   #FCE8C3
+ * primary      #519F50
+ * border-color #FCE8C3
+*/
+
 
 * {
     font-family: "FiraCode Nerd Font";
@@ -11,19 +18,22 @@
 }
 #window {
     border: 3px solid;
-    border-color: #FFC371;
-    background-color: #343434;
+    border-color: #FCE8C3;
+    background-color: #1C1B19;
     border-radius: 15px;
 }
 
 #outer-box {
+    padding: 12px;
 }
 
 #input {
+    color: #FCE8C3;
     background-color: transparent;
     border: none;
-    border-bottom: solid 3px #FFC371;
-    padding: 18px 15px 8px 15px;
+    margin-left: 10px;
+    /*border-bottom: solid 3px #FCE8C3;*/
+    padding: 18px 0px 8px 0px;
 }
 
 #scroll {
@@ -31,20 +41,24 @@
 }
 
 #inner-box {
-    padding: 20px;
+    padding: 12px;
 }
 
+#img {
+    transform: scale(-10%);
+}
 #img:selected {
     background-color: transparent;
 }
 
 #text {
-    margin-left: 10px;
+    color: #FCE8C3;
+    /*margin-left: 10px;*/
 }
 
 #text:selected {
     background-color: transparent;
-    color: #343434;
+    color: #1C1B19;
 }
 #unselected {
 }
@@ -53,8 +67,10 @@
 }
 
 #entry:selected {
-    background-color: rgb(100, 205, 255);
+    color: #FCE8C3;
+    background-color: #519F50;
     outline: none;
+    padding: 12px 0px 12px 0px;
     border-radius: 15px;
 }
 

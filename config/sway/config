@@ -1,3 +1,6 @@
+output LVDS-1 mode 1366x768 pos 0 0
+output VGA-1 mode 1280x1024 pos 0 -1024 
+
 set $mod Mod4
 set $alt Mod1
 
@@ -17,6 +20,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+workspace $ws1 output LVDS-1
+workspace $ws2 output VGA-1
+workspace $ws5 output LVDS-1
+workspace $ws5 output LVDS-1
 # startup settings
 
 
@@ -27,7 +34,7 @@ floating_modifier $mod
 exec --no-startup-id dex --autostart --environment sway
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 # exec_always
 exec_always --no-startup-id ~/.scripts/runProgs.sh
@@ -77,6 +84,7 @@ bindsym $mod+e exec --no-startup-id thunar
 
 # start rofi(a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun 
+bindsym $mod+Shift+d exec --no-startup-id wofi --show drun 
 
 bindsym $mod+g exec --no-startup-id glava 
 

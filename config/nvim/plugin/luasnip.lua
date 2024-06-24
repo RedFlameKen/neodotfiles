@@ -36,7 +36,15 @@ ls.add_snippets("cpp", {
             '\treturn 0;',
             '}',
         }),
-    })
+    }),
+    s("func", {
+        i(1, "type"), t(" "), i(2, "name"), t("("), i(3), t({") {", "\t"}),
+        i(4),
+        t({'', "}"})
+    }),
+    s("protofunc", {
+        i(1, "type"), t(" "), i(2, "name"), t("("), i(3), t({");"}),
+    }),
 })
 
 ls.add_snippets("lua", {

@@ -5,7 +5,7 @@ local home = os.getenv("HOME")
 local function localProjectDir()
     local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
-    local workspace_dir = home .. '/Documents/JavaWorkspaces/' .. project_name
+    local workspace_dir = home .. '/docs/JavaWorkspaces/' .. project_name
     return workspace_dir
 end
 

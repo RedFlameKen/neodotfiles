@@ -6,3 +6,4 @@ local function commit()
 end
 
 vim.keymap.set("n", "<leader>gc", function() commit() end)
+vim.keymap.set("n", "<leader>gl", "<CMD>!git log --reflog<CR>")

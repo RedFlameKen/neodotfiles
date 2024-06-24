@@ -1,12 +1,13 @@
-width= 500
-height= 450
+width= 576
+height= 350
 
-lines= 10
 columns= 1
-dynamic_lines= false
-allow_images= true
+dynamic_lines=true
+allow_images=true
+image_size=24
 
-prompt= ❯ Run Application
-term= kitty
-hide_scroll= true
+matching=fuzzy
+prompt= Search Apps
+term=kitty
+hide_scroll=true
 
