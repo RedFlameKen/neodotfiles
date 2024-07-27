@@ -1,0 +1,78 @@
+local jdtls = require('jdtls')
+
+local home = os.getenv("HOME")
+
+local function workspaceDir()
+    -- local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+
+    local workspace_dir = home .. '/projects/java/'
+    return workspace_dir
+end
+
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
+
+local jdtls_path = home ..  '/.local/share/nvim/mason/packages/jdtls'
+local launcher_jar = home .. '/plugins/org.eclipse.equinox.launcher*.jar'
+
+local client_capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
+
+local config = {
+    capabilities = capabilities,
+    cmd = {
+        jdtls_path ..'/bin/jdtls',
+        'java',
+        '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        '-Dosgi.bundles.defaultStartLevel=4',
+        '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        '-Dlog.protocol=true',
+        '-Dlog.level=ALL',
+        '-Xmx1G',
+        '--add-modules=ALL-SYSTEM',
+        '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        '-jar', launcher_jar,
+        '-configuration', jdtls_path .. '/config_linux',
+        '-data', workspaceDir(),
+    },
+    root_dir = vim.fs.dirname(vim.fs.find({'.git', 'pom.xml', ".classpath", 'gradlew', 'mvnw'}, { upward = true })[1]),
+    settings = {
+        java = {
+            import = {enabled = true},
+            rename = {enabled = true},
+        },
+        implementationsCodeLense = {
+            enabled = true
+        },
+        referencesCodeLense = {
+            enabled = true
+        },
+        references = {
+            includeDecompiledSources = true,
+        },
+    },
+    init_options = {
+        extendedCapabilities = jdtls.extendedCapabilities,
+    },
+    -- capabilities = {
+    --     workspace = {
+    --         configuration = true;
+    --     },
+    -- },
+    on_attach = function(client, bufnr)
+        local opts = {silent = true, buffer = bufnr}
+        -- vim.keymap.set("n", "<leader>js", StartJavaServer)
+        vim.keymap.set("n", "<leader>jc", ":lua require'jdtls'.compile({'full'})<CR>")
+        vim.keymap.set("n", "<leader>ji", jdtls.organize_imports, { desc = 'Organize Imports', buffer = bufnr})
+        vim.keymap.set("n", "<leader>jb", jdtls.build_projects, { desc = 'Build Projects', buffer = bufnr})
+        vim.keymap.set('n', '<leader>jrv', jdtls.extract_variable_all, { desc = 'Extract variable', buffer = bufnr })
+        vim.keymap.set('v', '<leader>jrm', "<ESC><CMD>lua require('jdtls').extract_method(true)<CR>", {desc = 'Extract method', buffer = bufnr})
+        vim.keymap.set('n', '<leader>jrc', jdtls.extract_constant, { desc = 'Extract constant', buffer = bufnr })
+        vim.keymap.set('n', "<leader>df", jdtls.test_class, opts)
+        vim.keymap.set('n', "<leader>dn", jdtls.test_nearest_method, opts)
+
+    end
+}
+
+jdtls.start_or_attach(config)
+

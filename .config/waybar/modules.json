@@ -1,0 +1,99 @@
+{ "group/leftMods": {
+	"orientation": "horizontal",
+	"modules": [
+	    "hyprland/workspaces"
+	]
+    },
+    "group/leftMods-extra": {
+	"orientation": "horizontal",
+	"modules": [
+	    ""
+	]
+    },
+    "group/centerMods": {
+	"orientation": "horizontal",
+	"modules": [
+	    "clock"
+	]
+    },
+    "group/rightMods": {
+        "orientation": "horizontal",
+        "modules": [
+	    "pulseaudio",
+            "battery",
+	    "custom/theme"
+        ]
+    },
+    "group/rightMods-extra": {
+	"orientation": "horizontal",
+	"modules": [
+	    "tray"
+	]
+    },
+    "clock": {
+            "interval": 60,
+            "format": "{:%I:%M %p}",
+	    "on-click": "~/.config/waybar/scripts/ewwToggle.sh"
+    },
+    "hyprland/workspaces": {
+            "format": "{name}{icon}",
+            "format-icons": {
+		"1": " 󰈹",
+		"2": " ",
+		"3": " ",
+		"4": " ",
+		"default": " 󱁤"
+            },
+           "sort-by-number": true,
+	   "max-length": 30
+    },
+    "hyprland/window":{
+	"format": "󰋇 {title}",
+	"rewrite": {
+	    "(.*) - vim": " $1"
+	},
+	"separate-outputs": false
+
+    },
+    "tray": {
+	"icon-size": 20,
+	"spacing": 5
+    },
+    "pulseaudio":{
+	"format": "{icon} {volume}%",
+	"format-muted": "󰝟 muted",
+	"format-icons": {
+	    "default": ["󰕿 ","󰖀 ", "󰕾 "]
+	},
+	"scroll-step": 1.0,
+	"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+	"on-click-right": "pavucontrol"
+
+    },
+    "battery": {
+	"bat": "BAT1",
+	"adapter":"ACAD",
+	"full-at": 98,
+	"interval": 60,
+	"format": "{icon} {capacity}%",
+	"format-icons": ["󰂎", "󰁻", "󰁾", "󰂁", "󰁹"],
+	"on-update": "~/.scripts/lowbatNotif.sh",
+	"states": {
+	    "warning": 30,
+	    "critical": 15,
+	    "normal": 97,
+	    "full": 98
+	}
+    },
+    "custom/theme": {
+	"format": "󰏘",
+	"on-click": "~/.scripts/swwwWallpaper.sh -i",
+	"on-click-right": "~/.scripts/swwwWallpaper.sh -r",
+	"tooltip": false
+    },
+    "custom/launcher": {
+	"format": "󰣇",
+	"on-click": "wofi --show drun",
+	"tooltip": false
+    }
+}

@@ -1,70 +1,128 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+#Icons
+#   User:  
+#   Folder:  
+#   Git:  
+#   arrow: 󰜴 
+#   Outer Block:  
+#   Separator:    
 
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
 
-HISTCONTROL=ignoreboth
+# Modifier Characters
+RESET=$(tput sgr0)
+BOLD=$(tput bold)
+UNDERLINE=$(tput smul)
+# REVERSE=$(tput )
 
-shopt -s histappend
+# Color Characters
+RED_FG=$(tput setaf 1)
+RED_BG=$(tput setab 1)
+
+GREEN_FG=$(tput setaf 2)
+GREEN_BG=$(tput setab 2)
+
+YELLOW_FG=$(tput setaf 3)
+YELLOW_BG=$(tput setab 3)
+
+BLUE_FG=$(tput setaf 4)
+BLUE_BG=$(tput setab 4)
+
+MAGENTA_FG=$(tput setaf 5)
+MAGENTA_BG=$(tput setab 5)
+
+CYAN_FG=$(tput setaf 6)
+CYAN_BG=$(tput setab 6)
+
+WHITE_FG=$(tput setaf 7)
+WHITE_BG=$(tput setab 7)
+
+BLACK_FG=$(tput setaf 8)
+BLACK_BG=$(tput setab 8)
+
+LRED_FG=$(tput setaf 9)
+LRED_BG=$(tput setab 9)
+
+LGREEN_FG=$(tput setaf 10)
+LGREEN_BG=$(tput setab 10)
+
+LYELLOW_FG=$(tput setaf 11)
+LYELLOW_BG=$(tput setab 11)
+
+LBLUE_FG=$(tput setaf 12)
+LBLUE_BG=$(tput setab 12)
+
+LMAGENTA_FG=$(tput setaf 13)
+LMAGENTA_BG=$(tput setab 13)
+
+LCYAN_FG=$(tput setaf 14)
+LCYAN_BG=$(tput setab 14)
+
+LWHITE_FG=$(tput setaf 15)
+LWHITE_BG=$(tput setab 15)
+
+DBLACK_FG=$(tput setaf 16)
+DBLACK_BG=$(tput setab 16)
+
+DDBLACK_FG=$(tput setaf 237)
+DDBLACK_BG=$(tput setab 237)
+
+ORANGE_FG=$(tput setaf 202)
+ORANGE_BG=$(tput setab 202)
+
+GBLUE1_FG=$(tput setaf 19)
+GBLUE1_BG=$(tput setab 19)
+
+GBLUE2_FG=$(tput setaf 20)
+GBLUE2_BG=$(tput setab 20)
+
+GBLUE3_FG=$(tput setaf 21)
+GBLUE3_BG=$(tput setab 21)
+
+colorize(){
+    echo $2$3$4$1$RESET
+}
+
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
+GIT_PS1_SHOWDIRTYSTATE=1
+# $(colorize '' $BOLD $RED_FG )
+PS1="\n$(colorize '' $BOLD $RED_FG)"
+PS1+="$(colorize '\u ' $BOLD $LWHITE_FG $RED_BG)"
+PS1+="$(colorize '' $RED_FG $DDBLACK_BG)"
+PS1+="$(colorize ' \w ' $BOLD $LWHITE_FG $DDBLACK_BG)"
+PS1+="$(colorize '' $DDBLACK_FG $BLUE_BG)"
+PS1+="$(colorize '$(__git_ps1 "  %s ")' $BOLD $LWHITE_FG $BLUE_BG)"
+PS1+="$(colorize '' $BLUE_FG $GREEN_BG)"
+PS1+="$(colorize ' \@' $BOLD $LWHITE_FG $GREEN_BG)"
+PS1+="$(colorize '' $GREEN_FG )"
+PS1+="\n $(colorize '󰜴 ' $YELLOW_FG)"
+
+# PS1="\n$(colorize '' $BOLD $DDBLACK_FG)"
+# PS1+="$(colorize '\u ' $LWHITE_FG $DDBLACK_BG)"
+# PS1+="$(colorize '' $DDBLACK_FG $BLUE_BG)"
+# PS1+="$(colorize ' \w ' $BOLD $LWHITE_FG $BLUE_BG)"
+# PS1+="$(colorize '' $BLUE_FG $ORANGE_BG)"
+# PS1+="$(colorize '$(__git_ps1 "  %s ")' $BOLD $LWHITE_FG $ORANGE_BG)"
+# PS1+="$(colorize '' $ORANGE_FG $GREEN_BG)"
+# PS1+="$(colorize '' $BOLD $LWHITE_FG $GREEN_BG)"
+# PS1+="$(colorize '' $GREEN_FG )"
+# PS1+="\n $(colorize '󰜴 ' $YELLOW_FG)"
+
+
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude={.vscode,.git,wine,.wine,.local,.var,.steam,.npm,.gradle,.android,.cache,.tlauncher,.steam,.m2,.rustup,.cargo} --search-path $HOME/docs --search-path $HOME/.config/nvim --search-path $HOME/.config/i3 --search-path $HOME/.config/hypr --search-path $HOME/.config/sway --search-path $HOME/.config/rofi --search-path $HOME/.config/wofi --search-path $HOME/git"
+EDITOR=nvim
+QT_QPA_PLATFORMTHEME=qt6ct
+WINEARCH=win64
+WINEPREFIX=~/wine/kennethWine
+
 
 HISTSIZE=1000
 HISTFILESIZE=2000
 
 shopt -s checkwinsize
-
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
-
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
-if [ -f ~/.aliases]; then
+if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
+source <(fzf --bash)
 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -73,5 +131,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-. "$HOME/.cargo/env"

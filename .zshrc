@@ -1,9 +1,3 @@
-# Set up the prompt
-
-#autoload -Uz promptinit
-#promptinit
-#prompt adam1
-
 fpath+=($HOME/.zsh/pure)
 
 autoload -Uz promptinit
@@ -12,7 +6,7 @@ prompt pure
 
 setopt histignorealldups sharehistory
 
-export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude={.git,wine,.wine,.local,.var,.steam,.npm,.gradle,.android,.cache,.tlauncher,.steam,.m2,.rustup,.cargo}"
+# export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude={.metadata,.git,.settings} --search-path $HOME/projects --search-path $HOME/school --search-path $HOME/.config/nvim --search-path $HOME/.config/i3 --search-path $HOME/.config/hypr --search-path $HOME/.config/sway --search-path $HOME/.config/rofi --search-path $HOME/.config/wofi"
 EDITOR=nvim
 QT_QPA_PLATFORMTHEME=qt6ct
 WINEARCH=win64
@@ -24,6 +18,7 @@ HISTFILE=~/.zsh_history
 
 # Use emacs keybindings even if our EDITOR is set to vi
 #bindkey -e
+bindkey -v
 bindkey '^[[3;5~' kill-word
 bindkey '^H' backward-kill-word
 bindkey '^[[1;5D' backward-word
@@ -34,13 +29,14 @@ bindkey '^[[3~' delete-char
 bindkey '^[[F' end-of-line
 bindkey '^[[4~' end-of-line
 
-tmuxfuz() 
+tmuxfuz() {
+}
 zle -N tmuxfuz
 
 bindkey -s '^F' '~/git/redflameken/tmux-fuzzy-session/tmux-fuzzy-session.sh\n'
 bindkey -s '^[^F' '~/git/redflameken/tmux-fuzzy-session/tmux-fuzzy-session.sh vim\n'
 
-
+source <(fzf --zsh)
 
 # Use modern completion system
 autoload -Uz compinit
@@ -71,3 +67,8 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 
+=======
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+cd .

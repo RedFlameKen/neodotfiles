@@ -1,0 +1,13 @@
+width= 576
+height= 350
+
+columns= 1
+dynamic_lines=true
+allow_images=true
+image_size=24
+
+matching=fuzzy
+prompt= Search Apps
+term=kitty
+hide_scroll=true
+

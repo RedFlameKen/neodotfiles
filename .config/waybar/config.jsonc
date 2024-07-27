@@ -1,0 +1,36 @@
+{
+    "layer": "top",
+    "position": "top",
+    "width": "100%",
+    "fixed-center": true,
+    "mode": "dock",
+    "name": "bar1",
+    "spacing": 5,
+    "margin-left": 3,
+    "margin-right": 3,
+    "reload_sytle_on_change": true,
+
+    "include": [
+	"~/.config/waybar/modules.json"
+
+    ],
+
+
+    "modules-left":[
+	"custom/launcher",
+	"group/leftMods"
+    ],
+
+    "modules-center":[
+	"group/centerMods"
+    ],
+
+
+    "modules-right":[
+	"custom/theme",
+	"group/rightMods-extra",
+	"pulseaudio",
+	"battery"
+    ]
+    
+}
