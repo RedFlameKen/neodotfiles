@@ -1,0 +1,49 @@
+#!/bin/bash
+
+fname="main"
+compiler_bin=g++
+file_extension=""
+run_executable=true
+flags=""
+
+winopts(){
+    compiler_bin=/bin/x86_64-w64-mingw32-g++
+    file_extension=".exe"
+    run_executable=false
+    flags="$flags -static-libgcc -static-libstdc++ -static"
+}
+
+while [ $# -gt 0 ]; do
+    case $1 in
+        -w | --windows) winopts ;;
+        -n | --name) fname=$2 ;;
+        -d | --dir) basedir=$2 ;;
+        -N | --no-run) run_executable=false ;;
+        -o | --objects_dir) objects_dir=$2 ;;
+        -g | --debug) flags="$flags --debug" ;;
+        -l | --lncurses) flags="$flags -lncurses" ;;
+    esac
+    shift
+done
+
+basedir=$(dirname $fname)
+if [ -z $objects_dir ]; then
+    objects_dir="obj"
+fi
+
+if [ ! -d "$objects_dir" ]; then
+    mkdir $objects_dir
+fi
+
+find $basedir -name "*.cpp" -print0 | xargs -0 $compiler_bin -c $flags
+mv *.o $objects_dir
+
+$compiler_bin -o $(basename $fname)$file_extension obj/*.o $flags
+
+# $compiler_bin $fname.cpp -o $fname$file_extension 
+if [ $run_executable == true ]
+then
+    chmod +x $(basename $fname) && ./$(basename $fname)
+fi
+
+exit
