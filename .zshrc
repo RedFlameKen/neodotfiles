@@ -106,7 +106,6 @@ GBLUE2_BG="%{$(tput setab 20)%}"
 GBLUE3_FG="%{$(tput setaf 21)%}"
 GBLUE3_BG="%{$(tput setab 21)%}"
 
-
 colorize(){
     echo "%{$2$3$4%}$1$RESET"
 }
@@ -117,14 +116,14 @@ git_status(){
     echo "%{$(__git_ps1 "  %s " 2>/dev/null)%}"
 }
 PROMPT='
-$(colorize "" $BOLD $RED_FG)'
+╭─$(colorize "" $BOLD $RED_FG)'
 PROMPT+='$(colorize "󰣇 %n " $BOLD $LWHITE_FG $RED_BG)'
 PROMPT+='$(colorize "" $RED_FG $DDBLACK_BG)'
 PROMPT+='$(colorize " %~ " $BOLD $LWHITE_FG $DDBLACK_BG)'
 PROMPT+='$(colorize "" $DDBLACK_FG $GRAY_BG)'
 PROMPT+='$(colorize "$(git_status)" $BOLD $LWHITE_FG $GRAY_BG)'
 PROMPT+='$(colorize "" $GRAY_FG $GREEN_BG)'
-PROMPT+='$(colorize "%@" $BOLD $LWHITE_FG $GREEN_BG)'
+PROMPT+='$(colorize " %@" $BOLD $LWHITE_FG $GREEN_BG)'
 PROMPT+='$(colorize "" $GREEN_FG )'
 PROMPT+='
-$(colorize " 󰜴 " $YELLOW_FG)'
+╰─$(colorize " 󰜴 " $YELLOW_FG)'
