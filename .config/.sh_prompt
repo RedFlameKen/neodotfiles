@@ -1,39 +1,11 @@
-# Source
-source <(fzf --zsh)
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-source ~/.git-prompt.sh
-# source ~/.git-completion.zsh
-
-if [ -f ~/.sh_profile ]; then
-    source ~/.sh_profile
-fi
-# if [ -f ~/.config/.sh_prompt ]; then
-#     source ~/.config/.sh_prompt
-# fi
-if [ -f ~/.aliases ]; then
-    source ~/.aliases
-fi
-
-setopt histignorealldups sharehistory PROMPT_SUBST
-
-bindkey -v
-bindkey '^[[3;5~' kill-word
-bindkey '^H' backward-kill-word
-bindkey '^[[1;5D' backward-word
-bindkey '^[[1;5C' forward-word
-bindkey '^[[H' beginning-of-line
-bindkey '^[[1~' beginning-of-line
-bindkey '^[[3~' delete-char
-bindkey '^[[F' end-of-line
-bindkey '^[[4~' end-of-line
-
-bindkey -s '^F' '~/.local/bin/tmux-fuzzy-session\n'
-bindkey -s '^[^F' '~/.local/bin/tmux-fuzzy-session -v\n'
-
-autoload -Uz compinit
-compinit
-
+#Icons
+#   User:  
+#   Directory:  
+#   Git:  
+#   arrow: 󰜴 
+#   Outer Block:  
+#   Separator:    
+# Modifier Characters
 RESET="%{$(tput sgr0)%}"
 BOLD="%{$(tput bold)%}"
 UNDERLINE="%{$(tput smul)%}"
@@ -116,15 +88,3 @@ GIT_PS1_SHOWCONFLICTSTATE="yes"
 git_status(){
     echo "%{$(__git_ps1 "  %s " 2>/dev/null)%}"
 }
-PROMPT='
-$(colorize "" $BOLD $RED_FG)'
-PROMPT+='$(colorize "󰣇 %n " $BOLD $LWHITE_FG $RED_BG)'
-PROMPT+='$(colorize "" $RED_FG $DDBLACK_BG)'
-PROMPT+='$(colorize " %~ " $BOLD $LWHITE_FG $DDBLACK_BG)'
-PROMPT+='$(colorize "" $DDBLACK_FG $GRAY_BG)'
-PROMPT+='$(colorize "$(git_status)" $BOLD $LWHITE_FG $GRAY_BG)'
-PROMPT+='$(colorize "" $GRAY_FG $GREEN_BG)'
-PROMPT+='$(colorize "%@" $BOLD $LWHITE_FG $GREEN_BG)'
-PROMPT+='$(colorize "" $GREEN_FG )'
-PROMPT+='
-$(colorize " 󰜴 " $YELLOW_FG)'
