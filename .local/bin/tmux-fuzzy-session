@@ -1,0 +1,81 @@
+#!/bin/bash
+
+fdCommand="fd --base-directory=$HOME --hidden --follow --exclude={.metadata,.git,.settings}"
+paths="
+--search-path .
+--search-path projects 
+--search-path personal
+--search-path school 
+--search-path .config
+--search-path git
+--search-path git/redflameken
+--search-path git/school
+"
+
+vimpaths="
+--search-path projects 
+--search-path school 
+--search-path git/redflameken
+--search-path git/school
+--search-path .config/nvim
+--search-path .config/rofi
+--search-path .config/wofi
+--search-path .config/i3
+--search-path .config/sway
+--search-path .config/hypr
+--search-path .config/kitty
+--search-path .config/tmux
+--search-path .config/dunst
+--search-path .config/bumblebee-status
+--search-path .config/eww
+--search-path .config/waybar
+--search-path .config/neofetch
+--search-path .config/Thunar
+"
+
+if [ $# -gt 0 ]; then
+    case "$1" in
+        -v | --vim) vimext="nvim"
+            ;;
+        -d | --directory) fuzzytarget=$2
+            ;;
+        *) echo "Invalid Option $1"
+            exit 0;
+            ;;
+    esac
+    
+fi
+
+if [ -z $vimext ]; then
+    if [ -z $fuzzytarget ]; then
+        fdCommand="$fdCommand --type d --max-depth 1 --min-depth 1"
+        fuzzytarget="$($fdCommand $paths | fzf)"
+        directory="$HOME/"
+    fi
+    directory="$directory$fuzzytarget"
+    selectedName="$(basename $fuzzytarget 2> /dev/null)"
+else
+    if [ -z $fuzzytarget ]; then
+        fdCommand="$fdCommand --type f"
+        fuzzytarget="$($fdCommand $paths | fzf)"
+        directory="$HOME/"
+    fi
+    directory="$directory$(dirname $fuzzytarget 2> /dev/null)"
+    selectedName="$(basename $fuzzytarget 2> /dev/null | tr . _)"
+    vimext="$vimext $(basename $fuzzytarget 2> /dev/null)"
+fi
+
+if [ -z $selectedName ]; then
+    exit 0
+fi
+
+if [ -z $TMUX ]; then
+    tmux -2 new -s $selectedName -c $directory $vimext 
+    exit 0
+fi
+
+if ! tmux has-session -t=$selectedName 2> /dev/null; then
+    tmux -2 new -ds $selectedName -c $directory $vimext
+fi
+
+tmux -2 switch-client -t $selectedName
