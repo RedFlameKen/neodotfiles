@@ -1,5 +1,4 @@
 # Source
-source <(fzf --zsh)
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source ~/.git-prompt.sh
@@ -33,6 +32,8 @@ bindkey -s '^[^F' '~/.local/bin/tmux-fuzzy-session -v\n'
 
 autoload -Uz compinit
 compinit
+
+source <(fzf --zsh)
 
 RESET="%{$(tput sgr0)%}"
 BOLD="%{$(tput bold)%}"
