@@ -22,41 +22,29 @@ set $ws9 "9"
 set $ws10 "10"
 
 workspace $ws1 output LVDS-1
-workspace $ws2 output VGA-1
+# workspace $ws2 output VGA-1
 workspace $ws5 output LVDS-1
 workspace $ws6 output LVDS-1
 
 assign [class="Discord"] 5
 assign [class="WebCord"] 5
-# assign [app_id="com.obsproject.Studio"] 6
-# startup settings
-
-# i3 startup
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-exec_always --no-startup-id autotiling
-exec --no-startup-id dex --autostart --environment i3
-
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-# quick maps:
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+assign [class="krita"] 4
+assign [id="com.obsproject.Studio"] 6
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# titlebar dragging (unnecessary)
-# tiling_drag modifier titlebar
-
 # exec
+exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id autotiling
 
 # exec_always
-exec_always --no-startup-id ~/.scripts/runProgs.sh
-exec_always --no-startup-id killall picom
-exec_always --no-startup-id picom
+exec_always --no-startup-id ~/.scripts/runProgs.sh picom
+# exec_always --no-startup-id killall picom
+# exec_always --no-startup-id picom
 exec_always --no-startup-id ~/.scripts/wallpaper.sh num 13
 
 
@@ -92,6 +80,7 @@ bindsym $mod+q exec kitty
 # open file explorer gui
 bindsym $mod+e exec --no-startup-id thunar
 
+bindsym $mod+u exec --no-startup-id ~/.scripts/screenkeyToggle.sh
 
 bindsym $mod+g exec --no-startup-id glava 
 
@@ -189,7 +178,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+m exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

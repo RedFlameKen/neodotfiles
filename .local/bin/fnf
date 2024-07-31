@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ $# -gt 0 ]; then
+    selected="$HOME/Storage/Games/fnf/$1"
+else
+    selected=$(find ~/Storage/Games/fnf -maxdepth 1 -not -name "modstuff" | fzf)
+fi
+
+executable="$(find $selected -executable -type f)"
+
+if [ -z $executable ]; then
+    executable="$(find $selected -iname "*.exe")"
+    winmode="1"
+fi
+
+cd $(dirname $executable)
+
+if [ -z $winmode ]; then
+    $executable
+else
+    WINEARCH="win64"
+    WINEPREFIX="$HOME/wine/kennethWine" 
+    wine "$executable"
+fi
+

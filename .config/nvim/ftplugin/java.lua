@@ -76,3 +76,7 @@ local config = {
 
 jdtls.start_or_attach(config)
 
+function StartJavaServer()
+    jdtls.start_or_attach(config)
+end
+

@@ -110,21 +110,61 @@ GBLUE3_BG="%{$(tput setab 21)%}"
 colorize(){
     echo "%{$2$3$4%}$1$RESET"
 }
+
+if [ $TERM = "linux" ]; then
+    BACK_LINE_TOP="╔═"
+    BACK_LINE_BOT="╚═"
+    BG_ICON="  "
+    SEP1=""
+    SEP2=""
+    SEP3=""
+    ARROW_ICON=">"
+    USR_ICON=""
+    BRANCH_ICON=""
+else
+    BACK_LINE_TOP="╭─"
+    BACK_LINE_BOT="╰─"
+    BG_ICON="  "
+    SEP1=""
+    SEP2=""
+    SEP3=""
+    ARROW_ICON="󰜴"
+    USR_ICON="󰣇 "
+    BRANCH_ICON=""
+fi
+
+bg_process(){
+    echo "$(colorize $BG_ICON $BOLD $RED_FG)"
+}
+
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCONFLICTSTATE="yes"
 git_status(){
-    echo "%{$(__git_ps1 "  %s " 2>/dev/null)%}"
+    echo "%{$(__git_ps1 " $BRANCH_ICON %s " 2>/dev/null)%}"
 }
+
+vimode="INS"
+function zle-keymap-select {
+    vimode="${${KEYMAP/vicmd/NRM}/(main|viins)/INS}"
+    zle reset-prompt
+}
+
+zle -N zle-keymap-select
+
 PROMPT='
-╭─$(colorize "" $BOLD $RED_FG)'
-PROMPT+='$(colorize "󰣇 %n " $BOLD $LWHITE_FG $RED_BG)'
-PROMPT+='$(colorize "" $RED_FG $DDBLACK_BG)'
+$BACK_LINE_TOP$(colorize $SEP1 $BOLD $RED_FG)'
+PROMPT+='$(colorize "$USR_ICON %n " $BOLD $LWHITE_FG $RED_BG)'
+PROMPT+='$(colorize  $SEP3 $RED_FG $DDBLACK_BG)'
 PROMPT+='$(colorize " %~ " $BOLD $LWHITE_FG $DDBLACK_BG)'
-PROMPT+='$(colorize "" $DDBLACK_FG $GRAY_BG)'
+PROMPT+='$(colorize $SEP3 $DDBLACK_FG $GRAY_BG)'
 PROMPT+='$(colorize "$(git_status)" $BOLD $LWHITE_FG $GRAY_BG)'
-PROMPT+='$(colorize "" $GRAY_FG $GREEN_BG)'
+PROMPT+='$(colorize $SEP3 $GRAY_FG $GREEN_BG)'
 PROMPT+='$(colorize " %@" $BOLD $LWHITE_FG $GREEN_BG)'
-PROMPT+='$(colorize "" $GREEN_FG )'
+PROMPT+='$(colorize $SEP2 $GREEN_FG )'
 PROMPT+='
-╰─$(colorize " 󰜴 " $YELLOW_FG)'
+$BACK_LINE_BOT$(colorize $SEP1 $YELLOW_FG)'
+PROMPT+='$(colorize "$vimode" $BOLD $DBLACK_FG $YELLOW_BG)'
+PROMPT+='$(colorize "%(1j.$(bg_process).)" $BOLD $DBLACK_FG $YELLOW_BG)'
+PROMPT+='$(colorize $SEP2 $YELLOW_FG )'
+PROMPT+='$(colorize " $ARROW_ICON " $YELLOW_FG)'

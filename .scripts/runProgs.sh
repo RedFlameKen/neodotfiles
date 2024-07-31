@@ -6,13 +6,19 @@ killall nm-applet
 killall dunst
 killall lowbatNotif.sh
 
-sleep 1
+initPicom(){
+    killall picom
+    picom &
+}
+
 #activate compositor
-#picom --experimental-backends & 
+if [ "$1" == "picom" ]; then
+    initPicom
+fi
+
 blueman-applet &
 nm-applet &
 dunst &
 $HOME/.scripts/lowbatNotifd.sh &
 
 bluetoothctl power off
-exit

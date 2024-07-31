@@ -89,24 +89,49 @@ GBLUE3_BG="$(tput setab 21)"
 colorize(){
     echo "$2$3$4$1$RESET"
 }
+
+
+if [ $TERM = "linux" ]; then
+    BACK_LINE_TOP="╔═"
+    BACK_LINE_BOT="╚═"
+    BG_ICON="  "
+    SEP1=""
+    SEP2=""
+    SEP3=""
+    ARROW_ICON=">"
+    USR_ICON=""
+    BRANCH_ICON=""
+else
+    BACK_LINE_TOP="╭─"
+    BACK_LINE_BOT="╰─"
+    BG_ICON="  "
+    SEP1=""
+    SEP2=""
+    SEP3=""
+    ARROW_ICON="󰜴"
+    USR_ICON="󰣇 "
+    BRANCH_ICON=""
+fi
+
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCONFLICTSTATE="yes"
 git_status(){
     echo "$(__git_ps1 "  %s " 2>/dev/null)"
 }
+
 PS1='
-$(colorize "" $BOLD $RED_FG)'
-PS1+='$(colorize "󰣇 \u " $BOLD $LWHITE_FG $RED_BG)'
-PS1+='$(colorize "" $RED_FG $DDBLACK_BG)'
+$BACK_LINE_TOP$(colorize $SEP1 $BOLD $RED_FG)'
+PS1+='$(colorize "$USR_ICON \u " $BOLD $LWHITE_FG $RED_BG)'
+PS1+='$(colorize  $SEP3 $RED_FG $DDBLACK_BG)'
 PS1+='$(colorize " \w " $BOLD $LWHITE_FG $DDBLACK_BG)'
-PS1+='$(colorize "" $DDBLACK_FG $GRAY_BG)'
+PS1+='$(colorize $SEP3 $DDBLACK_FG $GRAY_BG)'
 PS1+='$(colorize "$(git_status)" $BOLD $LWHITE_FG $GRAY_BG)'
-PS1+='$(colorize "" $GRAY_FG $GREEN_BG)'
-PS1+='$(colorize "\@" $BOLD $LWHITE_FG $GREEN_BG)'
-PS1+='$(colorize "" $GREEN_FG )'
+PS1+='$(colorize $SEP3 $GRAY_FG $GREEN_BG)'
+PS1+='$(colorize " \@" $BOLD $LWHITE_FG $GREEN_BG)'
+PS1+='$(colorize $SEP2 $GREEN_FG )'
 PS1+='
-$(colorize " 󰜴 " $YELLOW_FG)'
+$BACK_LINE_BOT$(colorize " $ARROW_ICON " $YELLOW_FG)'
 
 shopt -s checkwinsize
 

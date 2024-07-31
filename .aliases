@@ -1,3 +1,10 @@
+unzip(){
+    exFile="${1##*.}"
+    [ "$exFile" = "zip" ] && unzip $1 && return
+    [ "$exFile" = "7z" ] && 7za x $1 && return
+    exFile=""
+}
+
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -51,7 +58,7 @@ alias l='ls -CF'
 alias runwine="WINEARCH=win64 WINEPREFIX=~/wine/kennethWine wine"
 alias wineprefix="WINEARCH=win64 WINEPREFIX=~/wine/kennethWine"
 alias wineprefix32="WINEARCH=win32 WINEPREFIX=~/wine/kennethWine32"
-alias fnf="cd ~/Storage/Games/fnf/vanilla;./Funkin"
+# alias fnf="cd ~/Storage/Games/fnf/vanilla;./Funkin"
 
 
 # My Custom Aliases

@@ -1,9 +1,9 @@
 # Environment variables
-EDITOR=nvim
-QT_QPA_PLATFORMTHEME=qt6ct
-WINEARCH=win64
-WINEPREFIX=~/wine/kennethWine
-PATH="$HOME/.local/bin:$PATH"
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.sh_history
+export EDITOR=nvim
+export QT_QPA_PLATFORMTHEME=qt6ct
+export WINEARCH=win64
+export WINEPREFIX=~/wine/kennethWine
+export PATH="$HOME/.local/bin:$PATH"
+export HISTSIZE=1000
+export SAVEHIST=1000
+export HISTFILE=~/.sh_history
