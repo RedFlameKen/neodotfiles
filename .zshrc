@@ -118,9 +118,12 @@ if [ $TERM = "linux" ]; then
     SEP1=""
     SEP2=""
     SEP3=""
+    SEP4=" "
     ARROW_ICON=">"
     USR_ICON=""
     BRANCH_ICON=""
+    NORMALMODE="=NRM"
+    INSERTMODE="=INS"
 else
     BACK_LINE_TOP="╭─"
     BACK_LINE_BOT="╰─"
@@ -128,9 +131,14 @@ else
     SEP1=""
     SEP2=""
     SEP3=""
+    # SEP4=""
+    SEP4="  "
     ARROW_ICON="󰜴"
-    USR_ICON="󰣇 "
+    USR_ICON="󰣇"
+    CLOCK_ICON="󰥔"
     BRANCH_ICON=""
+    NORMALMODE="NRM"
+    INSERTMODE="INS"
 fi
 
 bg_process(){
@@ -146,7 +154,7 @@ git_status(){
 
 vimode="INS"
 function zle-keymap-select {
-    vimode="${${KEYMAP/vicmd/NRM}/(main|viins)/INS}"
+    vimode="${${KEYMAP/vicmd/$NORMALMODE}/(main|viins)/$INSERTMODE}"
     zle reset-prompt
 }
 
@@ -160,11 +168,11 @@ PROMPT+='$(colorize " %~ " $BOLD $LWHITE_FG $DDBLACK_BG)'
 PROMPT+='$(colorize $SEP3 $DDBLACK_FG $GRAY_BG)'
 PROMPT+='$(colorize "$(git_status)" $BOLD $LWHITE_FG $GRAY_BG)'
 PROMPT+='$(colorize $SEP3 $GRAY_FG $GREEN_BG)'
-PROMPT+='$(colorize " %@" $BOLD $LWHITE_FG $GREEN_BG)'
+PROMPT+='$(colorize " $CLOCK_ICON %@" $BOLD $LWHITE_FG $GREEN_BG)'
 PROMPT+='$(colorize $SEP2 $GREEN_FG )'
 PROMPT+='
 $BACK_LINE_BOT$(colorize $SEP1 $YELLOW_FG)'
 PROMPT+='$(colorize "$vimode" $BOLD $DBLACK_FG $YELLOW_BG)'
-PROMPT+='$(colorize "%(1j.$(bg_process).)" $BOLD $DBLACK_FG $YELLOW_BG)'
-PROMPT+='$(colorize $SEP2 $YELLOW_FG )'
-PROMPT+='$(colorize " $ARROW_ICON " $YELLOW_FG)'
+PROMPT+='$(colorize "%(1j.$(bg_process).) " $BOLD $DBLACK_FG $YELLOW_BG)'
+PROMPT+='$(colorize $SEP4 $YELLOW_FG )'
+# PROMPT+='$(colorize " $ARROW_ICON " $YELLOW_FG)'

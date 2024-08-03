@@ -29,7 +29,8 @@ workspace $ws6 output LVDS-1
 assign [class="Discord"] 5
 assign [class="WebCord"] 5
 assign [class="krita"] 4
-assign [id="com.obsproject.Studio"] 6
+assign [class="obs"] 6
+# assign [id="com.obsproject.Studio"] 6
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -40,6 +41,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id autotiling
+exec --no-startup-id xdg-mime default thunar.desktop inode/directory
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # exec_always
 exec_always --no-startup-id ~/.scripts/runProgs.sh picom
@@ -47,6 +50,12 @@ exec_always --no-startup-id ~/.scripts/runProgs.sh picom
 # exec_always --no-startup-id picom
 exec_always --no-startup-id ~/.scripts/wallpaper.sh num 13
 
+
+set $gnome-schema org.gnome.desktop.interface
+
+exec gsettings set $gnome-schema gtk-theme 'Nordic-bluish-accent'
+exec gsettings set $gnome-schema icon-theme 'Papirus'
+exec gsettings set $gnome-schema cursor-theme 'Dracula-cursors'
 
 # keybindings
 

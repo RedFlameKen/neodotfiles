@@ -45,7 +45,7 @@ return require('packer').startup(function(use)
 			{'hrsh7th/cmp-nvim-lsp'},
             {'saadparwaiz1/cmp_luasnip'},
             {"rafamadriz/friendly-snippets"},
-			{'L3MON4D3/LuaSnip'},
+            {"L3MON4D3/LuaSnip", run = "make install_jsregexp"},
 		}
 	}
     use 'mfussenegger/nvim-jdtls'

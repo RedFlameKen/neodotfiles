@@ -17,20 +17,7 @@ vimpaths="
 --search-path school 
 --search-path git/redflameken
 --search-path git/school
---search-path .config/nvim
---search-path .config/rofi
---search-path .config/wofi
---search-path .config/i3
---search-path .config/sway
---search-path .config/hypr
---search-path .config/kitty
---search-path .config/tmux
---search-path .config/dunst
---search-path .config/bumblebee-status
---search-path .config/eww
---search-path .config/waybar
---search-path .config/neofetch
---search-path .config/Thunar
+--search-path .dotfiles/
 "
 
 if [ $# -gt 0 ]; then
@@ -57,7 +44,7 @@ if [ -z $vimext ]; then
 else
     if [ -z $fuzzytarget ]; then
         fdCommand="$fdCommand --type f"
-        fuzzytarget="$($fdCommand $paths | fzf)"
+        fuzzytarget="$($fdCommand $vimpaths | fzf)"
         directory="$HOME/"
     fi
     directory="$directory$(dirname $fuzzytarget 2> /dev/null)"

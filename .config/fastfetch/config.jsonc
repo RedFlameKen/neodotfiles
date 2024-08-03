@@ -1,0 +1,110 @@
+//╭─╮
+//│ │
+//╰─╯
+//"╭──────────────────────────────────────────╮"
+//"󰌢" model
+//"" cpu
+//"" gpu
+//"󰍛" memory
+//"󰍹" resolution
+//"󰒓 ────────────────────────────────────────── 󰒓"
+//"󰣇" distro
+//"󰧨" de
+//"" wm
+//"" shell
+//"" term
+//"╰──────────────────────────────────────────╯"
+{
+    "general": {
+        "multithreading": true,
+    },
+    "display": {
+        "separator": ":: ",
+        "disableLineWrap": true,
+        "key": {
+            "paddingLeft": 2,
+        },
+    },
+    "logo": {
+        "type": "kitty",
+        "source": "~/.config/fastfetch/RedFlameKenHead.png",
+        "width": 25,
+    },
+    "modules": [
+        {
+            "type": "custom",
+            "format": "╭────────────── System Information ──────────────╮",
+        },
+        {
+            "type": "os",
+            "key": "󰣇 ",
+        },
+        {
+            "type": "shell",
+            "key": " ",
+        },
+        {
+            "type": "de",
+            "key": "󰧨 ",
+        },
+        {
+            "type": "wm",
+            "key": " ",
+        },
+        {
+            "type": "terminal",
+            "key": " ",
+        },
+        {
+            "type": "custom",
+            "format": "󰒓 ────────────────────────────────────────────── 󰒓 ",
+        },
+        {
+            "type": "host",
+            "key": "󰌢 ",
+        },
+        {
+            "type": "cpu",
+            "key": " ",
+        },
+        {
+            "type": "gpu",
+            "key": " ",
+            "format": "{2}"
+        },
+        {
+            "type": "memory",
+            "key": "󰍛 ",
+        },
+        {
+            "type": "disk",
+            "key": " ",
+            "format": "{1} / {2} ({3})"
+        },
+        {
+            "type": "display",
+            "key": "󰍹 ",
+            //"format": "{1}x{2} @ {3}Hz {12}"
+        },
+        {
+            "type": "uptime",
+            "key": "󰥔 ",
+        },
+        {
+            "type": "custom",
+            "format": "╰────────────────────────────────────────────────╯",
+        },
+        {
+            "type": "custom",
+            "format": "                {#31} {#32} {#33} {#34} {#35} {#36} {#37} {#39} ",
+        },
+        //{
+        //    "type": "colors",
+        //    "symbol": "circle",
+        //    "block": {
+        //        "width": 2,
+        //    },
+        //    "paddingLeft": 18,
+        //},
+    ]
+    }
