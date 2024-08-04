@@ -60,8 +60,8 @@ exec_always --no-startup-id autotiling
 # custom keybindings
 
 # volume keybinds
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_swaystatus
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_swaystatus
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_swaystatus
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_swaystatus
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_swaystatus
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_swaystatus
 
@@ -87,6 +87,11 @@ bindsym $mod+Shift+Print exec grim -g "$(slurp -d -w 0)" - > ~/Pictures/screensh
 # bindsym Control+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 # bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 #
+# obs keybinds
+bindsym Control+F12 exec ~/.scripts/obs-cli-helper.sh record
+bindsym Control+Shift+F12 exec ~/.scripts/obs-cli-helper.sh record pause
+bindsym Control+Shift+F10 exec ~/.scripts/obs-cli-helper.sh stream
+
 # msc keybinds
 
 # open terminal

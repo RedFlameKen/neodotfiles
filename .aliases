@@ -1,8 +1,16 @@
-unzip(){
+uzip(){
     exFile="${1##*.}"
-    [ "$exFile" = "zip" ] && unzip $1 && return
-    [ "$exFile" = "7z" ] && 7za x $1 && return
-    exFile=""
+    case "${exFile}" in
+        zip) 
+            unzip $1
+            ;;
+        7z) 
+            7za x $1 
+            ;;
+        *)
+            echo -e "not an archive\n"
+            ;;
+    esac
 }
 
 if [ -x /usr/bin/dircolors ]; then

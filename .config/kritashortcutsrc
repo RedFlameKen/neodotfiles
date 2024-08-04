@@ -2,5 +2,7 @@
 KisToolSelectContiguous=W
 KisToolSelectOutline=L
 KritaShape/KisToolLine=Shift+L
+filter_apply_again=none
+insert_keyframe_right=Ctrl+F
 level_of_detail_mode=none
 make_brush_color_lighter=none
