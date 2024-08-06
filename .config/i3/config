@@ -32,6 +32,8 @@ assign [class="krita"] 4
 assign [class="obs"] 6
 # assign [id="com.obsproject.Studio"] 6
 
+for_window [class="Screenkey"] floating enable, border pixel 0
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -84,9 +86,9 @@ bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipbo
 # msc keybinds
 
 # obs keybinds
-bindsym Control+F12 exec ~/.scripts/obs-cli-helper.sh record
-bindsym Control+Shift+F12 exec ~/.scripts/obs-cli-helper.sh record pause
-bindsym Control+Shift+F10 exec ~/.scripts/obs-cli-helper.sh stream
+bindsym Control+F12 exec --no-startup-id ~/.scripts/obs-cli-helper.sh record
+bindsym Control+Shift+F12 exec --no-startup-id ~/.scripts/obs-cli-helper.sh record pause
+bindsym Control+Shift+F10 exec --no-startup-id ~/.scripts/obs-cli-helper.sh stream
 
 
 # open terminal

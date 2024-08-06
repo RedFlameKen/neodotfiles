@@ -12,4 +12,14 @@
 	<startup-notify/>
 	<directories/>
 </action>
+<action>
+	<icon>cm_extractfiles</icon>
+	<name>Extract Here</name>
+	<submenu></submenu>
+	<unique-id>1722864616407699-1</unique-id>
+	<command>unzip %N</command>
+	<description>Extract archive here</description>
+	<range>*</range>
+	<patterns>*</patterns>
+</action>
 </actions>

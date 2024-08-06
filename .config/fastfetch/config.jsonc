@@ -31,6 +31,7 @@
         "width": 25,
     },
     "modules": [
+        "break",
         {
             "type": "custom",
             "format": "╭────────────── System Information ──────────────╮",
@@ -70,7 +71,7 @@
         {
             "type": "gpu",
             "key": " ",
-            "format": "{2}"
+            "format": "{1}"
         },
         {
             "type": "memory",
