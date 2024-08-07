@@ -3,7 +3,7 @@
 pacmanPackages="rofi tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf kitty dunst picom slurp grim brightnessctl keyd fastfetch github-cli stow qt6ct firefox obs-studio thunar thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common"
 yayPackages="bumblebee-status auto-cpufreq obs-websocket-compat obs-cli"
 
-i3Packages="i3 feh"
+i3Packages="i3 feh xorg xorg-xinit"
 swayPackages="sway swaylock swww"
 
 optionalPacmanPackages="vlc mpv lxappearance krita kdenlive discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-tools scrcpy"
