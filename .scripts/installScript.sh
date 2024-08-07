@@ -1,5 +1,34 @@
 #!/bin/bash
 
+pacmanPackages="rofi tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf kitty dunst picom slurp grim brightnessctl keyd fastfetch github-cli stow qt6ct firefox obs-studio thunar thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common"
+yayPackages="bumblebee-status auto-cpufreq obs-websocket-compat obs-cli"
+
+i3Packages="i3 feh"
+swayPackages="sway swaylock swww"
+
+optionalPacmanPackages="vlc mpv lxappearance krita kdenlive discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-tools scrcpy"
+optionalYayPackages="cmatrix-git webcord ani-cli clementine"
+
+if [ $# -eq 0 ]; then
+    pacmanPackages="$i3Packages $swayPackages $pacmanPackages"
+else
+    while [ $# -gt 0 ]; do
+        case $1 in
+            -i | --i3) 
+                pacmanPackages="$i3Packages $pacmanPackages" 
+                ;;
+            -s | --sway)
+                pacmanPackages="$swayPackages $pacmanPackages"
+                ;;
+            -o | --optionals)
+                pacmanPackages="$pacmanPackages $optionalPacmanPackages"
+                yayPackages="$yayPackages $optionalYayPackages"
+                ;;
+        esac
+        shift
+    done
+fi
+
 sudo pacman -Sy --noconfirm --needed git go base-devel
 mkdir $HOME/git
 git clone https://aur.archlinux.org/yay $HOME/git/yay
@@ -8,11 +37,11 @@ cd $HOME/git/yay
 makepkg -si
 cd $oldDir
 
-sudo sed -i 's/#\(\[multilib\]\)/\1\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc//pacman.conf
+sudo sed -i 's/#\(\[multilib\]\)/\1\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
 # pacman installs
-sudo pacman -Sy --noconfirm sway i3 rofi tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf kitty dunst picom vlc mpv slurp grim brightnessctl keyd fastfetch github-cli stow discord qt6ct firefox krita kdenlive obs-studio lxappearance thunar thunar-archive-plugin thunar-volman imagemagick gthumb jdk8-openjdk jdk17-openjdk jdk21-openjdk android-tools scrcpy reflector swww calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common wine winetricks steam
+sudo pacman -Sy --noconfirm $pacmanPackages
 
-yay -Sy --noconfirm bumblebee-status cmatrix-git webcord auto-cpufreq obs-websocket-compat obs-cli ani-cli clementine
+yay -Sy --noconfirm $yayPackages
 
 # system setup
 sudo chsh $USER /bin/zsh
