@@ -4,7 +4,7 @@ This will now be my main dotfiles repo that includes all of my setups (Hyprland,
 
 To install the dotfiles, I have made an install script (currently very new and needs many improvements:
 ```
-wget https://github.com/redflameken2/neodotfiles/tree/master/.scripts/installScript.sh
+curl -O https://raw.githubusercontent.com/RedFlameKen2/neodotfiles/master/.scripts/installScript.sh
 chmod +x installScript.sh
 ./installScript.sh
 ```
