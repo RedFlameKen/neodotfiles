@@ -34,7 +34,13 @@ local function checkout()
     ColorMyPencils()
 end
 
+local function push()
+    os.execute("git push")
+    ColorMyPencils()
+end
+
 vim.keymap.set("n", "<leader>gc", commit)
 vim.keymap.set("n", "<leader>gl", "<CMD>!git log --reflog<CR>")
 vim.keymap.set("n", "<leader>ge", checkout)
 vim.keymap.set("n", "<leader>gb", branch)
+vim.keymap.set("n", "<leader>gp", push)
