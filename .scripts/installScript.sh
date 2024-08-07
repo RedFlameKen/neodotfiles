@@ -24,7 +24,9 @@ else
                 pacmanPackages="$pacmanPackages $optionalPacmanPackages"
                 yayPackages="$yayPackages $optionalYayPackages"
                 ;;
-            -Y | --skip-yay-install) skipYay="true"
+            -Y | --skip-yay-install) 
+                skipYay="true"
+                ;;
         esac
         shift
     done
