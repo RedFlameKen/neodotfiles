@@ -101,9 +101,9 @@ bindsym $mod+q exec kitty
 bindsym $mod+e exec --no-startup-id thunar
 
 # start rofi(a program launcher)
-# bindsym $mod+d exec --no-startup-id rofi -show drun -drun-use-desktop-cache
-bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+Shift+d exec --no-startup-id wofi --show drun 
+bindsym $mod+d exec --no-startup-id rofi -show drun -drun-use-desktop-cache
+# bindsym $mod+d exec --no-startup-id rofi -show drun
+# bindsym $mod+Shift+d exec --no-startup-id wofi --show drun 
 
 bindsym $mod+g exec --no-startup-id glava 
 
