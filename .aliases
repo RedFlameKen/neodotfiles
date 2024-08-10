@@ -23,6 +23,15 @@ fi
 # command alias
 alias tmux="tmux -2"
 
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias df='df -h'
+alias dfk='df -k'
+
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
 # Dev
 alias cmain="g++ main.cpp -o main && chmod +x main && ./main"
 
@@ -43,24 +52,12 @@ alias listen-mic="pactl load-module module-loopback latency_msec=2"
 
 alias :q="exit"
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Sound
 alias echo-cancel="pactl load-module module-echo-cancel aec_args='analog_gain_control=0' eac_method=webrtc"
 alias listen-mic="pactl load-module module-loopback"
 
 alias echo-cancel-off="pactl unload-module module-echo-cancel"
 alias listen-mic-off="pactl unload-module module-loopback"
-
-
-# ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # Wine
 alias runwine="WINEARCH=win64 WINEPREFIX=~/wine/kennethWine wine"

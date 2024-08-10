@@ -35,7 +35,7 @@ KineticScrollingEnabled=true
 KineticScrollingGesture=2
 KineticScrollingHideScrollbar=false
 KineticScrollingSensitivity=75
-KisDlgPreferences/CurrentPage=performance
+KisDlgPreferences/CurrentPage=tablet
 Krita/Ocio/DisplayDevice=sRGB
 Krita/Ocio/DisplayLook=None
 Krita/Ocio/DisplayView=Raw
@@ -45,8 +45,8 @@ Krita/Ocio/OcioConfigPath=
 Krita/Ocio/OcioLockColorVisualRepresentation=false
 Krita/Ocio/OcioLutPath=
 Krita/Ocio/UseOcio=false
-LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB g="0.0823529437184334" space="scRGB (linear)" b="0.0705882385373116" r="0.10196078568697"/>\n</LastBackGroundColor>\n
-LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB g="0.756862759590149" space="sRGB-elle-V2-srgbtrc.icc" b="0.407843142747879" r="0.537254929542542"/>\n</LastForeGroundColor>\n
+LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB space="scRGB (linear)" g="0.0823529437184334" r="0.10196078568697" b="0.0705882385373116"/>\n</LastBackGroundColor>\n
+LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB space="sRGB-elle-V2-srgbtrc.icc" g="0.756862759590149" r="0.537254929542542" b="0.407843142747879"/>\n</LastForeGroundColor>\n
 LastPreset=b) Basic-5 Size Opacity
 LastPreset_-1=b) Basic-5 Size Opacity
 LineSmoothingDelayDistance=22
@@ -282,7 +282,7 @@ useOnDiskAnimationCacheSwapping=true
 useOpenGLTextureBuffer=true
 useRightMiddleTabletButtonWorkaround=false
 useSubtractiveBlendingForCmykColorSpaces=true
-useTimestampsForBrushSpeed=false
+useTimestampsForBrushSpeed=true
 use_custom_system_font=false
 zoomMarginSize=0
 zoomSteps=2

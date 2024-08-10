@@ -32,7 +32,7 @@
 ; (gtk_accel_path "<Actions>/ThunarWindow/open-file-menu" "F10")
 ; (gtk_accel_path "<Actions>/ThunarWindow/contents" "F1")
 ; (gtk_accel_path "<Actions>/ThunarBookmarks/56e558d4cc31f8952c76dbcd2110db39" "")
-(gtk_accel_path "<Actions>/ThunarActions/uca-action-1722864616407699-1" "e")
+; (gtk_accel_path "<Actions>/ThunarActions/uca-action-1722864616407699-1" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/show-highlight" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/sort-descending" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/sort-by-name" "")
