@@ -9,7 +9,7 @@ default(){
 }
 pink(){
     wallpaper="wp1"
-    theme="0"
+    theme="1"
     echo 1 > ~/.scripts/curwp
 }
 gray(){
@@ -102,6 +102,7 @@ increment(){
     fi
 }
 
+killall swaybg
 numberFunc(){
     swaybg -m fill -i ~/.wallpapers/wp$1.jpg &
     echo $1 > ~/.scripts/curwp
@@ -142,4 +143,4 @@ while getopts "abcdefir" flag; do
 done
 
 sleep 1
-swaybg -m fill -i ~/.wallpapers/wp$wallpaper.jpg &
+swaybg -m fill -i ~/.wallpapers/$wallpaper.jpg &

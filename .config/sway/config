@@ -257,9 +257,11 @@ bindsym $mod+s scratchpad show
 
 bar {
     font pango:Inconsolata 10
-    swaybar_command swaybar
+    swaybar_command swaybar 
     position top
-    tray_output primary
+     # ContextMenu|Activate|SecondaryActivate|ScrollDown|ScrollLeft|ScrollRight|ScrollUp|nop
+    tray_output *
+    icon_theme "Papirus"
     # i3bar_command i3bar --transparency
     status_command bumblebee-status \
     -t srcery-custom \
