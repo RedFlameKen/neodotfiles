@@ -24,7 +24,7 @@ set $ws10 "10"
 workspace $ws1 output LVDS-1
 # workspace $ws2 output VGA-1
 workspace $ws5 output LVDS-1
-workspace $ws5 output LVDS-1
+workspace $ws6 output VGA-1
 
 assign [class="Discord"] 5
 assign [class="WebCord"] 5
@@ -101,7 +101,7 @@ bindsym $mod+q exec kitty
 bindsym $mod+e exec --no-startup-id thunar
 
 # start rofi(a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun -drun-use-desktop-cache
+bindsym $mod+d exec --no-startup-id .local/bin/rofi-runner
 # bindsym $mod+d exec --no-startup-id rofi -show drun
 # bindsym $mod+Shift+d exec --no-startup-id wofi --show drun 
 
@@ -110,7 +110,6 @@ bindsym $mod+g exec --no-startup-id glava
 bindsym $mod+i exec --no-startup-id dunstctl close
 bindsym $mod+Shift+i exec --no-startup-id dunstctl close-all
 
-bindsym $mod+Shift+m exec --no-startup-id swaylock 
 
 #sway keybinds
 
@@ -208,7 +207,10 @@ bindsym $mod+Control+Shift+0 move container to workspace number $ws10
 
 bindsym $mod+Shift+r reload
 # bindsym $mod+Shift+r restart
+
 bindsym $mod+m exec "swaynag -t warning -m 'exit sway?' -B 'EXIT' 'swaymsg exit'"
+
+bindsym $mod+Shift+m exec --no-startup-id swaylock 
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

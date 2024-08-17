@@ -4,8 +4,9 @@ This will now be my main dotfiles repo that includes all of my setups (Hyprland,
 
 To install the dotfiles, I have made an install script (currently very new and needs many improvements:
 ```
-curl -O https://raw.githubusercontent.com/RedFlameKen2/neodotfiles/master/.scripts/installScript.sh
-chmod +x installScript.sh
-./installScript.sh
+mkdir $HOME/git
+git clone https://github.com/redflameken2/neodotfiles $HOME/git/neodotfiles
+chmod +x $HOME/git/neodotfiles/installScript.sh
+$HOME/git/neodotfiles/installScript.sh
 ```
-Afterwards, just wait for pacman and yay to do their thing and BOOM, we have the system now! <br>
+Afterwards, just wait for pacman and yay to do their thing and BOOM, you have a copy of my system now! <br>

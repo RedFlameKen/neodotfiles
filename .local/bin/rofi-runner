@@ -1,0 +1,5 @@
+#!/bin/bash
+
+killall rofi
+
+rofi -show drun -drun-use-desktop-cache

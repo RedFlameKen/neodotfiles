@@ -3,25 +3,34 @@ local jdtls = require('jdtls')
 local home = os.getenv("HOME")
 
 local function workspaceDir()
-    -- local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+    local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
-    local workspace_dir = home .. '/projects/java/'
+    local workspace_dir = home .. '/projects/java/' .. project_name
     return workspace_dir
 end
 
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
+-- local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
 local jdtls_path = home ..  '/.local/share/nvim/mason/packages/jdtls'
 local launcher_jar = home .. '/plugins/org.eclipse.equinox.launcher*.jar'
 
-local client_capabilities = vim.lsp.protocol.make_client_capabilities()
-local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
-
+-- local client_capabilities = vim.lsp.protocol.make_client_capabilities()
+-- local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
+--
+local root_files = {
+    '.classpath',
+    '.project',
+    '.git',
+    'pom.xml',
+    'build.xml',
+    'gradlew',
+    'mvnw'
+}
 local config = {
-    capabilities = capabilities,
+    -- capabilities = capabilities,
     cmd = {
         jdtls_path ..'/bin/jdtls',
-        'java',
+        -- 'java',
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -35,7 +44,7 @@ local config = {
         '-configuration', jdtls_path .. '/config_linux',
         '-data', workspaceDir(),
     },
-    root_dir = vim.fs.dirname(vim.fs.find({'.git', 'pom.xml', ".classpath", 'gradlew', 'mvnw'}, { upward = true })[1]),
+    root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
     settings = {
         java = {
             import = {enabled = true},
@@ -54,11 +63,11 @@ local config = {
     init_options = {
         extendedCapabilities = jdtls.extendedCapabilities,
     },
-    -- capabilities = {
-    --     workspace = {
-    --         configuration = true;
-    --     },
-    -- },
+    capabilities = {
+        workspace = {
+            configuration = true;
+        },
+    },
     on_attach = function(client, bufnr)
         local opts = {silent = true, buffer = bufnr}
         -- vim.keymap.set("n", "<leader>js", StartJavaServer)

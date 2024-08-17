@@ -3,6 +3,7 @@
 fdCommand="fd --base-directory=$HOME --hidden --follow --exclude={.metadata,.git,.settings}"
 paths="
 --search-path .
+--search-path projects/Netbeans/NetbeansProjects
 --search-path projects 
 --search-path personal
 --search-path school 

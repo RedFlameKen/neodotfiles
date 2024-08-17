@@ -22,8 +22,13 @@ require('mason-lspconfig').setup({
         "lua_ls",
     },
     handlers = {
-        function(server_name)
-            require('lspconfig')[server_name].setup({
+        -- function(server_name)
+        --     require('lspconfig')[server_name].setup({
+        --         capabilities = lsp_capabilities,
+        --     })
+        -- end,
+        clangd = function()
+            require('lspconfig').clangd.setup({
                 capabilities = lsp_capabilities,
             })
         end,
