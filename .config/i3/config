@@ -5,7 +5,7 @@
 set $mod Mod4
 set $alt Mod1
 
-font pango:monospace 8
+font pango:FiraCode Nerd Font Propo 10
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
@@ -247,14 +247,14 @@ bindsym $mod+s scratchpad show
 # bindsym $mod+i exec --no-startup-id ~/.config/eww/scripts/launch.sh
 
 bar {
-    font pango:Inconsolata 10
+    font pango:FiraCode Nerd Font Propo 10
     position top
     tray_output primary
     # i3bar_command i3bar --transparency
     status_command bumblebee-status \
     -t srcery-custom \
     -m pulseout pulsein date time battery \
-    -p time.format="%I:%M" date.format="%a, %b %d %Y"\
+    -p time.format="%I:%M %p" date.format="%a, %b %d %Y"\
     pulsectl.autostart="true" pulsectl.percent_change=8 pulsectl.limit=150 \ 
     workspace_min_width 30
     colors {

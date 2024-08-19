@@ -1,13 +1,15 @@
 #!/bin/bash
 
-pacmanPackages="rofi tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf kitty dunst brightnessctl keyd fastfetch github-cli stow qt6ct firefox obs-studio thunar thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common"
+pacmanPackages="rofi tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf kitty dunst brightnessctl keyd fastfetch github-cli stow qt6ct firefox obs-studio thunar thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common htop papirus-icon-theme"
 yayPackages="bumblebee-status auto-cpufreq obs-websocket-compat obs-cli"
 
 i3Packages="i3 feh xorg xorg-xinit picom"
-swayPackages="sway swaylock swww slurp grim"
+swayPackages="sway swaylock swaybg swww slurp grim"
 
-optionalPacmanPackages="vlc mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey wofi"
+optionalPacmanPackages="vlc mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey wofi glava"
 optionalYayPackages="cmatrix-git webcord ani-cli clementine"
+
+graphicsPackages="libva-utils libva-intel-driver libva-mesa-driver"
 
 if [ $# -eq 0 ]; then
     pacmanPackages="$i3Packages $swayPackages $pacmanPackages"
@@ -26,6 +28,9 @@ else
                 ;;
             -Y | --skip-yay-install) 
                 skipYay="true"
+                ;;
+            -g | --graphics-install) 
+                pacmanPackages="$pacmanPackages $graphicsPackages"
                 ;;
         esac
         shift

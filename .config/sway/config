@@ -5,7 +5,7 @@ output VGA-1 mode 1280x1024 pos 0 -1024
 set $mod Mod4
 set $alt Mod1
 
-font pango:monospace 8
+font pango:FiraCode Nerd Font Propo 10
 
 set $refresh_swaystatus killall -SIGUSR1 i3status
 
@@ -258,7 +258,7 @@ bindsym $mod+s scratchpad show
 # bindsym $mod+i exec --no-startup-id ~/.config/eww/scripts/launch.sh
 
 bar {
-    font pango:Inconsolata 10
+    font pango:FiraCode Nerd Font Propo 10
     swaybar_command swaybar 
     position top
      # ContextMenu|Activate|SecondaryActivate|ScrollDown|ScrollLeft|ScrollRight|ScrollUp|nop
@@ -268,7 +268,7 @@ bar {
     status_command bumblebee-status \
     -t srcery-custom \
     -m pulseout pulsein date time battery \
-    -p time.format="%I:%M" date.format="%a, %b %d %Y"\
+    -p time.format="%I:%M %p" date.format="%a, %b %d %Y"\
     pulsectl.autostart="true" pulsectl.percent_change=8 pulsectl.limit=150 \ 
 
     workspace_min_width 30

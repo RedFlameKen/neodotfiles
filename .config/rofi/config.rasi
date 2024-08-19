@@ -3,6 +3,7 @@ configuration {
     modi: "drun";
     show-icons: true;
     display-drun: "";
+    font: "JetBrainsMono Nerd Font 11";
 }
 * {
     c-background-trans: #1C1B19dd;
