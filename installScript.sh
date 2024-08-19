@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacmanPackages="rofi tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf kitty dunst brightnessctl keyd fastfetch github-cli stow qt6ct firefox obs-studio thunar thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common htop papirus-icon-theme"
+pacmanPackages="rofi tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf kitty dunst brightnessctl keyd fastfetch github-cli stow qt6ct firefox obs-studio thunar thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common htop papirus-icon-theme ntp"
 yayPackages="bumblebee-status auto-cpufreq obs-websocket-compat obs-cli"
 
 i3Packages="i3 feh xorg xorg-xinit picom"
@@ -11,6 +11,7 @@ optionalYayPackages="cmatrix-git webcord ani-cli clementine"
 
 graphicsPackages="libva-utils libva-intel-driver libva-mesa-driver"
 
+bluetoothPackages="blueman bluez-utils"
 if [ $# -eq 0 ]; then
     pacmanPackages="$i3Packages $swayPackages $pacmanPackages"
 else
@@ -30,6 +31,10 @@ else
                 skipYay="true"
                 ;;
             -g | --graphics-install) 
+                pacmanPackages="$pacmanPackages $graphicsPackages"
+                ;;
+            -b | --bluetooth-install) 
+                blueset="true"
                 pacmanPackages="$pacmanPackages $graphicsPackages"
                 ;;
         esac
@@ -68,3 +73,8 @@ oldDir=$(pwd)
 cd $HOME/.dotfiles
 stow .
 cd $oldDir
+
+# systemd stuff
+if [ ! -z $blueset ]; then
+    sudo systemctl enable bluetooth
+fi
