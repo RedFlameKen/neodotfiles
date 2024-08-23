@@ -4,9 +4,9 @@ pacmanPackages="rofi tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting
 yayPackages="bumblebee-status auto-cpufreq obs-websocket-compat obs-cli"
 
 i3Packages="i3 feh xorg xorg-xinit picom"
-swayPackages="sway swaylock swaybg swww slurp grim"
+swayPackages="sway swaylock swaybg swww slurp grim wl-clipboard"
 
-optionalPacmanPackages="vlc mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey wofi glava"
+optionalPacmanPackages="vlc mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey wofi glava dosfstools"
 optionalYayPackages="cmatrix-git webcord ani-cli clementine"
 
 graphicsPackages="libva-utils libva-intel-driver libva-mesa-driver"
