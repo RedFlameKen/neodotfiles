@@ -3,7 +3,11 @@
 if [ $# -gt 0 ]; then
     selected="$HOME/Storage/Games/fnf/$1"
 else
-    selected="$(find ~/Storage/Games/fnf -maxdepth 1 -not -name "modstuff" | fzf)"
+    selected="$(find ~/Storage/Games/fnf -maxdepth 1 -not -name "modstuff" | fzf --tac)"
+fi
+
+if [ -z $selected ]; then
+    exit
 fi
 
 executable="$(find $selected -maxdepth 1 -executable -type f)"
