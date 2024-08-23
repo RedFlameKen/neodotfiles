@@ -1,5 +1,11 @@
 #!/bin/bash
 
-killall rofi
+rofi_process="$(pgrep rofi)"
 
-rofi -show drun -drun-use-desktop-cache
+if [ ! $rofi_process == "" ]; then
+    # rofi -show drun -drun-use-desktop-cache
+    rofi -show drun
+else
+    killall rofi
+fi
+
