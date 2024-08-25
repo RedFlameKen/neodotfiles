@@ -61,8 +61,8 @@ sudo pacman -Sy --noconfirm $pacmanPackages
 
 yay -Sy --noconfirm $yayPackages
 
-# system setup
-sudo chsh $USER /bin/zsh
+system setup
+sudo chsh $USER
 
 # file setup 
 mkdir $HOME/docs $HOME/Storage $HOME/projects $HOME/personal

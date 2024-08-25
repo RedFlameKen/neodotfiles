@@ -211,6 +211,8 @@ bindsym $mod+Shift+r reload
 
 bindsym $mod+m exec "swaynag -t warning -m 'exit sway?' -B 'EXIT' 'swaymsg exit'"
 
+bindsym $mod+Control+m exec swaymsg exit
+
 bindsym $mod+Shift+m exec --no-startup-id swaylock 
 
 # resize window (you can also use the mouse for that)
