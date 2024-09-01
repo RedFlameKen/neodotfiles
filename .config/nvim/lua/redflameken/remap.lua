@@ -25,3 +25,19 @@ vim.keymap.set("n", "<leader>hn", "<CMD>cn<CR>")
 vim.keymap.set("n", "<leader>hp", "<CMD>cp<CR>")
 vim.keymap.set("n", "<leader>hm", "<CMD>make -C build<CR>")
 
+function Cancelled(input)
+    if input == "" then
+        print("cancelled");
+        return true
+    end
+end
+
+vim.keymap.set("n", "<leader>en", function()
+    local filename = vim.fn.input("New File: ");
+    if Cancelled(filename) then
+        return
+    end
+    filename = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h") .. filename;
+    os.execute("touch " .. filename);
+    vim.cmd("e filename")
+end)

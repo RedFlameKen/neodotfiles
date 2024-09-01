@@ -1,7 +1,7 @@
 # Source
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-# source ~/.git-prompt.sh
+source ~/.git-prompt.sh
 # source ~/.git-completion.zsh
 
 if [ -f ~/.sh_profile ]; then

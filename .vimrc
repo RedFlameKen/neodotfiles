@@ -1,4 +1,3 @@
-runtime! archlinux.vim
 set nocompatible
 
 filetype off
@@ -7,12 +6,26 @@ syntax on
 
 filetype plugin indent on
 
+set encoding=utf-8
+set fileencoding=utf-8
+
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set expandtab
 set linebreak
 
 set number
 set relativenumber
+
+set termguicolors
+set hlsearch
+set incsearch
+
+set scrolloff=6
+set laststatus=2
+
+set updatetime=60
 
 set ai
 set si
@@ -20,12 +33,22 @@ set si
 set encoding=utf-8
 set fileencoding=utf-8
 
+let mapleader = " "
 vnoremap <C-c> "+y
 
 inoremap <C-BS> <C-w>
 
-inoremap [ []<left>
-inoremap " ""<left>
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+noremap <leader>ee :Ex<CR>
+
+call plug#begin()
+Plug 'srcery-colors/srcery-vim'
+Plug 'rose-pine/vim'
+call plug#end()
+
+color srcery
 
 let g:currentMode = {
 	    \ 'n' : 'NORMAL',
@@ -37,7 +60,6 @@ let g:currentMode = {
 	    \ 's' : 'SELECT',
 	    \ 'S' : 'SELECT-LINE',
 	    \}
-
 command Cmain :normal i
 	    \#include <iostream><ENTER>
 	    \<ENTER>
@@ -50,7 +72,6 @@ command Cmain :normal i
 	    \return 0;<ENTER>
 	    \}<ESC>
 
-set laststatus=2
 set statusline=%2*\ %{g:currentMode[mode()]}\ %1*\ %f\ %m%r%=%3*\ %y\ %2*\ %3l:%-3c\ %P\ 
 
 hi User1 ctermbg=darkgray ctermfg=white
