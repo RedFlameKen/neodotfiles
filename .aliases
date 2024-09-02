@@ -32,6 +32,8 @@ alias dfk='df -k'
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+alias cpufreq-info='watch -n 1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'
+
 # Dev
 alias cmain="g++ main.cpp -o main && chmod +x main && ./main"
 
@@ -64,7 +66,6 @@ alias runwine="WINEARCH=win64 WINEPREFIX=~/wine/kennethWine wine"
 alias wineprefix="WINEARCH=win64 WINEPREFIX=~/wine/kennethWine"
 alias wineprefix32="WINEARCH=win32 WINEPREFIX=~/wine/kennethWine32"
 # alias fnf="cd ~/Storage/Games/fnf/vanilla;./Funkin"
-
 
 # My Custom Aliases
 alias ppssppwine="WINEARCH=win64 WINEPREFIX=~/wine/kennethWine wine /run/media/kenneth/TRANSCEND/newpsp/PPSSPP/PPSSPPWindows64.exe"

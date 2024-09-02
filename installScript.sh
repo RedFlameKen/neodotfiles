@@ -1,9 +1,9 @@
 #!/bin/bash
 
-pacmanPackages="rofi tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf kitty dunst brightnessctl keyd fastfetch github-cli stow qt6ct firefox obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common htop papirus-icon-theme ntp xarchiver"
+pacmanPackages="rofi tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf kitty dunst brightnessctl keyd fastfetch github-cli stow qt6ct firefox obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common htop papirus-icon-theme ntp xarchiver ripgrep"
 yayPackages="bumblebee-status auto-cpufreq obs-websocket-compat obs-cli"
 
-i3Packages="i3 feh xorg xorg-xinit picom"
+i3Packages="i3 feh xorg xorg-xinit picom maim"
 swayPackages="sway swaylock swaybg swww slurp grim wl-clipboard xdg-desktop-portal xdg-desktop-portal-wlr"
 
 optionalPacmanPackages="vlc mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey wofi glava dosfstools"

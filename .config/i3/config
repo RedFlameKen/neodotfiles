@@ -55,6 +55,7 @@ exec_always --no-startup-id ~/.scripts/wallpaper.sh num 13
 
 set $gnome-schema org.gnome.desktop.interface
 
+exec export QT_QPA_PLATFORM=x11
 exec gsettings set $gnome-schema gtk-theme 'Nordic-bluish-accent'
 exec gsettings set $gnome-schema icon-theme 'Papirus'
 exec gsettings set $gnome-schema cursor-theme 'Dracula-cursors'
@@ -90,12 +91,14 @@ bindsym Control+F12 exec --no-startup-id ~/.scripts/obs-cli-helper.sh record
 bindsym Control+Shift+F12 exec --no-startup-id ~/.scripts/obs-cli-helper.sh record pause
 bindsym Control+Shift+F10 exec --no-startup-id ~/.scripts/obs-cli-helper.sh stream
 
-
 # open terminal
 bindsym $mod+q exec kitty
 
 # open file explorer gui
 bindsym $mod+e exec --no-startup-id thunar
+
+# start rofi(a program launcher)
+bindsym $mod+d exec --no-startup-id ~/.local/bin/rofi-runner
 
 bindsym $mod+u exec --no-startup-id ~/.scripts/screenkeyToggle.sh
 
@@ -104,15 +107,11 @@ bindsym $mod+g exec --no-startup-id glava
 bindsym $mod+i exec --no-startup-id dunstctl close
 bindsym $mod+Shift+i exec --no-startup-id dunstctl close-all
 
-# kill focused window
-bindsym $mod+c kill
-
-bindsym $alt+F4 kill
-
-# start rofi(a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun -drun-use-desktop-cache
 
 #i3 keybinds
+
+# kill focused window
+bindsym $mod+c kill
 
 # change focus
 bindsym $mod+h focus left
@@ -195,7 +194,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+m exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+m exec "i3-nagbar -t warning -m 'exit i3?' -B 'EXIT' 'i3-msg exit'"
 
 bindsym $mod+Control+m exec i3-msg exit
 
@@ -246,7 +245,7 @@ bindsym $mod+s scratchpad show
 # bar settings
 
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh -r
-# bindsym $mod+i exec --no-startup-id ~/.config/eww/scripts/launch.sh
+# exec_always --no-startup-id ~/.config/eww/scripts/launch.sh
 
 bar {
     font pango:FiraCode Nerd Font Propo 10
@@ -286,5 +285,3 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #FEECE2
 
-
-#  
