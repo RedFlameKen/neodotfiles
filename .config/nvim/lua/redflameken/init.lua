@@ -1,7 +1,7 @@
 require("redflameken.packer")
 require("redflameken.statusline")
-require("redflameken.git")
 require("redflameken.remap")
+require("redflameken.git")
 
 vim.opt.nu = true
 vim.opt.relativenumber = true

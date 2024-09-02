@@ -1,13 +1,13 @@
-local function cancelled(input)
-    if input == "" then
-        print("cancelled");
-        return true
-    end
-end
+-- local function cancelled(input)
+--     if input == "" then
+--         print("cancelled");
+--         return true
+--     end
+-- end
 
 local function commit()
     local message = vim.fn.input("Message: ")
-    if cancelled(message) then
+    if Cancelled(message) then
         return
     end
     os.execute("git add .")
@@ -17,7 +17,7 @@ end
 
 local function branch()
     local branchName = vim.fn.input{prompt = "Branch > ", completion = "history"}
-    if cancelled(branchName) then
+    if Cancelled(branchName) then
         return
     end
     os.execute("git branch " .. branchName)
@@ -27,7 +27,7 @@ end
 
 local function checkout()
     local branchName = vim.fn.input{prompt = "Checkout > ", completion = "history"}
-    if cancelled(branchName) then
+    if Cancelled(branchName) then
         return
     end
     os.execute("git checkout " .. branchName)
