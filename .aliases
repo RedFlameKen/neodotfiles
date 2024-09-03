@@ -34,6 +34,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias cpufreq-info='watch -n 1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'
 
+alias fman="compgen -c | fzf | xargs man"
+
 # Dev
 alias cmain="g++ main.cpp -o main && chmod +x main && ./main"
 

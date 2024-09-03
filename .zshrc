@@ -30,8 +30,14 @@ bindkey '^[[4~' end-of-line
 bindkey -s '^F' '~/.local/bin/tmux-fuzzy-session\n'
 bindkey -s '^[^F' '~/.local/bin/tmux-fuzzy-session -v\n'
 
+bindkey -s '^A' 'tmux a\n'
+
+autoload -Uz bashcompinit
+bashcompinit
+
 autoload -Uz compinit
 compinit
+
 
 source <(fzf --zsh)
 
