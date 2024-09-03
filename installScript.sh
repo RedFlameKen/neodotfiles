@@ -1,8 +1,8 @@
 #!/bin/bash
 
-corePackages="tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf fastfetch ripgrep"
+corePackages="tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf fd fastfetch ripgrep stow github-cli"
 
-pacmanPackages="rofi kitty dunst brightnessctl keyd github-cli stow qt6ct firefox obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common htop papirus-icon-iheme ntp xarchiver"
+pacmanPackages="rofi kitty dunst brightnessctl keyd qt6ct firefox obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common htop papirus-icon-iheme ntp xarchiver"
 
 yayPackages="bumblebee-status auto-cpufreq obs-websocket-compat obs-cli"
 
