@@ -42,6 +42,7 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 noremap <leader>ee :Ex<CR>
+noremap <leader>ef :FZF --preview cat\ {}<CR>
 
 call plug#begin()
 Plug 'srcery-colors/srcery-vim'
