@@ -24,10 +24,12 @@ return require('packer').startup(function(use)
 	}
     use "freed-wu/tmux-language-server"
     use "junegunn/goyo.vim"
+    use "stevearc/oil.nvim"
     use "chrisbra/colorizer"
 	use "nvim-lua/plenary.nvim"
     use "github/copilot.vim"
 	use "mbbill/undotree"
+    use "nvim-tree/nvim-web-devicons"
 	use {
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
