@@ -28,6 +28,7 @@ workspace $ws6 output VGA-1
 
 assign [class="Discord"] 5
 assign [class="WebCord"] 5
+assign [class="vesktop"] 5
 assign [class="krita"] 4
 assign [app_id="com.obsproject.Studio"] 6
 # startup settings
