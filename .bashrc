@@ -12,6 +12,14 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
+# bind '\C-F':'~/.local/bin/tmux-fuzzy-session\n'
+# bind '^[^F' '~/.local/bin/tmux-fuzzy-session -v\n'
+
+bind -x '"\C-F":"~/.local/bin/tmux-fuzzy-session"'
+bind -x '"\e\C-F":"~/.local/bin/tmux-fuzzy-session -v"'
+
+bind -x '"\C-A":"tmux a"'
+
 # Modifier Characters
 RESET="$(tput sgr0)"
 BOLD="$(tput bold)"
