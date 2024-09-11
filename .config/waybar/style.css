@@ -6,16 +6,15 @@
 @define-color blue-color #68A8E4;
 @define-color darkblue-color #2C78BF;
 @define-color purple-color #FF5C8F;
-@define-color gray-color #303030;
-@define-color foreground #BAA67F;
-@define-color foreground-sub #121212;
+@define-color gray-color #BAA67F;
+@define-color foreground #FCE8C3;
 
 * {
   /*  --border-radius: 20%;*/
 }
 window#waybar{
     font-family: "JetBrainsMono Nerd Font";
-    font-size: 16px;
+    font-size: 14px;
     background-color: transparent;
     min-height: 24px;
 }
@@ -63,7 +62,7 @@ window#waybar{
 }
 #custom-launcher {
     padding-left: 11px;
-    color: @foreground-sub;
+    color: @blue-color;
 }
 /*
 #leftMods {
@@ -86,7 +85,7 @@ window#waybar{
     color: @foreground;
 }
 #workspaces button.active {
-    color: @foreground-sub;
+    color: @blue-color;
 }
 #workspaces button.urgent {
     color: @red-color;
