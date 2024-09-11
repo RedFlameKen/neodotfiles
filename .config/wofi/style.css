@@ -1,25 +1,22 @@
-/* 
- * background #1C1B19
- * foreground #FCE8C3
- * arch-color #519F50
- * border-color #FCE8C3
-*/
-/* 
- * background   #1C1B19
- * foreground   #FCE8C3
- * primary      #519F50
- * border-color #FCE8C3
-*/
-
+@define-color background #1C1B19;
+@define-color red-color #EF2F27;
+@define-color orange-color #FF5F00;
+@define-color yellow-color #FBB829;
+@define-color green-color #519F50;
+@define-color blue-color #68A8E4;
+@define-color darkblue-color #2C78BF;
+@define-color purple-color #FF5C8F;
+@define-color gray-color #BAA67F;
+@define-color foreground #FCE8C3;
 
 * {
-    font-family: "FiraCode Nerd Font";
-    font-size: 16px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
 }
 #window {
     border: 3px solid;
-    border-color: #FCE8C3;
-    background-color: #1C1B19;
+    border-color: @foreground;
+    background-color: @background;
     border-radius: 15px;
 }
 
@@ -28,11 +25,11 @@
 }
 
 #input {
-    color: #FCE8C3;
+    color: @foreground;
     background-color: transparent;
     border: none;
     margin-left: 10px;
-    /*border-bottom: solid 3px #FCE8C3;*/
+    /*border-bottom: solid 3px @foreground;*/
     padding: 18px 0px 8px 0px;
 }
 
@@ -45,20 +42,20 @@
 }
 
 #img {
-    transform: scale(-10%);
+    /*transform: scale(-10%);*/
 }
 #img:selected {
     background-color: transparent;
 }
 
 #text {
-    color: #FCE8C3;
-    /*margin-left: 10px;*/
+    color: @foreground;
+    margin-left: 10px;
 }
 
 #text:selected {
     background-color: transparent;
-    color: #1C1B19;
+    color: @background;
 }
 #unselected {
 }
@@ -67,8 +64,8 @@
 }
 
 #entry:selected {
-    color: #FCE8C3;
-    background-color: #519F50;
+    color: @foreground;
+    background-color: @green-color;
     outline: none;
     padding: 12px 0px 12px 0px;
     border-radius: 15px;
