@@ -62,6 +62,10 @@ yay -Sy --noconfirm $yayPackages
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
+# install Vim Plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 system setup
 sudo chsh $USER
 
