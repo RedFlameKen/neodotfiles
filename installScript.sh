@@ -38,9 +38,6 @@ else
                 pacmanPackages="$pacmanPackages $optionalPacmanPackages"
                 yayPackages="$yayPackages $optionalYayPackages"
                 ;;
-            -Y | --skip-yay-install) 
-                skipYay="true"
-                ;;
             -g | --graphics-install) 
                 pacmanPackages="$pacmanPackages $graphicsPackages"
                 ;;
@@ -53,22 +50,11 @@ else
     done
 fi
 
-# install yay
-if [ -z $skipYay ]; then
-    sudo pacman -Sy --noconfirm --needed git go base-devel
-    mkdir $HOME/git
-    git clone https://aur.archlinux.org/yay $HOME/git/yay
-    oldDir=$(pwd)
-    cd $HOME/git/yay
-    makepkg -si
-    cd $oldDir
-fi
-
 # enable multilib mirror
 sudo sed -i 's/#\(\[multilib\]\)/\1\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
 
 # pacman installs
-sudo pacman -Sy --noconfirm $pacmanPackages
+sudo pacman -Sy --noconfirm yay $pacmanPackages
 
 yay -Sy --noconfirm $yayPackages
 
