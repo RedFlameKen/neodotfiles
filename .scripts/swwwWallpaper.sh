@@ -37,6 +37,11 @@ mascot(){
     theme="10"
     echo 6 > ~/.scripts/curwp
 }
+archan(){
+    wallpaper="wp13"
+    theme="13"
+    echo 7 > ~/.scripts/curwp
+}
 random(){
     randomNum=$(($RANDOM % 6))
     curThemeFile="~/.scripts/curwp"
@@ -65,6 +70,9 @@ random(){
     elif [ $randomNum == "6" ]
     then
 	mascot
+    elif [ $randomNum == "7" ]
+    then
+        archan
     fi
 }
 increment(){
@@ -99,6 +107,9 @@ increment(){
     elif [ $curThemeFile == "6" ]
     then
 	mascot
+    elif [ $curThemeFile == "7" ]
+    then
+        archan
     fi
 }
 
@@ -109,7 +120,7 @@ numberFunc(){
 
 [ "$1" = "num" ] && numberFunc $2 && exit
 
-while getopts "abcdefir" flag; do
+while getopts "abcdefghir" flag; do
     case "${flag}" in
 	a)
 	    default
@@ -128,6 +139,12 @@ while getopts "abcdefir" flag; do
 	    ;;
 	f)
 	    starforce
+	    ;;
+	g)
+        mascot
+	    ;;
+	h)
+        archan
 	    ;;
 	i)
 	    increment

@@ -8,8 +8,9 @@ yayPackages="bumblebee-status auto-cpufreq obs-websocket-compat obs-cli"
 
 i3Packages="i3 feh xorg xorg-xinit picom maim"
 swayPackages="sway swaylock swaybg swww slurp grim wl-clipboard xdg-desktop-portal xdg-desktop-portal-wlr"
+hyprPackages="hyprland wofi waybar"
 
-optionalPacmanPackages="vlc mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey wofi glava dosfstools"
+optionalPacmanPackages="vlc mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey glava dosfstools"
 optionalYayPackages="cmatrix-git webcord ani-cli clementine"
 
 graphicsPackages="libva-utils libva-intel-driver libva-mesa-driver"
@@ -29,6 +30,9 @@ else
                 ;;
             -s | --sway)
                 pacmanPackages="$swayPackages $pacmanPackages"
+                ;;
+            -H | --Hyprland)
+                pacmanPackages="$hyprPackages $pacmanPackages"
                 ;;
             -o | --optionals)
                 pacmanPackages="$pacmanPackages $optionalPacmanPackages"

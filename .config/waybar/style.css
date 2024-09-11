@@ -1,14 +1,14 @@
-@define-color background #343434;
-@define-color red-color rgb(230, 25, 25);
-@define-color orange-color rgb(230, 150, 25);
-@define-color yellow-color rgb(230, 230, 25);
-@define-color green-color rgb(25, 230, 25);
-@define-color blue-color rgb(25, 150, 230);
-@define-color darkblue-color rgb(25, 25, 230);
-@define-color purple-color rgb(230, 25, 230);
-@define-color gray-color rgb(230, 230, 230);
-@define-color foreground rgb(230, 230, 230);
-@define-color foreground-sub rgb(130, 205, 255);
+@define-color background #1C1B19;
+@define-color red-color #EF2F27;
+@define-color orange-color #FF5F00;
+@define-color yellow-color #FBB829;
+@define-color green-color #519F50;
+@define-color blue-color #68A8E4;
+@define-color darkblue-color #2C78BF;
+@define-color purple-color #FF5C8F;
+@define-color gray-color #303030;
+@define-color foreground #BAA67F;
+@define-color foreground-sub #121212;
 
 * {
   /*  --border-radius: 20%;*/
