@@ -34,7 +34,9 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 let mapleader = " "
-vnoremap <C-c> "+y
+
+vnoremap y "+y
+noremap y "+y
 
 inoremap <C-BS> <C-w>
 

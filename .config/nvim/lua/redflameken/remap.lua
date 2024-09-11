@@ -5,7 +5,7 @@ vim.keymap.set("n", "<M-j>", "<C-w>j", {silent = true});
 vim.keymap.set("n", "<M-k>", "<C-w>k", {silent = true});
 vim.keymap.set("n", "<M-l>", "<C-w>l", {silent = true});
 
-vim.keymap.set("v", "<C-c>", "\"+y")
+vim.keymap.set({ "n", "v" }, "y", "\"+y")
 vim.keymap.set("i", "<C-BS>", "<C-w>", {noremap = true, silent = true})
 
 vim.keymap.set("n", "Y", "_y$")
