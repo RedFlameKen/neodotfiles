@@ -33,6 +33,7 @@
 "clock": {
     "interval": 60,
     "format": "{:%I:%M %p}",
+    "tooltip": false,
     "on-click": "~/.config/waybar/scripts/ewwToggle.sh"
 },
 "hyprland/workspaces": {
@@ -41,7 +42,9 @@
         "1": " 󰈹",
         "2": " ",
         "3": " ",
-        "4": " ",
+        "4": " 󰊗",
+        "5": " ",
+        "6": " 󰕧",
         "default": " 󱁤"
     },
     "sort-by-number": true,
@@ -63,13 +66,13 @@
 
 },
 "battery": {
-    "bat": "BAT1",
+    "bat": "BAT0",
     "adapter":"ACAD",
     "full-at": 98,
     "interval": 15,
     "format": "{icon} {capacity}%",
     "format-icons": ["󰂎", "󰁻", "󰁾", "󰂁", "󰁹"],
-    "on-update": "~/.scripts/lowbatNotif.sh",
+    "on-update": "~/.scripts/lowbatNotifd.sh",
     "states": {
         "warning": 30,
         "critical": 15,

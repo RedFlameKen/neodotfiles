@@ -3,16 +3,22 @@
 virgin=true
 notified=false
 
-notifyCheck(){
-    capacity=$(cat /sys/class/power_supply/BAT1/capacity)
-    batstat=$(cat /sys/class/power_supply/BAT1/status)
+battery=BAT0
+lower=10
+low=20
 
-    if [[ ( $capacity -le 30 && $batstat == "Charging" ) && ($capacity -ge 28 && $batstat == "Charging" ) ]];
+
+
+notifyCheck(){
+    capacity=$(cat /sys/class/power_supply/$battery/capacity)
+    batstat=$(cat /sys/class/power_supply/$battery/status)
+
+    if [[ ( $capacity -le $low && $batstat == "Charging" ) && ($capacity -ge $((low - 1)) && $batstat == "Charging" ) ]];
     then
         notified=false
         return
     fi
-    if [[ ( $capacity -le 15 && $batstat == "Charging" ) && ($capacity -ge 13 && $batstat == "Charging" ) ]];
+    if [[ ( $capacity -le $lower && $batstat == "Charging" ) && ($capacity -ge $((lower - 1)) && $batstat == "Charging" ) ]];
     then
         notified=false
         return
@@ -21,7 +27,7 @@ notifyCheck(){
     then
         return
     fi
-    if [[ ( $capacity -le 30 && $batstat != "Charging" ) && ($capacity -ge 28 && $batstat != "Charging" ) ]];
+    if [[ ( $capacity -le $low && $batstat != "Charging" ) && ($capacity -ge $((low - 1)) && $batstat != "Charging" ) ]];
     then
         notify-send -u critical "DUMBASS! DON'T FORGET TO CHARGE!: $capacity%"
         if [[ "$virgin" == "true" ]]
@@ -32,7 +38,7 @@ notifyCheck(){
         return
     fi
 
-    if [[ ( $capacity -le 15 && $batstat != "Charging" ) && ($capacity -ge 13 && $batstat != "Charging" ) ]];
+    if [[ ( $capacity -le $lower && $batstat != "Charging" ) && ($capacity -ge $((lower - 1)) && $batstat != "Charging" ) ]];
     then
         notify-send -u critical "DUMBASS! DON'T FORGET TO CHARGE!: $capacity%"
         notified=true

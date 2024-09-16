@@ -64,6 +64,10 @@ window#waybar{
     padding-left: 11px;
     color: @blue-color;
 }
+#custom-launcher :hover {
+    color: @background-color;
+    background-color: @blue-color;
+}
 /*
 #leftMods {
     border-color: @blue-border;

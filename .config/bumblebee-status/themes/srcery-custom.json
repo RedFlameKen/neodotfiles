@@ -41,6 +41,10 @@
             "fg": "hard_black"
         }
     },
+    "sensors": {
+        "fg": "bright_white",
+        "bg": "orange"
+    },
     "pulseout": {
         "fg": "bright_white",
         "bg": "green_d"

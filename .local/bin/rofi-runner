@@ -3,8 +3,7 @@
 rofi_process="$(pgrep rofi)"
 
 if [ ! $rofi_process == "" ]; then
-    # rofi -show drun -drun-use-desktop-cache
-    rofi -show drun
+    rofi -show drun -modes "drun,window,windowcd"
 else
     killall rofi
 fi

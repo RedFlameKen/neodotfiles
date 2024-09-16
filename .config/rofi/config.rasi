@@ -1,12 +1,25 @@
-
 configuration {
-    modi: "drun";
     show-icons: true;
     display-drun: "";
+    display-window: "󰧨";
+    display-windowcd: "";
     font: "JetBrainsMono Nerd Font 11";
+
+    //These are the keybinds
+    kb-mode-next: "Tab";
+    kb-mode-previous: "Shift+Tab";
+
+    kb-element-next: "Control+j";
+    kb-row-up: "Control+k,Up";
+
+    kb-accept-entry: "Control+m,Return,KP_Enter";
+
+    //holy cow, replacing keybinds bruh
+    kb-remove-to-eol: "Control+Delete";
+
 }
 * {
-    c-background-trans: #1C1B19dd;
+    c-background-trans: #1C1B19d5;
     c-background: #1C1B19;
     c-background-alt: #0B0D10;
     c-foreground: #FCE8C3;
@@ -15,13 +28,13 @@ configuration {
     c-secondary: #68A8E4;
     borderRadius: 10px;
     borderWidth: 3px solid;
-    background-color: transparent;
+    backgroundColor: transparent;
 }
 window {
     transparency: "real"; 
     width: 600px;
     border-radius: @borderRadius;
-    background-color: @c-background;
+    background-color: @c-background-trans;
     border: @borderWidth;
     border-color: @c-foreground;
     padding: 12px;

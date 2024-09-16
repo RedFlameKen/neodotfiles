@@ -84,6 +84,9 @@ bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/pn
 bindsym Control+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
+# ThinkVantage Button, could be anything lol
+bindsym XF86Launch1 exec kitty sh -c cmatrix
+
 # msc keybinds
 
 # obs keybinds

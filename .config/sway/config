@@ -80,6 +80,9 @@ bindsym Shift+Print exec grim -g "$(slurp -d -w 0)" - | wl-copy
 bindsym $mod+Print exec grim - > ~/Pictures/screenshot/"$(date '+%r %b %e %Y')".jpg
 bindsym $mod+Shift+Print exec grim -g "$(slurp -d -w 0)" - > ~/Pictures/screenshot/"$(date '+%r %b %e %Y')".jpg
 
+# ThinkVantage Button, could be anything lol
+bindsym XF86Launch1 exec kitty
+
 # msc keybinds
 
 # obs keybinds
@@ -257,8 +260,8 @@ bar {
     # i3bar_command i3bar --transparency
     status_command bumblebee-status \
     -t srcery-custom \
-    -m pulseout pulsein date time battery \
-    -p time.format="%I:%M %p" date.format="%a, %b %d %Y"\
+    -m sensors pulseout pulsein date time battery \
+    -p sensors.show_freq=false time.format="%I:%M %p" date.format="%a, %b %d %Y"\
     pulsectl.autostart="true" pulsectl.percent_change=8 pulsectl.limit=150 \ 
     workspace_min_width 30
     colors {
