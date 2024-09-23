@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/tmp/tmux-1000'
 let g:netrw_dirhist_6='/home/kenneth'
 let g:netrw_dirhist_5='/home/kenneth/personal/JavaGame/src/engine/renderer'
 let g:netrw_dirhist_4='/home/kenneth/personal/JavaGame/src/engine'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_1='/home/kenneth/.vim/pack/vendor/start/goyo.vim/autoload'
 let g:netrw_dirhist_0='/home/kenneth/.vim/pack/vendor/start/goyo.vim'
 let g:netrw_dirhist_9='/home/kenneth/.vim/pack/vendor/start/goyo.vim/plugin'
 let g:netrw_dirhist_8='/home/kenneth'
-let g:netrw_dirhist_7='/home/kenneth/.config'

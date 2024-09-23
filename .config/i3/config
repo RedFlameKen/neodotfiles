@@ -74,15 +74,16 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 5%-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 5%+
 
+#clipboard screenshots
+bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Control+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
 #screenshot to file
 bindsym $mod+Print exec --no-startup-id maim "$HOME/Pictures/screenshot/$(date).jpg"
 bindsym Control+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/screenshot/$(date).jpg"
 bindsym Shift+$mod+Print exec --no-startup-id maim --select "$HOME/Pictures/screenshot/$(date).jpg"
 
-#clipboard screenshots
-bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Control+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # ThinkVantage Button, could be anything lol
 bindsym XF86Launch1 exec kitty sh -c cmatrix
@@ -96,6 +97,8 @@ bindsym Control+Shift+F10 exec --no-startup-id ~/.scripts/obs-cli-helper.sh stre
 
 # open terminal
 bindsym $mod+q exec kitty
+
+bindsym $mod+w exec firefox
 
 # open file explorer gui
 bindsym $mod+e exec --no-startup-id thunar
@@ -229,15 +232,15 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym Control+$mod+h resize grow width 10 px or 10 ppt
+bindsym Control+$mod+h resize shrink width 10 px or 10 ppt
 bindsym Control+$mod+j resize grow height 10 px or 10 ppt
 bindsym Control+$mod+k resize shrink height 10 px or 10 ppt
-bindsym Control+$mod+l resize shrink width 10 px or 10 ppt
+bindsym Control+$mod+l resize grow width 10 px or 10 ppt
 
-bindsym Control+$mod+Left resize grow width 10 px or 10 ppt
+bindsym Control+$mod+Left resize shrink width 10 px or 10 ppt
 bindsym Control+$mod+Down resize grow height 10 px or 10 ppt
 bindsym Control+$mod+Up resize shrink height 10 px or 10 ppt
-bindsym Control+$mod+Right resize shrink width 10 px or 10 ppt
+bindsym Control+$mod+Right resize grow width 10 px or 10 ppt
 
 
 bindsym $mod+Shift+s move scratchpad
@@ -253,12 +256,12 @@ bindsym $mod+s scratchpad show
 bar {
     font pango:FiraCode Nerd Font Propo 10
     position top
-    tray_output primary
+    tray_output *
     # i3bar_command i3bar --transparency
     status_command bumblebee-status \
     -t srcery-custom \
-    -m pulseout pulsein date time battery \
-    -p time.format="%I:%M %p" date.format="%a, %b %d %Y"\
+    -m sensors pulseout pulsein date time battery \
+    -p sensors.show_freq=false time.format="%I:%M %p" date.format="%a, %b %d %Y"\
     pulsectl.autostart="true" pulsectl.percent_change=8 pulsectl.limit=150 \ 
     workspace_min_width 30
     colors {

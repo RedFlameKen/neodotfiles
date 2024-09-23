@@ -93,6 +93,9 @@ bindsym Control+Shift+F10 exec ~/.scripts/obs-cli-helper.sh stream
 # open terminal
 bindsym $mod+q exec kitty
 
+# open browser
+bindsym $mod+w exec firefox
+
 # open file explorer gui
 bindsym $mod+e exec --no-startup-id thunar
 
@@ -206,14 +209,19 @@ bindsym $mod+Control+m exec swaymsg exit
 
 bindsym $mod+Shift+m exec --no-startup-id swaylock 
 
+bindsym XF86ScreenSaver exec --no-startup-id swaylock 
+
+# lock when lid is closed
+# bindswitch --reload --locked lid:on exec swaylock
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
+        # Pressing h will shrink the window’s width.
+        # Pressing l will grow the window’s width.
+        # Pressing k up will shrink the window’s height.
+        # Pressing j down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -232,15 +240,15 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym Control+$mod+h resize grow width 10 px or 10 ppt
+bindsym Control+$mod+h resize shrink width 10 px or 10 ppt
 bindsym Control+$mod+j resize grow height 10 px or 10 ppt
 bindsym Control+$mod+k resize shrink height 10 px or 10 ppt
-bindsym Control+$mod+l resize shrink width 10 px or 10 ppt
+bindsym Control+$mod+l resize grow width 10 px or 10 ppt
 
-bindsym Control+$mod+Left resize grow width 10 px or 10 ppt
+bindsym Control+$mod+Left resize shrink width 10 px or 10 ppt
 bindsym Control+$mod+Down resize grow height 10 px or 10 ppt
 bindsym Control+$mod+Up resize shrink height 10 px or 10 ppt
-bindsym Control+$mod+Right resize shrink width 10 px or 10 ppt
+bindsym Control+$mod+Right resize grow width 10 px or 10 ppt
 
 
 bindsym $mod+Shift+s move scratchpad

@@ -80,6 +80,7 @@ set statusline=%2*\ %{g:currentMode[mode()]}\ %1*\ %f\ %m%r%=%3*\ %y\ %2*\ %3l:%
 hi User1 ctermbg=darkgray ctermfg=white
 hi User2 ctermbg=cyan ctermfg=black
 hi user3 ctermbg=gray ctermfg=black
+hi NORMAL guibg=NONE ctermbg=NONE
 
 au BufNewFile,BufRead,BufReadPost .aliases set syntax=sh
 au BufNewFile,BufRead,BufReadPost *.rasi set syntax=css
