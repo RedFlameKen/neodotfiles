@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
     use "stevearc/oil.nvim"
     use "chrisbra/colorizer"
 	use "nvim-lua/plenary.nvim"
-    use "github/copilot.vim"
+    -- use "github/copilot.vim"
 	use "mbbill/undotree"
     use "nvim-tree/nvim-web-devicons"
 	use {

@@ -2,6 +2,12 @@ output LVDS-1 mode 1366x768 pos 0 0
 output HDMI-A-1 resolution 1280x720 pos 1366 0 subpixel vrgb
 output VGA-1 mode 1280x1024 pos 0 -1024 
 
+bindswitch lid:on output VGA-1 disable
+bindswitch lid:off output VGA-1 enable
+
+# bindswitch lid:on output mDP-1 disable
+# bindswitch lid:off output mDP-1 enable
+
 set $mod Mod4
 set $alt Mod1
 
@@ -31,6 +37,7 @@ assign [class="WebCord"] 5
 assign [class="vesktop"] 5
 assign [class="krita"] 4
 assign [app_id="com.obsproject.Studio"] 6
+assign [class="Minecraft.*"] 4
 # startup settings
 
 
@@ -54,7 +61,7 @@ exec gsettings set $gnome-schema cursor-theme 'Dracula-cursors'
 
 # exec_always
 exec_always --no-startup-id ~/.scripts/runProgs.sh
-exec_always --no-startup-id ~/.scripts/swayWallpaper.sh num 13 &
+exec_always --no-startup-id ~/.scripts/swayWallpaper.sh num 15 &
 exec_always --no-startup-id autotiling
 
 
@@ -67,6 +74,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_swaystatus
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_swaystatus
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_swaystatus
+
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # brightness keybinds
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 5%-

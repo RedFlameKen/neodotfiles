@@ -4,9 +4,8 @@ filetype off
 
 syntax on
 
-filetype plugin indent on
+"filetype plugin indent on set encoding=utf-8
 
-set encoding=utf-8
 set fileencoding=utf-8
 
 set tabstop=4
@@ -35,8 +34,8 @@ set fileencoding=utf-8
 
 let mapleader = " "
 
-vnoremap y "+y
-noremap y "+y
+"vnoremap y "+y
+"noremap y "+y
 
 inoremap <C-BS> <C-w>
 

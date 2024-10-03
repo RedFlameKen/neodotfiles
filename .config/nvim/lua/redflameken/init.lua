@@ -22,6 +22,6 @@ vim.opt.incsearch = true
 
 vim.opt.scrolloff = 6
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 60
 
 vim.opt.laststatus = 3
