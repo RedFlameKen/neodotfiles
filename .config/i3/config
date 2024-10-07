@@ -75,14 +75,12 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q 
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 5%+
 
 #clipboard screenshots
-bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Control+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym Print exec ~/.local/bin/screenshot
+bindsym Shift+Print exec ~/.local/bin/screenshot -r
 
 #screenshot to file
-bindsym $mod+Print exec --no-startup-id maim "$HOME/Pictures/screenshot/$(date).jpg"
-bindsym Control+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/screenshot/$(date).jpg"
-bindsym Shift+$mod+Print exec --no-startup-id maim --select "$HOME/Pictures/screenshot/$(date).jpg"
+bindsym $mod+Print exec ~/.local/bin/screenshot -s
+bindsym Shift+$mod+Print exec ~/.local/bin/screenshot -sr
 
 
 # ThinkVantage Button, could be anything lol
