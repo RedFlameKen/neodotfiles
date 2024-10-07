@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# if discharging:
-# 30 percent, notif once
-# 15 percent, notif once
-#
-# if charging:
-# lastCheck was discharging, set notifiedLow and notifiedVeryLow to "false"
-# skip checks
-
 notifiedLow="false"
 notifiedVeryLow="false"
 
@@ -40,7 +32,7 @@ check(){
         if [ $capacity -le $veryLow ] && [ "$notifiedVeryLow" == "false" ]; then
             notify $capacity
             notifiedVeryLow="true"
-        elif [ $capacity -le $low ] && [ "$notifiedLow" == "false" ]; then
+        elif [ $capacity -le $low ] && [ $capacity -gt $veryLow ] && [ "$notifiedLow" == "false" ]; then
             notify $capacity
             notifiedLow="true"
         fi
@@ -52,8 +44,8 @@ check(){
 }
 
 while true; do
-    sleep $interval
     check;
+    sleep $interval
 done
 
 exit
