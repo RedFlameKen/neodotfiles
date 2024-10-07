@@ -5,11 +5,11 @@
 # 15 percent, notif once
 #
 # if charging:
-# lastCheck was discharging, set notifiedLow and notifiedVeryLow to false
+# lastCheck was discharging, set notifiedLow and notifiedVeryLow to "false"
 # skip checks
 
-notifiedLow=false
-notifiedVeryLow=false
+notifiedLow="false"
+notifiedVeryLow="false"
 
 interval=15
 
@@ -29,20 +29,20 @@ check(){
 
     if [ $batstat == "Charging" ]; then
         if [ $lastCheck == "Discharging" ]; then
-            notifiedLow=false
-            notifiedVeryLow=false
+            notifiedLow="false"
+            notifiedVeryLow="false"
             lastCheck="Charging" 
         fi
         return
     fi
 
     if [ $batstat == "Discharging" ]; then
-        if [ $capacity -le $veryLow ] && [ $notifiedVeryLow == false ]; then
+        if [ $capacity -le $veryLow ] && [ $notifiedVeryLow == "false" ]; then
             notify $capacity
-            notifiedVeryLow=true
-        elif [ $capacity -le $low ] && [ $notifiedLow == false ]; then
+            notifiedVeryLow="true"
+        elif [ $capacity -le $low ] && [ $notifiedLow == "false" ]; then
             notify $capacity
-            notifiedLow=true
+            notifiedLow="true"
         fi
         if [ lastCheck != "Discharging" ]; then
             lastCheck="Discharging" 
