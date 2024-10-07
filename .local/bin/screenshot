@@ -5,6 +5,50 @@ environment="wayland"
 save=false
 region=false
 
+w_normal(){
+    grim - | wl-copy
+    dunstify -a ssnotif "Screenshot Copied to Clipboard!"
+}
+
+w_save(){
+    imageDate=$(date '+%r %b %e %Y')
+    grim - > ~/Pictures/screenshots/"$imageDate".jpg
+    wl-copy < ~/Pictures/screenshots/"$imageDate".jpg
+    dunstify -a ssnotif -I ~/Pictures/screenshots/"$imageDate".jpg "Screenshot saved!"
+}
+
+w_region(){
+    grim -g "$(slurp -d -w 0)" - | wl-copy
+}
+
+w_saveregion(){
+    imageDate=$(date '+%r %b %e %Y')
+    grim -g "$(slurp -d -w 0)" - > ~/Pictures/screenshots/"$imageDate".jpg
+    wl-copy < ~/Pictures/screenshots/"$imageDate".jpg
+    dunstify -a ssnotif -I ~/Pictures/screenshots/"$imageDate".jpg "Screenshot saved!"
+}
+
+x_normal(){
+    maim | xclip -selection clipboard -t image/png
+}
+
+x_save(){
+    imageDate=$(date '+%r %b %e %Y')
+    maim > ~/Pictures/screenshots/"$imageDate".jpg | xclip -selection clipboard -t image/png
+    dunstify -a ssnotif -I ~/Pictures/screenshots/"$imageDate".jpg "Screenshot saved!"
+}
+
+x_region(){
+    imageDate=$(date '+%r %b %e %Y')
+    maim --select | xclip -selection clipboard -t image/png
+}
+
+x_saveregion(){
+    imageDate=$(date '+%r %b %e %Y')
+    maim > ~/Pictures/screenshots/"$imageDate".jpg | xclip -selection clipboard -t image/png
+    dunstify -a ssnotif -I ~/Pictures/screenshots/"$imageDate".jpg "Screenshot saved!"
+}
+
 while getopts "wxnrs" flag; do
     case "${flag}" in 
         w)
@@ -24,26 +68,35 @@ done
 
 # screenshot logic here
 if [ $save == false ] && [ $region == false ]; then
-    grim - | wl-copy
-    dunstify -a ssnotif "Screenshot Copied to Clipboard!"
+    if [ "$environment" == "wayland" ]; then
+        w_normal
+    elif [ "$environment" == "x11" ]; then
+        x_normal
+    fi
 fi
 
 if [ $save == true ] && [ $region == false ]; then
-    imageFile=$(date '+%r %b %e %Y')
-    grim - > ~/Pictures/screenshots/"$imageFile".jpg
-    wl-copy < ~/Pictures/screenshots/"$imageFile".jpg
-    dunstify -a ssnotif -I ~/Pictures/screenshots/"$imageFile".jpg "Screenshot saved!"
-fi
-
-if [ $save == true ] && [ $region == true ]; then
-    imageFile=$(date '+%r %b %e %Y')
-    grim -g "$(slurp -d -w 0)" - > ~/Pictures/screenshots/"$imageFile".jpg
-    wl-copy < ~/Pictures/screenshots/"$imageFile".jpg
-    dunstify -a ssnotif -I ~/Pictures/screenshots/"$imageFile".jpg "Screenshot saved!"
+    if [ "$environment" == "wayland" ]; then
+        w_save
+    elif [ "$environment" == "x11" ]; then
+        x_save
+    fi
 fi
 
 if [ $save == false ] && [ $region == true ]; then
-    grim -g "$(slurp -d -w 0)" - | wl-copy
+    if [ "$environment" == "wayland" ]; then
+        w_region
+    elif [ "$environment" == "x11" ]; then
+        x_region
+    fi
+fi
+
+if [ $save == true ] && [ $region == true ]; then
+    if [ "$environment" == "wayland" ]; then
+        w_saveregion
+    elif [ "$environment" == "x11" ]; then
+        x_saveregion
+    fi
 fi
 
 
