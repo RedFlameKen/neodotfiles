@@ -293,6 +293,10 @@ bar {
     }
 }
 
+input "type:pointer" {
+    dwt enabled
+    natural_scroll disabled
+}
 input "type:touchpad" {
     dwt enabled
     tap enabled
