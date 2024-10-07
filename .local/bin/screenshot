@@ -1,0 +1,46 @@
+#!/bin/bash
+
+environment="wayland"
+
+save=false
+region=false
+
+while getopts "wxnrs" flag; do
+    case "${flag}" in 
+        w)
+            environment="wayland"
+            ;;
+        x)
+            environment="x11"
+            ;;
+        r)
+            region=true
+            ;;
+        s)
+            save=true
+            ;;
+    esac
+done
+
+# screenshot logic here
+if [ $save == false ] && [ $region == false ]; then
+    grim - | wl-copy
+fi
+
+if [ $save == true ] && [ $region == false ]; then
+    imageFile=$(date '+%r %b %e %Y')
+    grim - > ~/Pictures/screenshots/"$imageFile".jpg
+    wl-copy < ~/Pictures/screenshots/"$imageFile".jpg
+fi
+
+if [ $save == true ] && [ $region == true ]; then
+    imageFile=$(date '+%r %b %e %Y')
+    grim -g "$(slurp -d -w 0)" - > ~/Pictures/screenshots/"$imageFile".jpg
+    wl-copy < ~/Pictures/screenshots/"$imageFile".jpg
+fi
+
+if [ $save == false ] && [ $region == true ]; then
+    grim -g "$(slurp -d -w 0)" - | wl-copy
+fi
+
+
