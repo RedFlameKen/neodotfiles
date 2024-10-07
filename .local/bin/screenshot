@@ -25,18 +25,21 @@ done
 # screenshot logic here
 if [ $save == false ] && [ $region == false ]; then
     grim - | wl-copy
+    dunstify -a ssnotif "Screenshot Copied to Clipboard!"
 fi
 
 if [ $save == true ] && [ $region == false ]; then
     imageFile=$(date '+%r %b %e %Y')
     grim - > ~/Pictures/screenshots/"$imageFile".jpg
     wl-copy < ~/Pictures/screenshots/"$imageFile".jpg
+    dunstify -a ssnotif -I ~/Pictures/screenshots/"$imageFile".jpg "Screenshot saved!"
 fi
 
 if [ $save == true ] && [ $region == true ]; then
     imageFile=$(date '+%r %b %e %Y')
     grim -g "$(slurp -d -w 0)" - > ~/Pictures/screenshots/"$imageFile".jpg
     wl-copy < ~/Pictures/screenshots/"$imageFile".jpg
+    dunstify -a ssnotif -I ~/Pictures/screenshots/"$imageFile".jpg "Screenshot saved!"
 fi
 
 if [ $save == false ] && [ $region == true ]; then
