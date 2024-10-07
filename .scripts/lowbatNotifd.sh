@@ -13,9 +13,9 @@ notifiedVeryLow="false"
 
 interval=15
 
+battery=BAT0
 lastCheck=$(cat /sys/class/power_supply/$battery/status)
 
-battery=BAT0
 veryLow=10
 low=20
 
@@ -37,10 +37,10 @@ check(){
     fi
 
     if [ $batstat == "Discharging" ]; then
-        if [ $capacity -le $veryLow ] && [ $notifiedVeryLow == "false" ]; then
+        if [ $capacity -le $veryLow ] && [ "$notifiedVeryLow" == "false" ]; then
             notify $capacity
             notifiedVeryLow="true"
-        elif [ $capacity -le $low ] && [ $notifiedLow == "false" ]; then
+        elif [ $capacity -le $low ] && [ "$notifiedLow" == "false" ]; then
             notify $capacity
             notifiedLow="true"
         fi
@@ -52,7 +52,7 @@ check(){
 }
 
 while true; do
-    sleep $interval 
+    sleep $interval
     check;
 done
 
