@@ -1,57 +1,59 @@
 #!/bin/bash
 
-virgin=true
-notified=false
+# if discharging:
+# 30 percent, notif once
+# 15 percent, notif once
+#
+# if charging:
+# lastCheck was discharging, set notifiedLow and notifiedVeryLow to false
+# skip checks
+
+notifiedLow=false
+notifiedVeryLow=false
+
+interval=15
+
+lastCheck=$(cat /sys/class/power_supply/$battery/status)
 
 battery=BAT0
-lower=10
+veryLow=10
 low=20
 
+notify(){
+    notify-send -u critical "DUMBASS! DON'T FORGET TO CHARGE!: $1%"
+}
 
-
-notifyCheck(){
+check(){
     capacity=$(cat /sys/class/power_supply/$battery/capacity)
     batstat=$(cat /sys/class/power_supply/$battery/status)
 
-    if [[ ( $capacity -le $low && $batstat == "Charging" ) && ($capacity -ge $((low - 1)) && $batstat == "Charging" ) ]];
-    then
-        notified=false
-        return
-    fi
-    if [[ ( $capacity -le $lower && $batstat == "Charging" ) && ($capacity -ge $((lower - 1)) && $batstat == "Charging" ) ]];
-    then
-        notified=false
-        return
-    fi
-    if [[ "$notified" = true && "$virgin" = false ]];
-    then
-        return
-    fi
-    if [[ ( $capacity -le $low && $batstat != "Charging" ) && ($capacity -ge $((low - 1)) && $batstat != "Charging" ) ]];
-    then
-        notify-send -u critical "DUMBASS! DON'T FORGET TO CHARGE!: $capacity%"
-        if [[ "$virgin" == "true" ]]
-        then 
-            virgin=false 
+    if [ $batstat == "Charging" ]; then
+        if [ $lastCheck == "Discharging" ]; then
+            notifiedLow=false
+            notifiedVeryLow=false
+            lastCheck="Charging" 
         fi
-        notified=true
         return
     fi
 
-    if [[ ( $capacity -le $lower && $batstat != "Charging" ) && ($capacity -ge $((lower - 1)) && $batstat != "Charging" ) ]];
-    then
-        notify-send -u critical "DUMBASS! DON'T FORGET TO CHARGE!: $capacity%"
-        notified=true
-        if [[ "$virgin" == "true" ]]
-        then 
-            virgin=false 
+    if [ $batstat == "Discharging" ]; then
+        if [ $capacity -le $veryLow ] && [ $notifiedVeryLow == false ]; then
+            notify $capacity
+            notifiedVeryLow=true
+        elif [ $capacity -le $low ] && [ $notifiedLow == false ]; then
+            notify $capacity
+            notifiedLow=true
         fi
-        return
+        if [ lastCheck != "Discharging" ]; then
+            lastCheck="Discharging" 
+        fi
     fi
+
 }
+
 while true; do
-    sleep 5
-    notifyCheck;
+    sleep $interval 
+    check;
 done
 
 exit
