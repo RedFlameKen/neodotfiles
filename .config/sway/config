@@ -84,12 +84,12 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q 
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 5%+
 
 # screenshot
-bindsym Print exec grim - | wl-copy
-bindsym Shift+Print exec grim -g "$(slurp -d -w 0)" - | wl-copy
-
 # screenshot and save
-bindsym $mod+Print exec grim - > ~/Pictures/screenshot/"$(date '+%r %b %e %Y')".jpg
-bindsym $mod+Shift+Print exec grim -g "$(slurp -d -w 0)" - > ~/Pictures/screenshot/"$(date '+%r %b %e %Y')".jpg
+bindsym Print exec ~/.local/bin/screenshot
+bindsym Shift+Print exec ~/.local/bin/screenshot -r
+
+bindsym $mod+Print exec ~/.local/bin/screenshot -s
+bindsym $mod+Shift+Print exec ~/.local/bin/screenshot -rs
 
 # ThinkVantage Button, could be anything lol
 bindsym XF86Launch1 exec kitty
