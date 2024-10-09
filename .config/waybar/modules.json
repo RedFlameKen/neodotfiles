@@ -72,7 +72,7 @@
     "interval": 15,
     "format": "{icon} {capacity}%",
     "format-icons": ["󰂎", "󰁻", "󰁾", "󰂁", "󰁹"],
-    "on-update": "~/.scripts/lowbatNotifd.sh",
+    "on-update": "",
     "states": {
         "warning": 30,
         "critical": 15,
@@ -82,8 +82,9 @@
 },
 "custom/theme": {
     "format": "󰏘",
-    "on-click": "~/.scripts/swwwWallpaper.sh -i",
-    "on-click-right": "~/.scripts/swwwWallpaper.sh -r",
+    "on-click": "~/.scripts/swwwWallpaper.sh next",
+    "on-click-right": "~/.scripts/swwwWallpaper.sh prev",
+    "on-click-middle": "~/.scripts/swwwWallpaper.sh rand",
     "tooltip": false
 },
 "custom/launcher": {
