@@ -1,146 +1,109 @@
 #!/bin/bash
-wallpaper="wp0"
-theme="0"
 
-default(){
-    wallpaper="wp0"
-    theme="0"
-    echo 0 > ~/.scripts/curwp
+if [ ! -f ~/.local/state/curwp ]; then
+    touch ~/.local/state/curwp
+    echo "13" > ~/.local/state/curwp
+fi
+
+set_wp(){
+    echo "setting wallpaper..."
+    swaybg -m fill -i ~/.wallpapers/wp$1.jpg
+    echo $1 > ~/.local/state/curwp
 }
-pink(){
-    wallpaper="wp1"
-    theme="1"
-    echo 1 > ~/.scripts/curwp
+
+num_mode(){
+    if [ ! -f ~/.wallpapers/wp$1.jpg ]; then
+        echo "that wallpaper does not exist! terminating!"
+        return
+    fi
+    set_wp $1
 }
-gray(){
-    wallpaper="wp3"
-    theme="3"
-    echo 2 > ~/.scripts/curwp
+
+cur_mode(){
+    set_wp $(cat ~/.local/state/curwp)
 }
-green(){
-    wallpaper="wp4"
-    theme="4"
-    echo 3 > ~/.scripts/curwp
+
+next_mode(){
+    target_wp=$(($(cat ~/.local/state/curwp)+1))
+    if [ $target_wp -gt $(($(ls ~/.wallpapers | wc -l)-1)) ]; then
+        target_wp=0
+    fi
+    set_wp $target_wp
 }
-orange(){
-    wallpaper="wp7"
-    theme="7"
-    echo 4 > ~/.scripts/curwp
+
+prev_mode(){
+    target_wp=$(($(cat ~/.local/state/curwp)-1))
+    if [ $target_wp -lt 0 ]; then
+        target_wp=$(($(ls ~/.wallpapers | wc -l)-1))
+    fi
+    set_wp $target_wp
 }
-starforce(){
-    wallpaper="wp9"
-    theme="9"
-    echo 5 > ~/.scripts/curwp
-}
-mascot(){
-    wallpaper="wp10"
-    theme="10"
-    echo 6 > ~/.scripts/curwp
-}
-random(){
-    randomNum=$(($RANDOM % 6))
-    curThemeFile="~/.scripts/curwp"
-    while [ $randomNum == $(cat $curThemeFile) ]
-    do
-	randomNum=$(($RANDOM % 6))
+
+rand_mode(){
+    wpCount=$(ls ~/.wallpapers | wc -l)
+    randomNumber=$(($RANDOM % $wpCount))
+    while [ $randomNumber -eq $(cat ~/.local/state/curwp) ]; do
+        randomNumber=$(($RANDOM % $wpCount))
     done
-    if [ $randomNum == "0" ]
-    then
-	default 
-    elif [ $randomNum == "1" ]
-    then
-	pink 
-    elif [ $randomNum == "2" ]
-    then
-	gray
-    elif [ $randomNum == "3" ]
-    then
-	green
-    elif [ $randomNum == "4" ]
-    then
-	orange
-    elif [ $randomNum == "5" ]
-    then
-	starforce
-    elif [ $randomNum == "6" ]
-    then
-	mascot
-    fi
-}
-increment(){
-    curThemeFile=$(cat ~/.scripts/curwp)
-    
-    if [ $curThemeFile -ge 6 ]
-    then
-	echo "0" > ~/.scripts/curwp
-	curThemeFile=0
-    else
-	curThemeFile=$((curThemeFile + 1))
-	echo $curThemeFile > ~/.scripts/curwp
-    fi
-    if [ $curThemeFile == "0" ]
-    then
-	default
-    elif [ $curThemeFile == "1" ]
-    then
-	pink
-    elif [ $curThemeFile == "2" ]
-    then
-	gray
-    elif [ $curThemeFile == "3" ]
-    then
-	green
-    elif [ $curThemeFile == "4" ]
-    then
-	orange
-    elif [ $curThemeFile == "5" ]
-    then
-	starforce
-    elif [ $curThemeFile == "6" ]
-    then
-	mascot
-    fi
+    set_wp $randomNumber
 }
 
-killall swaybg
-numberFunc(){
-    swaybg -m fill -i ~/.wallpapers/wp$1.jpg &
-    echo $1 > ~/.scripts/curwp
+print_help(){
+
+echo "
+Usage: 
+swayWallpaper.sh [num <number>|cur|next|prev|rand|help]
+
+num
+    select a sepecific number of a wallpaper from ~/.wallpapers
+
+    Example:
+    swayWallpaper.sh num 13
+
+    this will set the wallpaper to ~/.wallpapers/wp13.jpg
+
+cur
+    sets the wallpaper to the current number written in ~/.local/state/curwp
+
+    usually used as a startup option when using next and prev
+
+next
+    sets the wallpaper to the number in curwp+1
+
+    if number is greater than the number of wallpapers in ~/.wallpapers -1, this sets the
+    wallpaper to 0
+
+next
+    sets the wallpaper to the number in curwp-1
+
+    if the number is less than 0, this sets the wallpaper to the number of wallpapers
+    ~/.wallpapers -1
+
+rand
+    sets the wallpaper to a random wallpaper in ~/.wallpapers
+
+help
+    prints this help message
+"
 }
 
-[ "$1" = "num" ] && numberFunc $2 && exit
+[ "$1" = "num" ] && num_mode $2 && exit
+[ "$1" = "cur" ] && cur_mode && exit
+[ "$1" = "next" ] && next_mode && exit
+[ "$1" = "prev" ] && prev_mode && exit
+[ "$1" = "rand" ] && rand_mode && exit
+[ "$1" = "help" ] && print_help && exit
 
-while getopts "abcdefir" flag; do
-    case "${flag}" in
-	a)
-	    default
-	    ;;
-	b)
-	    pink
-	    ;;
-	c)
-	    gray
-	    ;;
-	d)
-	    green
-	    ;;
-	e)
-	    orange
-	    ;;
-	f)
-	    starforce
-	    ;;
-	i)
-	    increment
-	    ;;
-	r)
-	    random
-	    ;;
-	*)
-	    exit 1
-	    ;;
-    esac
-done
+echo "invalid usage!
 
-sleep 1
-swaybg -m fill -i ~/.wallpapers/$wallpaper.jpg &
+Usage:
+swayWallpaper.sh [num <number>|cur|next|prev|rand|help]
+
+options:
+    num <number>    -- sets the wallpaper to the entered number
+    cur             -- sets the wallpaper to the currently tracked wallpaper
+    next            -- sets the wallpaper to the next wallpaper
+    next            -- sets the wallpaper to the previous wallpaper
+    rand            -- sets the wallpaper to a random wallpaper
+    help            -- prints help
+"
