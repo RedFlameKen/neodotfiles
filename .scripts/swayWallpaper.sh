@@ -1,5 +1,7 @@
 #!/bin/bash
 
+killall swaybg
+
 if [ ! -f ~/.local/state/curwp ]; then
     touch ~/.local/state/curwp
     echo "13" > ~/.local/state/curwp
@@ -7,7 +9,7 @@ fi
 
 set_wp(){
     echo "setting wallpaper..."
-    swaybg -m fill -i ~/.wallpapers/wp$1.jpg
+    swaybg -m fill -i ~/.wallpapers/wp$1.jpg &
     echo $1 > ~/.local/state/curwp
 }
 
