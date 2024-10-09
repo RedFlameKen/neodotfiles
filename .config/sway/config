@@ -92,7 +92,8 @@ bindsym $mod+Print exec ~/.local/bin/screenshot -s
 bindsym $mod+Shift+Print exec ~/.local/bin/screenshot -rs
 
 # ThinkVantage Button, could be anything lol
-bindsym XF86Launch1 exec kitty
+# Note: commented out to use the button as a vimmode toggle in keyd
+# bindsym XF86Launch1 exec kitty
 
 # msc keybinds
 
