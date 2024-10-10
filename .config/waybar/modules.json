@@ -17,10 +17,10 @@
     "group/rightModules": {
         "orientation": "horizontal",
         "modules": [
-            "temperature",
             "custom/theme",
-            "tray",
+            "temperature",
             "wireplumber",
+            "tray",
             "clock",
             "battery"
         ]
@@ -29,13 +29,13 @@
     "hyprland/workspaces": {
         "format": "{name}{icon}",
         "format-icons": {
-            "1": " 󰈹",
-            "2": " ",
-            "3": " ",
-            "4": " 󰊗",
-            "5": " ",
-            "6": " 󰕧",
-            "default": " 󱁤"
+            "1": " 󰈹 ",
+            "2": "  ",
+            "3": "  ",
+            "4": " 󰊗 ",
+            "5": "  ",
+            "6": " 󰕧 ",
+            "default": " 󱁤 "
         },
         "persistent-workspaces": {
             "*": 5
@@ -52,7 +52,7 @@
         "all-outputs": false,
         "format": "{icon}",
         "icon-theme": "Papirus",
-        "icon-size": 25,
+        "icon-size": 20,
         "on-click": "activate",
         "on-click-right": "minimize",
         "on-click-middle": "close"

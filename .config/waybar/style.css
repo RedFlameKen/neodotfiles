@@ -14,10 +14,24 @@ window#waybar{
     font-family: "JetBrainsMono Nerd Font";
     font-size: 14px;
     padding: 10px;
-    background-color: transparent;
+    background-color: rgba(28, 27, 25, 0.6);
     min-height: 50px;
 }
 
+#leftModules {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#centerModules {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#rightModules {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
 #battery,
 #clock,
 #tray,
@@ -35,9 +49,9 @@ window#waybar{
     color: @foreground;
     margin-left: 3px;
     margin-right: 3px;
-    border: solid;
-    border-width: 2px;
-    border-color: @foreground;
+    /*border: solid;*/
+    /*border-width: 2px;*/
+    /*border-color: @foreground;*/
 }
 
 #battery,
@@ -94,7 +108,7 @@ window#waybar{
 
 #taskbar button.active,
 #taskbar :hover {
-    border-radius: 25px;
+    border-radius: 10px;
 }
 
 #taskbar.empty {
