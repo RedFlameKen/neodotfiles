@@ -1,95 +1,112 @@
-{ "group/leftMods": {
-    "orientation": "horizontal",
-    "modules": [
-        "hyprland/workspaces",
-    ]
-},
-"group/leftMods-extra": {
-    "orientation": "horizontal",
-    "modules": [
-        ""
-    ]
-},
-"group/centerMods": {
-    "orientation": "horizontal",
-    "modules": [
-        "clock"
-    ]
-},
-"group/rightMods": {
-    "orientation": "horizontal",
-    "modules": [
-        "pulseaudio",
-        "battery",
-        "custom/theme"
-    ]
-},
-"group/rightMods-extra": {
-    "orientation": "horizontal",
-    "modules": [
-        "tray"
-    ]
-},
-"clock": {
-    "interval": 60,
-    "format": "{:%I:%M %p}",
-    "tooltip": false,
-    "on-click": "~/.config/waybar/scripts/ewwToggle.sh"
-},
-"hyprland/workspaces": {
-    "format": "{name}{icon}",
-    "format-icons": {
-        "1": " 󰈹",
-        "2": " ",
-        "3": " ",
-        "4": " 󰊗",
-        "5": " ",
-        "6": " 󰕧",
-        "default": " 󱁤"
-    },
-    "sort-by-number": true,
-    "max-length": 30
-},
-"tray": {
-    "icon-size": 20,
-    "spacing": 5
-},
-"pulseaudio":{
-    "format": "{icon} {volume}%",
-    "format-muted": "󰝟 muted",
-    "format-icons": {
-        "default": ["󰕿 ","󰖀 ", "󰕾 "]
-    },
-    "scroll-step": 1.0,
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "pavucontrol"
+{
 
-},
-"battery": {
-    "bat": "BAT0",
-    "adapter":"ACAD",
-    "full-at": 98,
-    "interval": 15,
-    "format": "{icon} {capacity}%",
-    "format-icons": ["󰂎", "󰁻", "󰁾", "󰂁", "󰁹"],
-    "on-update": "",
-    "states": {
-        "warning": 30,
-        "critical": 15,
-        "normal": 97,
-        "full": 98
+    "group/leftModules": { "orientation": "horizontal",
+        "modules": [
+            "custom/launcher",
+            "hyprland/workspaces"
+        ]
+    },
+
+    "group/centerModules": {
+        "orientation": "horizontal",
+        "modules": [
+            "wlr/taskbar"
+        ]
+    },
+
+    "group/rightModules": {
+        "orientation": "horizontal",
+        "modules": [
+            "temperature",
+            "custom/theme",
+            "tray",
+            "wireplumber",
+            "clock",
+            "battery"
+        ]
+    },
+
+    "hyprland/workspaces": {
+        "format": "{name}{icon}",
+        "format-icons": {
+            "1": " 󰈹",
+            "2": " ",
+            "3": " ",
+            "4": " 󰊗",
+            "5": " ",
+            "6": " 󰕧",
+            "default": " 󱁤"
+        },
+        "persistent-workspaces": {
+            "*": 5
+        },
+    },
+
+    "custom/launcher": {
+        "format": "󰣇",
+        "on-click": "wofi --show drun",
+        "tooltip": false
+    },
+
+    "wlr/taskbar": {
+        "all-outputs": false,
+        "format": "{icon}",
+        "icon-theme": "Papirus",
+        "icon-size": 25,
+        "on-click": "activate",
+        "on-click-right": "minimize",
+        "on-click-middle": "close"
+    },
+
+    "temperature": {
+        "interval": 10,
+        "format": "{icon} {temperatureC}°C",
+        "format-critical": "",
+        "format-icons": ["", "", "", ""],
+        "critical-threshold": 85,
+        "tooltip": false
+    },
+
+    "custom/theme": {
+        "format": "󰏘",
+        "on-click": "~/.scripts/swwwWallpaper.sh next",
+        "on-click-right": "~/.scripts/swwwWallpaper.sh prev",
+        "on-click-middle": "~/.scripts/swwwWallpaper.sh rand",
+        "tooltip": false
+    },
+
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 muted",
+        "format-icons": ["󰕿","󰖀", "󰕾"],
+        "on-click-right": "pavucontrol",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "scroll-step": 5,
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 20,
+        "spacing": 5,
+        "reverse-direction": false
+    },
+
+    "clock": {
+        "interval": 60,
+        "format": "󰥔 {:%H:%M}",
+        "tooltip": true,
+    },
+
+    "battery": {
+        "interval": 15,
+        "format": "{icon} {capacity}%",
+        "format-icons": ["󰂎", "󰁻", "󰁾", "󰂁", "󰁹"],
+        "states": {
+            "full": 100,
+            "healthy": 97,
+            "warning": 20,
+            "critical": 10
+        },
     }
-},
-"custom/theme": {
-    "format": "󰏘",
-    "on-click": "~/.scripts/swwwWallpaper.sh next",
-    "on-click-right": "~/.scripts/swwwWallpaper.sh prev",
-    "on-click-middle": "~/.scripts/swwwWallpaper.sh rand",
-    "tooltip": false
-},
-"custom/launcher": {
-    "format": "󰣇",
-    "on-click": "wofi --show drun",
-    "tooltip": false
-}
+
 }

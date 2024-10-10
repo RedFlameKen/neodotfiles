@@ -1,4 +1,5 @@
 @define-color background #1C1B19;
+@define-color focus-bg #6E8175;
 @define-color red-color #EF2F27;
 @define-color orange-color #FF5F00;
 @define-color yellow-color #FBB829;
@@ -9,89 +10,103 @@
 @define-color gray-color #BAA67F;
 @define-color foreground #FCE8C3;
 
-* {
-  /*  --border-radius: 20%;*/
-}
 window#waybar{
     font-family: "JetBrainsMono Nerd Font";
     font-size: 14px;
+    padding: 10px;
     background-color: transparent;
-    min-height: 24px;
+    min-height: 50px;
 }
-#mpd,
+
 #battery,
 #clock,
-#pulseaudio,
-#workspaces button {
-    padding-left: 10px;
-    padding-right: 10px;
-    color: @foreground;
-    background: transparent;
-    
-}
-#workspaces button {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-#custom-launcher,
+#tray,
+#temperature,
+#wireplumber,
 #custom-theme,
-#battery,
-#pulseaudio,
-#leftMods,
-#leftMods-extra,
-#centerMods,
-#rightMods-extra {
+#taskbar,
+#workspaces,
+#custom-launcher {
+    border-radius: 16px;
     background-color: @background;
-    border-radius: 12px;
-    margin-top: 4px;
-    margin-bottom: 4px;
-}
-#tray {
-    margin: 0;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top:3px;
-    padding-bottom:3px;
+    /*border: solid;*/
+    /*border-color: @background;*/
+    /*border-width: 3px;*/
+    color: @foreground;
+    margin-left: 3px;
+    margin-right: 3px;
+    border: solid;
+    border-width: 2px;
+    border-color: @foreground;
 }
 
-#custom-launcher,
-#custom-theme{
-    padding-left: 15px;
-    padding-right: 15px;
+#battery,
+#clock,
+#tray,
+#temperature,
+#wireplumber,
+#workspaces,
+#custom-theme,
+#custom-launcher p{
+    padding-left: 10px;
+    padding-right: 10px;
 }
+
+#custom-theme,
 #custom-launcher {
     padding-left: 11px;
+    padding-right: 14px;
+}
+
+#custom-launcher {
     color: @blue-color;
 }
-#custom-launcher :hover {
-    color: @background-color;
-    background-color: @blue-color;
-}
-/*
-#leftMods {
-    border-color: @blue-border;
-}
-#leftMods-extra {
-    border-color: @blue-border;
-}
-#centerMods {
-    border-color: @purple-border;
-}
-#rightMods-extra {
-    border-color: @red-border;
-}
-#pulseaudio {
-    border-color: @darkblue-border;
-}
-*/
+
 #workspaces button {
     color: @foreground;
 }
+
 #workspaces button.active {
     color: @blue-color;
 }
+
 #workspaces button.urgent {
+    color: @red-color;
+}
+
+#taskbar button.active,
+#custom-launcher:hover,
+#taskbar :hover,
+#workspaces :hover{
+    background-color: @blue-color;
+    color: @background;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#taskbar {
+    border-radius: 25px;
+}
+
+#taskbar button.active {
+    background-color: @green-color;
+}
+
+#taskbar button.active,
+#taskbar :hover {
+    border-radius: 25px;
+}
+
+#taskbar.empty {
+    background-color: transparent;
+    border: none;
+}
+
+#temperature {
+    color: @blue-color;
+}
+
+#temperature.critical {
     color: @red-color;
 }
 #battery.full {
@@ -104,7 +119,7 @@ window#waybar{
     color: @green-color;
 }
 #battery.discharging {
-    color: @gray-color;
+    color: @foreground;
 }
 #battery.discharging.warning {
     color: @orange-color;
@@ -113,17 +128,5 @@ window#waybar{
     color: @red-color;
 }
 #battery.discharging.normal {
-    color: @gray-color;
+    color: @foreground;
 }
-/*
-#custom-theme {
-    border-color: @purple-border;
-}
-*/
-#workspaces button:hover {
-    border-color: transparent;
-    box-shadow: none;
-    text-shadow: none;
-}
-
-
