@@ -1,5 +1,7 @@
 #!/bin/bash
 
+killall lowbatNotifd.sh
+
 notifiedLow="false"
 notifiedVeryLow="false"
 
