@@ -94,6 +94,14 @@
     "clock": {
         "interval": 60,
         "format": "󰥔 {:%H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "weekdays": "<span color='#68A8E4'>{}</span>",
+                "today": "<span color='#FF5C8F'>{}</span>",
+            }
+        },
         "tooltip": true,
     },
 
