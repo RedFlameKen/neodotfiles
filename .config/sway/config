@@ -32,12 +32,12 @@ workspace $ws1 output LVDS-1
 workspace $ws5 output LVDS-1
 workspace $ws6 output VGA-1
 
-assign [class="Discord"] 5
-assign [class="WebCord"] 5
-assign [class="vesktop"] 5
-assign [class="krita"] 4
-assign [app_id="com.obsproject.Studio"] 6
-assign [class="Minecraft.*"] 4
+assign [class="Discord"] $ws5
+assign [class="WebCord"] $ws5
+assign [class="vesktop"] $ws5
+assign [class="krita"] $ws4
+assign [app_id="com.obsproject.Studio"] $ws6
+assign [class="Minecraft.*"] $ws4
 # startup settings
 
 
