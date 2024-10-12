@@ -1,6 +1,10 @@
 #!/bin/bash
 
-killall lowbatNotifd.sh
+existing_processes=$(pgrep lowbatNotifd.sh | wc -l)
+
+if [ $existing_processes -gt 2 ]; then
+    exit
+fi
 
 notifiedLow="false"
 notifiedVeryLow="false"
