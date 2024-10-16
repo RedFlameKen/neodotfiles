@@ -64,7 +64,7 @@
         "format": "{icon} {temperatureC}°C",
         "format-critical": "",
         "format-icons": ["", "", "", ""],
-        "critica:l-threshold": 85,
+        "critical-threshold": 85,
         "tooltip": false
     },
 
