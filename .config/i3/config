@@ -259,7 +259,7 @@ bar {
     status_command bumblebee-status \
     -t srcery-custom \
     -m sensors pulseout pulsein date time battery \
-    -p sensors.show_freq=false time.format="%H:%M %p" date.format="%a, %b %d %Y"\
+    -p sensors.show_freq=false time.format="%H:%M" date.format="%a, %b %d %Y"\
     pulsectl.autostart="true" pulsectl.percent_change=8 pulsectl.limit=150 \ 
     workspace_min_width 30
     colors {
