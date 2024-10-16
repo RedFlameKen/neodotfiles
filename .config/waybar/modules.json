@@ -77,8 +77,8 @@
     },
 
     "mpris": {
-        "format": "{status_icon} {title}  ",
-        "title-len": 15,
+        "format": "{status_icon} {title} - {artist}  ",
+        "title-len": 20,
         "format-paused": "Paused  ",
         "format-stopped": "Stopped  ",
         "status-icons": {
