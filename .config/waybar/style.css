@@ -43,15 +43,9 @@ window#waybar{
 #custom-launcher {
     border-radius: 16px;
     background-color: @background;
-    /*border: solid;*/
-    /*border-color: @background;*/
-    /*border-width: 3px;*/
     color: @foreground;
     margin-left: 3px;
     margin-right: 3px;
-    /*border: solid;*/
-    /*border-width: 2px;*/
-    /*border-color: @foreground;*/
 }
 
 #battery,
@@ -80,35 +74,26 @@ window#waybar{
     color: @foreground;
 }
 
-#workspaces button.active {
-    color: @blue-color;
-}
-
 #workspaces button.urgent {
     color: @red-color;
 }
 
-#taskbar button.active,
 #custom-launcher:hover,
+#custom-theme :hover,
+#workspaces button.active,
+#taskbar button.active {
+    background-image: linear-gradient(115deg, @purple-color, @blue-color);
+    color: @background;
+    box-shadow: none;
+    text-shadow: none;
+}
+
 #taskbar :hover,
 #workspaces :hover{
     background-color: @blue-color;
     color: @background;
     box-shadow: none;
     text-shadow: none;
-}
-
-#taskbar {
-    border-radius: 25px;
-}
-
-#taskbar button.active {
-    background-color: @green-color;
-}
-
-#taskbar button.active,
-#taskbar :hover {
-    border-radius: 10px;
 }
 
 #taskbar.empty {
