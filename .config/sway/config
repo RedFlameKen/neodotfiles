@@ -107,6 +107,7 @@ bindsym $mod+q exec kitty
 
 # open browser
 bindsym $mod+w exec firefox
+bindsym $mod+Shift+w exec firefox --private-window
 
 # open file explorer gui
 bindsym $mod+e exec --no-startup-id thunar
