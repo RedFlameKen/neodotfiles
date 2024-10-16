@@ -117,7 +117,8 @@ else
     SEP2=""
     SEP3=""
     ARROW_ICON="󰜴"
-    USR_ICON="󰣇 "
+    CLOCK_ICON="󰥔"
+    USR_ICON="󰣇"
     BRANCH_ICON=""
 fi
 
@@ -136,7 +137,7 @@ PS1+='$(colorize " \w " $BOLD $LWHITE_FG $DDBLACK_BG)'
 PS1+='$(colorize $SEP3 $DDBLACK_FG $GRAY_BG)'
 PS1+='$(colorize "$(git_status)" $BOLD $LWHITE_FG $GRAY_BG)'
 PS1+='$(colorize $SEP3 $GRAY_FG $GREEN_BG)'
-PS1+='$(colorize " \@" $BOLD $LWHITE_FG $GREEN_BG)'
+PS1+='$(colorize " $CLOCK_ICON \D{%H:%M}" $BOLD $LWHITE_FG $GREEN_BG)'
 PS1+='$(colorize $SEP2 $GREEN_FG )'
 PS1+='
 $BACK_LINE_BOT$(colorize " $ARROW_ICON " $YELLOW_FG)'
