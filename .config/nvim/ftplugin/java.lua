@@ -61,6 +61,9 @@ local config = {
         },
     },
     init_options = {
+        bundles = {
+            vim.fn.glob("/home/kenneth/git/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.0.jar", true)
+        },
         extendedCapabilities = jdtls.extendedCapabilities,
     },
     capabilities = {
@@ -77,9 +80,9 @@ local config = {
         vim.keymap.set('n', '<leader>jrv', jdtls.extract_variable_all, { desc = 'Extract variable', buffer = bufnr })
         vim.keymap.set('v', '<leader>jrm', "<ESC><CMD>lua require('jdtls').extract_method(true)<CR>", {desc = 'Extract method', buffer = bufnr})
         vim.keymap.set('n', '<leader>jrc', jdtls.extract_constant, { desc = 'Extract constant', buffer = bufnr })
+
         vim.keymap.set('n', "<leader>df", jdtls.test_class, opts)
         vim.keymap.set('n', "<leader>dn", jdtls.test_nearest_method, opts)
-
     end
 }
 

@@ -20,8 +20,7 @@ local dapui = require('dapui')
 -- }
 
 dap.adapters.codelldb = {
-  type = 'server',
-  port = "${port}",
+  type = 'server', port = "${port}",
   executable = {
     command = '/home/kenneth/.local/share/nvim/mason/packages/codelldb/codelldb',
     args = {"--port", "${port}"},
@@ -55,6 +54,11 @@ dap.listeners.before.event_exited.dapui_config = function()
   dapui.close()
 end
 
+local function closeSession()
+    dapui.close()
+    dap.close()
+end
+
 vim.keymap.set('n', '<Leader>dj', function() dap.step_over() end)
 vim.keymap.set('n', '<Leader>dk', function() dap.step_into() end)
 vim.keymap.set('n', '<Leader>do', function() dap.step_out() end)
@@ -63,6 +67,7 @@ vim.keymap.set('n', '<Leader>dB', function() dap.set_breakpoint() end)
 vim.keymap.set('n', '<Leader>dp', function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
 vim.keymap.set('n', '<Leader>dr', function() dap.continue() end)
 vim.keymap.set('n', '<Leader>dl', function() dap.run_last() end)
+vim.keymap.set("n", "<Leader>dx", function() closeSession() end)
 vim.keymap.set("n", "<Leader>dc", function() dapui.close() end)
 vim.keymap.set("n", "<Leader>du", function() dapui.open() end)
 vim.keymap.set("n", "<Leader>dd", function() dapui.toggle() end)
