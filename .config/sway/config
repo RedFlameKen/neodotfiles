@@ -38,8 +38,8 @@ assign [class="vesktop"] $ws5
 assign [class="krita"] $ws4
 assign [app_id="com.obsproject.Studio"] $ws6
 assign [class="Minecraft.*"] $ws4
-# startup settings
 
+# startup settings
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -92,8 +92,7 @@ bindsym $mod+Print exec ~/.local/bin/screenshot -s
 bindsym $mod+Shift+Print exec ~/.local/bin/screenshot -rs
 
 # ThinkVantage Button, could be anything lol
-# Note: commented out to use the button as a vimmode toggle in keyd
-# bindsym XF86Launch1 exec kitty
+bindsym XF86Launch1 exec kitty
 
 # msc keybinds
 

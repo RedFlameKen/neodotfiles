@@ -10,27 +10,27 @@ font pango:FiraCode Nerd Font Propo 10
 set $refresh_i3status killall -SIGUSR1 i3status
 
 # workspace names
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1 󰈹"
+set $ws2 "2 "
+set $ws3 "3 "
+set $ws4 "4 "
+set $ws5 "5 "
+set $ws6 "6 "
+set $ws7 "7 󱁤"
+set $ws8 "8 󱁤"
+set $ws9 "9 󱁤"
 
 workspace $ws1 output LVDS-1
 # workspace $ws2 output VGA-1
 workspace $ws5 output LVDS-1
 workspace $ws6 output VGA-1
 
-assign [class="Discord"] 5
-assign [class="WebCord"] 5
-assign [class="krita"] 4
-assign [class="obs"] 6
-# assign [id="com.obsproject.Studio"] 6
+assign [class="Discord"] $ws5
+assign [class="WebCord"] $ws5
+assign [class="vesktop"] $ws5
+assign [class="krita"] $ws4
+assign [class="obs"] $ws6
+assign [class="Minecraft.*"] $ws4
 
 for_window [class="Screenkey"] floating enable, border pixel 0
 
@@ -84,7 +84,7 @@ bindsym Shift+$mod+Print exec ~/.local/bin/screenshot -sr
 
 
 # ThinkVantage Button, could be anything lol
-bindsym XF86Launch1 exec kitty sh -c cmatrix
+bindsym XF86Launch1 exec kitty
 
 # msc keybinds
 
