@@ -71,13 +71,16 @@ window#waybar{
 }
 
 #workspaces button {
-    color: @foreground;
+    color: @blue-color;
 }
 
 #workspaces button.urgent {
     color: @red-color;
 }
 
+#workspaces button.empty {
+    color: @foreground;
+}
 #custom-launcher:hover,
 #custom-theme :hover,
 #workspaces button.active,
