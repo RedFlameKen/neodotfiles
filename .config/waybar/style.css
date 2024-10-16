@@ -40,6 +40,7 @@ window#waybar{
 #custom-theme,
 #taskbar,
 #workspaces,
+#mpris,
 #custom-launcher {
     border-radius: 16px;
     background-color: @background;
@@ -54,6 +55,7 @@ window#waybar{
 #temperature,
 #wireplumber,
 #workspaces,
+#mpris,
 #custom-theme,
 #custom-launcher p{
     padding-left: 10px;
