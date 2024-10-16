@@ -99,6 +99,11 @@ window#waybar{
     text-shadow: none;
 }
 
+#workspaces button.active,
+#taskbar button.active {
+    border-radius: 11px;
+}
+
 #taskbar.empty {
     background-color: transparent;
     border: none;
