@@ -11,7 +11,7 @@
 @define-color foreground #FCE8C3;
 
 window#waybar{
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "JetBrainsMono Nerd Font Propo";
     font-size: 14px;
     padding: 10px;
     background-color: rgba(28, 27, 25, 0.6);
