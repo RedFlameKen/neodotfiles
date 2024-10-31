@@ -12,6 +12,7 @@ paths="
 --search-path git/redflameken
 --search-path git/school
 --search-path docs/notes
+--search-path school/notes
 --search-path docs
 "
 
@@ -19,6 +20,7 @@ vimpaths="
 --search-path projects 
 --search-path school 
 --search-path docs/notes
+--search-path school/notes
 --search-path git/redflameken
 --search-path git/school
 --search-path .dotfiles/
