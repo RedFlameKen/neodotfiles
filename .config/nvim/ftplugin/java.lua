@@ -30,7 +30,7 @@ local config = {
     -- capabilities = capabilities,
     cmd = {
         jdtls_path ..'/bin/jdtls',
-        -- 'java',
+        'java', '/usr/lib/jvm/java-17-openjdk/bin/java',
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -47,6 +47,22 @@ local config = {
     root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
     settings = {
         java = {
+            configuration = {
+                runtimes = {
+                    {
+                        name = "JavaSE-11",
+                        path = "/usr/lib/jvm/java-11-openjdk/"
+                    },
+                    {
+                        name = "JavaSE-17",
+                        path = "/usr/lib/jvm/java-17-openjdk/"
+                    },
+                    {
+                        name = "JavaSE-21",
+                        path = "/usr/lib/jvm/java-21-openjdk/"
+                    },
+                },
+            },
             import = {enabled = true},
             rename = {enabled = true},
         },
@@ -78,7 +94,7 @@ local config = {
         vim.keymap.set("n", "<leader>ji", jdtls.organize_imports, { desc = 'Organize Imports', buffer = bufnr})
         vim.keymap.set("n", "<leader>jb", jdtls.build_projects, { desc = 'Build Projects', buffer = bufnr})
         vim.keymap.set('n', '<leader>jrv', jdtls.extract_variable_all, { desc = 'Extract variable', buffer = bufnr })
-        vim.keymap.set('v', '<leader>jrm', "<ESC><CMD>lua require('jdtls').extract_method(true)<CR>", {desc = 'Extract method', buffer = bufnr})
+        vim.keymap.set('v', '<leader>jrm', "<CMD>lua jdtls.extract_method(true)<CR>", {desc = 'Extract method', buffer = bufnr})
         vim.keymap.set('n', '<leader>jrc', jdtls.extract_constant, { desc = 'Extract constant', buffer = bufnr })
 
         vim.keymap.set('n', "<leader>df", jdtls.test_class, opts)
