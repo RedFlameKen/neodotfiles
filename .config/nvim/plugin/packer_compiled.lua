@@ -208,6 +208,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
+  },
+  vimtex = {
+    loaded = true,
+    path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/vimtex",
+    url = "https://github.com/lervag/vimtex"
   }
 }
 

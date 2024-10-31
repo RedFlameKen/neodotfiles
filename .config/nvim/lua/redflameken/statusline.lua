@@ -14,9 +14,9 @@ local languages = {
     {"py", "󰌠 "},
     {"ino", " "},
     {"rs", "󱘗 "},
-    {"md", "󰍔 "}
+    {"md", "󰍔 "},
+    {"tex", " "}
 }
-
 local function getLangIcon(lang)
     for _, language in ipairs(languages) do
         if lang == language[1] then

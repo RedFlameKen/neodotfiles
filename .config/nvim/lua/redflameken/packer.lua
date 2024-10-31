@@ -59,4 +59,5 @@ return require('packer').startup(function(use)
             "nvim-neotest/nvim-nio"
         }
     }
+    use 'lervag/vimtex'
 end)
