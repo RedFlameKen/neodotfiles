@@ -7,7 +7,7 @@ fi
 
 set_wp(){
     echo "setting wallpaper..."
-    swww img -t grow --transition-duration 1 --transition-pos top-right ~/.wallpapers/wp$1.jpg
+    swww img -t grow --transition-duration 1 --transition-pos top-right ~/.wallpapers/wp$1.*
     echo $1 > ~/.local/state/curwp
 }
 
