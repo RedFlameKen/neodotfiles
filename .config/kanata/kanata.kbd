@@ -3,6 +3,9 @@
   hold 200
 )
 
+(defcfg
+    process-unmapped-keys yes
+)
 (defsrc
   esc
   caps a s d f j k l ;
@@ -11,17 +14,19 @@
 (defalias
     esc-mod caps
     caps-mod esc
-    a-mod=(tap-hold $tap $hold a lmod)
-    s-mod=(tap-hold $tap $hold s lmod)
-    d-mod=(tap-hold $tap $hold d lmod)
-    f-mod=(tap-hold $tap $hold f lmod)
-    j-mod=(tap-hold $tap $hold j lmod)
-    k-mod=(tap-hold $tap $hold k lmod)
-    l-mod=(tap-hold $tap $hold k lmod)
-    ;-mod=(tap-hold $tap $hold ; lmod)
+    a-mod (tap-hold $tap $hold a lmet)
+    s-mod (tap-hold $tap $hold s lalt)
+    d-mod (tap-hold $tap $hold d lshift)
+    f-mod (tap-hold $tap $hold f lctrl)
+    j-mod (tap-hold $tap $hold j rctrl)
+    k-mod (tap-hold $tap $hold k rshift)
+    l-mod (tap-hold $tap $hold k ralt)
+    ;-mod (tap-hold $tap $hold ; rmet)
 )
 
 (deflayer base
+    @esc-mod
+    @caps-mod
     @a-mod
     @s-mod
     @d-mod
@@ -30,6 +35,4 @@
     @k-mod
     @l-mod
     @;-mod
-    esc caps
-    caps esc
 )
