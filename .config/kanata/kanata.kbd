@@ -1,0 +1,35 @@
+(defvar
+  tap 200
+  hold 200
+)
+
+(defsrc
+  esc
+  caps a s d f j k l ;
+)
+
+(defalias
+    esc-mod caps
+    caps-mod esc
+    a-mod=(tap-hold $tap $hold a lmod)
+    s-mod=(tap-hold $tap $hold s lmod)
+    d-mod=(tap-hold $tap $hold d lmod)
+    f-mod=(tap-hold $tap $hold f lmod)
+    j-mod=(tap-hold $tap $hold j lmod)
+    k-mod=(tap-hold $tap $hold k lmod)
+    l-mod=(tap-hold $tap $hold k lmod)
+    ;-mod=(tap-hold $tap $hold ; lmod)
+)
+
+(deflayer base
+    @a-mod
+    @s-mod
+    @d-mod
+    @f-mod
+    @j-mod
+    @k-mod
+    @l-mod
+    @;-mod
+    esc caps
+    caps esc
+)
