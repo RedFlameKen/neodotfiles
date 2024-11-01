@@ -7,8 +7,11 @@
     process-unmapped-keys yes
 )
 (defsrc
-  esc
-  caps a s d f j k l ;
+  esc   1   2   3   4   5   6   7   8   9   0   -   =   bspc prtsc
+  tab   q   w   e   r   t   y   u   i   o   p   [   ]   \   del
+  caps  a   s   d   f   g   h   j   k   l   ;   '   re      pgup
+  lsft  z   x   c   v   b   n   m   ,   .   /   rsft    up  pgdn
+  lctl  lmet lalt       spc         ralt lmet rctl  lft down rght
 )
 
 (defalias
@@ -20,11 +23,24 @@
     f-mod (tap-hold $tap $hold f lctrl)
     j-mod (tap-hold $tap $hold j rctrl)
     k-mod (tap-hold $tap $hold k rshift)
-    l-mod (tap-hold $tap $hold k ralt)
+    l-mod (tap-hold $tap $hold l ralt)
     ;-mod (tap-hold $tap $hold ; rmet)
 )
 
 (deflayer base
+    @esc-mod
+    @caps-mod
+)
+
+(deflayer base
+  @esc-mod  1   2   3   4   5   6   7   8   9   0   -   =   bspc prtsc
+  tab       q   w   e   r   t   y   u   i   o   p   [   ]   \   del
+  @caps-mod a   s   d   f   g   h   j   k   l   ;   '   re      pgup
+  lsft      z   x   c   v   b   n   m   ,   .   /   rsft    up  pgdn
+  lctl      lmet lalt       spc         ralt lmet rctl  lft down rght
+)
+
+(deflayer homerow-mods
     @esc-mod
     @caps-mod
     @a-mod
