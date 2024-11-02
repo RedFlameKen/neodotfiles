@@ -8,6 +8,8 @@ paths="
 --search-path personal
 --search-path school 
 --search-path .config
+--search-path ~/.dotfiles/.config
+--search-path ~/.dotfiles/
 --search-path git
 --search-path git/redflameken
 --search-path git/school
