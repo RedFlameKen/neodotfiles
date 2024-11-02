@@ -1,0 +1,40 @@
+(defcfg
+    input (device-file "/dev/input/by-id/usb-BY_Tech_Gaming_Keyboard-event-kbd")
+    output (uinput-sink "KMonad Mech output")
+
+    fallthrough true
+)
+
+(defsrc
+    esc     1   2   3   4   5   6   7   8   9   0   -   =   bspc    `
+    tab     q   w   e   r   t   y   u   i   o   p   [   ]   \       del
+    caps    a   s   d   f   g   h   j   k   l   ;   '   ret         pgup
+    lsft    z   x   c   v   b   n   m   ,   .   /   rsft        up  pgdn
+    lctl    lmet    lalt        spc        ralt rctl    lft    down rght
+
+    slck    ins home    end
+)
+
+(defalias
+    caps (tap-next ` (implicit-around lctl X))
+)
+
+(deflayer base
+    @caps   _   _   _   _   _   _   _   _   _   _   _   _   _       prnt
+    _       _   _   _   _   _   _   _   _   _   _   _   _   _       _
+    esc     _   _   _   _   _   _   _   _   _   _   _   _           home
+    _       _   _   _   _   _   _   _   _   _   _   _           _   end
+    _       _       _           _           _   _       _       _   _
+
+    _   _ pgup    pgdn
+)
+
+;;(deflayer chars
+;;    @esc    §   _   _   _   _   _   _   _   _   _   _   _   _       prnt
+;;    _       _   _   _   _   _   _   _   _   _   _   _   _   _       _
+;;    esc     _   _   _   _   _   _   _   _   _   _   _   _           home
+;;    _       _   _   _   _   _   _   _   _   _   _   _           _   end
+;;    _       _       _           _           _   _       _       _   _
+;;
+;;    @charlayer _   pgup    pgdn
+;;)

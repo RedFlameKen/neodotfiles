@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
+  ["kmonad-vim"] = {
+    loaded = true,
+    path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/kmonad-vim",
+    url = "https://github.com/kmonad/kmonad-vim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",

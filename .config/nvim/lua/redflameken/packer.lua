@@ -1,5 +1,12 @@
 vim.cmd [[packadd packer.nvim]]
 
+local function packerSync()
+    vim.cmd("so");
+    vim.cmd("PackerSync");
+end
+
+vim.keymap.set("n", "<leader>ps", packerSync)
+
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
@@ -60,4 +67,5 @@ return require('packer').startup(function(use)
         }
     }
     use 'lervag/vimtex'
+    use 'kmonad/kmonad-vim'
 end)
