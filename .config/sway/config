@@ -17,15 +17,15 @@ set $refresh_swaystatus killall -SIGUSR1 i3status
 # workspace names
 # set $ws1 "1 󰈹"
 # set $ws2 "2 "
-set $ws1 "1 󰈹"
-set $ws2 "2 "
-set $ws3 "3 "
-set $ws4 "4 "
-set $ws5 "5 "
-set $ws6 "6 "
-set $ws7 "7 󱁤"
-set $ws8 "8 󱁤"
-set $ws9 "9 󱁤"
+set $ws1 1󰈹
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7󱁤
+set $ws8 8󱁤
+set $ws9 9󱁤
 
 workspace $ws1 output LVDS-1
 # workspace $ws2 output VGA-1
@@ -159,6 +159,8 @@ bindsym $mod+Shift+v split h
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+bindsym $mod+Alt+space sticky toggle
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+Control+s layout stacking
 bindsym $mod+Control+w layout tabbed
@@ -276,6 +278,7 @@ bindsym $mod+s scratchpad show
 bar {
     font pango:FiraCode Nerd Font Propo 10
     swaybar_command swaybar 
+    strip_workspace_numbers yes
     position top
     tray_output *
     icon_theme "Papirus"
