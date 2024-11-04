@@ -15,6 +15,7 @@ paths="
 --search-path git/school
 --search-path docs/notes
 --search-path school/notes
+--search-path school/discmath
 --search-path docs
 "
 
