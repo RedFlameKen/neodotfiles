@@ -55,14 +55,39 @@ require('mason-lspconfig').setup({
 
 })
 
+local kind_icons = {
+    Method = "",
+    Function = "󰊕",
+    Variable = "",
+    Snippet = "",
+    Strucure = "",
+    Class = "",
+    Constructor = "",
+    Field = "",
+    Keyword = "",
+    Enum = "󰘻",
+    Value = "󰎠",
+    Reference = "",
+    Text = "󰦨",
+    Constant = "󰏿",
+    Interface = "󱘖",
+    Property = "",
+    Color = "",
+}
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local ls = require ("luasnip")
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
-
 cmp.setup({
+    formatting = {
+        format = function(entry, vim_item)
+            vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+            return vim_item
+        end
+    },
     sources = {
         {name = 'path'},
         {name = 'nvim_lsp'},
@@ -82,4 +107,5 @@ cmp.setup({
         end,
     },
 })
+
 lsp.setup()
