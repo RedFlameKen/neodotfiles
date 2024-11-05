@@ -38,7 +38,7 @@
             "default": " 󱁤 "
         },
         "persistent-workspaces": {
-            "*": 5
+            "LVDS-1": 5
         },
     },
 
