@@ -37,7 +37,7 @@ require('mason-lspconfig').setup({
                 settings = {
                     Lua = {
                         runtime = {
-                            version = 'LuaJIT'
+                            version = 'Lua 5.4'
                         },
                         diagnostics = {
                             globals = {'vim'},

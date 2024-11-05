@@ -9,13 +9,13 @@ local function workspaceDir()
     return workspace_dir
 end
 
--- local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
 local jdtls_path = home ..  '/.local/share/nvim/mason/packages/jdtls'
 local launcher_jar = home .. '/plugins/org.eclipse.equinox.launcher*.jar'
 
--- local client_capabilities = vim.lsp.protocol.make_client_capabilities()
--- local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
+local client_capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
 --
 local root_files = {
     '.classpath',
@@ -27,7 +27,7 @@ local root_files = {
     'mvnw'
 }
 local config = {
-    -- capabilities = capabilities,
+    capabilities = capabilities,
     cmd = {
         jdtls_path ..'/bin/jdtls',
         'java', '/usr/lib/jvm/java-17-openjdk/bin/java',
@@ -82,11 +82,11 @@ local config = {
         },
         extendedCapabilities = jdtls.extendedCapabilities,
     },
-    capabilities = {
-        workspace = {
-            configuration = true;
-        },
-    },
+    -- capabilities = {
+    --     workspace = {
+    --         configuration = true;
+    --     },
+    -- },
     on_attach = function(client, bufnr)
         local opts = {silent = true, buffer = bufnr}
         -- vim.keymap.set("n", "<leader>js", StartJavaServer)
