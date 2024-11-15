@@ -1,7 +1,12 @@
-local ls = require ("luasnip")
+local ls = require("luasnip")
+local extra = require("luasnip.extras")
 local s = ls.snippet
+local sn = ls.snippet_node
 local t = ls.text_node
+local c = ls.choice_node
 local i = ls.insert_node
+local r = ls.restore_node
+local rep = extra.rep
 
 vim.keymap.set({"i", "s"}, "<A-k>", function()
     if ls.expand_or_jumpable() then
@@ -36,6 +41,12 @@ ls.add_snippets("cpp", {
             '\treturn 0;',
             '}',
         }),
+    }),
+    s("ifndef", {
+        t({'#ifndef '}), i(1, "MACRO"),
+        t({'', '#define '}), rep(1), t({'', ''}),
+        i(2),
+        t({'', '#endif'})
     }),
     s("func", {
         i(1, "type"), t(" "), i(2, "name"), t("("), i(3), t({") {", "\t"}),

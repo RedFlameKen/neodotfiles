@@ -108,4 +108,11 @@ cmp.setup({
     },
 })
 
+vim.api.nvim_create_autocmd("LspAttach", {
+    desc = "LSP keybinds",
+    callback = function()
+        vim.keymap.set("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>")
+    end
+})
+
 lsp.setup()

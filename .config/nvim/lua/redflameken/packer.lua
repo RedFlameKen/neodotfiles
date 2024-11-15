@@ -60,4 +60,5 @@ return require('packer').startup(function(use)
         }
     }
     use 'lervag/vimtex'
+    use 'andweeb/presence.nvim'
 end)
