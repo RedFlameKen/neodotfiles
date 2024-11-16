@@ -25,6 +25,7 @@ local function getLangIcon(lang)
     end
     return ""
 end
+
 local function gitBranch()
     local gitDir = vim.fn.finddir('.git', vim.fn.getcwd() .. ";")
     if gitDir == "" then
@@ -32,11 +33,12 @@ local function gitBranch()
     end
     local branch = vim.fn.system("git branch --show-current | tr -d '\n'")
     local diff = ""
-    if vim.fn.system("git diff") ~= "" then
+    if vim.fn.system("git status --porcelain") ~= "" then
         diff = "*"
     end
     return " 󰘬 " .. branch .. diff .. ' '
 end
+
 
 local function filename()
     local fpath = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h")

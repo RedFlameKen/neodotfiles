@@ -37,6 +37,7 @@ require('mason-lspconfig').setup({
                 settings = {
                     Lua = {
                         runtime = {
+                            -- version = 'LuaJIT',
                             version = 'Lua 5.4'
                         },
                         diagnostics = {
@@ -114,5 +115,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>")
     end
 })
+
 
 lsp.setup()
