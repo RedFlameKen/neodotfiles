@@ -31,6 +31,4 @@ vim.opt.lazyredraw = true
 
 vim.opt.hlsearch = true
 
-vim.opt.clipboard = 'unnamedplus'
-
 vim.g.have_nerd_font = true
