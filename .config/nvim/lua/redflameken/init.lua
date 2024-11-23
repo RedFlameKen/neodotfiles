@@ -2,6 +2,7 @@ require("redflameken.packer")
 require("redflameken.statusline")
 require("redflameken.remap")
 require("redflameken.git")
+require("redflameken.autocommand")
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -27,3 +28,9 @@ vim.opt.cursorline = true
 
 vim.opt.updatetime = 60
 vim.opt.lazyredraw = true
+
+vim.opt.hlsearch = true
+
+vim.opt.clipboard = 'unnamedplus'
+
+vim.g.have_nerd_font = true

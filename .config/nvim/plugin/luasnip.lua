@@ -21,7 +21,9 @@ vim.keymap.set({"i", "s"}, "<A-j>", function()
     end
 end, {silent = true}
 )
+
 vim.keymap.set({"i", "s"}, "<A-l>", function() ls.expand() end, {silent = true})
+
 ls.add_snippets("cpp", {
     s("cmain", {
         t({
@@ -79,3 +81,69 @@ ls.add_snippets("lua", {
         t('")'),
     })
 })
+
+ls.add_snippets("java", {
+
+    s("promptInt", {
+        t({
+            'public static int promptInt(String prompt){',
+            '\tint out = 0;',
+            '\twhile(true){',
+            '\t\ttry {',
+            '\t\t\tScanner sc = new Scanner(System.in);',
+            '\t\t\tSystem.out.print(prompt);',
+            '\t\t\tout = sc.nextInt();',
+            '\t\t\tbreak;',
+            '\t\t} catch (InputMismatchException e){',
+            '\t\t\tSystem.out.println("Numeric inputs only, Try Again!");',
+            '\t\t} catch (Exception e){',
+            '\t\t\tSystem.out.println(e.getMessage());',
+            '\t\t}',
+            '\t}',
+            '\treturn out;',
+            '}',
+        }),
+    }),
+
+    s("promptDouble", {
+        t({
+            'private double promptDouble(String prompt){',
+            '\tdouble out = 0;',
+            '\twhile(true){',
+            '\t\ttry {',
+            '\t\t\tScanner sc = new Scanner(System.in);',
+            '\t\t\tSystem.out.print(prompt);',
+            '\t\t\tout = sc.nextDouble();',
+            '\t\t\tbreak;',
+            '\t\t} catch (InputMismatchException e){',
+            '\t\t\tSystem.out.println("Numeric inputs only, Try Again!");',
+            '\t\t} catch (Exception e){',
+            '\t\t\tSystem.out.println(e.getMessage());',
+            '\t\t}',
+            '\t}',
+            '\treturn out;',
+            '}',
+        }),
+    }),
+
+    s("promptString", {
+        t({
+            'public static String promptString(String prompt){',
+            '\tString out = "";',
+            '\twhile(true){',
+            '\t\ttry {',
+            '\t\t\tScanner sc = new Scanner(System.in);',
+            '\t\t\tSystem.out.print(prompt);',
+            '\t\t\tout = sc.nextLine();',
+            '\t\t\tbreak;',
+            '\t\t} catch (Exception e){',
+            '\t\t\tSystem.out.println(e.getMessage());',
+            '\t\t}',
+            '\t}',
+            '\treturn out;',
+            '}',
+        }),
+    }),
+
+})
+

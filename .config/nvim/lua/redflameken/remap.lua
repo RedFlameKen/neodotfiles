@@ -1,11 +1,10 @@
 vim.g.mapleader = " "
 
+vim.keymap.set("n", "<Esc>", "<CMD>nohlsearch<CR>")
 vim.keymap.set("n", "<M-h>", "<C-w>h", {silent = true});
 vim.keymap.set("n", "<M-j>", "<C-w>j", {silent = true});
 vim.keymap.set("n", "<M-k>", "<C-w>k", {silent = true});
 vim.keymap.set("n", "<M-l>", "<C-w>l", {silent = true});
-
-vim.keymap.set({ "n", "v" }, "y", "\"+y")
 
 vim.keymap.set("i", "<C-BS>", "<C-w>", {noremap = true, silent = true})
 
@@ -39,7 +38,6 @@ vim.keymap.set("n", "<leader>en", function()
     if Cancelled(filename) then
         return
     end
-    filename = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h") .. filename;
-    os.execute("touch " .. filename);
-    vim.cmd("e filename")
+    filename = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h") .. "/" .. filename;
+    vim.cmd("e " .. filename)
 end)

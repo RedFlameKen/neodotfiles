@@ -113,6 +113,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     desc = "LSP keybinds",
     callback = function()
         vim.keymap.set("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>")
+        vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references);
     end
 })
 
