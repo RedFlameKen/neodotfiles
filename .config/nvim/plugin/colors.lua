@@ -1,9 +1,13 @@
-function ColorMyPencils(color)
-    color = color or "srcery"
+function ColorMyPencils(color, transparent)
+    color = color or "gruvbox"
+    transparent = transparent or "true"
+
     vim.cmd.colorscheme(color)
 
-    vim.api.nvim_set_hl(0, "Normal",  { bg = "none"})
-    vim.api.nvim_set_hl(0, "NormalFloat",  { bg = "none"})
+    if transparent == "true" or transparent ~= "false" then
+        vim.api.nvim_set_hl(0, "Normal",  { bg = "none"})
+        vim.api.nvim_set_hl(0, "NormalFloat",  { bg = "none"})
+    end
 
     vim.api.nvim_set_hl(0, "StatusLineDef",             {fg = "#FCE8C3", bg = "#1C1B19",    ctermfg = 7,   ctermbg = 8,  })
     vim.api.nvim_set_hl(0, "ModeNormal",                {fg = "#1C1B19", bg = "#519F50",    ctermfg = 8,   ctermbg = 2,  bold = true})
@@ -44,7 +48,7 @@ vim.api.nvim_create_user_command("CLC", function()
 end,{})
 
 vim.api.nvim_create_user_command("ColorMyPencils", function(args)
-    ColorMyPencils(args['args'])
-end, {nargs='*'})
+    ColorMyPencils(args.fargs[1], args.fargs[2])
+end, {nargs="*"})
 
 ColorMyPencils()
