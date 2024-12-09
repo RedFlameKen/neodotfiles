@@ -16,25 +16,48 @@
 )
 
 (defalias
-    caps (tap-next ` (implicit-around lctl X))
+    caps ` 
+    charsL (layer-toggle chars)
+    navL (layer-toggle nav)
+    mediaL (layer-toggle media)
 )
 
 (deflayer base
     @caps   _   _   _   _   _   _   _   _   _   _   _   _   _       prnt
     _       _   _   _   _   _   _   _   _   _   _   _   _   _       _
     esc     _   _   _   _   _   _   _   _   _   _   _   _           home
-    _       _   _   _   _   _   _   _   _   _   _   _           _   end
-    _       _       _           _           _   _       _       _   _
+    _       _   _   _   _   _   _   _   _   _   _   @mediaL     _   end
+    _       _       _           _           @charsL @charsL _   _   _
 
     _   _ pgup    pgdn
 )
 
-;;(deflayer chars
-;;    @esc    §   _   _   _   _   _   _   _   _   _   _   _   _       prnt
-;;    _       _   _   _   _   _   _   _   _   _   _   _   _   _       _
-;;    esc     _   _   _   _   _   _   _   _   _   _   _   _           home
-;;    _       _   _   _   _   _   _   _   _   _   _   _           _   end
-;;    _       _       _           _           _   _       _       _   _
-;;
-;;    @charlayer _   pgup    pgdn
-;;)
+(deflayer chars
+    caps    _   _   _   _   _   _   _   _   _   _   _   _   _       prnt
+    _       !   @   #   $   %   ^   &   *   \(   \)   \\  _   _       _
+    esc     1   2   3   4   5   -   =   `   [   ]   |   _           home
+    _       6   7   8   9   0   \_  +   ~   {   }   _           _   end
+    _       _       _           _           _   _       _       _   _
+
+    _   _   pgup    pgdn
+)
+
+(deflayer nav
+    @caps   _   _   _   _   _   _   _   _   _       _   _   _   _       prnt
+    _       _   _   _   _   _   _   _   _   _       _   _   _   _       _
+    esc     _   _   _   _   _   lft down up rght    _   _   _           home
+    _       _   _   _   _   _   _   _   _   _       _   _           _   end
+    _       _       _           _           _       _       _       _   _
+
+    _   _ pgup    pgdn
+)
+
+(deflayer media
+    @caps   _       _       _       _       _   _   _   _   _   _   _   _   _       prnt
+    _       f1      f2      f3      f4      f5  f6  f7  f8  f9  f10 f11 _   _       _
+    esc     prev    next    vold    volu    playpause  lft down up rght _   f12 _           home
+    _       brdn    bru     _       mute    _   _   _   _   _   _   _           _   end
+    _       _       _               _               _   _       _       _   _
+
+    _   _ pgup    pgdn
+)
