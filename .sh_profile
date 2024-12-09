@@ -7,3 +7,4 @@ export PATH="$HOME/.local/bin:$PATH"
 export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.sh_history
+export MANPAGER="nvim +Man!"

@@ -1,14 +1,11 @@
-#font_family      monospace
-#bold_font        auto
-#italic_font      auto
-#bold_italic_font auto
+# font_family FiraCode Nerd Font Reg
+font_family JetBrainsMono NF Regular
 
-font_family "FiraCode Nerd Font Propo"
-bold_font auto
-italic_font auto
-bold_italic auto
+# font_family JetBrainsMono Nerd Font Propo
+bold_font JetBrainsMono NF Bold
+italic_font JetBrainsMono NF Italic
 
-font_size 11.0
+font_size 12.0
 
 force_ltr no
 
@@ -18,13 +15,13 @@ adjust_column_width 0
 
 adjust_baseline 0
 
-disable_ligatures never
+disable_ligatures always
 
 # font_features none
 
 box_drawing_scale 0.001, 1, 1.5, 2
-# cursor #cccccc
-# cursor_text_color #111111
+# cursor #fbb829
+# cursor_text_color background
 
 
 cursor_shape block
@@ -185,7 +182,6 @@ resize_debounce_time 0.1
 
 resize_draw_strategy static
 
-
 resize_in_steps no
 
 
@@ -235,12 +231,14 @@ active_tab_font_style   bold-italic
 # inactive_tab_background #999
 inactive_tab_font_style normal
 # tab_bar_background none
-# foreground #dddddd
-# background #030D25
+# foreground #fce8c3
+# background #1c1b19
 # background #2E3436
 
 
-background_opacity 0.9
+# background_opacity 0
+background_opacity 0.85
+# background_opacity 1
 
 
 background_image none
@@ -259,44 +257,44 @@ background_tint 0.0
 
 
 dim_opacity 0.75
-# selection_foreground #000000
-# selection_background #fffacd
+# selection_foreground #1c1b19
+# selection_background #fce8c3
 
 preview_images true
 preview_images_method kitty
 
 
-# black
-# color0 #000000
-# color8 #767676
+#: black
+# color0 #1c1b19
+# color8 #918175
 
-# red
-# color1 #cc0403
-# color9 #f2201f
+#: red
+# color1 #ef2f27
+# color9 #f75341
 
-# green
-# color2  #19cb00
-# color10 #23fd00
+#: green
+# color2  #519f50
+# color10 #98bc37
 
-# yellow
-# color3  #cecb00
-# color11 #fffd00
+#: yellow
+# color3  #fbb829
+# color11 #fed06e
 
-# blue
-# color4  #0d73cc
-# color12 #1a8fff
+#: blue
+# color4  #2c78bf
+# color12 #68a8e4
 
-# magenta
-# color5  #cb1ed1
-# color13 #fd28ff
+#: magenta
+# color5  #e02c6d
+# color13 #ff5c8f
 
-# cyan
-# color6  #0dcdcd
-# color14 #14ffff
+#: cyan
+# color6  #0aaeb3
+# color14 #2be4d0
 
-# white
-# color7  #dddddd
-# color15 #ffffff
+#: white
+# color7  #baa67f
+# color15 #fce8c3
 # mark1_foreground black
 # mark1_background #98d3cb
 # mark2_foreground black
@@ -368,12 +366,15 @@ linux_display_server auto
 kitty_mod ctrl+shift
 
 
-clear_all_shortcuts no
+clear_all_shortcuts yes
 
 
 # kitten_alias hints hints --hints-offset=0
 
-
+map ctrl+h pass
+map ctrl+j pass
+map ctrl+k pass
+map ctrl+l pass
 
 map kitty_mod+c copy_to_clipboard
 
@@ -382,7 +383,7 @@ map kitty_mod+v paste_from_clipboard
 map kitty_mod+s paste_from_selection
 map kitty_mod+o pass_selection_to_program
 
-# map ctrl+backspace send_text all \x17
+map ctrl+backspace send_text all \x17
 
 
 
@@ -456,7 +457,6 @@ map kitty_mod+p>y kitten hints --type hyperlink
 
 
 
-
 map kitty_mod+f11    toggle_fullscreen
 map kitty_mod+f10    toggle_maximized
 map kitty_mod+u      kitten unicode_input
@@ -476,6 +476,6 @@ map kitty_mod+f6 debug_config
 
 
 # BEGIN_KITTY_THEME
-# Everforest Dark Hard
+# Gruvbox Dark
 include current-theme.conf
 # END_KITTY_THEME
