@@ -1,0 +1,33 @@
+#!/bin/bash
+
+start=1
+last=1
+
+get_sed(){
+    printf "%sp" $1
+}
+
+get_lipsum(){
+    echo "$(curl https://lipsum.com/feed/json | jq -r '.feed.lipsum')"
+}
+
+by_number(){
+    echo "$(get_lipsum | sed -n "$(get_sed $1)")"
+}
+
+while getopts "sen" option; do
+	case $option in
+		s)
+            start=$1
+			;;
+		e)
+            last=$1
+			;;
+		n)
+            echo "$(by_number $2)"
+			;;
+		*)
+			exit 1
+			;;
+	esac
+done

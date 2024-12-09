@@ -8,3 +8,4 @@ export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.sh_history
 export XDG_CONFIG_HOME=~/.config
+export MANPAGER="nvim +Man!"

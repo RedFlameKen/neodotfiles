@@ -1,32 +1,9 @@
 #!/bin/bash
 
 fdCommand="fd --base-directory=$HOME --hidden --follow --exclude={.metadata,.git,.settings,.classpath,.project,*.class}"
-paths="
---search-path .
---search-path projects/Netbeans/NetbeansProjects
---search-path projects 
---search-path personal
---search-path school 
---search-path .config
---search-path .dotfiles/.config
---search-path .dotfiles
---search-path git
---search-path git/redflameken
---search-path git/school
---search-path docs/notes
---search-path school/notes
---search-path docs
-"
 
-vimpaths="
---search-path projects 
---search-path school 
---search-path docs/notes
---search-path school/notes
---search-path git/redflameken
---search-path git/school
---search-path .dotfiles/
-"
+paths=$(cat ~/.config/tmuxfuzpaths | sed 's/^/--search-path /')
+vimpaths=$(cat ~/.config/tmuxfuzvimpaths | sed 's/^/--search-path /')
 
 if [ $# -gt 0 ]; then
     case "$1" in

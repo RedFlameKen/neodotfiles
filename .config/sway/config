@@ -55,13 +55,14 @@ exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLA
 set $gnome-schema org.gnome.desktop.interface
 
 exec export QT_QPA_PLATFORM=wayland
+exec export WINEPREFIX="~/wine/kennethWine"
 exec gsettings set $gnome-schema gtk-theme 'Nordic-bluish-accent'
 exec gsettings set $gnome-schema icon-theme 'Papirus'
 exec gsettings set $gnome-schema cursor-theme 'Dracula-cursors'
 
 # exec_always
 exec_always --no-startup-id ~/.scripts/runProgs.sh
-exec_always --no-startup-id ~/.scripts/swayWallpaper.sh num 15 &
+exec_always --no-startup-id ~/.scripts/swayWallpaper.sh cur &
 exec_always --no-startup-id autotiling
 
 
@@ -92,7 +93,7 @@ bindsym $mod+Print exec ~/.local/bin/screenshot -s
 bindsym $mod+Shift+Print exec ~/.local/bin/screenshot -rs
 
 # ThinkVantage Button, could be anything lol
-bindsym XF86Launch1 exec kitty
+bindsym XF86Launch1 workspace $ws1; exec firefox; workspace $ws2; exec kitty; exec vesktop
 
 # msc keybinds
 
@@ -112,9 +113,9 @@ bindsym $mod+Shift+w exec firefox --private-window
 bindsym $mod+e exec --no-startup-id thunar
 
 # start rofi(a program launcher)
-bindsym $mod+d exec --no-startup-id ~/.local/bin/rofi-runner
+bindsym $mod+r exec --no-startup-id ~/.local/bin/rofi-runner
 
-bindsym $mod+g exec --no-startup-id glava 
+# bindsym $mod+g exec --no-startup-id glava 
 
 bindsym $mod+i exec --no-startup-id dunstctl close
 bindsym $mod+Shift+i exec --no-startup-id dunstctl close-all
@@ -153,11 +154,11 @@ bindsym $mod+Shift+Right move right
 # bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
-bindsym $mod+Shift+v split h
+# bindsym $mod+v split v
+# bindsym $mod+Shift+v split h
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+v fullscreen toggle
 
 bindsym $mod+Alt+space sticky toggle
 
@@ -173,10 +174,10 @@ bindsym $mod+space floating toggle
 bindsym $mod+Shift+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+Shift+a focus child
+# bindsym $mod+Shift+a focus child
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -189,7 +190,14 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 
-bindsym $mod+z workspace back_and_forth
+bindsym $mod+d workspace $ws1
+bindsym $mod+f workspace $ws2
+bindsym $mod+s workspace $ws3
+bindsym $mod+a workspace $ws4
+bindsym $mod+g workspace $ws5
+bindsym $mod+t workspace $ws6
+
+# bindsym $mod+z workspace back_and_forth
 
 bindsym $mod+n workspace next
 bindsym $mod+p workspace prev
@@ -204,6 +212,13 @@ bindsym $mod+Shift+6 move container to workspace number $ws6; workspace number $
 bindsym $mod+Shift+7 move container to workspace number $ws7; workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8; workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9; workspace number $ws9
+
+bindsym $mod+Shift+d move container to workspace number $ws1; workspace number $ws1
+bindsym $mod+Shift+f move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+Shift+s move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+Shift+a move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+Shift+g move container to workspace number $ws5; workspace number $ws5
+bindsym $mod+Shift+t move container to workspace number $ws6; workspace number $ws6
 
 # move focused container to workspace
 bindsym $mod+Control+Shift+1 move container to workspace number $ws1
@@ -255,7 +270,7 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+# bindsym $mod+r mode "resize"
 bindsym Control+$mod+h resize shrink width 10 px or 10 ppt
 bindsym Control+$mod+j resize grow height 10 px or 10 ppt
 bindsym Control+$mod+k resize shrink height 10 px or 10 ppt
@@ -267,9 +282,9 @@ bindsym Control+$mod+Up resize shrink height 10 px or 10 ppt
 bindsym Control+$mod+Right resize grow width 10 px or 10 ppt
 
 
-bindsym $mod+Shift+s move scratchpad
+bindsym $mod+Shift+z move scratchpad
 
-bindsym $mod+s scratchpad show
+bindsym $mod+z scratchpad show
 
 # bar settings
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh -r
