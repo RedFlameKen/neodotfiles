@@ -38,6 +38,7 @@ dap.configurations.cpp = {
     stopOnEntry = false,
   },
 }
+dap.configurations.c = dap.configurations.cpp
 
 dapui.setup();
 

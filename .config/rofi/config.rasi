@@ -1,8 +1,8 @@
 configuration {
     show-icons: true;
-    display-drun: "";
-    display-window: "󰧨";
-    display-windowcd: "";
+    display-drun: " ";
+    display-window: "󰧨 ";
+    display-windowcd: " ";
     font: "JetBrainsMono Nerd Font 11";
 
     //These are the keybinds

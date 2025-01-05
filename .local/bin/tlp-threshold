@@ -1,0 +1,20 @@
+#!/bin/bash
+
+reload(){
+    sudo systemctl reload tlp
+}
+
+raise(){
+    sed -i ~/.dotfiles/etc/tlp.conf -e "s/^\(STOP_CHARGE_THRESH_BAT.=\).*/\196/"
+    reload
+}
+
+lower(){
+    sed -i ~/.dotfiles/etc/tlp.conf -e "s/^\(STOP_CHARGE_THRESH_BAT.=\).*/\180/"
+    reload
+}
+
+[ "$1" = "raise" ] && raise && exit
+[ "$1" = "lower" ] && lower && exit
+
+printf "usage:\n\ttlp-threshold raise|lower\n"

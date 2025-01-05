@@ -1,6 +1,9 @@
+output '*' color_profile icc /usr/share/color/icc/colord/Gamma6500K.icc
+
 output LVDS-1 mode 1366x768 pos 0 0
 output HDMI-A-1 resolution 1280x720 pos 1366 0 subpixel vrgb
 output VGA-1 mode 1280x1024 pos 0 -1024 
+
 
 bindswitch lid:on output VGA-1 disable
 bindswitch lid:off output VGA-1 enable
@@ -281,13 +284,11 @@ bindsym Control+$mod+Down resize grow height 10 px or 10 ppt
 bindsym Control+$mod+Up resize shrink height 10 px or 10 ppt
 bindsym Control+$mod+Right resize grow width 10 px or 10 ppt
 
-
 bindsym $mod+Shift+z move scratchpad
 
 bindsym $mod+z scratchpad show
 
 # bar settings
-# exec_always --no-startup-id $HOME/.config/polybar/launch.sh -r
 # bindsym $mod+i exec --no-startup-id ~/.config/eww/scripts/launch.sh
 
 bar {
@@ -305,7 +306,7 @@ bar {
     pulsectl.autostart="true" pulsectl.percent_change=8 pulsectl.limit=150 \ 
     workspace_min_width 30
     colors {
-        background #1C1B19DD
+        background #1C1B19
         focused_workspace #8A8A8A #519F50 #FCE8C3
         active_workspace #8A8A8A #0AAEB3 #1C1B19
         inactive_workspace #8A8A8A #1C1B19 #FCE8C3
@@ -322,7 +323,7 @@ input "type:touchpad" {
     dwt enabled
     tap enabled
     middle_emulation enabled
-    natural_scroll enabled
+    natural_scroll disabled
 }
 
 # gap settings
