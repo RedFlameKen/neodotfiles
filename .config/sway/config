@@ -1,14 +1,15 @@
 output '*' color_profile icc /usr/share/color/icc/colord/Gamma6500K.icc
 
-output LVDS-1 mode 1366x768 pos 0 0
-output HDMI-A-1 resolution 1280x720 pos 1366 0 subpixel vrgb
-output VGA-1 mode 1280x1024 pos 0 -1024 
+output LVDS-1 mode 1366x768 pos 0 1025
+output HDMI-A-1 resolution 1280x720 pos 1366 1025
+# output HDMI-A-1 resolution 1920x1080 pos 1366 1025
+# output VGA-1 mode 1680x1050 pos -1680 1025
+output VGA-1 mode 1280x1024 pos 0 0
 
-
-bindswitch lid:on output VGA-1 disable
-bindswitch lid:off output VGA-1 enable
-# bindswitch lid:on output mDP-1 disable
-# bindswitch lid:off output mDP-1 enable
+bindswitch lid:on output VGA-1 disable, HDMI-A-1 disable
+bindswitch lid:off output VGA-1 enable, HDMI-A-1 enable
+# bindswitch lid:on output HDMI-A-1 disable
+# bindswitch lid:off output HDMI-A-1 enable
 
 set $mod Mod4
 set $alt Mod1
@@ -26,20 +27,21 @@ set $ws3 3
 set $ws4 4
 set $ws5 5
 set $ws6 6
-set $ws7 7󱁤
+set $ws7 7
 set $ws8 8󱁤
 set $ws9 9󱁤
 
-workspace $ws1 output LVDS-1
+# workspace $ws1 output LVDS-1
 # workspace $ws2 output VGA-1
 workspace $ws5 output LVDS-1
-workspace $ws6 output VGA-1
+workspace $ws7 output VGA-1
 
 assign [class="Discord"] $ws5
 assign [class="WebCord"] $ws5
 assign [class="vesktop"] $ws5
 assign [class="krita"] $ws4
 assign [app_id="com.obsproject.Studio"] $ws6
+assign [class="Spotify"] $ws7
 assign [class="Minecraft.*"] $ws4
 
 # startup settings
@@ -96,7 +98,7 @@ bindsym $mod+Print exec ~/.local/bin/screenshot -s
 bindsym $mod+Shift+Print exec ~/.local/bin/screenshot -rs
 
 # ThinkVantage Button, could be anything lol
-bindsym XF86Launch1 workspace $ws1; exec firefox; workspace $ws2; exec kitty; exec vesktop
+bindsym XF86Launch1 workspace $ws1; exec firefox; workspace $ws2; exec kitty; workspace $ws3; exec --no-startup-id bash -c ~/.scripts/netbeans.sh
 
 # msc keybinds
 
@@ -153,6 +155,18 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# move window to a different output/monitor
+bindsym $mod+Shift+Control+h move workspace to output left
+bindsym $mod+Shift+Control+j move workspace to output down
+bindsym $mod+Shift+Control+k move workspace to output up
+bindsym $mod+Shift+Control+l move workspace to output right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Control+Left move workspace to output left
+bindsym $mod+Shift+Control+Down move workspace to output down
+bindsym $mod+Shift+Control+Up move workspace to output up
+bindsym $mod+Shift+Control+Right move workspace to output right
+
 # split in horizontal orientation
 # bindsym $mod+h split h
 
@@ -199,6 +213,7 @@ bindsym $mod+s workspace $ws3
 bindsym $mod+a workspace $ws4
 bindsym $mod+g workspace $ws5
 bindsym $mod+t workspace $ws6
+bindsym $mod+b workspace $ws7
 
 # bindsym $mod+z workspace back_and_forth
 
@@ -222,6 +237,7 @@ bindsym $mod+Shift+s move container to workspace number $ws3; workspace number $
 bindsym $mod+Shift+a move container to workspace number $ws4; workspace number $ws4
 bindsym $mod+Shift+g move container to workspace number $ws5; workspace number $ws5
 bindsym $mod+Shift+t move container to workspace number $ws6; workspace number $ws6
+bindsym $mod+Shift+b move container to workspace number $ws7; workspace number $ws7
 
 # move focused container to workspace
 bindsym $mod+Control+Shift+1 move container to workspace number $ws1
@@ -233,6 +249,14 @@ bindsym $mod+Control+Shift+6 move container to workspace number $ws6
 bindsym $mod+Control+Shift+7 move container to workspace number $ws7
 bindsym $mod+Control+Shift+8 move container to workspace number $ws8
 bindsym $mod+Control+Shift+9 move container to workspace number $ws9
+
+bindsym $mod+Control+Shift+d move container to workspace number $ws1
+bindsym $mod+Control+Shift+f move container to workspace number $ws2
+bindsym $mod+Control+Shift+s move container to workspace number $ws3
+bindsym $mod+Control+Shift+a move container to workspace number $ws4
+bindsym $mod+Control+Shift+g move container to workspace number $ws5
+bindsym $mod+Control+Shift+t move container to workspace number $ws6
+bindsym $mod+Control+Shift+b move container to workspace number $ws7
 
 bindsym $mod+Shift+r reload
 # bindsym $mod+Shift+r restart

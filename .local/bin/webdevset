@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ ! -d src ]; then
+    mkdir src
+    mkdir src/styles
+    mkdir src/scripts
+    printf "Created Source Directories\n"
+fi
+
+if [ ! -d res ]; then
+    mkdir res
+    printf "Created Resource Directory\n"
+fi
+
+if [ ! -f eslint.config.js ]; then
+    touch eslint.config.js
+    printf "Created ESLint Config File!\n"
+fi
+
+
+if [ ! -f .htmlhintrc ]; then
+    cat ~/.dotfiles/.config/htmlhint/htmlhintrc > .htmlhintrc
+    printf "Create HTMLHint Config File!\n"
+fi
+

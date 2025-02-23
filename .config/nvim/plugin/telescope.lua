@@ -18,3 +18,18 @@ vim.keymap.set("n", "<leader>etd", function()
 end)
 
 vim.keymap.set("n", "<leader>eh", builtin.help_tags)
+
+-- require('telescope').setup({
+--     extensions = {
+--         ['ui-select'] = {
+--             require('telescope.themes').get_dropdown{
+--                 layout_strategy = "vertical",
+--                 layout_config = {
+--                     width = 0.5,
+--                     prompt_position = "top"
+--                 }
+--             }
+--         }
+--     }
+-- })
+-- require'telescope'.load_extension('ui-select')

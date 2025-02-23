@@ -44,6 +44,9 @@ alias kys="shutdown now"
 alias :q="exit"
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+alias wifiscan="nmcli device wifi rescan; nmcli device wifi list"
+alias wificon="nmcli device wifi connect"
+
 alias downgrade='sudo pacman -U "/var/cache/pacman/pkg/$(ls /var/cache/pacman/pkg | fzf)"'
 # Monitor
 alias vga-connect="xrandr --output VGA-1 --mode '1280x1024' --auto --above LVDS-1"

@@ -2,6 +2,9 @@ local lsp = require('lsp-zero')
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+local html_lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
+html_lsp_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 lsp.set_sign_icons ({
     error = " ",
     warn = "",
@@ -28,6 +31,21 @@ require('mason-lspconfig').setup({
         -- end,
         clangd = function()
             require('lspconfig').clangd.setup({
+                capabilities = lsp_capabilities,
+            })
+        end,
+        html = function()
+            require('lspconfig').html.setup({
+                capabilities = html_lsp_capabilities,
+            })
+        end,
+        eslint = function()
+            require('lspconfig').eslint.setup({
+                capabilities = lsp_capabilities,
+            })
+        end,
+        cssls = function()
+            require('lspconfig').cssls.setup({
                 capabilities = lsp_capabilities,
             })
         end,
@@ -100,6 +118,7 @@ cmp.setup({
         ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
         ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<C-l>'] = cmp.mapping.complete(),
     }),
     snippet = {

@@ -4,6 +4,8 @@ require("redflameken.remap")
 require("redflameken.git")
 require("redflameken.autocommand")
 
+ShowBranch = true
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -31,6 +33,10 @@ vim.opt.lazyredraw = true
 
 vim.opt.hlsearch = true
 
+vim.opt.colorcolumn = {80}
+
 vim.g.have_nerd_font = true
+
+vim.opt.undofile = true
 
 -- vim.g.c_syntax_for_h = 1

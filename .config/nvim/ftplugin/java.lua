@@ -63,6 +63,11 @@ local config = {
                     },
                 },
             },
+            -- project = {
+            --     referencedLibraries = {
+            --         home .. "/Documents/JavaDependencies/mysql-connector/mysql-connector-j-9.1.0.jar",
+            --     },
+            -- },
             import = {enabled = true},
             rename = {enabled = true},
         },
@@ -90,7 +95,7 @@ local config = {
     on_attach = function(client, bufnr)
         local opts = {silent = true, buffer = bufnr}
         -- vim.keymap.set("n", "<leader>js", StartJavaServer)
-        vim.keymap.set("n", "<leader>jc", ":lua require'jdtls'.compile({'full'})<CR>")
+        vim.keymap.set("n", "<leader>jc", ":lua require'jdtls'.compile({'incremental'})<CR>")
         vim.keymap.set("n", "<leader>ji", jdtls.organize_imports, { desc = 'Organize Imports', buffer = bufnr})
         vim.keymap.set("n", "<leader>jb", jdtls.build_projects, { desc = 'Build Projects', buffer = bufnr})
         vim.keymap.set('n', '<leader>jrv', jdtls.extract_variable_all, { desc = 'Extract variable', buffer = bufnr })

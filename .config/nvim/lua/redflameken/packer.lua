@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
 	  'nvim-telescope/telescope.nvim', tag = '0.1.6',
 	  requires = { {'nvim-lua/plenary.nvim'} }
 	}
+	use 'nvim-telescope/telescope-ui-select.nvim'
     use 'ellisonleao/gruvbox.nvim'
     use 'rose-pine/neovim'
 	use 'srcery-colors/srcery-vim'
@@ -58,6 +59,7 @@ return require('packer').startup(function(use)
             {"L3MON4D3/LuaSnip", run = "make install_jsregexp"},
 		}
 	}
+    use 'mfussenegger/nvim-lint'
     use 'mfussenegger/nvim-jdtls'
     use 'mfussenegger/nvim-dap'
     use {

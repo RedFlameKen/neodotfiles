@@ -1,5 +1,5 @@
 .
-projects/Netbeans/NetbeansProjects
+projects/Netbeans/
 projects 
 personal
 school 
@@ -10,9 +10,10 @@ git
 git/redflameken
 git/school
 docs/notes
-docs/test
-docs/test/cpp
-docs/test/java
+test
 docs
 school/notes
 school/discmath
+school/softeng
+school/webdev
+school/JavaProg

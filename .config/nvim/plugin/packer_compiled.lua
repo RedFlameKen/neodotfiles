@@ -164,6 +164,11 @@ _G.packer_plugins = {
     path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/nvim-jdtls",
     url = "https://github.com/mfussenegger/nvim-jdtls"
   },
+  ["nvim-lint"] = {
+    loaded = true,
+    path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/nvim-lint",
+    url = "https://github.com/mfussenegger/nvim-lint"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -208,6 +213,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/srcery-vim",
     url = "https://github.com/srcery-colors/srcery-vim"
+  },
+  ["telescope-ui-select.nvim"] = {
+    loaded = true,
+    path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",
+    url = "https://github.com/nvim-telescope/telescope-ui-select.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

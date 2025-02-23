@@ -26,7 +26,11 @@ local function getLangIcon(lang)
     return ""
 end
 
+
 local function gitBranch()
+    if not ShowBranch then
+        return ""
+    end
     local gitDir = vim.fn.finddir('.git', vim.fn.getcwd() .. ";")
     if gitDir == "" then
         return ""
@@ -41,9 +45,9 @@ end
 
 
 local function filename()
-    local fpath = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h")
-    local fname = vim.fn.expand("%:t")
-    return string.format("%%<%s/", fpath) .. fname .. " %m%r"
+    local fpath = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.")
+    -- local fname = vim.fn.expand("%:t")
+    return string.format("%%<%s", fpath) .. " %m%r"
 end
 
 
