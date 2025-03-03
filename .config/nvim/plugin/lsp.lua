@@ -113,6 +113,8 @@ cmp.setup({
         {name = 'cmp_luasnip'},
         {name = 'luasnip', keyword_length = 2},
         {name = 'buffer', keyword_length = 3},
+        {name = 'render-markdown' },
+        {name = 'nvim-lsp-signature-help' },
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),

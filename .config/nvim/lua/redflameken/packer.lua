@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
 			{'neovim/nvim-lspconfig'},
 			{'hrsh7th/nvim-cmp'},
 			{'hrsh7th/cmp-nvim-lsp'},
+			{'hrsh7th/cmp-nvim-lsp-signature-help'},
             {'saadparwaiz1/cmp_luasnip'},
             {"rafamadriz/friendly-snippets"},
             {"L3MON4D3/LuaSnip", run = "make install_jsregexp"},
@@ -72,4 +73,11 @@ return require('packer').startup(function(use)
     use 'lervag/vimtex'
     use 'kmonad/kmonad-vim'
     use 'andweeb/presence.nvim'
+
+    use({
+        'MeanderingProgrammer/render-markdown.nvim',
+        after = { 'nvim-treesitter' },
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+    })
+
 end)

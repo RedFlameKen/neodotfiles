@@ -3,8 +3,12 @@ output '*' color_profile icc /usr/share/color/icc/colord/Gamma6500K.icc
 output LVDS-1 mode 1366x768 pos 0 1025
 output HDMI-A-1 resolution 1280x720 pos 1366 1025
 # output HDMI-A-1 resolution 1920x1080 pos 1366 1025
-# output VGA-1 mode 1680x1050 pos -1680 1025
 output VGA-1 mode 1280x1024 pos 0 0
+
+# School setup
+# output VGA-1 mode 1680x1050 pos 0 0
+# output LVDS-1 mode 1366x768 pos 1681 0
+# output HDMI-A-1 resolution 1280x720 pos 1366 1025
 
 bindswitch lid:on output VGA-1 disable, HDMI-A-1 disable
 bindswitch lid:off output VGA-1 enable, HDMI-A-1 enable
@@ -98,7 +102,7 @@ bindsym $mod+Print exec ~/.local/bin/screenshot -s
 bindsym $mod+Shift+Print exec ~/.local/bin/screenshot -rs
 
 # ThinkVantage Button, could be anything lol
-bindsym XF86Launch1 workspace $ws1; exec firefox; workspace $ws2; exec kitty; workspace $ws3; exec --no-startup-id bash -c ~/.scripts/netbeans.sh
+bindsym XF86Launch1 workspace $ws1; exec librewolf; workspace $ws2; exec kitty; workspace $ws3; exec --no-startup-id bash -c ~/.scripts/netbeans.sh
 
 # msc keybinds
 
@@ -111,8 +115,8 @@ bindsym Control+Shift+F10 exec ~/.scripts/obs-cli-helper.sh stream
 bindsym $mod+q exec kitty
 
 # open browser
-bindsym $mod+w exec firefox
-bindsym $mod+Shift+w exec firefox --private-window
+bindsym $mod+w exec librewolf
+bindsym $mod+Shift+w exec librewolf --private-window
 
 # open file explorer gui
 bindsym $mod+e exec --no-startup-id thunar
