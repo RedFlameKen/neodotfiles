@@ -25,9 +25,14 @@ cur_mode(){
     set_wp $(cat ~/.local/state/curwp)
 }
 
+get_wallpaper_count(){
+    wp_count=$(find ~/.wallpapers/ -iname "*.jpg" -o -iname "*.png" | wc -l)
+    echo $wp_count
+}
+
 next_mode(){
     target_wp=$(($(cat ~/.local/state/curwp)+1))
-    if [ $target_wp -gt $(($(ls ~/.wallpapers | wc -l)-1)) ]; then
+    if [ $target_wp -gt $(($(get_wallpaper_count)-1)) ]; then
         target_wp=0
     fi
     set_wp $target_wp
@@ -36,13 +41,13 @@ next_mode(){
 prev_mode(){
     target_wp=$(($(cat ~/.local/state/curwp)-1))
     if [ $target_wp -lt 0 ]; then
-        target_wp=$(($(ls ~/.wallpapers | wc -l)-1))
+        target_wp=$(($(get_wallpaper_count)-1))
     fi
     set_wp $target_wp
 }
 
 rand_mode(){
-    wpCount=$(ls ~/.wallpapers | wc -l)
+    wpCount=$(($(get_wallpaper_count)))
     randomNumber=$(($RANDOM % $wpCount))
     while [ $randomNumber -eq $(cat ~/.local/state/curwp) ]; do
         randomNumber=$(($RANDOM % $wpCount))

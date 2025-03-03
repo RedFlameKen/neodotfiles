@@ -44,6 +44,11 @@ require('mason-lspconfig').setup({
                 capabilities = lsp_capabilities,
             })
         end,
+        bashls = function()
+            require('lspconfig').bashls.setup({
+                capabilities = lsp_capabilities,
+            })
+        end,
         cssls = function()
             require('lspconfig').cssls.setup({
                 capabilities = lsp_capabilities,
