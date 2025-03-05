@@ -37,10 +37,10 @@ set $ws9 9󱁤
 
 # workspace $ws1 output LVDS-1
 # workspace $ws2 output VGA-1
-workspace $ws5 output LVDS-1
+workspace $ws5 output VGA-1
 workspace $ws7 output VGA-1
 
-assign [class="Discord"] $ws5
+assign [class="discord"] $ws5
 assign [class="WebCord"] $ws5
 assign [class="vesktop"] $ws5
 assign [class="krita"] $ws4
@@ -113,6 +113,7 @@ bindsym Control+Shift+F10 exec ~/.scripts/obs-cli-helper.sh stream
 
 # open terminal
 bindsym $mod+q exec kitty
+bindsym $mod+Shift+q exec kitty --hold zsh -c tmux new
 
 # open browser
 bindsym $mod+w exec librewolf
