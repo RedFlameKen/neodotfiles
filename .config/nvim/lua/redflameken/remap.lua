@@ -22,12 +22,11 @@ vim.keymap.set("n", "<leader>cp", "<CMD>lua ColorMyPencils()<CR>")
 vim.keymap.set("n", "<leader>ch", "<CMD>ColorHighlight<CR>")
 vim.keymap.set("n", "<leader>cl", "<CMD>CLC<CR>")
 
-vim.keymap.set("n", "<leader>hh", "<CMD>cw<CR>")
-vim.keymap.set("n", "<leader>ho", "<CMD>copen<CR>")
-vim.keymap.set("n", "<leader>hc", "<CMD>ccl<CR>")
-vim.keymap.set("n", "<leader>hn", "<CMD>cn<CR>")
-vim.keymap.set("n", "<leader>hp", "<CMD>cp<CR>")
-vim.keymap.set("n", "<leader>hm", "<CMD>make -C build<CR>")
+vim.keymap.set("n", "<leader>lh", "<CMD>cw<CR>")
+vim.keymap.set("n", "<leader>lo", "<CMD>copen<CR>")
+vim.keymap.set("n", "<leader>lc", "<CMD>ccl<CR>")
+vim.keymap.set("n", "<leader>ln", "<CMD>cn<CR>")
+vim.keymap.set("n", "<leader>lp", "<CMD>cp<CR>")
 
 function Cancelled(input)
     if input == "" then
