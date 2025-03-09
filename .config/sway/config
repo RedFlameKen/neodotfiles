@@ -1,7 +1,7 @@
 output '*' color_profile icc /usr/share/color/icc/colord/Gamma6500K.icc
 
 output LVDS-1 mode 1366x768 pos 0 1025
-output HDMI-A-1 resolution 1280x720 pos 1366 1025
+# output HDMI-A-1 resolution 1280x720 pos 1366 1025
 # output HDMI-A-1 resolution 1920x1080 pos 1366 1025
 output VGA-1 mode 1280x1024 pos 0 0
 
@@ -18,7 +18,7 @@ bindswitch lid:off output VGA-1 enable, HDMI-A-1 enable
 set $mod Mod4
 set $alt Mod1
 
-font pango:FiraCode Nerd Font Propo 10
+font pango:JetBrainsMonoNL Nerd Font Propo 10
 
 set $refresh_swaystatus killall -SIGUSR1 i3status
 
@@ -321,7 +321,7 @@ bindsym $mod+z scratchpad show
 # bindsym $mod+i exec --no-startup-id ~/.config/eww/scripts/launch.sh
 
 bar {
-    font pango:FiraCode Nerd Font Propo 10
+    font pango:JetBrainsMonoNL Nerd Font Propo 10
     swaybar_command swaybar 
     strip_workspace_numbers yes
     position top
