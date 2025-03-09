@@ -9,11 +9,11 @@ vim.keymap.set("n", "<leader>es", function()
 end)
 
 vim.keymap.set("n", "<leader>ed", function()
-    builtin.grep_string({ search = "TODO" })
+    builtin.grep_string({ search = "TODO:" })
 end)
 
 vim.keymap.set("n", "<leader>etd", function()
-    vim.cmd("vimgrep TODO **")
+    vim.cmd("vimgrep TODO: **")
     vim.cmd("copen")
 end)
 
