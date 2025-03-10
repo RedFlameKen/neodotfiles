@@ -22,6 +22,11 @@ font pango:JetBrainsMonoNL Nerd Font Propo 10
 
 set $refresh_swaystatus killall -SIGUSR1 i3status
 
+# Program Variables
+set $browser librewolf
+set $term kitty
+set $file_explorer thunar
+
 # workspace names
 # set $ws1 "1 󰈹"
 # set $ws2 "2 "
@@ -57,7 +62,7 @@ floating_modifier $mod
 exec --no-startup-id dex --autostart --environment sway
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id xdg-mime default thunar.desktop inode/directory
+exec --no-startup-id xdg-mime default $file_explorer.desktop inode/directory
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
@@ -102,7 +107,7 @@ bindsym $mod+Print exec ~/.local/bin/screenshot -s
 bindsym $mod+Shift+Print exec ~/.local/bin/screenshot -rs
 
 # ThinkVantage Button, could be anything lol
-bindsym XF86Launch1 workspace $ws1; exec librewolf; workspace $ws2; exec kitty; workspace $ws3; exec --no-startup-id bash -c ~/.scripts/netbeans.sh
+bindsym XF86Launch1 workspace $ws1; exec $browser; workspace $ws2; exec $term; workspace $ws3; exec --no-startup-id bash -c ~/.scripts/netbeans.sh
 
 # msc keybinds
 
@@ -112,15 +117,15 @@ bindsym Control+Shift+F12 exec ~/.scripts/obs-cli-helper.sh record pause
 bindsym Control+Shift+F10 exec ~/.scripts/obs-cli-helper.sh stream
 
 # open terminal
-bindsym $mod+q exec kitty
-bindsym $mod+Shift+q exec kitty --hold zsh -c tmux new
+bindsym $mod+q exec $term
+bindsym $mod+Shift+q exec $term --hold zsh -c tmux new
 
 # open browser
-bindsym $mod+w exec librewolf
-bindsym $mod+Shift+w exec librewolf --private-window
+bindsym $mod+w exec $browser
+bindsym $mod+Shift+w exec $browser --private-window
 
 # open file explorer gui
-bindsym $mod+e exec --no-startup-id thunar
+bindsym $mod+e exec --no-startup-id $file_explorer
 
 # start rofi(a program launcher)
 bindsym $mod+r exec --no-startup-id ~/.local/bin/rofi-runner
