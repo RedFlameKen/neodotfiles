@@ -79,5 +79,13 @@ return require('packer').startup(function(use)
         after = { 'nvim-treesitter' },
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
     })
+    use {
+        "pmizio/typescript-tools.nvim",
+        requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        config = function()
+            require("typescript-tools").setup {}
+        end,
+    }
+    -- use 'typescript-language-server/typescript-language-server'
 
 end)

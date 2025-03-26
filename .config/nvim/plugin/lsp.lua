@@ -39,9 +39,16 @@ require('mason-lspconfig').setup({
                 capabilities = html_lsp_capabilities,
             })
         end,
-        eslint = function()
-            require('lspconfig').eslint.setup({
-                capabilities = lsp_capabilities,
+        ts_ls = function()
+            require('lspconfig').ts_ls.setup({
+                -- capabilities = lsp_capabilities,
+                -- cmd = { "typescript-language-server", "--stdio" },
+                -- filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+                -- root_dir = function(fname)
+                --     return util.root_pattern 'tsconfig.json'(fname)
+                --     or util.root_pattern('package.json', 'jsconfig.json', '.git')(fname)
+                -- end,
+
             })
         end,
         bashls = function()
@@ -114,8 +121,8 @@ cmp.setup({
     },
     sources = {
         {name = 'nvim_lsp_signature_help' },
-        {name = 'path'},
         {name = 'nvim_lsp'},
+        {name = 'path'},
         {name = 'cmp_luasnip'},
         {name = 'luasnip', keyword_length = 2},
         {name = 'buffer', keyword_length = 3},

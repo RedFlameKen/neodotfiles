@@ -16,7 +16,7 @@ local launcher_jar = home .. '/plugins/org.eclipse.equinox.launcher*.jar'
 
 local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
---
+
 local root_files = {
     '.classpath',
     '.project',

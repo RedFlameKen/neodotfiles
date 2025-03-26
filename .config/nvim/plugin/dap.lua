@@ -1,5 +1,6 @@
 local dap = require('dap')
 local dapui = require('dapui')
+local jdtls_dap = require('jdtls.dap');
 
 -- dap.adapters.gdb = {
 --   type = "executable",
@@ -34,11 +35,27 @@ dap.configurations.cpp = {
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
-    cwd = '${workspaceFolder}',
+    -- cwd = '${workspaceFolder}',
     stopOnEntry = false,
   },
 }
-dap.configurations.c = dap.configurations.cpp
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+
+dap.configurations.java = {
+  {
+    classPaths = {"lib/mysql-connector-j-9.1.0.jar:bin"},
+
+    -- If using multi-module projects, remove otherwise.
+    projectName = project_name,
+
+    javaExec = "java",
+    -- mainClass = "Main",
+
+    name = "Launch " .. project_name,
+    request = "launch",
+    type = "java"
+  },
+}
 
 dapui.setup();
 
