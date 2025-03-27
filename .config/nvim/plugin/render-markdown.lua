@@ -32,5 +32,4 @@ local callout = {
 
 rendermd.setup({
     callout = callout
-    -- callout = { note = { rendered = '󰅾 Notary' } },
 })

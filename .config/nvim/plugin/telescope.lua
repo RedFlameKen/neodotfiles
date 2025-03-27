@@ -19,6 +19,14 @@ end)
 
 vim.keymap.set("n", "<leader>eh", builtin.help_tags)
 
+vim.keymap.set("n", "<leader>nn", function()
+    builtin.find_files {cwd = "~/docs/notes/"}
+end)
+
+vim.keymap.set("n", "<leader>nt", function()
+    vim.cmd("e ~/docs/notes/todo.md")
+end)
+
 -- require('telescope').setup({
 --     extensions = {
 --         ['ui-select'] = {
