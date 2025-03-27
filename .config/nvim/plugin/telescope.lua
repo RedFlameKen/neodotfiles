@@ -17,14 +17,33 @@ vim.keymap.set("n", "<leader>etd", function()
     vim.cmd("copen")
 end)
 
+local cur_file = "";
+
+local function setCurFile()
+    cur_file = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.")
+end
+
 vim.keymap.set("n", "<leader>eh", builtin.help_tags)
 
 vim.keymap.set("n", "<leader>nn", function()
     builtin.find_files {cwd = "~/docs/notes/"}
 end)
 
+vim.keymap.set("n", "<leader>nb", function()
+    if cur_file ~= "" then
+        vim.cmd("e " .. cur_file)
+        cur_file = ""
+    end
+end)
+
 vim.keymap.set("n", "<leader>nt", function()
-    vim.cmd("e ~/docs/notes/todo.md")
+    if cur_file == "" then
+        setCurFile()
+        vim.cmd("e ~/docs/notes/todo.md")
+    else
+        vim.cmd("e " .. cur_file)
+        cur_file = ""
+    end
 end)
 
 -- require('telescope').setup({
