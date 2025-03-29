@@ -37,6 +37,7 @@ window#waybar{
 #tray,
 #temperature,
 #wireplumber,
+#pulseaudio,
 #custom-theme,
 #taskbar,
 #workspaces,
@@ -54,6 +55,7 @@ window#waybar{
 #tray,
 #temperature,
 #wireplumber,
+#pulseaudio,
 #workspaces,
 #mpris,
 #custom-theme,
@@ -134,3 +136,4 @@ window#waybar{
 #battery.discharging.normal {
     color: @foreground;
 }
+

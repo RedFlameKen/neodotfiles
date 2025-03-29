@@ -20,7 +20,7 @@
         "modules": [
             "custom/theme",
             "temperature",
-            "wireplumber",
+            "pulseaudio",
             "tray",
             "clock",
             "battery"
@@ -87,14 +87,19 @@
             "playing": ""
         },
     },
-    "wireplumber": {
-        "format": "{icon} {volume}%",
+    "pulseaudio": {
+        "format": "{format_source} {icon} {volume}%",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
         "format-muted": "󰝟 muted",
-        "format-icons": ["󰕿","󰖀", "󰕾"],
+        "format-icons": {
+            "default": ["󰕿","󰖀", "󰕾"]
+        },
         "on-click-right": "pavucontrol",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "scroll-step": 5,
-        "tooltip": false
+        "tooltip": true,
+        "tooltip-format": "{desc}"
     },
 
     "tray": {
