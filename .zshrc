@@ -16,16 +16,12 @@ fi
 
 setopt histignorealldups sharehistory PROMPT_SUBST
 
-function interupt_function {
-    stty intr '^C'
-}
-
 function tmux-fuz-sesh {
-    ~/.local/bin/tmux-fuzzy-session
+    zsh -c ~/.local/bin/tmux-fuzzy-session
 }
 
 function tmux-fuz-sesh-vim {
-    ~/.local/bin/tmux-fuzzy-session -v
+    zsh -c ~/.local/bin/tmux-fuzzy-session -v
 }
 
 zle -N tmux-fuz-sesh
@@ -42,13 +38,13 @@ bindkey '^[[3~' delete-char
 bindkey '^[[F' end-of-line
 bindkey '^[[4~' end-of-line
 
-bindkey '^F' tmux-fuz-sesh
-bindkey '^[^F' tmux-fuz-sesh-vim
+# bindkey '^F' tmux-fuz-sesh
+# bindkey '^[^F' tmux-fuz-sesh-vim
 
 bindkey -s '^A' 'tmux a\n'
 
-# bindkey -s '^F' '~/.local/bin/tmux-fuzzy-session\n'
-# bindkey -s '^[^F' '~/.local/bin/tmux-fuzzy-session -v\n'
+bindkey -s '^F' '~/.local/bin/tmux-fuzzy-session\n'
+bindkey -s '^[^F' '~/.local/bin/tmux-fuzzy-session -v\n'
 
 
 autoload -Uz bashcompinit
