@@ -105,6 +105,14 @@ ls.add_snippets("java", {
         }),
     }),
 
+    s("printf", {
+        t('System.out.printf("'), i(1), t('");')
+    }),
+
+    s("printfn", {
+        t('System.out.printf("'), i(1), t('\\n");')
+    }),
+
     s("promptDouble", {
         t({
             'private double promptDouble(String prompt){',

@@ -36,14 +36,13 @@ require('mason-lspconfig').setup({
         end,
         ts_ls = function()
             require('lspconfig').ts_ls.setup({
-                -- capabilities = lsp_capabilities,
+                capabilities = lsp_capabilities,
                 -- cmd = { "typescript-language-server", "--stdio" },
                 -- filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
                 -- root_dir = function(fname)
                 --     return util.root_pattern 'tsconfig.json'(fname)
                 --     or util.root_pattern('package.json', 'jsconfig.json', '.git')(fname)
                 -- end,
-
             })
         end,
         bashls = function()
@@ -135,6 +134,19 @@ cmp.setup({
             ls.lsp_expand(args.body)
         end,
     },
+})
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "Cmp",
+    callback = function ()
+        vim.opt_local.winborder = "none"
+        vim.api.nvim_create_autocmd("WinLeave", {
+            once = true,
+            callback = function ()
+                vim.opt_local.winborder = "rounded"
+            end
+        })
+    end
 })
 
 
