@@ -15,6 +15,18 @@ local function commit()
     ColorMyPencils()
 end
 
+local function commit_current_file()
+    local message = vim.fn.input("Message: ")
+    if Cancelled(message) then
+        return
+    end
+    os.execute("git add " .. vim.fn.fnamemodify(vim.fn.expand("%"), ":~:."))
+    os.execute('git commit -m \"' .. message .. '\"')
+    ColorMyPencils()
+end
+
+
+
 local function branch()
     local branchName = vim.fn.input{prompt = "Branch > ", completion = "history"}
     if Cancelled(branchName) then
@@ -39,7 +51,8 @@ local function push()
     ColorMyPencils()
 end
 
-vim.keymap.set("n", "<leader>gc", commit)
+vim.keymap.set("n", "<leader>gc", commit_current_file)
+vim.keymap.set("n", "<leader>gC", commit)
 vim.keymap.set("n", "<leader>gl", "<CMD>!git log --reflog<CR>")
 vim.keymap.set("n", "<leader>ge", checkout)
 vim.keymap.set("n", "<leader>gb", branch)
