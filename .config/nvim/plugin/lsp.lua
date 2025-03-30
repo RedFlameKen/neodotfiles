@@ -1,22 +1,17 @@
-local lsp = require('lsp-zero')
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local html_lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 html_lsp_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-lsp.set_sign_icons ({
-    error = " ",
-    warn = "",
-    hint = "",
-    info = "",
-})
 
 require("mason").setup({
 })
+
 require("mason-nvim-dap").setup({
     ensure_installed = { "codelldb" }
 })
+
 require('mason-lspconfig').setup({
     ensure_installed = {
         "jdtls",
@@ -142,13 +137,4 @@ cmp.setup({
     },
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-    desc = "LSP keybinds",
-    callback = function()
-        vim.keymap.set("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>")
-        vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references);
-    end
-})
 
-
-lsp.setup()
