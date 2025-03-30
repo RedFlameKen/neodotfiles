@@ -30,6 +30,12 @@ local callout = {
     cite = { raw = '[!CITE]', rendered = '󱆨 Cite', highlight = 'RenderMarkdownQuote' },
 }
 
+local link = {
+    custom = {
+        school = {pattern = "iacademy.*.com", icon="󰑴 "}
+    }
+}
 rendermd.setup({
-    callout = callout
+    callout = callout,
+    link = link
 })
