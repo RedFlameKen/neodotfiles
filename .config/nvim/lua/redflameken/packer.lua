@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
 	}
     use "freed-wu/tmux-language-server"
     use "junegunn/goyo.vim"
+    use "nvim-tree/nvim-tree.lua"
     use "stevearc/oil.nvim"
     use "chrisbra/colorizer"
 	use "nvim-lua/plenary.nvim"

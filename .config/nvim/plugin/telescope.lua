@@ -12,7 +12,7 @@ vim.keymap.set("n", "<leader>ed", function()
     builtin.grep_string({ search = "TODO:" })
 end)
 
-vim.keymap.set("n", "<leader>etd", function()
+vim.keymap.set("n", "<leader>eg", function()
     vim.cmd("vimgrep TODO: **")
     vim.cmd("copen")
 end)
