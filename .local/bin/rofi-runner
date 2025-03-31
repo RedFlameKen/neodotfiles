@@ -3,7 +3,7 @@
 rofi_process="$(pgrep rofi)"
 
 if [ ! $rofi_process == "" ]; then
-    rofi -show drun -modes "drun,window"
+    rofi -show drun -modes "drun,window,run"
 else
     killall rofi
 fi

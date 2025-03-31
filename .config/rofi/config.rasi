@@ -2,6 +2,7 @@ configuration {
     show-icons: true;
     display-drun: " ";
     display-window: "󰧨 ";
+    display-run: " ";
     display-windowcd: " ";
     font: "JetBrainsMono Nerd Font 11";
 
