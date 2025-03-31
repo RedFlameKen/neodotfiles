@@ -1,5 +1,5 @@
 
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local html_lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 html_lsp_capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -18,66 +18,6 @@ require('mason-lspconfig').setup({
         "clangd",
         "lua_ls",
     },
-    handlers = {
-        -- function(server_name)
-        --     require('lspconfig')[server_name].setup({
-        --         capabilities = lsp_capabilities,
-        --     })
-        -- end,
-        clangd = function()
-            require('lspconfig').clangd.setup({
-                capabilities = lsp_capabilities,
-            })
-        end,
-        html = function()
-            require('lspconfig').html.setup({
-                capabilities = html_lsp_capabilities,
-            })
-        end,
-        ts_ls = function()
-            require('lspconfig').ts_ls.setup({
-                capabilities = lsp_capabilities,
-                -- cmd = { "typescript-language-server", "--stdio" },
-                -- filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-                -- root_dir = function(fname)
-                --     return util.root_pattern 'tsconfig.json'(fname)
-                --     or util.root_pattern('package.json', 'jsconfig.json', '.git')(fname)
-                -- end,
-            })
-        end,
-        bashls = function()
-            require('lspconfig').bashls.setup({
-                capabilities = lsp_capabilities,
-            })
-        end,
-        cssls = function()
-            require('lspconfig').cssls.setup({
-                capabilities = lsp_capabilities,
-            })
-        end,
-        lua_ls = function()
-            require('lspconfig').lua_ls.setup({
-                capabilities = lsp_capabilities,
-                settings = {
-                    Lua = {
-                        runtime = {
-                            -- version = 'LuaJIT',
-                            version = 'Lua 5.4'
-                        },
-                        diagnostics = {
-                            globals = {'vim'},
-                        },
-                        workspace = {
-                            library = {
-                                vim.env.VIMRUNTIME,
-                            }
-                        }
-                    }
-                }
-            })
-        end,
-    }
-
 })
 
 local kind_icons = {
@@ -136,17 +76,17 @@ cmp.setup({
     },
 })
 
-vim.api.nvim_create_autocmd("User", {
-    pattern = "Cmp",
-    callback = function ()
-        vim.opt_local.winborder = "none"
-        vim.api.nvim_create_autocmd("WinLeave", {
-            once = true,
-            callback = function ()
-                vim.opt_local.winborder = "rounded"
-            end
-        })
-    end
-})
+-- vim.api.nvim_create_autocmd("User", {
+--     pattern = "Cmp",
+--     callback = function ()
+--         vim.opt_local.winborder = "none"
+--         vim.api.nvim_create_autocmd("WinLeave", {
+--             once = true,
+--             callback = function ()
+--                 vim.opt_local.winborder = "rounded"
+--             end
+--         })
+--     end
+-- })
 
 
