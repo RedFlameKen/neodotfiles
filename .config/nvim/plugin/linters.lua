@@ -3,13 +3,7 @@ local lint = require'lint'
 
 lint.linters_by_ft = {
   html = {'htmlhint'},
-  typescript = {'eslint_d'},
-  javascript = {'eslint_d'},
+  -- typescript = {'eslint_d'},
+  -- javascript = {'eslint_d'},
 }
-
--- local htmlhint = lint.linters.htmlhint
--- htmlhint.args = {
---     "--config",
---     "~/.config/htmlhint/htmlhint.conf",
--- }
 
