@@ -35,7 +35,13 @@ local link = {
         school = {pattern = "iacademy.*.com", icon="󰑴 "}
     }
 }
+
+local sign = {
+    enabled = true
+}
+
 rendermd.setup({
     callout = callout,
-    link = link
+    link = link,
+    sign = sign
 })

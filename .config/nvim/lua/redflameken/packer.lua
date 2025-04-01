@@ -45,22 +45,17 @@ return require('packer').startup(function(use)
 		branch = "harpoon2",
 		requires = { {"nvim-lua/plenary.nvim"} }
 	}
-	use {
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
-		requires = {
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
-			{'jay-babu/mason-nvim-dap.nvim'},
-			{'neovim/nvim-lspconfig'},
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'hrsh7th/cmp-nvim-lsp-signature-help'},
-            {'saadparwaiz1/cmp_luasnip'},
-            {"rafamadriz/friendly-snippets"},
-            {"L3MON4D3/LuaSnip", run = "make install_jsregexp"},
-		}
-	}
+    use {'williamboman/mason.nvim'}
+    use {'williamboman/mason-lspconfig.nvim'}
+    use {'jay-babu/mason-nvim-dap.nvim'}
+    use {'neovim/nvim-lspconfig'}
+    use {'hrsh7th/nvim-cmp'}
+    use {'hrsh7th/cmp-nvim-lsp'}
+    use {'hrsh7th/cmp-nvim-lsp-signature-help'}
+    use {'saadparwaiz1/cmp_luasnip'}
+    use {"rafamadriz/friendly-snippets"}
+    use {"L3MON4D3/LuaSnip", run = "make install_jsregexp"}
+
     use 'mfussenegger/nvim-lint'
     use 'mfussenegger/nvim-jdtls'
     use 'mfussenegger/nvim-dap'
@@ -78,6 +73,7 @@ return require('packer').startup(function(use)
         'MeanderingProgrammer/render-markdown.nvim',
         after = { 'nvim-treesitter' },
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+        latex = { enabled = false }
     })
 
 end)

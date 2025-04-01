@@ -16,6 +16,8 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.linebreak = true
 
+vim.opt.signcolumn = 'yes:1'
+
 vim.opt.scrolloff = 6
 
 vim.opt.encoding = 'utf-8'
