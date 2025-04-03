@@ -9,12 +9,13 @@ local languages = {
     {"html", "󰌝 "},
     {"css", " "},
     {"scss", " "},
-    {"js", " "},
+    {"javascript", " "},
+    {"typescript", " "},
     {"json", "󰘦 "},
-    {"py", "󰌠 "},
+    {"python", "󰌠 "},
     {"ino", " "},
-    {"rs", "󱘗 "},
-    {"md", "󰍔 "},
+    {"rust", "󱘗 "},
+    {"markdown", "󰍔 "},
     {"tex", " "}
 }
 local function getLangIcon(lang)
