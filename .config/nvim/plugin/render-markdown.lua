@@ -40,8 +40,15 @@ local sign = {
     enabled = true
 }
 
+local checkbox = {
+    checked = {
+        scope_highlight = '@markup.strikethrough'
+    }
+}
+
 rendermd.setup({
     callout = callout,
     link = link,
-    sign = sign
+    sign = sign,
+    checkbox = checkbox
 })
