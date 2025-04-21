@@ -15,8 +15,8 @@ vim.keymap.set("i", "<C-BS>", "<C-w>", {noremap = true, silent = true})
 vim.keymap.set("n", "Y", "yy")
 
 -- Move line with auto indenting by Primeagen
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
 
 -- Yank to clipboard
 vim.keymap.set({"n", "v"}, "<leader>y", "\"+y")

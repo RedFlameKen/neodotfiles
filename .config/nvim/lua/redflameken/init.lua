@@ -42,4 +42,4 @@ vim.g.have_nerd_font = true
 
 vim.opt.undofile = true
 
--- vim.g.c_syntax_for_h = 1
+vim.g.c_syntax_for_h = 1

@@ -24,6 +24,15 @@ end, {silent = true}
 
 vim.keymap.set({"i", "s"}, "<A-l>", function() ls.expand() end, {silent = true})
 
+ls.add_snippets("c", {
+    s("ifndef", {
+        t({'#ifndef '}), i(1, "MACRO"),
+        t({'', '#define '}), rep(1), t({'', ''}),
+        i(2),
+        t({'', '#endif'})
+    }),
+})
+
 ls.add_snippets("cpp", {
     s("cmain", {
         t({

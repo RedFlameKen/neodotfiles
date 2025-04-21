@@ -1,9 +1,9 @@
 vim.diagnostic.config({
     virtual_text = true,
-    virtual_lines = {current_line = true},
+    virtual_lines = { current_line = true },
     signs = {
         text = {
-            [vim.diagnostic.severity.ERROR] ='',
+            [vim.diagnostic.severity.ERROR] = '',
             [vim.diagnostic.severity.WARN] = '',
             [vim.diagnostic.severity.HINT] = '',
             [vim.diagnostic.severity.INFO] = '',
@@ -38,9 +38,17 @@ vim.lsp.config.html = {
 }
 
 vim.lsp.config['ts_ls'] = {
-    cmd = { 'typescript-language-server', '--stdio'},
+    cmd = { 'typescript-language-server', '--stdio' },
     root_markers = { 'eslint.config.js' },
     filetypes = { 'typescript', 'ts', 'javascript', 'js' },
+    settings = {
+        javascript = {
+            validate = false
+        },
+        js = {
+            validate = false
+        }
+    }
 }
 
 vim.lsp.config['cssls'] = {
@@ -60,6 +68,20 @@ vim.lsp.config['cssls'] = {
     filetypes = { 'css', 'scss' },
 }
 
+vim.lsp.config['css_variables'] = {
+    cmd = { 'css-variables-language-server', '--stdio' },
+    root_markers = { '.htmlhintrc' },
+    settings = {
+        cssVariables = {
+            lookupFiles = {
+                "**/*.css",
+                "**/*.scss",
+            }
+        }
+    },
+    filetypes = { 'css', 'scss' },
+}
+
 vim.lsp.config['luals'] = {
     cmd = { 'lua-language-server' },
     filetypes = { 'lua' },
@@ -70,7 +92,7 @@ vim.lsp.config['luals'] = {
                 -- version = 'LuaJIT',
             },
             diagnostics = {
-                globals = {'vim'},
+                globals = { 'vim' },
             },
             workspace = {
                 library = {
@@ -87,5 +109,15 @@ vim.lsp.enable({
     'html',
     'ts_ls',
     'cssls',
+    'css_variables',
     'bashls',
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    desc = "Keymaps for when an LSP is attached",
+    callback = function()
+        vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+    end
+})
+
+vim.keymap.set("n", "K", function() vim.lsp.buf.hover { border = "rounded" } end);

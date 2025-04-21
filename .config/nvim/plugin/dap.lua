@@ -39,6 +39,9 @@ dap.configurations.cpp = {
     stopOnEntry = false,
   },
 }
+
+dap.configurations.c = dap.configurations.cpp
+
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
 dap.configurations.java = {
