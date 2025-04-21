@@ -174,6 +174,11 @@ _G.packer_plugins = {
     path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/nvim-nio",
     url = "https://github.com/nvim-neotest/nvim-nio"
   },
+  ["nvim-silicon"] = {
+    loaded = true,
+    path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/nvim-silicon",
+    url = "https://github.com/michaelrommel/nvim-silicon"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/kenneth/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",

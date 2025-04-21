@@ -68,7 +68,7 @@ return require('packer').startup(function(use)
     }
     use 'lervag/vimtex'
     use 'andweeb/presence.nvim'
-
+    use "michaelrommel/nvim-silicon"
     use({
         'MeanderingProgrammer/render-markdown.nvim',
         after = { 'nvim-treesitter' },
