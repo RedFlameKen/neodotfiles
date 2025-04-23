@@ -17,6 +17,11 @@ require('mason-lspconfig').setup({
         "jdtls",
         "clangd",
         "lua_ls",
+        "ts_ls",
+        "cssls",
+        "css_variables",
+        "html",
+        "bashls",
     },
 })
 
@@ -44,6 +49,14 @@ local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local ls = require ("luasnip")
 
+local function cmp_toggle_docs()
+    if cmp.visible_docs() then
+        cmp.close_docs()
+    else
+        cmp.open_docs()
+    end
+end
+
 require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
@@ -65,8 +78,12 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
         ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<M-k>'] = cmp.mapping.scroll_docs(-2),
+        ['<M-j>'] = cmp.mapping.scroll_docs(2),
+        ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<C-d>'] = cmp_toggle_docs,
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<C-l>'] = cmp.mapping.complete(),
     }),
     snippet = {
@@ -75,18 +92,4 @@ cmp.setup({
         end,
     },
 })
-
--- vim.api.nvim_create_autocmd("User", {
---     pattern = "Cmp",
---     callback = function ()
---         vim.opt_local.winborder = "none"
---         vim.api.nvim_create_autocmd("WinLeave", {
---             once = true,
---             callback = function ()
---                 vim.opt_local.winborder = "rounded"
---             end
---         })
---     end
--- })
-
 
