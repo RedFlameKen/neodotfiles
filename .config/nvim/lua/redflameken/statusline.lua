@@ -111,7 +111,7 @@ local modes = {
     ["c"] =     {name = "COMMAND",          highlight = highlights.modecommand, sephighlight = highlights.modecommandtogitsep },
     ["s"] =     {name = "SELECT",           highlight = highlights.modeselect,  sephighlight = highlights.modeselecttogitsep },
     ["S"] =     {name = "SELECT-LINE",      highlight = highlights.modeselect,  sephighlight = highlights.modeselecttogitsep },
-    ["t"] =     {name = "Terminal",         highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep },
+    ["t"] =     {name = "Terminal-I",         highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep },
     ["nt"] =     {name = "Terminal",         highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep },
 }
 local function mode()

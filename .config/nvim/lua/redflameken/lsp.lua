@@ -15,8 +15,12 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd("LspAttach", {
     desc = "LSP keybinds",
     callback = function()
-        vim.keymap.set("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>")
-        -- vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references);
+        vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
+        vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+        vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.signature_help {border = "rounded"} end)
+        vim.keymap.set("n", "<leader>ld", function() require"telescope.builtin".diagnostics() end)
+        vim.keymap.set("n", "grd", vim.lsp.buf.definition);
+        vim.keymap.set("n", "grt", vim.lsp.buf.type_definition);
     end
 })
 
@@ -35,6 +39,11 @@ vim.lsp.config.html = {
     cmd = { 'vscode-html-language-server', '--stdio' },
     root_markers = { '.htmlhintrc' },
     filetypes = { 'html' },
+}
+
+vim.lsp.config["jsonls"] = {
+    cmd = { 'vscode-json-language-server', '--stdio' },
+    filetypes = { 'json' },
 }
 
 vim.lsp.config['ts_ls'] = {
@@ -111,13 +120,6 @@ vim.lsp.enable({
     'cssls',
     'css_variables',
     'bashls',
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-    desc = "Keymaps for when an LSP is attached",
-    callback = function()
-        vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
-    end
 })
 
 vim.keymap.set("n", "K", function() vim.lsp.buf.hover { border = "rounded" } end);

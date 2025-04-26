@@ -8,6 +8,11 @@ vim.keymap.set("n", "<M-j>", "<C-w>j", {silent = true});
 vim.keymap.set("n", "<M-k>", "<C-w>k", {silent = true});
 vim.keymap.set("n", "<M-l>", "<C-w>l", {silent = true});
 
+vim.keymap.set("t", "<M-h>", "<C-\\><C-n><C-w>h", {silent = true});
+vim.keymap.set("t", "<M-j>", "<C-\\><C-n><C-w>j", {silent = true});
+vim.keymap.set("t", "<M-k>", "<C-\\><C-n><C-w>k", {silent = true});
+vim.keymap.set("t", "<M-l>", "<C-\\><C-n><C-w>l", {silent = true});
+
 -- backspacce
 vim.keymap.set("i", "<C-BS>", "<C-w>", {noremap = true, silent = true})
 

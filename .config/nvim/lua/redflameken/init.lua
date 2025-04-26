@@ -4,6 +4,7 @@ require("redflameken.lsp")
 require("redflameken.remap")
 require("redflameken.git")
 require("redflameken.autocommand")
+require("redflameken.terminalbuffer")
 
 ShowBranch = true
 
@@ -40,6 +41,7 @@ vim.opt.colorcolumn = {80}
 
 vim.g.have_nerd_font = true
 
+vim.opt.splitbelow = true
 vim.opt.undofile = true
 
 vim.g.c_syntax_for_h = 1
