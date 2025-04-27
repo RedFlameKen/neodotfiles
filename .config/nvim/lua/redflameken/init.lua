@@ -4,7 +4,6 @@ require("redflameken.lsp")
 require("redflameken.remap")
 require("redflameken.git")
 require("redflameken.autocommand")
-require("redflameken.terminalbuffer")
 
 ShowBranch = true
 
@@ -45,3 +44,5 @@ vim.opt.splitbelow = true
 vim.opt.undofile = true
 
 vim.g.c_syntax_for_h = 1
+
+require("redflameken.terminalbuffer").start()
