@@ -1,8 +1,8 @@
+vim.g.vimtex_view_method = "zathura"
 
-local function setBinds()
-    vim.keymap.set("n", "<leader>tp", "<CMD>VimtexCompile<CR>")
-    -- vim.cmd("VimtexCompile")
-end
+vim.g.vimtex_compiler_latexmk_engines = {
+    _ = "-xelatex"
+}
 
-setBinds()
+vim.keymap.set("n", "<leader>cp", "<CMD>VimtexCompile<CR>")
 

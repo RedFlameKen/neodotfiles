@@ -30,7 +30,7 @@ vim.keymap.set("n", "<leader>ee", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>m", "<CMD>Mason<CR>")
 
 -- Color binds
-vim.keymap.set("n", "<leader>cp", "<CMD>lua ColorMyPencils()<CR>")
+-- vim.keymap.set("n", "<leader>cp", "<CMD>lua ColorMyPencils()<CR>")
 vim.keymap.set("n", "<leader>ch", "<CMD>ColorHighlight<CR>")
 vim.keymap.set("n", "<leader>cl", "<CMD>CLC<CR>")
 

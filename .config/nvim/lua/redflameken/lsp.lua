@@ -35,6 +35,11 @@ vim.lsp.config['bashls'] = {
     filetypes = { 'bash', 'sh' },
 }
 
+vim.lsp.config['digestif'] = {
+    cmd = { 'digestif' },
+    filetypes = { 'tex', 'plaintex' },
+}
+
 vim.lsp.config.html = {
     cmd = { 'vscode-html-language-server', '--stdio' },
     root_markers = { '.htmlhintrc' },
@@ -120,6 +125,7 @@ vim.lsp.enable({
     'cssls',
     'css_variables',
     'bashls',
+    'digestif',
 })
 
 vim.keymap.set("n", "K", function() vim.lsp.buf.hover { border = "rounded" } end);

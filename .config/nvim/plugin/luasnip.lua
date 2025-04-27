@@ -1,3 +1,6 @@
+local latex_author = "Kenneth Lacaba"
+local latex_organization = "SEG21"
+
 local ls = require("luasnip")
 local extra = require("luasnip.extras")
 local s = ls.snippet
@@ -164,3 +167,54 @@ ls.add_snippets("java", {
 
 })
 
+ls.add_snippets("tex", {
+    s("init", {
+        t({
+            '\\documentclass[11pt]{article}',
+            '',
+            '\\input{preamble}',
+            '',
+        }),
+        t('\\title{\\textbf{'), i(1, 'Title'), t({'}}', ''}),
+        t({'\\author{\\textbf{' .. latex_author .. '}\\\\' .. latex_organization .. '}',
+        '',
+        '\\date{'}), i(2), t({'}', ''}),
+        t({
+            '\\begin{document}',
+            '',
+            '\\maketitle',
+            '',
+            ''
+        }), i(3),
+        t({
+            '',
+            '',
+            '\\end{document}',
+        })
+    }),
+    s("init_plain", {
+        t({
+            '\\documentclass[11pt]{article}',
+            '',
+            '\\input{preamble}',
+            '\\setlength{\\parskip}{12pt}',
+            '',
+            '\\begin{document}',
+            ''
+        }),
+        t({
+            '\\noindent',
+            '\\textbf{'}), i(1, 'SUBJECT'), t({'} \\\\', ''}),
+        t({
+            '\\textbf{'.. latex_author .. '} \\\\',
+            '\\textbf{'.. latex_organization .. '} ',
+            '',
+            '\\centerline{\\textbf{'}), i(2, 'Title'), t({'}} ', '',}),
+        t({
+            '',
+            '',
+            '',
+            '\\end{document}',
+        })
+    })
+})
