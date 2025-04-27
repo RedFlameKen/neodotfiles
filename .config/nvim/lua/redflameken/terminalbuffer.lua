@@ -1,5 +1,6 @@
 local term_win_id = -1
 local term_buf_id = -1
+local term_win_height = 12
 
 local function create_terminal_buffer()
     vim.cmd("terminal");
@@ -8,7 +9,7 @@ local function create_terminal_buffer()
 end
 
 local function open_term()
-    vim.cmd("12 split");
+    vim.cmd(term_win_height .." split");
     term_win_id = vim.fn.win_getid()
     if term_buf_id == -1 then
         create_terminal_buffer()
@@ -18,6 +19,7 @@ local function open_term()
 end
 
 local function close_term()
+    term_win_height = vim.api.nvim_win_get_height(term_win_id)
     vim.api.nvim_win_close(term_win_id, false)
     term_win_id = -1
 end
@@ -25,6 +27,7 @@ end
 local function toggle_term()
     if not vim.api.nvim_buf_is_valid(term_buf_id) then
         term_buf_id = -1;
+        term_win_height = 12
     end
     if not vim.api.nvim_win_is_valid(term_win_id) then
         term_win_id = -1;
