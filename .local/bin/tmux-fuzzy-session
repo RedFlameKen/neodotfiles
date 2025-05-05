@@ -1,10 +1,5 @@
 #!/bin/bash
 
-fdCommand="fd --base-directory=$HOME --hidden --follow --exclude={.metadata,.git,.settings,.classpath,.project,*.class}"
-
-paths=$(cat ~/.config/tmuxfuzpaths | sed 's/^/--search-path /')
-vimpaths=$(cat ~/.config/tmuxfuzvimpaths | sed 's/^/--search-path /')
-
 if [ $# -gt 0 ]; then
     case "$1" in
         -v | --vim) vimext="nvim"
@@ -18,36 +13,47 @@ if [ $# -gt 0 ]; then
     
 fi
 
+find_command="find"
+find_opts="-follow -mindepth 1"
+
 if [ -z $vimext ]; then
     if [ -z $fuzzytarget ]; then
-        fdCommand="$fdCommand --type d --max-depth 1 --min-depth 1"
-        fuzzytarget="$($fdCommand $paths | fzf)"
+        paths=`cat ~/.config/tmuxfuzpaths | sed "s|^|$HOME/|"`
+        find_opts="$find_opts -maxdepth 1 -type d"
+        fuzzytarget="$($find_command $paths $find_opts | sed "s|$HOME/\(.*\)|\1/|" | sort -V | fzf)"
         directory="$HOME/"
     fi
     directory="$directory$fuzzytarget"
-    selectedName="$(basename $fuzzytarget 2> /dev/null | tr . _)"
+    selectedName=$(basename "$fuzzytarget" 2> /dev/null | tr . _ | tr " " _ )
 else
     if [ -z $fuzzytarget ]; then
-        fdCommand="$fdCommand --type f"
-        fuzzytarget="$($fdCommand $vimpaths | fzf)"
+        paths=`cat ~/.config/tmuxfuzvimpaths | sed "s|^|$HOME/|"`
+        find_vimpath_excludes_f="! -name "\.project" -and ! -name "\.classpath" -and ! -name "*.class" -and ! -name "*.jpg" -and ! -name "*.png" -and ! -name "*.o" -and ! -executable"
+        find_vimpath_excludes_d="! -path "*\.metadata/**" -and ! -path "*\.git/**" -and ! -path "*\.settings/**""
+        find_opts="$find_opts -type f $find_vimpath_excludes_f -and $find_vimpath_excludes_d"
+        fuzzytarget="$($find_command $paths $find_opts 2> /dev/null | sed "s|$HOME/||"  | sort -V | fzf)"
         directory="$HOME/"
     fi
-    directory="$directory$(dirname $fuzzytarget 2> /dev/null)"
-    selectedName="$(basename $fuzzytarget 2> /dev/null | tr . _)"
-    vimext="$vimext $(basename $fuzzytarget 2> /dev/null)"
+    directory="$directory$(dirname "$fuzzytarget" 2> /dev/null)"
+    selectedName="$(basename "$fuzzytarget" 2> /dev/null | tr . _ | tr " " _ )"
+    vimext="$vimext \"$(basename "$fuzzytarget" 2> /dev/null)\""
 fi
 
-if [ -z $selectedName ]; then
+if [ -z "$selectedName" ]; then
     exit 0
 fi
 
 if [ -z $TMUX ]; then
-    tmux -2 new -s $selectedName -c $directory $vimext 
+    tmux new -s "$selectedName" -c "$directory" "$vimext"
     exit 0
 fi
 
-if ! tmux has-session -t=$selectedName 2> /dev/null; then
-    tmux -2 new -ds $selectedName -c $directory $vimext
+if ! tmux has-session -t="$selectedName" 2> /dev/null; then
+    if [ -z "$vimext" ]; then
+        tmux new -ds "$selectedName" -c "$directory"
+    else
+        tmux new -ds "$selectedName" -c "$directory" "$vimext"
+    fi
 fi
 
-tmux -2 switch-client -t $selectedName
+tmux switch-client -t "$selectedName"

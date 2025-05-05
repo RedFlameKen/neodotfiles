@@ -1,0 +1,53 @@
+#!/bin/bash
+
+fdCommand="fd --base-directory=$HOME --hidden --follow --exclude={.metadata,.git,.settings,.classpath,.project,*.class,*.jpg,*.png}"
+
+paths=$(cat ~/.config/tmuxfuzpaths | sed 's/^/--search-path /')
+vimpaths=$(cat ~/.config/tmuxfuzvimpaths | sed 's/^/--search-path /')
+
+if [ $# -gt 0 ]; then
+    case "$1" in
+        -v | --vim) vimext="nvim"
+            ;;
+        -d | --directory) fuzzytarget=$2
+            ;;
+        *) echo "Invalid Option $1"
+            exit 0;
+            ;;
+    esac
+    
+fi
+
+if [ -z $vimext ]; then
+    if [ -z $fuzzytarget ]; then
+        fdCommand="$fdCommand --type d --max-depth 1 --min-depth 1"
+        fuzzytarget="$($fdCommand $paths 2> /dev/null | fzf)"
+        directory="$HOME/"
+    fi
+    directory="$directory$fuzzytarget"
+    selectedName="$(basename $fuzzytarget 2> /dev/null | tr . _)"
+else
+    if [ -z $fuzzytarget ]; then
+        fdCommand="$fdCommand --type f"
+        fuzzytarget="$($fdCommand $vimpaths 2> /dev/null | fzf)"
+        directory="$HOME/"
+    fi
+    directory="$directory$(dirname $fuzzytarget 2> /dev/null)"
+    selectedName="$(basename $fuzzytarget 2> /dev/null | tr . _)"
+    vimext="$vimext $(basename $fuzzytarget 2> /dev/null)"
+fi
+
+if [ -z $selectedName ]; then
+    exit 0
+fi
+
+if [ -z $TMUX ]; then
+    tmux new -s $selectedName -c $directory $vimext 
+    exit 0
+fi
+
+if ! tmux has-session -t=$selectedName 2> /dev/null; then
+    tmux new -ds $selectedName -c $directory $vimext
+fi
+
+tmux switch-client -t $selectedName
