@@ -1,13 +1,15 @@
 output '*' color_profile icc /usr/share/color/icc/colord/Gamma6500K.icc
 
 output LVDS-1 mode 1366x768 pos 0 1025
+# output LVDS-1 mode 1366x768 pos 0 0
 # output HDMI-A-1 resolution 1280x720 pos 1366 1025
 # output HDMI-A-1 resolution 1920x1080 pos 1366 1025
 output VGA-1 mode 1280x1024 pos 0 0
 
 # School setup
-# output VGA-1 mode 1680x1050 pos 0 0
-# output LVDS-1 mode 1366x768 pos 1681 0
+# output VGA-1 mode 1024x768 pos 0 0
+# output LVDS-1 mode 1366x768 pos 1024 0
+# output LVDS-1 mode 1366x768 pos 0 0
 # output HDMI-A-1 resolution 1280x720 pos 1366 1025
 
 bindswitch lid:on output VGA-1 disable, HDMI-A-1 disable
@@ -23,7 +25,7 @@ font pango:JetBrainsMonoNL Nerd Font Propo 10
 set $refresh_swaystatus killall -SIGUSR1 i3status
 
 # Program Variables
-set $browser librewolf
+set $browser floorp
 set $term kitty
 set $file_explorer thunar
 
@@ -48,7 +50,7 @@ workspace $ws7 output VGA-1
 assign [class="discord"] $ws5
 assign [class="WebCord"] $ws5
 assign [class="vesktop"] $ws5
-assign [class="krita"] $ws4
+assign [class="krita"] $ws1
 assign [app_id="com.obsproject.Studio"] $ws6
 assign [class="Spotify"] $ws7
 assign [class="Minecraft.*"] $ws4
@@ -75,7 +77,7 @@ exec gsettings set $gnome-schema icon-theme 'Papirus'
 exec gsettings set $gnome-schema cursor-theme 'Dracula-cursors'
 
 # exec_always
-exec_always --no-startup-id ~/.scripts/runProgs.sh
+exec --no-startup-id ~/.scripts/runProgs.sh
 exec_always --no-startup-id ~/.scripts/swayWallpaper.sh cur &
 exec_always --no-startup-id autotiling
 
@@ -190,10 +192,12 @@ bindsym $mod+v fullscreen toggle
 bindsym $mod+Alt+space sticky toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+Control+s layout stacking
-bindsym $mod+Control+w layout tabbed
-bindsym $mod+Control+e layout toggle split
+# bindsym $mod+Control+s layout stacking
+# bindsym $mod+Control+w layout tabbed
+# bindsym $mod+Control+e layout toggle split
 
+bindsym $mod+Control+w exec bash ~/.scripts/sway_window_relayout.sh tex
+bindsym $mod+Control+e exec bash ~/.scripts/sway_window_relayout.sh half
 # toggle tiling / floating
 bindsym $mod+space floating toggle
 

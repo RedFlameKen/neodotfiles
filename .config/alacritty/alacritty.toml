@@ -1,0 +1,76 @@
+[general]
+live_config_reload = true
+
+[window]
+opacity = 0.9
+decorations = "Full"
+dynamic_padding=true
+
+title = "Terminal"
+class = {general = "Alacritty"}
+decorations_theme_variant = "Dark"
+
+[font]
+normal = {family = "JetBrainsMono Nerd Font", style="Propo"}
+size = 12.0
+
+[keyboard]
+bindings = [
+    { key = "Backspace", mods = "Control", chars = "\u0017" },
+    { key = "=", mods = "Control", action = "ResetFontSize" },
+    { key = "_", mods = "Control|Shift", action = "DecreaseFontSize" },
+    { key = "+", mods = "Control|Shift", action = "IncreaseFontSize" },
+    { key = "h", mods = "Control|Shift", chars = "\u001b[27;6;104~" },
+    { key = "j", mods = "Control|Shift", chars = "\u001b[27;6;106~" },
+    { key = "k", mods = "Control|Shift", chars = "\u001b[27;6;107~" },
+    { key = "l", mods = "Control|Shift", chars = "\u001b[27;6;108~" },
+
+    { key = "Tab", mods = "Control|Shift", chars = "\u001b[27;6;9~" },
+    { key = "Tab", mods = "Control", chars = "\u001b[27;5;9~" },
+
+    { key = "ArrowLeft", mods = "Control|Shift", chars = "\u001b[1;5D" },
+    { key = "ArrowRight", mods = "Control|Shift", chars = "\u001b[1;5C" },
+]
+
+[cursor]
+style = {shape = "Block", blinking = "Off" }
+vi_mode_style = {shape = "Block", blinking = "Off" }
+unfocused_hollow = true
+
+[colors]
+line_indicator = {foreground = "#282829", background = "#ebdbb2" }
+footer_bar = {foreground = "#282829", background = "#ebdbb2" }
+selection = {foreground = "#ebdbb2", background = "#665c54" }
+
+[colors.primary]
+background = "#282829"
+foreground = "#ebdbb2"
+
+[colors.cursor]
+text = "#665c54"
+cursor = "#fabd2f"
+
+[colors.vi_mode_cursor]
+text = "#665c54"
+cursor = "#fabd2f"
+
+[colors.normal]
+black       = "#3c3836"
+red         = "#cc241d"
+green       = "#98971a"
+yellow      = "#d79921"
+blue        = "#458588"
+magenta     = "#b16286"
+cyan        = "#689d6a"
+white       = "#a89984"
+
+[colors.bright]
+black       = "#928374"
+red         = "#fb4934"
+green       = "#b8bb26"
+yellow      = "#fabd2f"
+blue        = "#83a598"
+magenta     = "#d3869b"
+cyan        = "#8ec07c"
+white       = "#fbf1c7"
+
