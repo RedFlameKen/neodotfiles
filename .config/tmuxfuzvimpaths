@@ -1,6 +1,8 @@
 projects
 school
 docs/notes
+docs/notes/school/**/*
+docs/
 school/notes
 git/redflameken
 git/school
