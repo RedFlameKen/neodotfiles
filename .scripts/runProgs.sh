@@ -4,7 +4,7 @@
 killall blueman-applet
 killall nm-applet
 killall dunst
-killall lowbatNotif.sh
+killall lowbatNotifd
 
 initPicom(){
     killall picom
@@ -19,6 +19,7 @@ fi
 blueman-applet &
 nm-applet &
 dunst &
-$HOME/.scripts/lowbatNotifd.sh &
+# $HOME/.scripts/lowbatNotifd.sh &
+$HOME/.local/bin/lowbatNotifd BAT0
 
 bluetoothctl power off

@@ -1,5 +1,12 @@
 #!/bin/bash
 
+notify(){
+    notify-send -u critical "DUMBASS! DON'T FORGET TO CHARGE!: $1%"
+    ffplay -nodisp -autoexit ~/.dotfiles/etc/lowbat_sound.wav
+}
+
+[ "$1" = "notify" ] && notify && exit
+
 existing_processes=$(pgrep lowbatNotifd.sh | wc -l)
 
 if [ $existing_processes -gt 2 ]; then
@@ -16,10 +23,6 @@ lastCheck=$(cat /sys/class/power_supply/$battery/status)
 
 veryLow=10
 low=20
-
-notify(){
-    notify-send -u critical "DUMBASS! DON'T FORGET TO CHARGE!: $1%"
-}
 
 check(){
     capacity=$(cat /sys/class/power_supply/$battery/capacity)
