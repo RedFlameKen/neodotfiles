@@ -30,6 +30,7 @@ bindings = [
 
     { key = "ArrowLeft", mods = "Control|Shift", chars = "\u001b[1;5D" },
     { key = "ArrowRight", mods = "Control|Shift", chars = "\u001b[1;5C" },
+    # { key = "Delete", mods = "Control", chars = "^H" },
 ]
 
 [cursor]
