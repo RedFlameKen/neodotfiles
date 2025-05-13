@@ -143,7 +143,7 @@ bell_on_tab yes
 
 command_on_bell none
 
-remember_window_size  no
+remember_window_size  yes
 initial_window_width  640
 initial_window_height 400
 
@@ -237,7 +237,7 @@ inactive_tab_font_style normal
 
 
 # background_opacity 0
-background_opacity 0.85
+background_opacity 0.9
 # background_opacity 1
 
 
@@ -376,6 +376,11 @@ map ctrl+j pass
 map ctrl+k pass
 map ctrl+l pass
 
+map ctrl+shift+h pass
+map ctrl+shift+j pass
+map ctrl+shift+k pass
+map ctrl+shift+l pass
+
 map kitty_mod+c copy_to_clipboard
 
 
@@ -476,6 +481,6 @@ map kitty_mod+f6 debug_config
 
 
 # BEGIN_KITTY_THEME
-# Gruvbox Dark
+# srcery
 include current-theme.conf
 # END_KITTY_THEME
