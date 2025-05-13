@@ -2,6 +2,7 @@
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source ~/.git-prompt.sh
+# source <(fzf --zsh)
 # source ~/.git-completion.zsh
 
 if [ -f ~/.sh_profile ]; then
@@ -29,7 +30,7 @@ zle -N tmux-fuz-sesh-vim
 
 bindkey -v
 bindkey '^[[3;5~' kill-word
-bindkey '^H' backward-kill-word
+# bindkey '^H' backward-kill-word
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 bindkey '^[[H' beginning-of-line
