@@ -1,8 +1,8 @@
 #!/bin/bash
 
 batstat(){
-    stat="$(cat "/sys/class/power_supply/BAT1/status")"
-    per="$(cat "/sys/class/power_supply/BAT1/capacity")"
+    stat="$(cat "/sys/class/power_supply/BAT0/status")"
+    per="$(cat "/sys/class/power_supply/BAT0/capacity")"
     if [ $stat == "Charging" ]
     then
 	echo true
@@ -19,8 +19,8 @@ batstat(){
     fi
     while true; do
 	sleep 5s
-	newstat="$(cat "/sys/class/power_supply/BAT1/status")"
-	newper="$(cat "/sys/class/power_supply/BAT1/capacity")"
+	newstat="$(cat "/sys/class/power_supply/BAT0/status")"
+	newper="$(cat "/sys/class/power_supply/BAT0/capacity")"
 	if [ "$stat" == "$newstat" ] && ["$per" == "$newper" ]
 	then
 	    continue
@@ -87,13 +87,13 @@ getIcon(){
 }
 
 icon() {
-    stat="$(cat "/sys/class/power_supply/BAT1/status")"
-    per="$(cat "/sys/class/power_supply/BAT1/capacity")"
+    stat="$(cat "/sys/class/power_supply/BAT0/status")"
+    per="$(cat "/sys/class/power_supply/BAT0/capacity")"
     getIcon $per $stat
     while true; do
 	sleep 5s
-	newstat="$(cat "/sys/class/power_supply/BAT1/status")"
-	newper="$(cat "/sys/class/power_supply/BAT1/capacity")"
+	newstat="$(cat "/sys/class/power_supply/BAT0/status")"
+	newper="$(cat "/sys/class/power_supply/BAT0/capacity")"
 	if [ "$newstat" == "$stat" ] && [ "$per" == "$newper" ]
 	then
 	    continue
@@ -107,12 +107,12 @@ icon() {
 }
 
 percent(){
-    per="$(cat "/sys/class/power_supply/BAT1/capacity")"
+    per="$(cat "/sys/class/power_supply/BAT0/capacity")"
 
     echo $per
     while true; do
 	sleep 5s
-	newper="$(cat "/sys/class/power_supply/BAT1/capacity")"
+	newper="$(cat "/sys/class/power_supply/BAT0/capacity")"
 	if [ $per == $newper ]
 	then
 	    continue

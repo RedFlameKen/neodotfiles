@@ -1,5 +1,8 @@
+#include <cstdio>
+#include <cstdlib>
 #include <iostream>
 #include <chrono>
+#include <string>
 #include <thread>
 
 using std::string;
@@ -91,8 +94,13 @@ int getActiveWorkspace(){
     return activeWorkspace /= 256;
 }
 int getWorkspaceSize(){
-    int workspaceSize = system("scripts/workspace-size.sh");
-    return workspaceSize /= 256;
+    int workspaceSize = 0;
+    FILE* file = popen("scripts/workspace-size.sh", "r");
+    char* buffer = (char*) malloc(3);
+    fgets(buffer, 3, file);
+    workspaceSize = std::stoi(buffer);
+    free(buffer);
+    return workspaceSize;
 }
 
 string getIcon(int number){
