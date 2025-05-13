@@ -1,0 +1,87 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\setlipsum{auto-lang=false}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\setmainfont{Arial}
+
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue}
+
+\usepackage[a4paper, top=1in, bottom=1in, right=1in, left=1in, heightrounded]{geometry}
+
+\renewcommand{\baselinestretch}{1.25}
+
+\setlength{\parindent}{24pt}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{most, many, breakable}
+
+% TColorBoxes
+\newtcolorbox[auto counter]{question}{
+    breakable,
+    colback=blue!5!white,
+    colframe=blue!75!white,
+    colbacktitle=blue!75!white,
+    enhanced,
+    attach boxed title to top left,
+    sharp corners,
+    boxed title style = { 
+        sharp corners,
+        frame code = {
+            \path[fill=blue!75!white] (frame.north west) |- ([xshift=8mm]frame.south east) -- (frame.north east) -- cycle ;
+        }
+    },
+    title=\textbf{Question \#\thetcbcounter}
+}
+
+\newtcolorbox{activity}[1]{
+    enhanced,
+    attach boxed title to top center={yshift=-2mm},
+    colback=red!5!white,
+    colframe=red!75!black,
+    colbacktitle=red!75!black,
+    title=\textbf{Activity: #1}
+}
+
+\newtcolorbox{definition}[1][Definition]{
+    enhanced,
+    attach boxed title to top left={xshift=15mm, yshift*=2mm-\tcboxedtitleheight},
+    colback=green!5!white,
+    colframe=green!75!black,
+    colbacktitle=green!75!black,
+    boxed title style = {
+        frame code = {
+            \path[fill=green!30!black] ([xshift=-8mm]frame.north west) to[bend right] ([xshift=-8mm,yshift=-2mm]frame.north west) -- ([xshift=8mm,yshift=-2mm]frame.north east) to[bend right] ([xshift=8mm]frame.north east);
+            \path[fill=green!75!black] ([xshift=-8mm]frame.north west) to[out=0, in=180] (frame.south west) -- (frame.south east) to[out=0, in=180] ([xshift=8mm]frame.north east) -- cycle;
+        }
+    },
+    title=\textbf{#1}
+}
+
+\newtcolorbox{note}[1]{
+    enhanced,
+    colback=magenta!5!white,
+    colframe=magenta!5!white,
+    coltitle=magenta!75!black,
+    boxrule=0pt,
+    borderline west = {2pt}{0pt}{magenta!75!black},
+    title=\textbf{#1}
+}
+
+% Environments
+\newenvironment{answer}[1][Answer]{
+    \subsection*{#1:}
+}{}
+
+% Commands
+\newcommand{\qs}[1]{\begin{question}#1\end{question}}
+\newcommand{\act}[2]{\begin{activity}{#1}#2\end{activity}}
+\newcommand{\df}[2]{\begin{definition}[#1]#2\end{definition}}
+\newcommand{\nt}[2]{\begin{note}{#1}#2\end{note}}
+\newcommand{\ans}[2]{\begin{answer}[#1]#2\end{answer}}
+
