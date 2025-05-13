@@ -17,6 +17,8 @@ bindswitch lid:off output VGA-1 enable, HDMI-A-1 enable
 # bindswitch lid:on output HDMI-A-1 disable
 # bindswitch lid:off output HDMI-A-1 enable
 
+exec swayidle timeout 300 'swaylock -f' timeout 600 'systemctl suspend'
+
 set $mod Mod4
 set $alt Mod1
 
@@ -26,7 +28,7 @@ set $refresh_swaystatus killall -SIGUSR1 i3status
 
 # Program Variables
 set $browser floorp
-set $term kitty
+set $term alacritty
 set $file_explorer thunar
 
 # workspace names
@@ -55,6 +57,8 @@ assign [app_id="com.obsproject.Studio"] $ws6
 assign [class="Spotify"] $ws7
 assign [class="Minecraft.*"] $ws4
 
+for_window [app_id='org.wezfurlong.wezterm'] resize set 400 400
+
 # startup settings
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -79,7 +83,7 @@ exec gsettings set $gnome-schema cursor-theme 'Dracula-cursors'
 # exec_always
 exec --no-startup-id ~/.scripts/runProgs.sh
 exec_always --no-startup-id ~/.scripts/swayWallpaper.sh cur &
-exec_always --no-startup-id autotiling
+exec_always --no-startup-id bash ~/.scripts/autotiling.sh
 
 
 # keybindings
