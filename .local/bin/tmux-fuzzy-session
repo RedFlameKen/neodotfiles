@@ -20,7 +20,7 @@ if [ -z $vimext ]; then
     if [ -z $fuzzytarget ]; then
         paths=`cat ~/.config/tmuxfuzpaths | sed "s|^|$HOME/|"`
         find_opts="$find_opts -maxdepth 1 -type d"
-        fuzzytarget="$($find_command $paths $find_opts | sed "s|$HOME/\(.*\)|\1/|" | sort -V | fzf)"
+        fuzzytarget="$($find_command $paths $find_opts | sed "s|$HOME/\(.*\)|\1/|" | fzf)"
         directory="$HOME/"
     fi
     directory="$directory$fuzzytarget"
@@ -31,7 +31,7 @@ else
         find_vimpath_excludes_f="! -name "\.project" -and ! -name "\.classpath" -and ! -name "*.class" -and ! -name "*.jpg" -and ! -name "*.png" -and ! -name "*.o" -and ! -executable"
         find_vimpath_excludes_d="! -path "*\.metadata/**" -and ! -path "*\.git/**" -and ! -path "*\.settings/**""
         find_opts="$find_opts -type f $find_vimpath_excludes_f -and $find_vimpath_excludes_d"
-        fuzzytarget="$($find_command $paths $find_opts 2> /dev/null | sed "s|$HOME/||"  | sort -V | fzf)"
+        fuzzytarget="$($find_command $paths $find_opts 2> /dev/null | sed "s|$HOME/||" | fzf)"
         directory="$HOME/"
     fi
     directory="$directory$(dirname "$fuzzytarget" 2> /dev/null)"
@@ -44,7 +44,11 @@ if [ -z "$selectedName" ]; then
 fi
 
 if [ -z $TMUX ]; then
-    tmux new -s "$selectedName" -c "$directory" "$vimext"
+    if [ -z "$vimext" ]; then
+        tmux new -s "$selectedName" -c "$directory"
+    else
+        tmux new -s "$selectedName" -c "$directory" "$vimext"
+    fi
     exit 0
 fi
 

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ ! -d output ]; then
+    mkdir output
+    printf "output directory created\n"
+fi
+
+if [ ! -f preamble.tex ]; then
+    cp ~/.dotfiles/etc/latex/preamble.tex .
+    printf "preamble.tex spawned\n"
+fi
+
+if [ ! -f main.tex ]; then
+    touch main.tex
+    printf "main.tex file created\n"
+fi
+
+
