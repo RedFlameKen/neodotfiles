@@ -5,14 +5,14 @@ local home = os.getenv("HOME")
 local function workspaceDir()
     local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
-    local workspace_dir = home .. '/projects/java/' .. project_name
+    local workspace_dir = home .. '/.eclipse_workspaces/' .. project_name
     return workspace_dir
 end
 
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
 local jdtls_path = home ..  '/.local/share/nvim/mason/packages/jdtls'
-local launcher_jar = home .. '/plugins/org.eclipse.equinox.launcher*.jar'
+local launcher_jar = jdtls_path .. '/plugins/org.eclipse.equinox.launcher_1.7.0.v20250331-1702.jar'
 
 local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
@@ -29,17 +29,16 @@ local root_files = {
 local config = {
     capabilities = capabilities,
     cmd = {
-        jdtls_path ..'/bin/jdtls',
-        'java', '/usr/lib/jvm/java-17-openjdk/bin/java',
+        'java',
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        '-Dosgi.bundles.defaultStartLevel=4',
+        -- '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
         '-Dlog.protocol=true',
         '-Dlog.level=ALL',
         '-Xmx1G',
-        '--add-modules=ALL-SYSTEM',
-        '--add-opens', 'java.base/java.util=ALL-UNNAMED',
-        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        -- '--add-modules=ALL-SYSTEM',
+        -- '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+        -- '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
         '-jar', launcher_jar,
         '-configuration', jdtls_path .. '/config_linux',
         '-data', workspaceDir(),
@@ -47,6 +46,11 @@ local config = {
     root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
     settings = {
         java = {
+            jdt = {
+                ls = {
+                    androidSupport = true
+                },
+            },
             configuration = {
                 runtimes = {
                     {
@@ -65,18 +69,24 @@ local config = {
             },
             -- project = {
             --     referencedLibraries = {
-            --         home .. "/Documents/JavaDependencies/mysql-connector/mysql-connector-j-9.1.0.jar",
             --     },
             -- },
-            import = {enabled = true},
+            import = {
+                gradle = {
+                    enabled = true,
+                    wrapper = {
+                        enabled = true
+                    }
+                },
+            },
             rename = {enabled = true},
         },
-        implementationsCodeLense = {
-            enabled = true
-        },
-        referencesCodeLense = {
-            enabled = true
-        },
+        -- implementationsCodeLense = {
+        --     enabled = true
+        -- },
+        -- referencesCodeLense = {
+        --     enabled = true
+        -- },
         references = {
             includeDecompiledSources = true,
         },
@@ -98,9 +108,9 @@ local config = {
         vim.keymap.set("n", "<leader>jc", ":lua require'jdtls'.compile({'incremental'})<CR>")
         vim.keymap.set("n", "<leader>ji", jdtls.organize_imports, { desc = 'Organize Imports', buffer = bufnr})
         vim.keymap.set("n", "<leader>jb", jdtls.build_projects, { desc = 'Build Projects', buffer = bufnr})
-        vim.keymap.set('n', '<leader>jrv', jdtls.extract_variable_all, { desc = 'Extract variable', buffer = bufnr })
-        vim.keymap.set('v', '<leader>jrm', "<CMD>lua jdtls.extract_method(true)<CR>", {desc = 'Extract method', buffer = bufnr})
-        vim.keymap.set('n', '<leader>jrc', jdtls.extract_constant, { desc = 'Extract constant', buffer = bufnr })
+        vim.keymap.set('n', '<leader>jev', jdtls.extract_variable_all, { desc = 'Extract variable', buffer = bufnr })
+        vim.keymap.set('v', '<leader>jem', "<CMD>lua jdtls.extract_method(true)<CR>", {desc = 'Extract method', buffer = bufnr})
+        vim.keymap.set('n', '<leader>jec', jdtls.extract_constant, { desc = 'Extract constant', buffer = bufnr })
 
         vim.keymap.set('n', "<leader>df", jdtls.test_class, opts)
         vim.keymap.set('n', "<leader>dn", jdtls.test_nearest_method, opts)
@@ -112,4 +122,8 @@ jdtls.start_or_attach(config)
 function StartJavaServer()
     jdtls.start_or_attach(config)
 end
+
+-- vim.g.ale_enabled = 1
+-- vim.g.ale_java_eclipselsp_path = home .. "/git/eclipse.jdt.ls/"
+-- vim.g.ale_java_eclipselsp_workspace_path = workspaceDir()
 

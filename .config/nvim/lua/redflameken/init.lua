@@ -38,11 +38,22 @@ vim.opt.hlsearch = true
 
 vim.opt.colorcolumn = {80}
 
-vim.g.have_nerd_font = true
-
 vim.opt.splitbelow = true
 vim.opt.undofile = true
 
+vim.g.have_nerd_font = true
 vim.g.c_syntax_for_h = 1
 
-require("redflameken.terminalbuffer").start()
+---@class TermBufConfig
+local termbuf_conf = {
+    default_win_height = 12
+}
+
+require("redflameken.termbuf").setup(termbuf_conf)
+
+---@class NoteConfig
+local note_conf = {
+    main_note_file = "~/docs/notes/todo.md",
+    notes_dir = "~/docs/notes"
+}
+require("redflameken.note-buf").setup(note_conf)

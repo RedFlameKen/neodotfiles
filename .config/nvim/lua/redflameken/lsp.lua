@@ -96,7 +96,7 @@ vim.lsp.config['css_variables'] = {
     filetypes = { 'css', 'scss' },
 }
 
-vim.lsp.config['luals'] = {
+vim.lsp.config['lua_ls'] = {
     cmd = { 'lua-language-server' },
     filetypes = { 'lua' },
     settings = {
@@ -119,7 +119,7 @@ vim.lsp.config['luals'] = {
 
 vim.lsp.enable({
     'clangd',
-    'luals',
+    'lua_ls',
     'html',
     'ts_ls',
     'cssls',
@@ -127,5 +127,7 @@ vim.lsp.enable({
     'bashls',
     'digestif',
 })
+
+vim.lsp.enable('jdtls', false)
 
 vim.keymap.set("n", "K", function() vim.lsp.buf.hover { border = "rounded" } end);

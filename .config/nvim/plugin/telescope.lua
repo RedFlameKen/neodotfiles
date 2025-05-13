@@ -25,9 +25,9 @@ end
 
 vim.keymap.set("n", "<leader>eh", builtin.help_tags)
 
-vim.keymap.set("n", "<leader>nn", function()
-    builtin.find_files {cwd = "~/docs/notes/"}
-end)
+-- vim.keymap.set("n", "<leader>nn", function()
+--     builtin.find_files {cwd = "~/docs/notes/"}
+-- end)
 
 vim.keymap.set("n", "<leader>nb", function()
     if cur_file ~= "" then
@@ -36,15 +36,15 @@ vim.keymap.set("n", "<leader>nb", function()
     end
 end)
 
-vim.keymap.set("n", "<leader>nt", function()
-    if cur_file == "" then
-        setCurFile()
-        vim.cmd("e ~/docs/notes/todo.md")
-    else
-        vim.cmd("e " .. cur_file)
-        cur_file = ""
-    end
-end)
+-- vim.keymap.set("n", "<leader>nt", function()
+--     if cur_file == "" then
+--         setCurFile()
+--         vim.cmd("e ~/docs/notes/todo.md")
+--     else
+--         vim.cmd("e " .. cur_file)
+--         cur_file = ""
+--     end
+-- end)
 
 -- vim.api.nvim_create_autocmd("User", {
 --     pattern = "TelescopeFindPre",

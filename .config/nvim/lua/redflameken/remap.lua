@@ -15,18 +15,20 @@ vim.keymap.set("t", "<M-l>", "<C-\\><C-n><C-w>l", {silent = true});
 
 -- backspacce
 vim.keymap.set("i", "<C-BS>", "<C-w>", {noremap = true, silent = true})
+vim.keymap.set("i", "<C-del>", "<ESC>lcw")
 
 -- BIG yank
-vim.keymap.set("n", "Y", "yy")
+-- vim.keymap.set("n", "Y", "yy")
 
 -- Move line with auto indenting by Primeagen
-vim.keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 
 -- Yank to clipboard
 vim.keymap.set({"n", "v"}, "<leader>y", "\"+y")
 
-vim.keymap.set("n", "<leader>ee", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>ee", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>ee", require"oil".open)
 vim.keymap.set("n", "<leader>m", "<CMD>Mason<CR>")
 
 -- Color binds
@@ -40,6 +42,12 @@ vim.keymap.set("n", "<leader>lo", "<CMD>copen<CR>")
 vim.keymap.set("n", "<leader>lc", "<CMD>ccl<CR>")
 vim.keymap.set("n", "<leader>ln", "<CMD>cn<CR>")
 vim.keymap.set("n", "<leader>lp", "<CMD>cp<CR>")
+
+vim.keymap.set("n", "<leader>nt", require("redflameken.note-buf").toggle_buffer)
+vim.keymap.set("n", "<leader>nn", require("redflameken.note-buf").find_note)
+
+vim.keymap.set("n", "<leader>t", require("redflameken.termbuf").toggle_term)
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>")
 
 -- Util function for cacnelling inputs
 function Cancelled(input)

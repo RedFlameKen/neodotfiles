@@ -55,7 +55,6 @@ return require('packer').startup(function(use)
     use {'saadparwaiz1/cmp_luasnip'}
     use {"rafamadriz/friendly-snippets"}
     use {"L3MON4D3/LuaSnip", run = "make install_jsregexp"}
-
     use 'mfussenegger/nvim-lint'
     use 'mfussenegger/nvim-jdtls'
     use 'mfussenegger/nvim-dap'
@@ -75,5 +74,7 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
         latex = { enabled = false }
     })
+    use 'hsanson/vim-android'
+    use 'dense-analysis/ale'
 
 end)

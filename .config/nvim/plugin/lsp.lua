@@ -13,8 +13,10 @@ require("mason-nvim-dap").setup({
 })
 
 require('mason-lspconfig').setup({
+    automatic_enable = {
+        exclude = {"jdtls"}
+    },
     ensure_installed = {
-        "jdtls",
         "clangd",
         "lua_ls",
         "ts_ls",
@@ -69,6 +71,7 @@ cmp.setup({
     sources = {
         {name = 'nvim_lsp_signature_help' },
         {name = 'nvim_lsp'},
+        {name = 'ale'},
         {name = 'path'},
         {name = 'cmp_luasnip'},
         {name = 'luasnip', keyword_length = 2},
