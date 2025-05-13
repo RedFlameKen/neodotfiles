@@ -1,18 +1,22 @@
 #!/bin/bash
 
-if [ -f .classpath ] || [ -f .project ]; then
-    echo "project configs exist"
-    exit 0;
-fi
+# if [ -f .classpath ] || [ -f .project ]; then
+#     echo "project configs exist"
+#     exit 0;
+# fi
 
 project_name=$(basename $(pwd))
-classpath_data="
-<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<classpath>\n\t<classpathentry kind=\"con\" path=\"org.eclipse.jdt.launching.JRE_CONTAINER\"/>\n\t<classpathentry kind=\"src\" path=\"src\"/>\n\t<classpathentry kind=\"output\" path=\"bin\"/>\n</classpath>\n"
+if [ ! -f .classpath ]; then
+    classpath_data="
+    <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<classpath>\n\t<classpathentry kind=\"con\" path=\"org.eclipse.jdt.launching.JRE_CONTAINER\"/>\n\t<classpathentry kind=\"src\" path=\"src\"/>\n\t<classpathentry kind=\"output\" path=\"bin\"/>\n</classpath>\n"
+    echo -e $classpath_data > .classpath
+fi
 
-project_data="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<projectDescription>\n\t<name>$project_name</name>\n\t<comment></comment>\n\t<projects>\n\t</projects>\n\t<buildSpec>\n\t\t<buildCommand>\n\t\t\t<name>org.eclipse.jdt.core.javabuilder</name>\n\t\t\t<arguments>\n\t\t\t</arguments>\n\t\t</buildCommand>\n\t</buildSpec>\n\t<natures>\n\t\t<nature>org.eclipse.jdt.core.javanature</nature>\n\t\t<nature>org.eclipse.jdt.ls.unmanagedFolderNature</nature>\n\t</natures>\n\t<linkedResources>\n\t\t<link>\n\t\t\t<name>_</name>\n\t\t\t<type>2</type>\n\t\t\t<location>$(pwd)</location>\n\t\t</link>\n\t</linkedResources>\n</projectDescription>"
+if [ ! -f .project ]; then
+    project_data="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<projectDescription>\n\t<name>$project_name</name>\n\t<comment></comment>\n\t<projects>\n\t</projects>\n\t<buildSpec>\n\t\t<buildCommand>\n\t\t\t<name>org.eclipse.jdt.core.javabuilder</name>\n\t\t\t<arguments>\n\t\t\t</arguments>\n\t\t</buildCommand>\n\t</buildSpec>\n\t<natures>\n\t\t<nature>org.eclipse.jdt.core.javanature</nature>\n\t\t<nature>org.eclipse.jdt.ls.unmanagedFolderNature</nature>\n\t</natures>\n\t<linkedResources>\n\t\t<link>\n\t\t\t<name>_</name>\n\t\t\t<type>2</type>\n\t\t\t<location>$(pwd)</location>\n\t\t</link>\n\t</linkedResources>\n</projectDescription>"
+    echo -e $project_data > .project
+fi
 
-echo -e $classpath_data > .classpath
-echo -e $project_data > .project
 
 if [ ! -d src ]; then
     mkdir src
