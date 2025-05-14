@@ -15,7 +15,7 @@ output VGA-1 mode 1280x1024 pos 0 0
 bindswitch lid:on output * dpms off
 bindswitch lid:off output * dpms on
 
-exec swayidle timeout 300 'swaylock -f' timeout 600 'swaymsg "output * dpms off"' resume swaymsg "output * dpms on"
+exec swayidle timeout 300 'swaylock -f' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
 
 set $mod Mod4
 set $alt Mod1
