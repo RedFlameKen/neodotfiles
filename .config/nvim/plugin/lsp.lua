@@ -80,14 +80,14 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-k>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<M-e>'] = cmp.mapping.scroll_docs(-2),
+        ['<M-n>'] = cmp.mapping.scroll_docs(2),
+        ['<C-e>'] = cmp.mapping.select_prev_item(cmp_select),
         ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<M-k>'] = cmp.mapping.scroll_docs(-2),
-        ['<M-j>'] = cmp.mapping.scroll_docs(2),
-        ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
         ['<C-d>'] = cmp_toggle_docs,
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ['<C-l>'] = cmp.mapping.complete(),
+        ['<C-i>'] = cmp.mapping.complete(),
     }),
     snippet = {
         expand = function(args)

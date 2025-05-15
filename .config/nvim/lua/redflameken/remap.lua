@@ -66,3 +66,5 @@ vim.keymap.set("n", "<leader>en", function()
     filename = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h") .. "/" .. filename;
     vim.cmd("e " .. filename)
 end)
+
+require('redflameken.colemak')
