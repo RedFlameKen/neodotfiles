@@ -129,15 +129,15 @@ bindsym $mod+w exec $browser
 bindsym $mod+Shift+w exec $browser --private-window
 
 # open file explorer gui
-bindsym $mod+e exec --no-startup-id $file_explorer
+bindsym $mod+f exec --no-startup-id $file_explorer
 
 # start rofi(a program launcher)
-bindsym $mod+r exec --no-startup-id ~/.local/bin/rofi-runner
+bindsym $mod+p exec --no-startup-id ~/.local/bin/rofi-runner
 
 # bindsym $mod+g exec --no-startup-id glava 
 
-bindsym $mod+i exec --no-startup-id dunstctl close
-bindsym $mod+Shift+i exec --no-startup-id dunstctl close-all
+bindsym $mod+u exec --no-startup-id dunstctl close
+bindsym $mod+Shift+u exec --no-startup-id dunstctl close-all
 
 
 #sway keybinds
@@ -146,10 +146,10 @@ bindsym $mod+Shift+i exec --no-startup-id dunstctl close-all
 bindsym $mod+c kill
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+m focus left
+bindsym $mod+n focus down
+bindsym $mod+e focus up
+bindsym $mod+i focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -158,10 +158,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+m move left
+bindsym $mod+Shift+n move down
+bindsym $mod+Shift+e move up
+bindsym $mod+Shift+i move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -170,10 +170,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # move window to a different output/monitor
-bindsym $mod+Shift+Control+h move workspace to output left
-bindsym $mod+Shift+Control+j move workspace to output down
-bindsym $mod+Shift+Control+k move workspace to output up
-bindsym $mod+Shift+Control+l move workspace to output right
+bindsym $mod+Shift+Control+m move workspace to output left
+bindsym $mod+Shift+Control+n move workspace to output down
+bindsym $mod+Shift+Control+e move workspace to output up
+bindsym $mod+Shift+Control+i move workspace to output right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Control+Left move workspace to output left
@@ -189,7 +189,7 @@ bindsym $mod+Shift+Control+Right move workspace to output right
 # bindsym $mod+Shift+v split h
 
 # enter fullscreen mode for the focused container
-bindsym $mod+v fullscreen toggle
+bindsym $mod+d fullscreen toggle
 
 bindsym $mod+Alt+space sticky toggle
 
@@ -199,7 +199,7 @@ bindsym $mod+Alt+space sticky toggle
 # bindsym $mod+Control+e layout toggle split
 
 bindsym $mod+Control+w exec bash ~/.scripts/sway_window_relayout.sh tex
-bindsym $mod+Control+e exec bash ~/.scripts/sway_window_relayout.sh half
+bindsym $mod+Control+f exec bash ~/.scripts/sway_window_relayout.sh half
 # toggle tiling / floating
 bindsym $mod+space floating toggle
 
@@ -223,18 +223,18 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 
-bindsym $mod+d workspace $ws3
-bindsym $mod+f workspace $ws4
-bindsym $mod+s workspace $ws2
+bindsym $mod+s workspace $ws3
+bindsym $mod+t workspace $ws4
+bindsym $mod+r workspace $ws2
 bindsym $mod+a workspace $ws1
 bindsym $mod+g workspace $ws5
-bindsym $mod+t workspace $ws6
-bindsym $mod+b workspace $ws7
+bindsym $mod+b workspace $ws6
+bindsym $mod+v workspace $ws7
 
 # bindsym $mod+z workspace back_and_forth
 
-bindsym $mod+n workspace next
-bindsym $mod+p workspace prev
+bindsym $mod+y workspace next
+bindsym $mod+l workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1; workspace number $ws1
@@ -247,13 +247,13 @@ bindsym $mod+Shift+7 move container to workspace number $ws7; workspace number $
 bindsym $mod+Shift+8 move container to workspace number $ws8; workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9; workspace number $ws9
 
-bindsym $mod+Shift+d move container to workspace number $ws3; workspace number $ws3
-bindsym $mod+Shift+f move container to workspace number $ws4; workspace number $ws4
-bindsym $mod+Shift+s move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+Shift+s move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+Shift+t move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+Shift+r move container to workspace number $ws2; workspace number $ws2
 bindsym $mod+Shift+a move container to workspace number $ws1; workspace number $ws1
 bindsym $mod+Shift+g move container to workspace number $ws5; workspace number $ws5
-bindsym $mod+Shift+t move container to workspace number $ws6; workspace number $ws6
-bindsym $mod+Shift+b move container to workspace number $ws7; workspace number $ws7
+bindsym $mod+Shift+b move container to workspace number $ws6; workspace number $ws6
+bindsym $mod+Shift+v move container to workspace number $ws7; workspace number $ws7
 
 # move focused container to workspace
 bindsym $mod+Control+Shift+1 move container to workspace number $ws1
@@ -266,22 +266,22 @@ bindsym $mod+Control+Shift+7 move container to workspace number $ws7
 bindsym $mod+Control+Shift+8 move container to workspace number $ws8
 bindsym $mod+Control+Shift+9 move container to workspace number $ws9
 
-bindsym $mod+Control+Shift+d move container to workspace number $ws3
-bindsym $mod+Control+Shift+f move container to workspace number $ws4
-bindsym $mod+Control+Shift+s move container to workspace number $ws2
+bindsym $mod+Control+Shift+s move container to workspace number $ws3
+bindsym $mod+Control+Shift+t move container to workspace number $ws4
+bindsym $mod+Control+Shift+r move container to workspace number $ws2
 bindsym $mod+Control+Shift+a move container to workspace number $ws1
 bindsym $mod+Control+Shift+g move container to workspace number $ws5
-bindsym $mod+Control+Shift+t move container to workspace number $ws6
-bindsym $mod+Control+Shift+b move container to workspace number $ws7
+bindsym $mod+Control+Shift+b move container to workspace number $ws6
+bindsym $mod+Control+Shift+v move container to workspace number $ws7
 
-bindsym $mod+Shift+r reload
+bindsym $mod+Shift+j reload
 # bindsym $mod+Shift+r restart
 
-bindsym $mod+m exec "swaynag -t warning -m 'exit sway?' -B 'EXIT' 'swaymsg exit'"
+bindsym $mod+h exec "swaynag -t warning -m 'exit sway?' -B 'EXIT' 'swaymsg exit'"
 
-bindsym $mod+Control+m exec swaymsg exit
+bindsym $mod+Control+h exec swaymsg exit
 
-bindsym $mod+Shift+m exec --no-startup-id swaylock 
+bindsym $mod+Shift+h exec --no-startup-id swaylock 
 
 bindsym XF86ScreenSaver exec --no-startup-id swaylock 
 
@@ -296,10 +296,10 @@ mode "resize" {
         # Pressing l will grow the window’s width.
         # Pressing k up will shrink the window’s height.
         # Pressing j down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym m resize shrink width 10 px or 10 ppt
+        bindsym n resize grow height 10 px or 10 ppt
+        bindsym e resize shrink height 10 px or 10 ppt
+        bindsym i resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -314,10 +314,10 @@ mode "resize" {
 }
 
 # bindsym $mod+r mode "resize"
-bindsym Control+$mod+h resize shrink width 10 px or 10 ppt
-bindsym Control+$mod+j resize grow height 10 px or 10 ppt
-bindsym Control+$mod+k resize shrink height 10 px or 10 ppt
-bindsym Control+$mod+l resize grow width 10 px or 10 ppt
+bindsym Control+$mod+m resize shrink width 10 px or 10 ppt
+bindsym Control+$mod+n resize grow height 10 px or 10 ppt
+bindsym Control+$mod+e resize shrink height 10 px or 10 ppt
+bindsym Control+$mod+i resize grow width 10 px or 10 ppt
 
 bindsym Control+$mod+Left resize shrink width 10 px or 10 ppt
 bindsym Control+$mod+Down resize grow height 10 px or 10 ppt
