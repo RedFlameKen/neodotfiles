@@ -24,6 +24,10 @@ bindings = [
     { key = "j", mods = "Control|Shift", chars = "\u001b[27;6;106~" },
     { key = "k", mods = "Control|Shift", chars = "\u001b[27;6;107~" },
     { key = "l", mods = "Control|Shift", chars = "\u001b[27;6;108~" },
+    { key = "m", mods = "Control|Shift", chars = "\u001b[27;6;109~" },
+    { key = "n", mods = "Control|Shift", chars = "\u001b[27;6;110~" },
+    { key = "e", mods = "Control|Shift", chars = "\u001b[27;6;101~" },
+    { key = "i", mods = "Control|Shift", chars = "\u001b[27;6;105~" },
 
     { key = "Tab", mods = "Control|Shift", chars = "\u001b[27;6;9~" },
     { key = "Tab", mods = "Control", chars = "\u001b[27;5;9~" },
