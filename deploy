@@ -19,37 +19,78 @@ files=(
     ".zshrc"
 )
 
+xfiles=(
+    $(find ~/.dotfiles/.xconfig/ -mindepth 2 -type f | sed 's|.*\.dotfiles/.xconfig/||')
+)
+
 create_link(){
-    if [ ! -L ~/$1 ]; then
+    if [ ! -L $HOME/$1 ]; then
         if [ -d $HOME/$1 ]; then
-            printf "[WARN] $1 -> directory already exists!\n"
+            printf "[WARN] $1: directory already exists!\n"
             return
         fi
         if [ -f $HOME/$1 ]; then
-            printf "[WARN] $1 -> file already exists!\n"
+            printf "[WARN] $1: file already exists!\n"
             return
         fi
         ln -s $HOME/.dotfiles/$1 $HOME/$1
-        printf "Created a symlink for $1\n"
+        printf "Created a symlink for ~/.dotfiles/$1 -> ~/$1\n"
+    fi
+}
+
+create_xlink(){
+    if [ ! -L $HOME/.config/$1 ]; then
+        if [ -d $HOME/.config/$1 ]; then
+            printf "[WARN] ~/.config/$1: directory already exists!\n"
+            return
+        fi
+        if [ -f $HOME/.config/$1 ]; then
+            printf "[WARN] ~/.config/$1: file already exists!\n"
+            return
+        fi
+        ln -s $HOME/.dotfiles/.xconfig/$1 $HOME/.config/$1
+        printf "Created a symlink for ~/.dotfiles/.xconfig/$1 -> ~/.config/$1\n"
     fi
 }
 
 remove_link(){
     if [ -L ~/$1 ]; then
         rm ~/$1
+        printf "Removed the link ~/$1\n"
     fi
+}
+
+remove_xlink(){
+    if [ -L ~/.config/$1 ]; then
+        rm ~/.config/$1
+        printf "Removed the xlink ~/.config/$1\n"
+    fi
+}
+
+setup_exception_links(){
+    for item in "${xfiles[@]}"; do
+        create_xlink $item
+    done
+}
+
+clean_exception_links(){
+    for item in "${xfiles[@]}"; do
+        remove_xlink $item
+    done
 }
 
 setup(){
     for item in "${files[@]}"; do
         create_link $item
     done
+    setup_exception_links
 }
 
 clean(){
     for item in "${files[@]}"; do
         remove_link $item
     done
+    clean_exception_links
 }
 
 reset(){
