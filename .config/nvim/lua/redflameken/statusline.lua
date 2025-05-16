@@ -27,6 +27,7 @@ local function getLangIcon(lang)
     return ""
 end
 
+local git_has_diff = false
 
 local function gitBranch()
     if not ShowBranch then
@@ -38,12 +39,21 @@ local function gitBranch()
     end
     local branch = vim.fn.system("git branch --show-current | tr -d '\n'")
     local diff = ""
-    if vim.fn.system("git status --porcelain") ~= "" then
+    if git_has_diff then
         diff = "*"
     end
     return " 󰘬 " .. branch .. diff .. ' '
 end
 
+vim.api.nvim_create_autocmd({ "BufWrite", "BufEnter"}, {
+    callback = function()
+        if vim.fn.system("git status --porcelain") ~= "" then
+            git_has_diff = true
+        else
+            git_has_diff = false
+        end
+    end
+})
 
 local function filename()
     local fpath = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.")
