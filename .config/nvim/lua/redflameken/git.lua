@@ -44,7 +44,7 @@ function M.commit(files)
             M.stage(files)
         end
     end
-    os.execute('git commit -m \"' .. message .. '\"')
+    vim.cmd('!git commit -m \"' .. message .. '\"')
 end
 
 --- This method will stage the current working directory and commit it
@@ -54,7 +54,7 @@ function M.commit_all()
         return
     end
     M.stage(".")
-    os.execute('git commit -m \"' .. message .. '\"')
+    vim.cmd('!git commit -m \"' .. message .. '\"')
     -- ColorMyPencils()
 end
 
@@ -65,7 +65,7 @@ function M.commit_current_file()
         return
     end
     M.stage()
-    os.execute('git commit -m \"' .. message .. '\"')
+    vim.cmd('!git commit -m \"' .. message .. '\"')
     -- ColorMyPencils()
 end
 
@@ -75,7 +75,7 @@ function M.branch()
     if Cancelled(branchName) then
         return
     end
-    os.execute("git branch " .. branchName)
+    vim.cmd("!git branch " .. branchName)
     -- ColorMyPencils()
 end
 
@@ -85,7 +85,7 @@ function M.checkout()
     if Cancelled(branchName) then
         return
     end
-    os.execute("git checkout " .. branchName)
+    vim.cmd("!git checkout " .. branchName)
     -- ColorMyPencils()
 end
 
