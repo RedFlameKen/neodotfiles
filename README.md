@@ -18,5 +18,5 @@ copy of my system now! <br>
 I've not properly maintained my dotfiles in a bit. It's started to become hard
 for me to reinstall my system if I wanted. Will list down TODOs to keep track
 of what I need to do for this.
-- [ ] Create a custom alternative to stow
+- [x] Create a custom alternative to stow
 - [ ] Update install script

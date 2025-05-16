@@ -1,0 +1,64 @@
+#!/bin/bash
+
+files=(
+    ".aliases"
+    ".bashrc"
+    $(find ~/.dotfiles/.config/ -mindepth 1 -maxdepth 1 | sed 's|.*\.dotfiles/||')
+    ".git-prompt.sh"
+    ".git-completion.zsh"
+    ".icons"
+    $(find ~/.dotfiles/.local/bin/ -mindepth 1 -maxdepth 1 | sed 's|.*\.dotfiles/||')
+    ".scripts"
+    ".sh_profile"
+    ".themes"
+    ".vim"
+    ".vimrc"
+    ".wallpapers"
+    ".xinitrc"
+    ".zsh"
+    ".zshrc"
+)
+
+create_link(){
+    if [ ! -L ~/$1 ]; then
+        if [ -d $HOME/$1 ]; then
+            printf "[WARN] $1 -> directory already exists!\n"
+            return
+        fi
+        if [ -f $HOME/$1 ]; then
+            printf "[WARN] $1 -> file already exists!\n"
+            return
+        fi
+        ln -s $HOME/.dotfiles/$1 $HOME/$1
+        printf "Created a symlink for $1\n"
+    fi
+}
+
+remove_link(){
+    if [ -L ~/$1 ]; then
+        rm ~/$1
+    fi
+}
+
+setup(){
+    for item in "${files[@]}"; do
+        create_link $item
+    done
+}
+
+clean(){
+    for item in "${files[@]}"; do
+        remove_link $item
+    done
+}
+
+reset(){
+    clean
+    setup
+}
+
+[ "$1" = "clean" ] && clean && exit
+[ "$1" = "reset" ] && reset && exit
+
+setup
+
