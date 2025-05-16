@@ -47,11 +47,7 @@ end
 
 vim.api.nvim_create_autocmd({ "BufWrite", "BufEnter"}, {
     callback = function()
-        if vim.fn.system("git status --porcelain") ~= "" then
-            git_has_diff = true
-        else
-            git_has_diff = false
-        end
+        git_has_diff = require("redflameken.git").has_diff()
     end
 })
 
