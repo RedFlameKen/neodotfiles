@@ -27,6 +27,23 @@ bluetooth_packages="blueman bluez-utils"
 install_yay=false
 install_browser=true
 
+print_help(){
+printf "installScript.sh [options]
+
+options:
+  -C, --core-only         Install only core components of the setup\n
+  -c, --core              Install the core components of the setup\n
+  -i, --i3                Install packages needed for i3\n
+  -s, --sway              Install packages needed for sway\n
+  -H, --hyprland          Install packages needed for Hyprland\n
+  -o, --optionals         Install optional packages that are used in the setup\n
+  -g, --graphics-install  Install packages related to graphics\n
+  -f, --fonts             Install font packages used in the setup\n
+  -b, --bluetooth-install Install packages for bluetooth functionality\n
+  -h, --help              Print this help message\n
+"
+}
+
 if [ $# -eq 0 ]; then
     pacman_packages="$core_packages $i3_packages $sway_packages $pacman_packages $font_packages"
 else
@@ -65,6 +82,15 @@ else
             -b | --bluetooth-install) 
                 blueset="true"
                 pacman_packages="$pacman_packages $bluetooth_packages"
+                ;;
+            -h | --help)
+                print_help
+                exit
+                ;;
+            *)
+                printf "invalid option $1!\n"
+                print_help
+                exit
                 ;;
         esac
         shift
