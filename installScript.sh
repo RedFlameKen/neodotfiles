@@ -77,11 +77,11 @@ sudo sed -i 's/#\(\[multilib\]\)/\1\nInclude = \/etc\/pacman.d\/mirrorlist/' /et
 # pacman installs
 sudo pacman -Sy --noconfirm --needed $pacman_packages
 
-if [ install_yay == true ]; then
+if [ $install_yay == true ]; then
     yay -Sy --noconfirm --needed $yay_packages
 fi
 
-if [ install_browser == true ]; then
+if [ $install_browser == true ]; then
     yay -Sy --noconfirm --needed $yay_browser_packages
 fi
 
@@ -93,7 +93,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-system setup
+# system setup
 sudo chsh -s /bin/zsh $USER
 
 # file setup 
