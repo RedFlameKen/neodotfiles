@@ -118,7 +118,7 @@ create_dir $HOME/.config/
 
 
 curDir=$(pwd)
-if [ "$curDir" == "~/.dotfiles" ]; then
+if [ "$curDir" == "$HOME/.dotfiles" ]; then
     printf "Already in .dotfiles, not copying repo\n"
 else
     cp -r . $HOME/.dotfiles
