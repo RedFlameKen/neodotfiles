@@ -1,49 +1,67 @@
 #!/bin/bash
 
-corePackages="tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf fd fastfetch ripgrep stow github-cli"
+core_packages="tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf fastfetch ripgrep github-cli tlp"
 
-pacmanPackages="rofi kitty dunst brightnessctl keyd qt6ct firefox obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common htop papirus-icon-iheme ntp xarchiver"
+pacman_packages="rofi alacritty dunst brightnessctl keyd qt6ct obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc htop papirus-icon-theme ntp xarchiver"
 
-yayPackages="bumblebee-status auto-cpufreq obs-websocket-compat obs-cli"
+font_packages="noto-fonts-emoji ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common"
 
-i3Packages="i3 feh xorg xorg-xinit picom maim"
-swayPackages="sway swaylock swaybg swww slurp grim wl-clipboard xdg-desktop-portal xdg-desktop-portal-wlr"
-hyprPackages="hyprland wofi waybar"
+yay_packages="obs-websocket-compat obs-cli"
 
-optionalPacmanPackages="vlc mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey glava dosfstools"
-optionalYayPackages="cmatrix-git webcord ani-cli clementine"
+yay_browser_packages="floorp"
 
-graphicsPackages="libva-utils libva-intel-driver libva-mesa-driver"
+i3_packages="i3 feh xorg xorg-xinit picom maim"
 
-bluetoothPackages="blueman bluez-utils"
+sway_packages="sway swaylock swaybg slurp grim wl-clipboard"
+yay_sway_packages="bumblebee-status"
+
+hypr_packages="hyprland swww waybar xdg-desktop-portal xdg-desktop-portal-wlr"
+
+optional_pacman_packages="mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey glava dosfstools"
+optional_yay_packages="cmatrix-git ani-cli"
+
+graphics_packages="libva-utils libva-intel-driver libva-mesa-driver"
+
+bluetooth_packages="blueman bluez-utils"
+
+install_yay=false
+install_browser=true
+
 if [ $# -eq 0 ]; then
-    pacmanPackages="$corePackages $i3Packages $swayPackages $pacmanPackages"
+    pacman_packages="$core_packages $i3_packages $sway_packages $pacman_packages $font_packages"
 else
     while [ $# -gt 0 ]; do
         case $1 in
             -c | --core-only) 
-                pacmanPackages="$corePackages"
+                pacman_packages="$core_packages"
+                install_browser=false
                 break
                 ;;
             -i | --i3) 
-                pacmanPackages="$i3Packages $pacmanPackages" 
+                pacman_packages="$pacman_packages $i3_packages" 
                 ;;
             -s | --sway)
-                pacmanPackages="$swayPackages $pacmanPackages"
+                pacman_packages="$pacman_packages $sway_packages"
+                yay_packages="$yay_packages $yay_sway_packages"
+                install_yay=true
                 ;;
-            -H | --Hyprland)
-                pacmanPackages="$hyprPackages $pacmanPackages"
+            -H | --hyprland)
+                pacman_packages="$pacman_packages $hypr_packages"
                 ;;
             -o | --optionals)
-                pacmanPackages="$pacmanPackages $optionalPacmanPackages"
-                yayPackages="$yayPackages $optionalYayPackages"
+                pacman_packages="$pacman_packages $optional_pacman_packages"
+                yay_packages="$yay_packages $optional_yay_packages"
+                install_yay=true
                 ;;
             -g | --graphics-install) 
-                pacmanPackages="$pacmanPackages $graphicsPackages"
+                pacman_packages="$pacman_packages $graphics_packages"
+                ;;
+            -f | --fonts) 
+                pacman_packages="$pacman_packages $font_packages"
                 ;;
             -b | --bluetooth-install) 
                 blueset="true"
-                pacmanPackages="$pacmanPackages $bluetoothPackages"
+                pacman_packages="$pacman_packages $bluetooth_packages"
                 ;;
         esac
         shift
@@ -54,9 +72,15 @@ fi
 sudo sed -i 's/#\(\[multilib\]\)/\1\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
 
 # pacman installs
-sudo pacman -Sy --noconfirm yay $pacmanPackages
+sudo pacman -Sy --noconfirm --needed yay $pacman_packages
 
-yay -Sy --noconfirm $yayPackages
+if [ install_yay == true ]; then
+    yay -Sy --noconfirm --needed $yay_packages
+fi
+
+if [ install_browser == true ]; then
+    yay -Sy --noconfirm --needed $yay_browser_packages
+fi
 
 # install Neovim Packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
@@ -67,16 +91,31 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 system setup
-sudo chsh $USER
+sudo chsh -s /bin/zsh $USER
 
 # file setup 
-mkdir $HOME/docs $HOME/Storage $HOME/projects $HOME/personal
+create_dir(){
+    if [ ! -d $1 ]; then
+        mkdir $1
+        printf "Created the directory: $1"
+    fi
+}
+
+create_dir $HOME/docs
+create_dir $HOME/docs/notes
+create_dir $HOME/Storage
+create_dir $HOME/projects
+create_dir $HOME/personal
+create_dir $HOME/test
+create_dir $HOME/school
+
+create_dir $HOME/libs
+
 cp -r . $HOME/.dotfiles
 
-# stow 
 oldDir=$(pwd)
 cd $HOME/.dotfiles
-stow .
+$HOME/.dotfiles/deploy reset
 cd $oldDir
 
 # systemd stuff
