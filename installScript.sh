@@ -116,12 +116,15 @@ create_dir $HOME/libs
 create_dir $HOME/.local/bin
 create_dir $HOME/.config/
 
-cp -r . $HOME/.dotfiles
 
-oldDir=$(pwd)
-cd $HOME/.dotfiles
+curDir=$(pwd)
+if [ "$curDir" == "~/.dotfiles" ]; then
+    printf "Already in .dotfiles, not copying repo\n"
+else
+    cp -r . $HOME/.dotfiles
+fi
+
 $HOME/.dotfiles/deploy reset
-cd $oldDir
 
 # systemd stuff
 if [ ! -z $blueset ]; then
