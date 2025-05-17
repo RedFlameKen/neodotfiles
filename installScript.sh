@@ -110,6 +110,8 @@ create_dir $HOME/test
 create_dir $HOME/school
 
 create_dir $HOME/libs
+create_dir $HOME/.local/bin
+create_dir $HOME/.config/
 
 cp -r . $HOME/.dotfiles
 
