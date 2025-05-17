@@ -100,7 +100,7 @@ sudo chsh -s /bin/zsh $USER
 create_dir(){
     if [ ! -d $1 ]; then
         mkdir $1
-        printf "Created the directory: $1"
+        printf "Created the directory: $1\n"
     fi
 }
 
