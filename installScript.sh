@@ -75,7 +75,7 @@ fi
 sudo sed -i 's/#\(\[multilib\]\)/\1\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
 
 # pacman installs
-sudo pacman -Sy --noconfirm --needed yay $pacman_packages
+sudo pacman -Sy --noconfirm --needed $pacman_packages
 
 if [ install_yay == true ]; then
     yay -Sy --noconfirm --needed $yay_packages
