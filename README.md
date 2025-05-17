@@ -7,7 +7,7 @@ To install the dotfiles, I have made an install script (currently very new and
 needs many improvements:
 ```
 mkdir $HOME/git
-git clone https://github.com/redflameken2/neodotfiles $HOME/git/neodotfiles
+git clone https://github.com/redflameken/neodotfiles $HOME/git/neodotfiles
 chmod +x $HOME/git/neodotfiles/installScript.sh
 $HOME/git/neodotfiles/installScript.sh
 ```
