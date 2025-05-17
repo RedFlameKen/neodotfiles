@@ -32,10 +32,13 @@ if [ $# -eq 0 ]; then
 else
     while [ $# -gt 0 ]; do
         case $1 in
-            -c | --core-only) 
+            -C | --core-only) 
                 pacman_packages="$core_packages"
                 install_browser=false
                 break
+                ;;
+            -c | --core) 
+                pacman_packages="$pacman_packages $core_packages" 
                 ;;
             -i | --i3) 
                 pacman_packages="$pacman_packages $i3_packages" 
