@@ -1,4 +1,4 @@
-# Redflameken's NeoDotfiles
+# RedFlameKen's NeoDotfiles
 
 This will now be my main dotfiles repo that includes all of my setups
 (Hyprland, i3, sway)
@@ -26,4 +26,4 @@ for me to reinstall my system if I wanted. Will list down TODOs to keep track
 of what I need to do for this.
 - [x] Create a custom alternative to stow
 - [x] Add to the system, directories that are non-stowable, like for soundfiles
-- [-] Update install script
+- [ ] Update install script
