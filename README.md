@@ -19,5 +19,5 @@ I've not properly maintained my dotfiles in a bit. It's started to become hard
 for me to reinstall my system if I wanted. Will list down TODOs to keep track
 of what I need to do for this.
 - [x] Create a custom alternative to stow
-- [ ] Add to the system, directories that are non-stowable, like for soundfiles
+- [x] Add to the system, directories that are non-stowable, like for soundfiles
 - [ ] Update install script
