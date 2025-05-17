@@ -8,7 +8,7 @@ font_packages="noto-fonts-emoji ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-ne
 
 yay_packages="obs-websocket-compat obs-cli"
 
-yay_browser_packages="floorp"
+yay_browser_packages="floorp-bin"
 
 i3_packages="i3 feh xorg xorg-xinit picom maim"
 
