@@ -38,6 +38,7 @@ local kind_icons = {
     Field = "",
     Keyword = "",
     Enum = "󰘻",
+    Unit = "󰘻",
     Value = "󰎠",
     Reference = "",
     Text = "󰦨",

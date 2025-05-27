@@ -43,7 +43,7 @@ vim.lsp.config['digestif'] = {
 vim.lsp.config.html = {
     cmd = { 'vscode-html-language-server', '--stdio' },
     root_markers = { '.htmlhintrc' },
-    filetypes = { 'html' },
+    filetypes = { 'html', 'php' },
 }
 
 vim.lsp.config["jsonls"] = {
@@ -82,7 +82,7 @@ vim.lsp.config['cssls'] = {
     filetypes = { 'css', 'scss' },
 }
 
-vim.lsp.config['css_variables'] = {
+vim.lsp.config['vimls'] = {
     cmd = { 'css-variables-language-server', '--stdio' },
     root_markers = { '.htmlhintrc' },
     settings = {
@@ -96,6 +96,23 @@ vim.lsp.config['css_variables'] = {
     filetypes = { 'css', 'scss' },
 }
 
+vim.lsp.config['css_variables'] = {
+    cmd = { 'vim-language-server', '--stdio' },
+    filetypes = { 'vim' },
+}
+
+vim.lsp.config['phpactor'] = {
+    cmd = { 'phpactor', 'language-server'},
+    filetypes = { 'php' },
+    root_dir = vim.fn.getcwd()
+    -- root_markers = { 'main.php' },
+}
+
+-- vim.lsp.config['lemminx'] = {
+--     cmd = { 'lemminx'},
+--     filetypes = { 'xml' },
+-- }
+--
 vim.lsp.config['lua_ls'] = {
     cmd = { 'lua-language-server' },
     filetypes = { 'lua' },
@@ -111,23 +128,34 @@ vim.lsp.config['lua_ls'] = {
             workspace = {
                 library = {
                     vim.env.VIMRUNTIME,
+                    "~/.local/share/nvim/site/pack/packer/start/"
                 }
             }
         }
     }
 }
 
+vim.lsp.config['sqls'] = {
+    cmd = { 'sqls' },
+    filetypes = { 'sql' },
+}
+
 vim.lsp.enable({
     'clangd',
     'lua_ls',
+    'vimls',
     'html',
     'ts_ls',
     'cssls',
     'css_variables',
     'bashls',
+    'phpactor',
     'digestif',
+    'sqls'
+    -- 'lemminx',
 })
 
 vim.lsp.enable('jdtls', false)
+vim.lsp.enable('lemminx', false)
 
 vim.keymap.set("n", "K", function() vim.lsp.buf.hover { border = "rounded" } end);
