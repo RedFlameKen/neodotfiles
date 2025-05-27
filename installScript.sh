@@ -27,6 +27,11 @@ bluetooth_packages="blueman bluez-utils"
 install_yay=false
 install_browser=true
 
+post_install(){
+    cp $HOME/.dotfiles/etc/tlp.conf $HOME/.config/tlp.conf
+    sudo ln -sf /home/kenneth/.config/tlp.conf /etc/tlp.conf
+}
+
 print_help(){
 printf "installScript.sh [options]
 
@@ -156,3 +161,5 @@ $HOME/.dotfiles/deploy reset
 if [ ! -z $blueset ]; then
     sudo systemctl enable bluetooth
 fi
+
+post_install

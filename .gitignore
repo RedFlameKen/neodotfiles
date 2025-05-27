@@ -1,4 +1,3 @@
 .vim/plugged/
 .scripts/curwp
-etc/tlp.conf
 .config/nvim/plugin/packer_compiled.lua
