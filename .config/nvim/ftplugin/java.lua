@@ -46,11 +46,11 @@ local config = {
     root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
     settings = {
         java = {
-            jdt = {
-                ls = {
-                    androidSupport = true
-                },
-            },
+            -- jdt = {
+            --     ls = {
+            --         androidSupport = true
+            --     },
+            -- },
             configuration = {
                 runtimes = {
                     {
@@ -71,25 +71,19 @@ local config = {
             --     referencedLibraries = {
             --     },
             -- },
-            import = {
-                gradle = {
-                    enabled = true,
-                    wrapper = {
-                        enabled = true
-                    }
-                },
-            },
+            -- import = {
+            --     gradle = {
+            --         enabled = true,
+            --         wrapper = {
+            --             enabled = true
+            --         }
+            --     },
+            -- },
             rename = {enabled = true},
         },
-        -- implementationsCodeLense = {
-        --     enabled = true
+        -- references = {
+        --     includeDecompiledSources = true,
         -- },
-        -- referencesCodeLense = {
-        --     enabled = true
-        -- },
-        references = {
-            includeDecompiledSources = true,
-        },
     },
     init_options = {
         bundles = {
