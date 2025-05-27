@@ -18,11 +18,11 @@ fi
 setopt histignorealldups sharehistory PROMPT_SUBST
 
 function tmux-fuz-sesh {
-    zsh -c ~/.local/bin/tmux-fuzzy-session
+    zsh -c ~/.local/bin/muxfind
 }
 
 function tmux-fuz-sesh-vim {
-    zsh -c ~/.local/bin/tmux-fuzzy-session -v
+    zsh -c ~/.local/bin/muxfind -v
 }
 
 zle -N tmux-fuz-sesh
@@ -44,8 +44,8 @@ bindkey '^[[4~' end-of-line
 
 bindkey -s '^A' 'tmux a\n'
 
-bindkey -s '^F' '~/.local/bin/tmux-fuzzy-session\n'
-bindkey -s '^[^F' '~/.local/bin/tmux-fuzzy-session -v\n'
+bindkey -s '^F' '~/.local/bin/muxfind\n'
+bindkey -s '^[^F' '~/.local/bin/muxfind -v\n'
 
 
 autoload -Uz bashcompinit
