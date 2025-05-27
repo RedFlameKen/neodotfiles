@@ -5,12 +5,12 @@ reload(){
 }
 
 raise(){
-    sed -i ~/.dotfiles/etc/tlp.conf -e "s/^\(STOP_CHARGE_THRESH_BAT.=\).*/\196/"
+    sed -i ~/.config/tlp.conf -e "s/^\(STOP_CHARGE_THRESH_BAT.=\).*/\196/"
     reload
 }
 
 lower(){
-    sed -i ~/.dotfiles/etc/tlp.conf -e "s/^\(STOP_CHARGE_THRESH_BAT.=\).*/\180/"
+    sed -i ~/.config/tlp.conf -e "s/^\(STOP_CHARGE_THRESH_BAT.=\).*/\180/"
     reload
 }
 
