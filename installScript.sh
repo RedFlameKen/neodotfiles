@@ -27,7 +27,7 @@ bluetooth_packages="blueman bluez-utils"
 install_yay=false
 install_browser=true
 
-post_install(){
+post_setup(){
     ln -sf $HOME/docs $HOME/Documents
     cp $HOME/.dotfiles/etc/tlp.conf $HOME/.config/tlp.conf
     sudo ln -sf /home/kenneth/.config/tlp.conf /etc/tlp.conf
@@ -59,6 +59,8 @@ else
                 pacman_packages="$core_packages"
                 install_browser=false
                 break
+                ;;
+            -n | --no-postinstall) no_postinstall=true
                 ;;
             -c | --core) 
                 pacman_packages="$pacman_packages $core_packages" 
@@ -128,6 +130,10 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # system setup
 sudo chsh -s /bin/zsh $USER
 
+if [ $no_postinstall == true ]; then
+    exit;
+fi
+
 # file setup 
 create_dir(){
     if [ ! -d $1 ]; then
@@ -163,4 +169,4 @@ if [ ! -z $blueset ]; then
     sudo systemctl enable bluetooth
 fi
 
-post_install
+post_setup
