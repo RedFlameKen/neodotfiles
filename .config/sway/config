@@ -1,6 +1,6 @@
 output '*' color_profile icc /usr/share/color/icc/colord/Gamma6500K.icc
 
-output LVDS-1 mode 1366x768 pos 0 1025
+output LVDS-1 mode 1366x768 pos 0 1024
 # output LVDS-1 mode 1366x768 pos 0 0
 # output HDMI-A-1 resolution 1280x720 pos 1366 1025
 # output HDMI-A-1 resolution 1920x1080 pos 1366 1025
