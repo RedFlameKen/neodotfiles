@@ -2,7 +2,7 @@
 
 core_packages="tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf fastfetch ripgrep github-cli tlp npm zip unzip ly"
 
-pacman_packages="rofi alacritty dunst brightnessctl keyd qt6ct obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc htop papirus-icon-theme ntp xarchiver"
+pacman_packages="rofi-wayland alacritty dunst brightnessctl keyd qt6ct obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc htop papirus-icon-theme ntp xarchiver"
 
 font_packages="noto-fonts-emoji ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common"
 
@@ -17,7 +17,7 @@ yay_sway_packages="bumblebee-status python-pulsectl"
 
 hypr_packages="hyprland swww waybar xdg-desktop-portal xdg-desktop-portal-wlr"
 
-optional_pacman_packages="mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey glava dosfstools rhythmbox"
+optional_pacman_packages="mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey dosfstools rhythmbox"
 optional_yay_packages="cmatrix-git ani-cli"
 
 graphics_packages="libva-utils libva-intel-driver libva-mesa-driver"
@@ -38,7 +38,7 @@ printf "installScript.sh [options]
 
 options:
   -C, --core-only         Install only core components of the setup\n
-  -a, --all               Install all packages
+  -a, --all               Install all packages\n
   -c, --core              Install the core components of the setup\n
   -i, --i3                Install packages needed for i3\n
   -s, --sway              Install packages needed for sway\n
@@ -128,6 +128,10 @@ if [ $install_browser == true ]; then
     yay -Sy --noconfirm --needed $yay_browser_packages
 fi
 
+if [ $no_postinstall == true ]; then
+    exit;
+fi
+
 # install Neovim Packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
@@ -138,10 +142,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 # system setup
 sudo chsh -s /bin/zsh $USER
-
-if [ $no_postinstall == true ]; then
-    exit;
-fi
 
 # file setup 
 create_dir(){
