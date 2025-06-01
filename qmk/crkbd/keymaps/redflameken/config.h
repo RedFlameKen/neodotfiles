@@ -1,0 +1,70 @@
+#pragma once
+
+/*#define USE_MATRIX_I2C*/
+
+#define SPLIT_USB_DETECT
+/*#define SPLIT_TRANSPORT_MIRROR*/
+#define SPLIT_LAYER_STATE_ENABLE
+#define SPLIT_OLED_ENABLE
+#define EE_HANDS
+
+#define SWAP_HANDS_ENABLE
+
+#define SPLIT_TRANSACTION_IDS_USER ACCEL_SYNC_ID, BRIGHTNESS_SYNC_ID
+
+/*#define USE_I2C*/
+/*#define SOFT_SERIAL_PIN D0*/
+
+#define USE_TRANSACTION
+
+#define MK_3_SPEED
+
+#define FORCE_NKRO
+
+#define LAYER_STATE_8BIT
+
+/*#define TAPPING_TOGGLE 2*/
+#define TAPPING_TERM 200
+/*#define TAPPING_TERM_PER_KEY*/
+
+#ifdef OLED_ENABLE
+#define SPLIT_LED_STATE_ENABLE
+#define OLED_BRIGHTNESS 0
+#define OLED_TIMEOUT 60000
+#endif
+
+#ifdef RGBLIGHT_ENABLE
+    #define RGBLIGHT_EFFECT_BREATHING
+    #define RGBLIGHT_EFFECT_RAINBOW_MOOD
+    #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+    #define RGBLIGHT_EFFECT_SNAKE
+    #define RGBLIGHT_EFFECT_KNIGHT
+    #define RGBLIGHT_EFFECT_CHRISTMAS
+    #define RGBLIGHT_EFFECT_STATIC_GRADIENT
+    #define RGBLIGHT_EFFECT_RGB_TEST
+    #define RGBLIGHT_EFFECT_ALTERNATING
+    #define RGBLIGHT_EFFECT_TWINKLE
+    #define RGBLIGHT_LIMIT_VAL 120
+    #define RGBLIGHT_HUE_STEP 10
+    #define RGBLIGHT_SAT_STEP 17
+    #define RGBLIGHT_VAL_STEP 17
+#endif
+
+#ifdef MK_3_SPEED
+    #define MK_C_OFFSET_UNMOD 12
+    #define MK_C_INTERVAL_UNMOD 16
+    #define MK_C_OFFSET_0 2
+    #define MK_C_INTERVAL_0 16
+    #define MK_C_OFFSET_1 12
+    #define MK_C_INTERVAL_1 16
+    #define MK_C_OFFSET_2 24
+    #define MK_C_INTERVAL_2 16
+    #define MK_W_OFFSET_UNMOD 1
+    #define MK_W_INTERVAL_UNMOD 120
+    #define MK_W_OFFSET_0 1
+    #define MK_W_INTERVAL_0 360
+    #define MK_W_OFFSET_1 1
+    #define MK_W_INTERVAL_1 120
+    #define MK_W_OFFSET_2 1
+    #define MK_W_INTERVAL_2 20
+#endif
