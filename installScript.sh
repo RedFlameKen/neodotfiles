@@ -30,7 +30,7 @@ install_browser=true
 post_setup(){
     ln -sf $HOME/docs $HOME/Documents
     cp $HOME/.dotfiles/etc/tlp.conf $HOME/.config/tlp.conf
-    sudo ln -sf /home/kenneth/.config/tlp.conf /etc/tlp.conf
+    sudo ln -sf $HOME/.config/tlp.conf /etc/tlp.conf
 }
 
 print_help(){
