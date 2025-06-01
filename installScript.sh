@@ -38,6 +38,7 @@ printf "installScript.sh [options]
 
 options:
   -C, --core-only         Install only core components of the setup\n
+  -a, --all               Install all packages
   -c, --core              Install the core components of the setup\n
   -i, --i3                Install packages needed for i3\n
   -s, --sway              Install packages needed for sway\n
@@ -46,6 +47,7 @@ options:
   -g, --graphics-install  Install packages related to graphics\n
   -f, --fonts             Install font packages used in the setup\n
   -b, --bluetooth-install Install packages for bluetooth functionality\n
+  -n, --no-postinstall    Only install packages. do not do post install setup\n
   -h, --help              Print this help message\n
 "
 }
@@ -58,6 +60,13 @@ else
             -C | --core-only) 
                 pacman_packages="$core_packages"
                 install_browser=false
+                break
+                ;;
+            -a | --all) 
+                pacman_packages="$pacman_packages $core_packages $i3_packages $sway_packages $hypr_packages $optional_pacman_packages $graphics_packages $font_packages $bluetooth_packages" 
+                yay_packages="$yay_packages $yay_sway_packages $optional_yay_packages"
+                install_yay=true
+                blueset="true"
                 break
                 ;;
             -n | --no-postinstall) no_postinstall=true
