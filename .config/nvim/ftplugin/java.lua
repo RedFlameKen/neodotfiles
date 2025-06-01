@@ -13,7 +13,7 @@ local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
 local jdtls_path = home ..  '/git/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository'
 
-local launcher_jar = jdtls_path .. '/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar'
+local launcher_jar = vim.fn.glob(jdtls_path .. '/plugins/org.eclipse.equinox.launcher_*.jar')
 
 local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
@@ -118,12 +118,13 @@ local config = {
 }
 
 local bundles = {
-    vim.fn.glob(home .. "/git/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.0.jar", true)
+    vim.fn.glob(home .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/*.jar", true)
 }
 
 vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.local/share/nvim/mason/packages/java-test/extension/server/*.jar", true), "\n"))
 config['init_options'] = {
-  bundles = bundles;
+  bundles = bundles,
+  extendedCapabilities = jdtls.extendedCapabilities,
 }
 
 jdtls.start_or_attach(config)
