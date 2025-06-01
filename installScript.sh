@@ -17,7 +17,7 @@ yay_sway_packages="bumblebee-status python-pulsectl"
 
 hypr_packages="hyprland swww waybar xdg-desktop-portal xdg-desktop-portal-wlr"
 
-optional_pacman_packages="mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey dosfstools rhythmbox"
+optional_pacman_packages="mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey dosfstools rhythmbox zathura texlive"
 optional_yay_packages="cmatrix-git ani-cli"
 
 graphics_packages="libva-utils libva-intel-driver libva-mesa-driver"
