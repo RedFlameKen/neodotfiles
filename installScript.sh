@@ -27,10 +27,15 @@ bluetooth_packages="blueman bluez-utils"
 install_yay=false
 install_browser=true
 
+no_install=false
+no_postinstall=false
+no_postsetup=false
+
 post_setup(){
     ln -sf $HOME/docs $HOME/Documents
     cp $HOME/.dotfiles/etc/tlp.conf $HOME/.config/tlp.conf
     sudo ln -sf $HOME/.config/tlp.conf /etc/tlp.conf
+    printf "Finished post setup\n"
 }
 
 print_help(){
@@ -47,7 +52,9 @@ options:
   -g, --graphics-install  Install packages related to graphics\n
   -f, --fonts             Install font packages used in the setup\n
   -b, --bluetooth-install Install packages for bluetooth functionality\n
-  -n, --no-postinstall    Only install packages. do not do post install setup\n
+  -p, --no-postinstall    Only install packages. do not do post install setup\n
+  -P, --no-postsetup      skip post setup
+  -n, --no-install        Skip installation step
   -h, --help              Print this help message\n
 "
 }
@@ -69,7 +76,11 @@ else
                 blueset="true"
                 break
                 ;;
-            -n | --no-postinstall) no_postinstall=true
+            -n | --no-install) no_install=true
+                ;;
+            -p | --no-postinstall) no_postinstall=true
+                ;;
+            -P | --no-postsetup) no_postsetup=true
                 ;;
             -c | --core) 
                 pacman_packages="$pacman_packages $core_packages" 
@@ -114,36 +125,23 @@ else
     done
 fi
 
-# enable multilib mirror
-sudo sed -i 's/#\(\[multilib\]\)/\1\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
+install(){
+    # enable multilib mirror
+    sudo sed -i 's/#\(\[multilib\]\)/\1\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
 
-# pacman installs
-sudo pacman -Sy --noconfirm --needed $pacman_packages
+    # pacman installs
+    sudo pacman -Sy --noconfirm --needed $pacman_packages
 
-if [ $install_yay == true ]; then
-    yay -Sy --noconfirm --needed $yay_packages
-fi
+    if [ $install_yay == true ]; then
+        yay -Sy --noconfirm --needed $yay_packages
+    fi
 
-if [ $install_browser == true ]; then
-    yay -Sy --noconfirm --needed $yay_browser_packages
-fi
+    if [ $install_browser == true ]; then
+        yay -Sy --noconfirm --needed $yay_browser_packages
+    fi
+    printf "Finished installation\n"
+}
 
-if [ $no_postinstall == true ]; then
-    exit;
-fi
-
-# install Neovim Packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-# install Vim Plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# system setup
-sudo chsh -s /bin/zsh $USER
-
-# file setup 
 create_dir(){
     if [ ! -d $1 ]; then
         mkdir $1
@@ -151,33 +149,59 @@ create_dir(){
     fi
 }
 
-create_dir $HOME/docs
-create_dir $HOME/docs/notes
-create_dir $HOME/Storage
-create_dir $HOME/projects
-create_dir $HOME/personal
-create_dir $HOME/test
-create_dir $HOME/school
+post_install(){
+    # install Neovim Packer
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
-create_dir $HOME/libs
-create_dir $HOME/.local/bin
-create_dir $HOME/.config/
+    # install Vim Plug
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    # system setup
+    sudo chsh -s /bin/zsh $USER
+
+    # file setup 
+    create_dir $HOME/docs
+    create_dir $HOME/docs/notes
+    create_dir $HOME/Storage
+    create_dir $HOME/projects
+    create_dir $HOME/personal
+    create_dir $HOME/test
+    create_dir $HOME/school
+
+    create_dir $HOME/libs
+    create_dir $HOME/.local/bin
+    create_dir $HOME/.config/
 
 
-curDir=$(pwd)
-if [ "$curDir" == "$HOME/.dotfiles" ]; then
-    printf "Already in .dotfiles, not copying repo\n"
-else
-    cp -r . $HOME/.dotfiles
+    curDir=$(pwd)
+    if [ "$curDir" == "$HOME/.dotfiles" ]; then
+        printf "Already in .dotfiles, not copying repo\n"
+    else
+        cp -r . $HOME/.dotfiles
+    fi
+
+    $HOME/.dotfiles/deploy reset
+
+    # systemd stuff
+    if [ ! -z $blueset ]; then
+        sudo systemctl enable bluetooth
+    fi
+
+    sudo systemctl enable ly
+    printf "Finished post installation\n"
+}
+
+if [ $no_install == false ]; then
+    install
 fi
 
-$HOME/.dotfiles/deploy reset
-
-# systemd stuff
-if [ ! -z $blueset ]; then
-    sudo systemctl enable bluetooth
+if [ $no_postinstall == false ]; then
+    post_install
 fi
 
-sudo systemctl enable ly
+if [ $no_postsetup == false ]; then
+    post_setup
+fi
 
-post_setup
