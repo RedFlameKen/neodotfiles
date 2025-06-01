@@ -1,6 +1,6 @@
 #!/bin/bash
 
-core_packages="tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf fastfetch ripgrep github-cli tlp npm zip unzip"
+core_packages="tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf fastfetch ripgrep github-cli tlp npm zip unzip ly"
 
 pacman_packages="rofi alacritty dunst brightnessctl keyd qt6ct obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc htop papirus-icon-theme ntp xarchiver"
 
@@ -13,7 +13,7 @@ yay_browser_packages="floorp-bin"
 i3_packages="i3 feh xorg xorg-xinit picom maim"
 
 sway_packages="sway swaylock swaybg slurp grim wl-clipboard"
-yay_sway_packages="bumblebee-status"
+yay_sway_packages="bumblebee-status python-pulsectl"
 
 hypr_packages="hyprland swww waybar xdg-desktop-portal xdg-desktop-portal-wlr"
 
@@ -177,5 +177,7 @@ $HOME/.dotfiles/deploy reset
 if [ ! -z $blueset ]; then
     sudo systemctl enable bluetooth
 fi
+
+sudo systemctl enable ly
 
 post_setup
