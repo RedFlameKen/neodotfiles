@@ -12,7 +12,7 @@ yay_browser_packages="floorp-bin"
 
 i3_packages="i3 feh xorg xorg-xinit picom maim"
 
-sway_packages="sway swaylock swaybg slurp grim wl-clipboard"
+sway_packages="sway swaylock swayidle swaybg slurp grim wl-clipboard"
 yay_sway_packages="bumblebee-status python-pulsectl"
 
 hypr_packages="hyprland swww waybar xdg-desktop-portal xdg-desktop-portal-wlr"
