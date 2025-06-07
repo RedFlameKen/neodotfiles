@@ -104,7 +104,12 @@ vim.lsp.config['css_variables'] = {
 vim.lsp.config['phpactor'] = {
     cmd = { 'phpactor', 'language-server'},
     filetypes = { 'php' },
-    root_dir = vim.fn.getcwd()
+    root_dir = vim.fn.getcwd(),
+    init_options = {
+        ["language_server_phpstan.enabled"] = false,
+        ["language_server_psalm.enabled"] = false,
+    }
+
     -- root_markers = { 'main.php' },
 }
 
