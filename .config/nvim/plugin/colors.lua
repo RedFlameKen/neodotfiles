@@ -2,7 +2,7 @@ local cursor_line_hl
 
 function ColorMyPencils(color, transparent)
     color = color or "gruvbox"
-    transparent = transparent or "false"
+    transparent = transparent or "true"
 
     vim.cmd.colorscheme(color)
 
