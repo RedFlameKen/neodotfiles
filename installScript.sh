@@ -1,8 +1,8 @@
 #!/bin/bash
 
-core_packages="tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf fastfetch ripgrep github-cli tlp npm zip unzip ly"
+core_packages="tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf fastfetch ripgrep github-cli tlp npm zip unzip ly jq"
 
-pacman_packages="rofi-wayland alacritty dunst brightnessctl keyd qt6ct obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc htop papirus-icon-theme ntp xarchiver"
+pacman_packages="rofi-wayland alacritty dunst brightnessctl keyd qt6ct obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc htop papirus-icon-theme ntp xarchiver playerctl"
 
 font_packages="noto-fonts-emoji ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common"
 
@@ -12,7 +12,7 @@ yay_browser_packages="floorp-bin"
 
 i3_packages="i3 feh xorg xorg-xinit picom maim"
 
-sway_packages="sway swaylock swayidle swaybg slurp grim wl-clipboard"
+sway_packages="sway swaylock swayidle swaybg slurp grim wl-clipboard autotiling"
 yay_sway_packages="bumblebee-status python-pulsectl"
 
 hypr_packages="hyprland swww waybar xdg-desktop-portal xdg-desktop-portal-wlr"
