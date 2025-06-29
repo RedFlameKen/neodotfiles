@@ -35,6 +35,13 @@ vim.lsp.config['bashls'] = {
     filetypes = { 'bash', 'sh' },
 }
 
+vim.lsp.config['kotlin_lsp'] = {
+    cmd = { 'kotlin-lsp', '--stdio' },
+    -- single_file_support = true,
+    filetypes = { 'kotlin', 'kt', 'kts' },
+    root_markers = {"build.gradle", "build.gradle.kts", "pom.xml"}
+}
+
 vim.lsp.config['digestif'] = {
     cmd = { 'digestif' },
     filetypes = { 'tex', 'plaintex' },
@@ -132,8 +139,7 @@ vim.lsp.config['lua_ls'] = {
             },
             workspace = {
                 library = {
-                    vim.env.VIMRUNTIME,
-                    "~/.local/share/nvim/site/pack/packer/start/"
+                    vim.env.VIMRUNTIME
                 }
             }
         }
@@ -156,7 +162,8 @@ vim.lsp.enable({
     'bashls',
     'phpactor',
     'digestif',
-    'sqls'
+    'sqls',
+    'kotlin_lsp'
     -- 'lemminx',
 })
 
