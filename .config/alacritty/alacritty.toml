@@ -31,6 +31,8 @@ bindings = [
     { key = "ArrowLeft", mods = "Control|Shift", chars = "\u001b[1;5D" },
     { key = "ArrowRight", mods = "Control|Shift", chars = "\u001b[1;5C" },
     # { key = "Delete", mods = "Control", chars = "^H" },
+
+    { key = "o", mods = "Control|Alt", command = { program = "bash", args=["-c", "~/.config/alacritty/scripts/toggle_opacity.sh"] } },
 ]
 
 [cursor]
@@ -39,12 +41,12 @@ vi_mode_style = {shape = "Block", blinking = "Off" }
 unfocused_hollow = true
 
 [colors]
-line_indicator = {foreground = "#282829", background = "#ebdbb2" }
-footer_bar = {foreground = "#282829", background = "#ebdbb2" }
+line_indicator = {foreground = "#282828", background = "#ebdbb2" }
+footer_bar = {foreground = "#282828", background = "#ebdbb2" }
 selection = {foreground = "#ebdbb2", background = "#665c54" }
 
 [colors.primary]
-background = "#282829"
+background = "#282828"
 foreground = "#ebdbb2"
 
 [colors.cursor]
