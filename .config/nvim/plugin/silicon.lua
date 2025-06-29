@@ -19,15 +19,14 @@ local document_setup = {
     end,
     output = get_output()
 }
-
 local casual_setup = {
     theme = "gruvbox-dark",
     pad_horiz = 100,
     pad_vert = 80,
     no_round_corner = false,
     no_window_controls = false,
-    -- window_title = "Kenneth Lacaba",
-    -- no_line_number = true,
+    window_title = function() return vim.fn.expand("%") end,
+    no_line_number = true,
     language = function()
         return vim.bo.filetype
     end,
