@@ -1,6 +1,8 @@
 local builtin = require('telescope.builtin')
 
-vim.keymap.set("n", "<leader>ef", builtin.find_files)
+vim.keymap.set("n", "<leader>ef", function()
+    builtin.find_files({hidden = true})
+end)
 
 vim.keymap.set("n", "<leader>es", function()
     local keyword = vim.fn.input("Search Keyword: ")
