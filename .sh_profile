@@ -2,7 +2,7 @@
 export EDITOR=nvim
 export QT_QPA_PLATFORMTHEME=qt6ct
 export WINEARCH=win64
-export WINEPREFIX=~/wine/kennethWine
+export WINEPREFIX=~/wine/main
 export PATH="$HOME/.local/bin:$PATH"
 export ANDROID_HOME="$HOME/libs/Android"
 export ANDROID_SDK_HOME="$HOME/libs/Android"

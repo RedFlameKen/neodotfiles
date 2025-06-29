@@ -12,11 +12,11 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
-# bind '\C-F':'~/.local/bin/tmux-fuzzy-session\n'
-# bind '^[^F' '~/.local/bin/tmux-fuzzy-session -v\n'
+# bind '\C-F':'~/.local/bin/muxfind\n'
+# bind '^[^F' '~/.local/bin/muxfind -v\n'
 
-bind -x '"\C-F":"~/.local/bin/tmux-fuzzy-session"'
-bind -x '"\e\C-F":"~/.local/bin/tmux-fuzzy-session -v"'
+bind -x '"\C-F":"~/.local/bin/muxfind"'
+bind -x '"\e\C-F":"~/.local/bin/muxfind -v"'
 
 bind -x '"\C-A":"tmux a"'
 

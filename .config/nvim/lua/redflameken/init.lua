@@ -57,3 +57,17 @@ local note_conf = {
     notes_dir = "~/docs/notes"
 }
 require("redflameken.note-buf").setup(note_conf)
+
+local git_utils = require("redflameken.git")
+
+vim.keymap.set("n", "<leader>gg", "<CMD>Git<CR>")
+vim.keymap.set("n", "<leader>gc", git_utils.commit)
+vim.keymap.set("n", "<leader>gC", git_utils.commit_all)
+vim.keymap.set("n", "<leader>ga", git_utils.stage)
+vim.keymap.set("n", "<leader>gr", git_utils.unstage)
+vim.keymap.set("n", "<leader>gl", "<CMD>!git log --reflog<CR>")
+vim.keymap.set("n", "<leader>ge", git_utils.checkout)
+vim.keymap.set("n", "<leader>gb", git_utils.branch)
+vim.keymap.set("n", "<leader>gp", "<CMD>Git push<CR>")
+vim.keymap.set("n", "<leader>gs", git_utils.show_staged)
+-- vim.keymap.set("n", "<leader>gs", ":lua ShowBranch = not ShowBranch <CR>")

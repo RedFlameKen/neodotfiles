@@ -2,7 +2,7 @@
 
 notify(){
     notify-send -u critical "DUMBASS! DON'T FORGET TO CHARGE!: $1%"
-    ffplay -nodisp -autoexit ~/.dotfiles/etc/lowbat_sound.wav
+    ffplay -nodisp -autoexit ~/.dotfiles/res/sounds/lowbat_sound.wav
 }
 
 [ "$1" = "notify" ] && notify && exit

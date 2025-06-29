@@ -2,6 +2,8 @@
 
 if [ $# -gt 0 ]; then
     case "$1" in
+        -c | --current-directory) fuzzytarget=$PWD
+            ;;
         -v | --vim) vimext="nvim"
             ;;
         -d | --directory) fuzzytarget=$2

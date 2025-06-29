@@ -1,26 +1,35 @@
 local silicon = require"nvim-silicon"
 
 local function get_output()
-    return "~/Pictures/codeshots/" .. os.date("%Y-%m-%d_%H:%M") .. "_codeshot.png"
+    local cwd = vim.fn.getcwd() .. "/"
+    local curfile = vim.fn.expand("%")
+    local filename = cwd .. curfile .. " at " .. os.date("%Y-%m-%d_%H:%M:%S") .. "_codeshot.png"
+    local output = "~/Pictures/codeshots/" .. vim.fn.substitute(filename, "/", "_", "g")
+    return output;
 end
 
 local document_setup = {
     theme = "gruvbox-dark",
-    font= "JetBrainsMono Nerd Font",
     pad_horiz = 0,
     pad_vert = 0,
     no_round_corner = true,
     no_window_controls = true,
+    language = function()
+        return vim.bo.filetype
+    end,
     output = get_output()
 }
-
 local casual_setup = {
     theme = "gruvbox-dark",
-    font= "JetBrainsMono Nerd Font",
     pad_horiz = 100,
     pad_vert = 80,
     no_round_corner = false,
     no_window_controls = false,
+    window_title = function() return vim.fn.expand("%") end,
+    no_line_number = true,
+    language = function()
+        return vim.bo.filetype
+    end,
     output = get_output()
 }
 

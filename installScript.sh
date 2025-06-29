@@ -1,85 +1,207 @@
 #!/bin/bash
 
-corePackages="tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf fd fastfetch ripgrep stow github-cli"
+core_packages="tmux neovim zsh zsh-autosuggestions zsh-syntax-highlighting fzf fastfetch ripgrep github-cli tlp npm zip unzip ly jq"
 
-pacmanPackages="rofi kitty dunst brightnessctl keyd qt6ct firefox obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common htop papirus-icon-iheme ntp xarchiver"
+pacman_packages="rofi-wayland alacritty dunst brightnessctl keyd qt6ct obs-studio thunar tumbler thunar-archive-plugin thunar-volman imagemagick gthumb jdk17-openjdk reflector calc htop papirus-icon-theme ntp xarchiver playerctl"
 
-yayPackages="bumblebee-status auto-cpufreq obs-websocket-compat obs-cli"
+font_packages="noto-fonts-emoji ttf-firacode-nerd ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common"
 
-i3Packages="i3 feh xorg xorg-xinit picom maim"
-swayPackages="sway swaylock swaybg swww slurp grim wl-clipboard xdg-desktop-portal xdg-desktop-portal-wlr"
-hyprPackages="hyprland wofi waybar"
+yay_packages="obs-websocket-compat obs-cli"
 
-optionalPacmanPackages="vlc mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey glava dosfstools"
-optionalYayPackages="cmatrix-git webcord ani-cli clementine"
+yay_browser_packages="floorp-bin"
 
-graphicsPackages="libva-utils libva-intel-driver libva-mesa-driver"
+i3_packages="i3 feh xorg xorg-xinit picom maim"
 
-bluetoothPackages="blueman bluez-utils"
+sway_packages="sway swaylock swayidle swaybg slurp grim wl-clipboard autotiling"
+yay_sway_packages="bumblebee-status python-pulsectl"
+
+hypr_packages="hyprland swww waybar xdg-desktop-portal xdg-desktop-portal-wlr"
+
+optional_pacman_packages="mpv lxappearance krita kdenlive kdeconnect discord jdk8-openjdk jdk21-openjdk wine winetricks steam android-file-transfer android-tools scrcpy screenkey dosfstools rhythmbox zathura texlive"
+optional_yay_packages="cmatrix-git ani-cli"
+
+graphics_packages="libva-utils libva-intel-driver libva-mesa-driver"
+
+bluetooth_packages="blueman bluez-utils"
+
+install_yay=false
+install_browser=true
+
+no_install=false
+no_postinstall=false
+no_postsetup=false
+
+post_setup(){
+    ln -sf $HOME/docs $HOME/Documents
+    cp $HOME/.dotfiles/etc/tlp.conf $HOME/.config/tlp.conf
+    sudo ln -sf $HOME/.config/tlp.conf /etc/tlp.conf
+    printf "Finished post setup\n"
+}
+
+print_help(){
+printf "installScript.sh [options]
+
+options:
+  -C, --core-only         Install only core components of the setup\n
+  -a, --all               Install all packages\n
+  -c, --core              Install the core components of the setup\n
+  -i, --i3                Install packages needed for i3\n
+  -s, --sway              Install packages needed for sway\n
+  -H, --hyprland          Install packages needed for Hyprland\n
+  -o, --optionals         Install optional packages that are used in the setup\n
+  -g, --graphics-install  Install packages related to graphics\n
+  -f, --fonts             Install font packages used in the setup\n
+  -b, --bluetooth-install Install packages for bluetooth functionality\n
+  -p, --no-postinstall    Only install packages. do not do post install setup\n
+  -P, --no-postsetup      skip post setup
+  -n, --no-install        Skip installation step
+  -h, --help              Print this help message\n
+"
+}
+
 if [ $# -eq 0 ]; then
-    pacmanPackages="$corePackages $i3Packages $swayPackages $pacmanPackages"
+    pacman_packages="$core_packages $i3_packages $sway_packages $pacman_packages $font_packages"
 else
     while [ $# -gt 0 ]; do
         case $1 in
-            -c | --core-only) 
-                pacmanPackages="$corePackages"
+            -C | --core-only) 
+                pacman_packages="$core_packages"
+                install_browser=false
                 break
                 ;;
+            -a | --all) 
+                pacman_packages="$pacman_packages $core_packages $i3_packages $sway_packages $hypr_packages $optional_pacman_packages $graphics_packages $font_packages $bluetooth_packages" 
+                yay_packages="$yay_packages $yay_sway_packages $optional_yay_packages"
+                install_yay=true
+                blueset="true"
+                break
+                ;;
+            -n | --no-install) no_install=true
+                ;;
+            -p | --no-postinstall) no_postinstall=true
+                ;;
+            -P | --no-postsetup) no_postsetup=true
+                ;;
+            -c | --core) 
+                pacman_packages="$pacman_packages $core_packages" 
+                ;;
             -i | --i3) 
-                pacmanPackages="$i3Packages $pacmanPackages" 
+                pacman_packages="$pacman_packages $i3_packages" 
                 ;;
             -s | --sway)
-                pacmanPackages="$swayPackages $pacmanPackages"
+                pacman_packages="$pacman_packages $sway_packages"
+                yay_packages="$yay_packages $yay_sway_packages"
+                install_yay=true
                 ;;
-            -H | --Hyprland)
-                pacmanPackages="$hyprPackages $pacmanPackages"
+            -H | --hyprland)
+                pacman_packages="$pacman_packages $hypr_packages"
                 ;;
             -o | --optionals)
-                pacmanPackages="$pacmanPackages $optionalPacmanPackages"
-                yayPackages="$yayPackages $optionalYayPackages"
+                pacman_packages="$pacman_packages $optional_pacman_packages"
+                yay_packages="$yay_packages $optional_yay_packages"
+                install_yay=true
                 ;;
             -g | --graphics-install) 
-                pacmanPackages="$pacmanPackages $graphicsPackages"
+                pacman_packages="$pacman_packages $graphics_packages"
+                ;;
+            -f | --fonts) 
+                pacman_packages="$pacman_packages $font_packages"
                 ;;
             -b | --bluetooth-install) 
                 blueset="true"
-                pacmanPackages="$pacmanPackages $bluetoothPackages"
+                pacman_packages="$pacman_packages $bluetooth_packages"
+                ;;
+            -h | --help)
+                print_help
+                exit
+                ;;
+            *)
+                printf "invalid option $1!\n"
+                print_help
+                exit
                 ;;
         esac
         shift
     done
 fi
 
-# enable multilib mirror
-sudo sed -i 's/#\(\[multilib\]\)/\1\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
+install(){
+    # enable multilib mirror
+    sudo sed -i 's/#\(\[multilib\]\)/\1\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
 
-# pacman installs
-sudo pacman -Sy --noconfirm yay $pacmanPackages
+    # pacman installs
+    sudo pacman -Sy --noconfirm --needed $pacman_packages
 
-yay -Sy --noconfirm $yayPackages
+    if [ $install_yay == true ]; then
+        yay -Sy --noconfirm --needed $yay_packages
+    fi
 
-# install Neovim Packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    if [ $install_browser == true ]; then
+        yay -Sy --noconfirm --needed $yay_browser_packages
+    fi
+    printf "Finished installation\n"
+}
 
-# install Vim Plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+create_dir(){
+    if [ ! -d $1 ]; then
+        mkdir $1
+        printf "Created the directory: $1\n"
+    fi
+}
 
-system setup
-sudo chsh $USER
+post_install(){
+    # install Neovim Packer
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
-# file setup 
-mkdir $HOME/docs $HOME/Storage $HOME/projects $HOME/personal
-cp -r . $HOME/.dotfiles
+    # install Vim Plug
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# stow 
-oldDir=$(pwd)
-cd $HOME/.dotfiles
-stow .
-cd $oldDir
+    # system setup
+    sudo chsh -s /bin/zsh $USER
 
-# systemd stuff
-if [ ! -z $blueset ]; then
-    sudo systemctl enable bluetooth
+    # file setup 
+    create_dir $HOME/docs
+    create_dir $HOME/docs/notes
+    create_dir $HOME/Storage
+    create_dir $HOME/projects
+    create_dir $HOME/personal
+    create_dir $HOME/test
+    create_dir $HOME/school
+
+    create_dir $HOME/libs
+    create_dir $HOME/.local/bin
+    create_dir $HOME/.config/
+
+
+    curDir=$(pwd)
+    if [ "$curDir" == "$HOME/.dotfiles" ]; then
+        printf "Already in .dotfiles, not copying repo\n"
+    else
+        cp -r . $HOME/.dotfiles
+    fi
+
+    $HOME/.dotfiles/deploy reset
+
+    # systemd stuff
+    if [ ! -z $blueset ]; then
+        sudo systemctl enable bluetooth
+    fi
+
+    sudo systemctl enable ly
+    printf "Finished post installation\n"
+}
+
+if [ $no_install == false ]; then
+    install
 fi
+
+if [ $no_postinstall == false ]; then
+    post_install
+fi
+
+if [ $no_postsetup == false ]; then
+    post_setup
+fi
+

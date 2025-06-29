@@ -11,8 +11,9 @@ end
 
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
-local jdtls_path = home ..  '/.local/share/nvim/mason/packages/jdtls'
-local launcher_jar = jdtls_path .. '/plugins/org.eclipse.equinox.launcher_1.7.0.v20250331-1702.jar'
+local jdtls_path = home ..  '/git/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository'
+
+local launcher_jar = vim.fn.glob(jdtls_path .. '/plugins/org.eclipse.equinox.launcher_*.jar')
 
 local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
@@ -48,7 +49,9 @@ local config = {
         java = {
             jdt = {
                 ls = {
-                    androidSupport = true
+                    androidSupport = {
+                        enabled = true;
+                    }
                 },
             },
             configuration = {
@@ -67,6 +70,12 @@ local config = {
                     },
                 },
             },
+            --     gradle = {
+            --         enabled = true,
+            --         wrapper = {
+            --             enabled = true
+            --         }
+            --     },
             -- project = {
             --     referencedLibraries = {
             --     },
@@ -81,20 +90,11 @@ local config = {
             },
             rename = {enabled = true},
         },
-        -- implementationsCodeLense = {
-        --     enabled = true
+        -- references = {
+        --     includeDecompiledSources = true,
         -- },
-        -- referencesCodeLense = {
-        --     enabled = true
-        -- },
-        references = {
-            includeDecompiledSources = true,
-        },
     },
     init_options = {
-        bundles = {
-            vim.fn.glob("/home/kenneth/git/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.0.jar", true)
-        },
         extendedCapabilities = jdtls.extendedCapabilities,
     },
     -- capabilities = {
@@ -115,6 +115,16 @@ local config = {
         vim.keymap.set('n', "<leader>df", jdtls.test_class, opts)
         vim.keymap.set('n', "<leader>dn", jdtls.test_nearest_method, opts)
     end
+}
+
+local bundles = {
+    vim.fn.glob(home .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/*.jar", true)
+}
+
+vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.local/share/nvim/mason/packages/java-test/extension/server/*.jar", true), "\n"))
+config['init_options'] = {
+  bundles = bundles,
+  extendedCapabilities = jdtls.extendedCapabilities,
 }
 
 jdtls.start_or_attach(config)

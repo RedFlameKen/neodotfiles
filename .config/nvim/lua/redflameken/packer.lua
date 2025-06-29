@@ -29,6 +29,7 @@ return require('packer').startup(function(use)
     ]]--
 	use {
 		'nvim-treesitter/nvim-treesitter',
+		'nvim-treesitter/nvim-treesitter-context',
 		run = ':TSUpdate'
 	}
     use "freed-wu/tmux-language-server"
@@ -38,6 +39,7 @@ return require('packer').startup(function(use)
     use "chrisbra/colorizer"
 	use "nvim-lua/plenary.nvim"
     -- use "github/copilot.vim"
+    use "tpope/vim-fugitive"
 	use "mbbill/undotree"
     use "nvim-tree/nvim-web-devicons"
 	use {
@@ -74,7 +76,8 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
         latex = { enabled = false }
     })
-    use 'hsanson/vim-android'
+    use {'redflameken/vim-android', branch = "master" }
     use 'dense-analysis/ale'
+    use 'stevearc/conform.nvim'
 
 end)
