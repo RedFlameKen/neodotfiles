@@ -76,7 +76,6 @@ alias wineprefix32="WINEARCH=win32 WINEPREFIX=~/wine/kennethWine32"
 
 # My Custom Aliases
 alias ppssppwine="WINEARCH=win64 WINEPREFIX=~/wine/kennethWine wine /run/media/kenneth/TRANSCEND/newpsp/PPSSPP/PPSSPPWindows64.exe"
-alias ovpncon="sudo openvpn --allow-compression --config ~/Documents/RedFlameKen2.ovpn"
 alias zerotierleave="sudo zerotier-one -q leave 1c33c1ced0e294b8"
 alias zerotierjoin="sudo zerotier-one -q join 1c33c1ced0e294b8"
 alias xfdisplay="xfce4-display-settings"
