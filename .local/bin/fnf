@@ -23,7 +23,7 @@ if [ -z $winmode ]; then
     "$executable"
 else
     WINEARCH="win64"
-    WINEPREFIX="$HOME/wine/kennethWine" 
+    WINEPREFIX="$HOME/wine/main" 
     wine "$executable"
 fi
 

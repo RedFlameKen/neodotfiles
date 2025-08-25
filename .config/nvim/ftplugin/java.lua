@@ -11,7 +11,8 @@ end
 
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
-local jdtls_path = home ..  '/git/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository'
+-- local jdtls_path = home ..  '/git/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository'
+local jdtls_path = home ..  '/.local/share/nvim/mason/packages/jdtls'
 
 local launcher_jar = vim.fn.glob(jdtls_path .. '/plugins/org.eclipse.equinox.launcher_*.jar')
 
@@ -114,6 +115,7 @@ local config = {
 
         vim.keymap.set('n', "<leader>df", jdtls.test_class, opts)
         vim.keymap.set('n', "<leader>dn", jdtls.test_nearest_method, opts)
+
     end
 }
 
@@ -129,10 +131,14 @@ config['init_options'] = {
 
 jdtls.start_or_attach(config)
 
-function StartJavaServer()
+local function startJavaServer()
     jdtls.start_or_attach(config)
 end
 
+vim.keymap.set("n", "<leader>js", startJavaServer);
+vim.keymap.set("n", "<leader>jr", "<CMD>JdtRestart<CR>");
+vim.b.ale_enabled = 0
+vim.b.completion_enabled = 0
 -- vim.g.ale_enabled = 1
 -- vim.g.ale_java_eclipselsp_path = home .. "/git/eclipse.jdt.ls/"
 -- vim.g.ale_java_eclipselsp_workspace_path = workspaceDir()

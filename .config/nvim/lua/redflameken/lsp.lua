@@ -39,7 +39,7 @@ vim.lsp.config['kotlin_lsp'] = {
     cmd = { 'kotlin-lsp', '--stdio' },
     -- single_file_support = true,
     filetypes = { 'kotlin', 'kt', 'kts' },
-    root_markers = {"build.gradle", "build.gradle.kts", "pom.xml"}
+    root_markers = {"build.gradle", "build.gradle.kts", "pom.xml", "workspace.json"}
 }
 
 vim.lsp.config['digestif'] = {
@@ -64,10 +64,10 @@ vim.lsp.config['ts_ls'] = {
     filetypes = { 'typescript', 'ts', 'javascript', 'js' },
     settings = {
         javascript = {
-            validate = false
+            validate = true
         },
         js = {
-            validate = false
+            validate = true
         }
     }
 }

@@ -100,31 +100,41 @@ local highlights = {
     extra = "%=%#StatusLineExtra#",
 }
 local modes = {
-    ["n"] =     {name = "NORMAL",           highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep },
-    ["no"] =    {name = "NORMAL-OP",        highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep },
-    ["nov"] =   {name = "NORMAL-OP",        highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep },
-    ["noV"] =   {name = "NORMAL-OP",        highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep },
-    ["no"] =  {name = "NORMAL-OP",        highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep },
-    ["niI"] =   {name = "NORMAL-I",         highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep },
-    ["niR"] =   {name = "NORMAL-R",         highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep },
-    ["niV"] =   {name = "NORMAL-V",         highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep },
-    ["ic"] =    {name = "COMPLETION",       highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep },
-    ["i"] =     {name = "INSERT",           highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep },
-    ["R"] =     {name = "REPLACE",          highlight = highlights.modereplace, sephighlight = highlights.modereplacetogitsep },
-    ["v"] =     {name = "VISUAL",           highlight = highlights.modevisual,  sephighlight = highlights.modevisualtogitsep },
-    ["V"] =     {name = "VISUAL-LINE",      highlight = highlights.modevisual,  sephighlight = highlights.modevisualtogitsep },
-    [""] =    {name = "VISUAL-BLOCK",     highlight = highlights.modevisualb, sephighlight = highlights.modevisualbtogitsep },
-    ["c"] =     {name = "COMMAND",          highlight = highlights.modecommand, sephighlight = highlights.modecommandtogitsep },
-    ["s"] =     {name = "SELECT",           highlight = highlights.modeselect,  sephighlight = highlights.modeselecttogitsep },
-    ["S"] =     {name = "SELECT-LINE",      highlight = highlights.modeselect,  sephighlight = highlights.modeselecttogitsep },
-    ["t"] =     {name = "Terminal-I",         highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep },
-    ["nt"] =     {name = "Terminal",         highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep },
+    {"n", 	{name = "NORMAL",           highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep }},
+    {"no", 	{name = "NORMAL-OP",        highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep }},
+    {"nov", {name = "NORMAL-OP",        highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep }},
+    {"noV", {name = "NORMAL-OP",        highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep }},
+    {"no",{name = "NORMAL-OP",        highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep }},
+    {"niI", {name = "NORMAL-I",         highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep }},
+    {"niR", {name = "NORMAL-R",         highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep }},
+    {"niV", {name = "NORMAL-V",         highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep }},
+    {"ic", 	{name = "COMPLETION",       highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep }},
+    {"i", 	{name = "INSERT",           highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep }},
+    {"R", 	{name = "REPLACE",          highlight = highlights.modereplace, sephighlight = highlights.modereplacetogitsep }},
+    {"v", 	{name = "VISUAL",           highlight = highlights.modevisual,  sephighlight = highlights.modevisualtogitsep }},
+    {"V", 	{name = "VISUAL-LINE",      highlight = highlights.modevisual,  sephighlight = highlights.modevisualtogitsep }},
+    {"", 	{name = "VISUAL-BLOCK",     highlight = highlights.modevisualb, sephighlight = highlights.modevisualbtogitsep }},
+    {"c", 	{name = "COMMAND",          highlight = highlights.modecommand, sephighlight = highlights.modecommandtogitsep }},
+    {"s", 	{name = "SELECT",           highlight = highlights.modeselect,  sephighlight = highlights.modeselecttogitsep }},
+    {"S", 	{name = "SELECT-LINE",      highlight = highlights.modeselect,  sephighlight = highlights.modeselecttogitsep }},
+    {"t", 	{name = "Terminal-I",         highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep }},
+    {"nt", 	{name = "Terminal",         highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep }},
 }
-local function mode()
-    local curMode = vim.api.nvim_get_mode().mode
-    return modes[curMode].highlight .. string.format("%s ", modes[curMode].name) .. modes[curMode].sephighlight .. ""
+
+local function getModeHighlight(mode)
+    for _, mode_highlight in ipairs(modes) do
+        if mode == mode_highlight[1] then
+            return mode_highlight[2]
+        end
+    end
+    return modes["n"]
 end
 
+local function mode()
+    local curMode = vim.api.nvim_get_mode().mode
+    local mode_highlight = getModeHighlight(curMode)
+    return mode_highlight.highlight .. string.format("%s ", mode_highlight.name) .. mode_highlight.sephighlight .. ""
+end
 
 Statusline = function()
     return table.concat{

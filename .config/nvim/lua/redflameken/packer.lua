@@ -29,7 +29,8 @@ return require('packer').startup(function(use)
     ]]--
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		'nvim-treesitter/nvim-treesitter-context',
+		'redflameken/nvim-treesitter-context',
+        'nvim-treesitter/playground',
 		run = ':TSUpdate'
 	}
     use "freed-wu/tmux-language-server"
