@@ -1,0 +1,13 @@
+#!/bin/bash
+
+find_command="find $(pwd)"
+
+output="$($find_command -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.svg" -o -iname "*.bmp" 2> /dev/null| fzf)"
+
+if [ ! $output == "" ]; then
+    feh $output
+fi
+
+
+
+
