@@ -2,7 +2,7 @@ vim.g.android_sdk_path = '~/libs/Android/'
 vim.g.android_adb_tool = '~/libs/Android/platform-tools/adb'
 vim.g.gradle_sync_on_load = 1
 vim.g.gradle_set_classpath = 0
-vim.g.gradle_gen_classpath_file = 1
+-- vim.g.gradle_gen_classpath_file = 1
 
 -- vim.g.gradle_glyph_error = ''
 -- vim.g.gradle_glyph_warning = ''

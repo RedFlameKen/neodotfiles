@@ -7,8 +7,9 @@ vim.g.vimtex_compiler_latexmk_engines = {
 vim.g.vimtex_compiler_latexmk = {
     out_dir = "output",
     aux_dir = "output/aux",
-    continuous = 0,
+    continuous = 1,
     options = {
+        '-file-line-error',
         "-bibtex",
         -- "-bibfudge output"
     }
