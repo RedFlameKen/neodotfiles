@@ -105,6 +105,8 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 5%-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 5%+
 
+bindsym XF86Display workspace $ws8; exec --no-startup-id wl-mirror -F LVDS-1
+
 # screenshot
 # screenshot and save
 bindsym Print exec ~/.local/bin/screenshot
