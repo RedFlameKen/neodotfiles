@@ -15,30 +15,47 @@ function ColorMyPencils(color, transparent)
         vim.api.nvim_set_hl(0, "NormalFloat",  { bg = "none"})
     end
 
-    vim.api.nvim_set_hl(0, "SignColumn",                {fg = "#FCE8C3", bg = "#303030" } )
-    vim.api.nvim_set_hl(0, "StatusLineDef",             {fg = "#FCE8C3", bg = normhl    } )
-    vim.api.nvim_set_hl(0, "ModeNormal",                {fg = "#1C1B19", bg = "#519F50",    bold = true} )
-    vim.api.nvim_set_hl(0, "ModeInsert",                {fg = "#1C1B19", bg = "#BAA67F",    bold = true} )
-    vim.api.nvim_set_hl(0, "ModeReplace",               {fg = "#1C1B19", bg = "#F75341",    bold = true} )
-    vim.api.nvim_set_hl(0, "ModeVisual",                {fg = "#1C1B19", bg = "#68A8E4",    bold = true} )
-    vim.api.nvim_set_hl(0, "ModeVisual-Block",          {fg = "#FCE8C3", bg = "#2C78BF",    bold = true} )
-    vim.api.nvim_set_hl(0, "ModeCommand",               {fg = "#1C1B19", bg = "#FBB829",    bold = true} )
-    vim.api.nvim_set_hl(0, "ModeSelect",                {fg = "#FCE8C3", bg = "#E02C6D",    bold = true} )
-    vim.api.nvim_set_hl(0, "ModeNormalToGitSep",        {fg = "#519F50", bg = "#D75F00" } )
-    vim.api.nvim_set_hl(0, "ModeInsertToGitSep",        {fg = "#BAA67F", bg = "#D75F00" } )
-    vim.api.nvim_set_hl(0, "ModeReplaceToGitSep",       {fg = "#F75341", bg = "#D75F00" } )
-    vim.api.nvim_set_hl(0, "ModeVisualToGitSep",        {fg = "#68A8E4", bg = "#D75F00" } )
-    vim.api.nvim_set_hl(0, "ModeVisual-BlockToGitSep",  {fg = "#2C78BF", bg = "#D75F00" } )
-    vim.api.nvim_set_hl(0, "ModeCommandToGitSep",       {fg = "#FBB829", bg = "#D75F00" } )
-    vim.api.nvim_set_hl(0, "ModeSelectToGitSep",        {fg = "#E02C6D", bg = "#D75F00" } )
-    vim.api.nvim_set_hl(0, "Git",                       {fg = "#FCE8C3", bg = "#D75F00" } )
-    vim.api.nvim_set_hl(0, "GitToNormSep",              {fg = "#D75F00", bg = normhl    } )
-    vim.api.nvim_set_hl(0, "Normalhl",                  {fg = "#FCE8C3", bg = normhl    } )
-    vim.api.nvim_set_hl(0, "NormToTypeSep",             {fg = "#2C78BF", bg = normhl    } )
-    vim.api.nvim_set_hl(0, "Filetype",                  {fg = "#FCE8C3", bg = "#2C78BF" } )
-    vim.api.nvim_set_hl(0, "TypeToRowColSep",           {fg = "#519F50", bg = "#2C78BF" } )
-    vim.api.nvim_set_hl(0, "RowCol",                    {fg = "#1C1B19", bg = "#519F50" } )
-    vim.api.nvim_set_hl(0, "StatusLineExtra",           {fg = "#1C1B19", bg = "#519F50" } )
+    local black     = vim.g.terminal_color_0
+    local red       = vim.g.terminal_color_1
+    local green     = vim.g.terminal_color_2
+    local yellow    = vim.g.terminal_color_3
+    local blue      = vim.g.terminal_color_4
+    local magenta   = vim.g.terminal_color_5
+    local cyan      = vim.g.terminal_color_6
+    local white     = vim.g.terminal_color_7
+    local black_l   = vim.g.terminal_color_8
+    local red_l     = vim.g.terminal_color_9
+    local green_l   = vim.g.terminal_color_10
+    local yellow_l  = vim.g.terminal_color_11
+    local blue_l    = vim.g.terminal_color_12
+    local magenta_l = vim.g.terminal_color_13
+    local cyan_l    = vim.g.terminal_color_14
+    local white_l   = vim.g.terminal_color_15
+
+    vim.api.nvim_set_hl(0, "SignColumn",                {fg = white_l,  bg = cursor_line_hl.bg } )
+    vim.api.nvim_set_hl(0, "StatusLineDef",             {fg = white_l,  bg = normhl    } )
+    vim.api.nvim_set_hl(0, "ModeNormal",                {fg = black,    bg = green,    bold = true} )
+    vim.api.nvim_set_hl(0, "ModeInsert",                {fg = black,    bg = white,    bold = true} )
+    vim.api.nvim_set_hl(0, "ModeReplace",               {fg = black,    bg = red_l,     bold = true} )
+    vim.api.nvim_set_hl(0, "ModeVisual",                {fg = white_l,  bg = blue,    bold = true} )
+    vim.api.nvim_set_hl(0, "ModeVisual-Block",          {fg = black,    bg = blue_l,      bold = true} )
+    vim.api.nvim_set_hl(0, "ModeCommand",               {fg = black,    bg = yellow,    bold = true} )
+    vim.api.nvim_set_hl(0, "ModeSelect",                {fg = white_l,  bg = magenta,   bold = true} )
+    vim.api.nvim_set_hl(0, "ModeNormalToGitSep",        {fg = green,    bg = "#D75F00" } )
+    vim.api.nvim_set_hl(0, "ModeInsertToGitSep",        {fg = white,    bg = "#D75F00" } )
+    vim.api.nvim_set_hl(0, "ModeReplaceToGitSep",       {fg = red_l,    bg = "#D75F00" } )
+    vim.api.nvim_set_hl(0, "ModeVisualToGitSep",        {fg = blue,     bg = "#D75F00" } )
+    vim.api.nvim_set_hl(0, "ModeVisual-BlockToGitSep",  {fg = blue_l,   bg = "#D75F00" } )
+    vim.api.nvim_set_hl(0, "ModeCommandToGitSep",       {fg = yellow,   bg = "#D75F00" } )
+    vim.api.nvim_set_hl(0, "ModeSelectToGitSep",        {fg = magenta,  bg = "#D75F00" } )
+    vim.api.nvim_set_hl(0, "Git",                       {fg = white_l,  bg = "#D75F00" } )
+    vim.api.nvim_set_hl(0, "GitToNormSep",              {fg = "#D75F00",bg = normhl    } )
+    vim.api.nvim_set_hl(0, "Normalhl",                  {fg = white_l,  bg = normhl    } )
+    vim.api.nvim_set_hl(0, "NormToTypeSep",             {fg = blue,     bg = normhl    } )
+    vim.api.nvim_set_hl(0, "Filetype",                  {fg = white_l,  bg =  blue} )
+    vim.api.nvim_set_hl(0, "TypeToRowColSep",           {fg = green,    bg =  blue} )
+    vim.api.nvim_set_hl(0, "RowCol",                    {fg = black,    bg =  green } )
+    vim.api.nvim_set_hl(0, "StatusLineExtra",           {fg = black,    bg =  green } )
 end
 
 local clcMode = 1
