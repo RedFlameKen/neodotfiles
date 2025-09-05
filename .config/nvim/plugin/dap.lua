@@ -23,7 +23,7 @@ local jdtls_dap = require('jdtls.dap');
 dap.adapters.codelldb = {
   type = 'server', port = "${port}",
   executable = {
-    command = '/home/kenneth/.local/share/nvim/mason/packages/codelldb/codelldb',
+    command = '/home/redflameken/.local/share/nvim/mason/packages/codelldb/codelldb',
     args = {"--port", "${port}"},
   }
 }
