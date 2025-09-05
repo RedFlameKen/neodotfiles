@@ -18,12 +18,20 @@ w_save(){
 }
 
 w_region(){
-    grim -g "$(slurp -d -w 0)" - | wl-copy
+    region="$(slurp -d -w 0)"
+    if [[ $region == "" ]]; then
+        return
+    fi
+    grim -g "$region" - | wl-copy
 }
 
 w_saveregion(){
     imageDate=$(date '+%r %b %e %Y')
-    grim -g "$(slurp -d -w 0)" - > ~/Pictures/screenshots/"$imageDate".jpg
+    region="$(slurp -d -w 0)"
+    if [[ $region == "" ]]; then
+        return
+    fi
+    grim -g "$region" - > ~/Pictures/screenshots/"$imageDate".jpg
     wl-copy < ~/Pictures/screenshots/"$imageDate".jpg
     dunstify -a ssnotif -I ~/Pictures/screenshots/"$imageDate".jpg "Screenshot saved!"
 }
