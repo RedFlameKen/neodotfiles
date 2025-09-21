@@ -53,6 +53,25 @@ vim.lsp.config.html = {
     filetypes = { 'html', 'php' },
 }
 
+vim.lsp.config['dartls'] = {
+    cmd = { 'dart', 'language-server', '--protocol=lsp', '--client-id', 'nvim', '--client-version', '0.11.3' },
+    root_markers = { 'pubspec.yaml' },
+    filetypes = { 'dart' },
+    init_options = {
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = true,
+        closingLabels = true,
+        outline = true,
+        flutterOutline = true,
+    },
+    settings = {
+        dart = {
+            completeFunctionCalls = true,
+            showTodos = true,
+        },
+    },
+}
+
 vim.lsp.config["jsonls"] = {
     cmd = { 'vscode-json-language-server', '--stdio' },
     filetypes = { 'json' },
@@ -152,6 +171,7 @@ vim.lsp.config['sqls'] = {
 }
 
 vim.lsp.enable({
+    'dartls',
     'clangd',
     'lua_ls',
     'vimls',
@@ -164,10 +184,8 @@ vim.lsp.enable({
     'digestif',
     'sqls',
     'kotlin_lsp'
-    -- 'lemminx',
 })
 
 vim.lsp.enable('jdtls', false)
-vim.lsp.enable('lemminx', false)
 
 vim.keymap.set("n", "K", function() vim.lsp.buf.hover { border = "rounded" } end);

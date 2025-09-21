@@ -27,6 +27,27 @@ dap.adapters.codelldb = {
     args = {"--port", "${port}"},
   }
 }
+
+dap.adapters.dart = {
+  type = 'executable',
+  command = '/home/redflameken/.local/share/nvim/mason/packages/dart-debug-adapter/dart-debug-adapter',
+  args = {"dart_test"},
+}
+
+
+dap.configurations.dart = {
+  {
+    name = "Launch Dart",
+    type = "dart",
+    request = "launch",
+    dartSdkPath = vim.fn.expand('~') .. '/libs/Flutter/bin/cache/dart-sdk/', -- assumes standard Flutter SDK path
+    flutterSdkPath = vim.fn.expand('~') .. '/libs/Flutter/',                  -- assumes standard Flutter SDK path
+    program = "${file}",
+    args = {}, -- args are passed down to the underlying `flutter test`
+    cwd = "${workspaceFolder}",
+  },
+}
+
 dap.configurations.cpp = {
   {
     name = "Launch file",
