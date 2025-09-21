@@ -64,10 +64,9 @@ $white_l:       #fbf1c7;
 }
 
 .icon_label {
-  padding-left: 14px;
-  padding-right: 14px;
-  margin-top: 3px;
-  margin-bottom: 3px;
+  padding: 0px 12px 0px 12px;
+  margin-left: 2px;
+  margin-right: 2px;
   border-radius: 8px;
 }
 
@@ -76,7 +75,8 @@ $white_l:       #fbf1c7;
 }
 
 .activews .icon_label {
-  color: $green;
+  background-color: $green;
+  color: $background;
 }
 
 .ws_button:hover .icon_label {
