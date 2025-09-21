@@ -1,5 +1,5 @@
 local latex_author = "Kenneth Lacaba"
-local latex_organization = "SEG21"
+local latex_organization = "SEG31"
 
 local ls = require("luasnip")
 local extra = require("luasnip.extras")
