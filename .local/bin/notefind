@@ -1,0 +1,9 @@
+#!/bin/bash
+
+NOTES_DIR=$HOME/docs/notes
+note_doc=$(find $NOTES_DIR -iname "*.pdf" | fzf)
+if [[ -z $note_doc ]]; then
+    printf "No document selected!\n"
+    exit
+fi
+zathura "$note_doc"

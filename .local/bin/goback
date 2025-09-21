@@ -1,0 +1,19 @@
+#!/bin/bash
+
+STATE_FILE=$HOME/.local/share/goback_dir
+
+if [ $# -le 0 ]; then
+    $HOME/.local/bin/muxfind -d $(cat $STATE_FILE)
+    exit 0
+fi
+while getopts "s" option; do
+	case $option in
+		s)
+            echo $(pwd) > $STATE_FILE
+            printf "Location Saved!\n"
+			;;
+		*)
+			exit 1
+			;;
+	esac
+done
