@@ -50,6 +50,8 @@ set $ws9 9󱁤
 workspace $ws5 output VGA-1
 workspace $ws7 output VGA-1
 
+workspace $ws1
+
 assign [class="discord"] $ws5
 assign [class="WebCord"] $ws5
 assign [class="vesktop"] $ws5
@@ -105,7 +107,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 5%-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 5%+
 
-bindsym XF86Display workspace $ws8; exec --no-startup-id wl-mirror -F LVDS-1
+bindsym XF86Display workspace $ws4; exec --no-startup-id wl-mirror -F LVDS-1
 
 # screenshot
 # screenshot and save
@@ -116,7 +118,7 @@ bindsym $mod+Print exec ~/.local/bin/screenshot -s
 bindsym $mod+Shift+Print exec ~/.local/bin/screenshot -rs
 
 # ThinkVantage Button, could be anything lol
-bindsym XF86Launch1 workspace $ws1; exec $browser; workspace $ws2; exec $term; workspace $ws3; exec --no-startup-id bash -c ~/.scripts/netbeans.sh
+bindsym XF86Launch1 workspace $ws1; exec $browser; workspace $ws4; exec $term;
 
 # msc keybinds
 
