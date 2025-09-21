@@ -38,8 +38,8 @@
         :class "right_widgets"
         (theme_switcher)
         (temperature_widget)
-        (volume)
         (tray)
+        (volume)
         (clock)
         (battery)
     )
