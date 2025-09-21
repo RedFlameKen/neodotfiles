@@ -25,6 +25,7 @@
         :orientation "horizontal"
         :halign "center"
         :class "center_widgets"
+        (player)
     )
 )
 
@@ -68,6 +69,30 @@
     (literal
         :content workspace_listen
         :class "workspaces"
+    )
+)
+
+(defwidget player[]
+    (box
+        :class "${player_listen == "" ? "" : "player"}"
+        (eventbox
+            :cursor "pointer"
+            :onclick "playerctl play-pause"
+            (label
+                :text "${
+                    player_listen == "" ? "" :
+                    jq(player_listen, '.').status == "Playing" ? 
+                        " Playing ${jq(player_listen, '.').title
+                        } - ${jq(player_listen, '.').artist} " :
+                    jq(player_listen, '.').status == "Paused" ?
+                        " Paused " : 
+                    jq(player_listen, '.').status == "Stopped" ?
+                        " Stopped " :
+                        ""
+                    }"
+                :class "${player_listen == "" ? "" : "player_lbl"}"
+            )
+        )
     )
 )
 
@@ -116,10 +141,10 @@
             :onclick "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
             :onrightclick "$(pavucontrol -t 4)"
             (label
-                :text "${jq(volume_listen, '.[\"mic\"]."muted"') ? "" : ""
-                    } ${jq(volume_listen, '.[\"mic\"]."volume"')}%"
+                :text "${jq(volume_listen, '.["mic"]."muted"') ? "" : ""
+                    } ${jq(volume_listen, '.["mic"]."volume"')}%"
                 :class "mic_volume_lbl ${
-                    jq(volume_listen, '.[\"mic\"]."muted"') ? 
+                    jq(volume_listen, '.["mic"]."muted"') ? 
                     "mic_volume_lbl_muted" : ""}"
             )
         )

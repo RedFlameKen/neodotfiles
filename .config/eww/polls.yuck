@@ -12,3 +12,8 @@
     :initial "0"
     "~/.local/bin/volume-listen"
 )
+
+(deflisten player_listen
+    :initial "{\"status\":\"\",\"title\":\"\",\"artist\":\"\"}"
+    "playerctl --follow metadata --format '{\"status\":\"{{status}}\",\"title\":\"{{trunc(title, 25)}}\",\"artist\":\"{{trunc(artist, 10)}}\"}'"
+)
