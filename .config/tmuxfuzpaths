@@ -1,5 +1,6 @@
 .
 projects/Netbeans/
+projects/PythonProjects
 projects 
 personal
 personal/MinecraftMods/
@@ -13,11 +14,13 @@ git/school
 docs/notes
 docs/notes/school/
 docs/notes/school/*
+docs/notes/personal/
 test
 test/*
 docs/
 school/
 school/*
 school/java3
+school/mobilecomp2
 school/AndroidProjects
 .eclipse_workspaces/sts/
