@@ -67,3 +67,20 @@ vim.keymap.set("n", "<leader>en", function()
     filename = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h") .. "/" .. filename;
     vim.cmd("e " .. filename)
 end)
+
+vim.keymap.set("n", "<leader>bd", function() vim.api.nvim_buf_delete(0, {}) end)
+
+vim.keymap.set("n", "<leader>bD", function()
+    local input = vim.fn.input("Buffer to delete: ");
+    if Cancelled(input) then
+        return
+    end
+
+    local buffer_id = tonumber(input)
+    if buffer_id == nil or not vim.api.nvim_buf_is_valid(buffer_id) then
+        print("Invalid ID")
+        return
+    end
+
+    vim.api.nvim_buf_delete(buffer_id, {})
+end)
