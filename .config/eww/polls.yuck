@@ -10,5 +10,5 @@
 
 (deflisten volume_listen
     :initial "0"
-    "scripts/volume-listen"
+    "~/.local/bin/volume-listen"
 )

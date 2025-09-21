@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gcc -o ~/.local/bin/volume-listen ~/.dotfiles/c_sources/volume-listen/volume-listen.c
