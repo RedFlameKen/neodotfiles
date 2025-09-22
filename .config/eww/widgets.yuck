@@ -74,13 +74,13 @@
 
 (defwidget player[]
     (box
-        :class "${player_listen == "" ? "" : "player"}"
+        :class "${jq(player_listen, '.').status == "" ? "" : "player"}"
         (eventbox
             :cursor "pointer"
             :onclick "playerctl play-pause"
             (label
                 :text "${
-                    player_listen == "" ? "" :
+                    jq(player_listen, '.').status == "" ? "" :
                     jq(player_listen, '.').status == "Playing" ? 
                         " Playing ${jq(player_listen, '.').title
                         } - ${jq(player_listen, '.').artist} " :
@@ -90,7 +90,8 @@
                         " Stopped " :
                         ""
                     }"
-                :class "${player_listen == "" ? "" : "player_lbl"}"
+                :class "${jq(player_listen, '.').status == "" ? "" :
+                    "player_lbl"}"
             )
         )
     )
