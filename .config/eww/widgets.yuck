@@ -200,8 +200,8 @@
             :onclick "${EWW_CMD} update show_date=${show_date ? false : true}"
             :cursor "pointer"
             (label
-                :text "󰥔 ${formattime(EWW_TIME, show_date ? "%a %b %d %H:%M" : 
-                    "%H:%M", "Asia/Manila")}"
+                :text "${formattime(EWW_TIME, show_date ? " %a %b %d 󰥔 %H:%M" : 
+                    "󰥔 %H:%M", "Asia/Manila")}"
                 :class "clock_lbl"
             )
         )
