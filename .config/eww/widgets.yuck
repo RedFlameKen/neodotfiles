@@ -114,9 +114,9 @@
             :class "theme_switcher_box"
             :orientation "horizontal"
             :cursor "pointer"
-            :onclick "~/.scripts/swwwWallpaper.sh next"
-            :onrightclick "~/.scripts/swwwWallpaper.sh prev"
-            :onmiddleclick "~/.scripts/swwwWallpaper.sh rand"
+            :onclick "~/.dotfiles/.scripts/swwwWallpaper.sh next"
+            :onrightclick "~/.dotfiles/.scripts/swwwWallpaper.sh prev"
+            :onmiddleclick "~/.dotfiles/.scripts/swwwWallpaper.sh rand"
 
             (label
                 :class "theme_switcher_lbl"

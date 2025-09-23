@@ -47,7 +47,7 @@ prev_mode(){
 }
 
 rand_mode(){
-    wpCount=$(($(get_wallpaper_count)))
+    wpCount=$(get_wallpaper_count)
     randomNumber=$(($RANDOM % $wpCount))
     while [ $randomNumber -eq $(cat ~/.local/state/curwp) ]; do
         randomNumber=$(($RANDOM % $wpCount))
