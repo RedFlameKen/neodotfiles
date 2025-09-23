@@ -84,13 +84,15 @@ $arch_blue:     #1793d1;
   color: $blue;
 }
 
-.activews .icon_label {
-  background-color: $green;
+.ws_button:hover .icon_label {
+  background-color: $blue;
   color: $background;
 }
 
-.ws_button:hover .icon_label {
-  background-color: $blue;
+.activews .icon_label,
+.activews:hover .icon_label,
+.ws_button:active .icon_label {
+  background-color: $green;
   color: $background;
 }
 
