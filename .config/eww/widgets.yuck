@@ -36,7 +36,6 @@
         :space-evenly false
         :spacing 5
         :class "right_widgets"
-        (theme_switcher)
         (temperature_widget)
         (tray)
         (volume)
@@ -44,6 +43,8 @@
         (battery)
     )
 )
+
+(defvar launcher_revealer_reveal false)
 
 (defwidget launcher[]
     (box
@@ -53,7 +54,10 @@
             :class "launcher_box"
             :orientation "horizontal"
             :cursor "pointer"
-            :onclick "rofi-runner"
+            :onclick "~/.local/bin/rofi-runner"
+            :onrightclick "${EWW_CMD} update launcher_revealer_reveal=${
+                launcher_revealer_reveal ? false : true
+                }"
             (label
                 :class "launcher_lbl"
                 :text "󰣇"
@@ -61,6 +65,11 @@
                 :yalign "center"
                 :xalign "center"
             )
+        )
+        (revealer
+            :transition "slideright"
+            :reveal launcher_revealer_reveal
+            (theme_switcher)
         )
     )
 )
@@ -141,6 +150,7 @@
             :onscroll "bash scripts/volume_change.sh mic 5 {}"
             :onclick "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
             :onrightclick "$(pavucontrol -t 4)"
+            :cursor "pointer"
             (label
                 :text "${jq(volume_listen, '.["mic"]."muted"') ? "" : ""
                     } ${jq(volume_listen, '.["mic"]."volume"')}%"
@@ -153,6 +163,7 @@
             :onscroll "bash scripts/volume_change.sh sink 5 {}"
             :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
             :onrightclick "$(pavucontrol -t 3)"
+            :cursor "pointer"
             (label
                 :text "${jq(volume_listen, '.[\"sink\"]."muted"') ? "󰝟" :
                     jq(volume_listen, '.[\"sink\"]."volume"') > 75 ? "󰕾" :
