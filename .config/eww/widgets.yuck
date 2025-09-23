@@ -91,7 +91,7 @@
                 :text "${
                     jq(player_listen, '.').status == "" ? "" :
                     jq(player_listen, '.').status == "Playing" ? 
-                        " Playing ${jq(player_listen, '.').title
+                        " ${jq(player_listen, '.').title
                         } - ${jq(player_listen, '.').artist} " :
                     jq(player_listen, '.').status == "Paused" ?
                         " Paused " : 
