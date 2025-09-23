@@ -180,12 +180,19 @@
     )
 )
 
+(defvar show_date true)
+
 (defwidget clock[]
     (box
      :class "clock"
-        (label
-            :text "󰥔 ${date_poll}"
-            :class "clock_lbl"
+        (eventbox
+            :onclick "${EWW_CMD} update show_date=${show_date ? false : true}"
+            :cursor "pointer"
+            (label
+                :text "󰥔 ${formattime(EWW_TIME, show_date ? "%a %b %d %H:%M" : 
+                    "%H:%M", "Asia/Manila")}"
+                :class "clock_lbl"
+            )
         )
     )
 )

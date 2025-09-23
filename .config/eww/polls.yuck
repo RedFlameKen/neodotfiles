@@ -1,8 +1,3 @@
-(defpoll date_poll
-    :interval "1s"
-    "date +%H:%M"
-)
-
 (deflisten workspace_listen
     :initial "(box :class 'workspaces' (label :text 'workspaces'))"
     "~/.local/bin/hypr-ws-listener"
