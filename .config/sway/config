@@ -123,9 +123,9 @@ bindsym XF86Launch1 workspace $ws1; exec $browser; workspace $ws4; exec $term;
 # msc keybinds
 
 # obs keybinds
-bindsym Control+F12 exec ~/.scripts/obs-cli-helper.sh record
-bindsym Control+Shift+F12 exec ~/.scripts/obs-cli-helper.sh record pause
-bindsym Control+Shift+F10 exec ~/.scripts/obs-cli-helper.sh stream
+bindsym $mod+F12 exec ~/.scripts/obs-cli-helper.sh record
+bindsym $mod+Shift+F12 exec ~/.scripts/obs-cli-helper.sh record pause
+bindsym $mod+Shift+F10 exec ~/.scripts/obs-cli-helper.sh stream
 
 # open terminal
 bindsym $mod+q exec $term
