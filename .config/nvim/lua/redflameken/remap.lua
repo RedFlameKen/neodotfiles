@@ -27,6 +27,7 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<C-Down>", "<C-e>")
 -- Yank to clipboard
 vim.keymap.set({"n", "v"}, "<leader>y", "\"+y")
+vim.keymap.set({"n", "v"}, "<leader>Y", "\"+y$")
 
 -- vim.keymap.set("n", "<leader>ee", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>ee", require"oil".open)
