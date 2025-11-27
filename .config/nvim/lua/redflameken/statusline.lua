@@ -112,12 +112,15 @@ local modes = {
     {"i", 	{name = "INSERT",           highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep }},
     {"R", 	{name = "REPLACE",          highlight = highlights.modereplace, sephighlight = highlights.modereplacetogitsep }},
     {"v", 	{name = "VISUAL",           highlight = highlights.modevisual,  sephighlight = highlights.modevisualtogitsep }},
+    {"vs", 	{name = "VISUAL-S",         highlight = highlights.modevisual,  sephighlight = highlights.modevisualtogitsep }},
     {"V", 	{name = "VISUAL-LINE",      highlight = highlights.modevisual,  sephighlight = highlights.modevisualtogitsep }},
+    {"Vs", 	{name = "VISUAL-LINE-S",    highlight = highlights.modevisual,  sephighlight = highlights.modevisualtogitsep }},
     {"", 	{name = "VISUAL-BLOCK",     highlight = highlights.modevisualb, sephighlight = highlights.modevisualbtogitsep }},
+    {"s", {name = "VISUAL-BLOCK-S",   highlight = highlights.modevisualb, sephighlight = highlights.modevisualbtogitsep }},
     {"c", 	{name = "COMMAND",          highlight = highlights.modecommand, sephighlight = highlights.modecommandtogitsep }},
     {"s", 	{name = "SELECT",           highlight = highlights.modeselect,  sephighlight = highlights.modeselecttogitsep }},
     {"S", 	{name = "SELECT-LINE",      highlight = highlights.modeselect,  sephighlight = highlights.modeselecttogitsep }},
-    {"t", 	{name = "Terminal-I",         highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep }},
+    {"t", 	{name = "Terminal-I",       highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep }},
     {"nt", 	{name = "Terminal",         highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep }},
 }
 
