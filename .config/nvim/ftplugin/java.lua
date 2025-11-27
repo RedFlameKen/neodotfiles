@@ -41,6 +41,7 @@ local config = {
         -- '--add-modules=ALL-SYSTEM',
         -- '--add-opens', 'java.base/java.util=ALL-UNNAMED',
         -- '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        '-javaagent:' .. home .. '/.local/share/nvim/mason/packages/jdtls/lombok.jar',
         '-jar', launcher_jar,
         '-configuration', jdtls_path .. '/config_linux',
         '-data', workspaceDir(),
