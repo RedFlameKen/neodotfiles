@@ -21,6 +21,7 @@ require("nvim-tree").setup {
     view = view,
     renderer = renderer,
     filters = filters,
+    hijack_netrw = false
 }
 
 vim.keymap.set("n", "<leader>et", api.tree.toggle)
