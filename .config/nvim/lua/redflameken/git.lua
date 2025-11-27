@@ -71,7 +71,7 @@ end
 
 --- This method will create a new branch
 function M.branch()
-    local branchName = vim.fn.input{}
+    local branchName = vim.fn.input{prompt = "New branch: ", completion = "history"}
     if Cancelled(branchName) then
         return
     end
