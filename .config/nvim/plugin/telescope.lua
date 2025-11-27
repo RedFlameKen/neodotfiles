@@ -4,6 +4,14 @@ vim.keymap.set("n", "<leader>ef", function()
     builtin.find_files({hidden = true})
 end)
 
+vim.keymap.set("n", "<leader>eF", function()
+    builtin.fd({hidden = true, find_command = {"fd","-t=d"}})
+end)
+
+vim.keymap.set("n", "<leader>ea", function()
+    builtin.find_files({hidden = true, no_ignore = true})
+end)
+
 vim.keymap.set("n", "<leader>es", function()
     local keyword = vim.fn.input("Search Keyword: ")
     if Cancelled(keyword) then return end
