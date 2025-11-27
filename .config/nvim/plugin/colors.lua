@@ -10,11 +10,6 @@ function ColorMyPencils(color, transparent)
 
     local normhl = cursor_line_hl.bg
 
-    if transparent == "true" then
-        vim.api.nvim_set_hl(0, "Normal",  { bg = "none"})
-        vim.api.nvim_set_hl(0, "NormalFloat",  { bg = "none"})
-    end
-
     local black     = vim.g.terminal_color_0
     local red       = vim.g.terminal_color_1
     local green     = vim.g.terminal_color_2
@@ -32,6 +27,12 @@ function ColorMyPencils(color, transparent)
     local cyan_l    = vim.g.terminal_color_14
     local white_l   = vim.g.terminal_color_15
 
+    if transparent == "true" then
+        vim.api.nvim_set_hl(0, "Normal",  { bg = "none"})
+        vim.api.nvim_set_hl(0, "NormalFloat",  { bg = "none"})
+    end
+
+    vim.api.nvim_set_hl(0, "NormalNC",  { bg = black })
     vim.api.nvim_set_hl(0, "SignColumn",                {fg = white_l,  bg = cursor_line_hl.bg } )
     vim.api.nvim_set_hl(0, "StatusLineDef",             {fg = white_l,  bg = normhl    } )
     vim.api.nvim_set_hl(0, "ModeNormal",                {fg = black,    bg = green,    bold = true} )
@@ -76,3 +77,5 @@ vim.api.nvim_create_user_command("ColorMyPencils", function(args)
 end, {nargs="*"})
 
 ColorMyPencils()
+ColorMyPencils()
+
