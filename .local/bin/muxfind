@@ -8,6 +8,8 @@ if [ $# -gt 0 ]; then
             ;;
         -d | --directory) fuzzytarget=$2
             ;;
+        -n | --no-tmux) notmux=true
+            ;;
         *) echo "Invalid Option $1"
             exit 0;
             ;;
@@ -19,8 +21,8 @@ find_command="find"
 find_opts="-follow -mindepth 1"
 directory="$HOME/"
 
-if [ -z $vimext ]; then
-    if [ -z $fuzzytarget ]; then
+if [ -z "$vimext" ]; then
+    if [ -z "$fuzzytarget" ]; then
         paths=`cat ~/.config/tmuxfuzpaths | sed "s|^|$HOME/|"`
         find_opts="$find_opts -maxdepth 1 -type d"
         fuzzytarget="$($find_command $paths $find_opts | sed "s|$HOME/\(.*\)|\1/|" | fzf)"
@@ -30,7 +32,7 @@ if [ -z $vimext ]; then
     fi
     selectedName=$(basename "$fuzzytarget" 2> /dev/null | tr . _ | tr " " _ )
 else
-    if [ -z $fuzzytarget ]; then
+    if [ -z "$fuzzytarget" ]; then
         paths=`cat ~/.config/tmuxfuzvimpaths | sed "s|^|$HOME/|"`
         find_vimpath_excludes_f="! -name "\.project" -and ! -name "\.classpath" -and ! -name "*.class" -and ! -name "*.jpg" -and ! -name "*.png" -and ! -name "*.o" -and ! -executable"
         find_vimpath_excludes_d="! -path "*\.metadata/**" -and ! -path "*\.git/**" -and ! -path "*\.settings/**""
@@ -45,6 +47,13 @@ else
 fi
 
 if [ -z "$selectedName" ]; then
+    exit 0
+fi
+
+if [[ $notmux == true ]]; then
+    alias changedir="cd $directory"
+    changedir
+    unset -f changedir
     exit 0
 fi
 
