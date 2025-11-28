@@ -1,6 +1,7 @@
 require("redflameken.packer")
 require("redflameken.statusline")
 require("redflameken.lsp")
+require("redflameken.espeak")
 require("redflameken.remap")
 require("redflameken.git")
 require("redflameken.autocommand")

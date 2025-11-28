@@ -85,3 +85,6 @@ vim.keymap.set("n", "<leader>bD", function()
 
     vim.api.nvim_buf_delete(buffer_id, {})
 end)
+
+vim.keymap.set("v", "<leader>as", Speak)
+vim.keymap.set({"n", "v"}, "<leader>ac", StopSpeaking)
