@@ -16,11 +16,9 @@
 //"╰──────────────────────────────────────────╯"
 {
     "general": {
-        "multithreading": true,
     },
     "display": {
         "separator": ":: ",
-        "disableLineWrap": true,
         "key": {
             "paddingLeft": 2,
         },

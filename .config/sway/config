@@ -1,9 +1,9 @@
 output '*' color_profile icc /usr/share/color/icc/colord/Gamma6500K.icc
 
-output VGA-1 mode 1280x1024 pos 0 0
-output LVDS-1 mode 1366x768 pos 0 1024
-# output LVDS-1 mode 1366x768 pos 0 0
-# output HDMI-A-1 resolution 1280x720 pos 1366 0
+# output VGA-1 mode 1280x1024 pos 0 0
+# output LVDS-1 mode 1366x768 pos 0 1024
+output LVDS-1 mode 1366x768 pos 0 0
+output HDMI-A-1 resolution 1280x720 pos 1366 0
 # output HDMI-A-1 resolution 1280x720 pos 1366 1025
 # output HDMI-A-1 resolution 1920x1080 pos 1366 1025
 
@@ -13,12 +13,17 @@ output LVDS-1 mode 1366x768 pos 0 1024
 # output VGA-1 mode 1920x1080 pos 0 0
 # output LVDS-1 mode 1366x768 pos 0 1080
 # output LVDS-1 mode 1366x768 pos 0 0
+# output VGA-1 mode 1920x1080 pos 1366 0
+# output HDMI-A-1 mode 1920x1080 pos 1366 0
+# output HDMI-A-1 mode 1280x720 pos 1366 0
+# output HDMI-A-1 mode 1680x1050 pos 1366 0
 # output HDMI-A-1 resolution 1280x720 pos 1366 1025
 
-bindswitch lid:on output * dpms off
-bindswitch lid:off output * dpms on
+# bindswitch lid:on output * dpms off
+# bindswitch lid:off output * dpms on
 
-exec swayidle timeout 300 'swaylock -f' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+# exec swayidle timeout 300 'swaylock -f' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+# exec swayidle timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
 
 set $mod Mod4
 set $alt Mod1

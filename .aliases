@@ -79,3 +79,5 @@ alias ppssppwine="WINEARCH=win64 WINEPREFIX=~/wine/kennethWine wine /run/media/k
 alias zerotierleave="sudo zerotier-one -q leave 1c33c1ced0e294b8"
 alias zerotierjoin="sudo zerotier-one -q join 1c33c1ced0e294b8"
 alias xfdisplay="xfce4-display-settings"
+
+alias screenoff="swaymsg 'output * dpms off'"

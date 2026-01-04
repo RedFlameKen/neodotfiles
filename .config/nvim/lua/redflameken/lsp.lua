@@ -35,16 +35,35 @@ vim.lsp.config['bashls'] = {
     filetypes = { 'bash', 'sh' },
 }
 
-vim.lsp.config['kotlin_lsp'] = {
-    cmd = { 'kotlin-lsp', '--stdio' },
+vim.lsp.config['kotlin_language_server'] = {
+    cmd = { 'kotlin-language-server' },
     -- single_file_support = true,
     filetypes = { 'kotlin', 'kt', 'kts' },
     root_markers = {"build.gradle", "build.gradle.kts", "pom.xml", "workspace.json"}
 }
 
+-- vim.lsp.config['kotlin_lsp'] = {
+--     cmd = { 'kotlin-lsp', '--stdio' },
+--     -- single_file_support = true,
+--     filetypes = { 'kotlin', 'kt', 'kts' },
+--     root_markers = {"build.gradle", "build.gradle.kts", "pom.xml", "workspace.json"}
+-- }
+--
 vim.lsp.config['digestif'] = {
     cmd = { 'digestif' },
     filetypes = { 'tex', 'plaintex' },
+}
+
+vim.lsp.config.omnisharp = {
+    cmd = { 'OmniSharp', '-lsp', '--hostPID', tostring(vim.fn.getpid()) },
+    root_markers = { vim.fn.glob("*.csproj") },
+    filetypes = { 'cs' },
+}
+
+vim.lsp.config.rust_analyzer = {
+    cmd = { 'rust-analyzer' },
+    root_markers = { 'Cargo.toml' },
+    filetypes = { 'rs', 'rust' },
 }
 
 vim.lsp.config.html = {
@@ -183,7 +202,7 @@ vim.lsp.enable({
     'phpactor',
     'digestif',
     'sqls',
-    'kotlin_lsp'
+    'kotlin_language_server'
 })
 
 vim.lsp.enable('jdtls', false)

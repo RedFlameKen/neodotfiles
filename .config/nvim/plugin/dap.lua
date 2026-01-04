@@ -63,6 +63,19 @@ dap.configurations.cpp = {
 
 dap.configurations.c = dap.configurations.cpp
 
+dap.configurations.rust = {
+  {
+    name = "Launch file",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    -- cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+  },
+}
+
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
 dap.configurations.java = {

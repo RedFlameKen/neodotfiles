@@ -17,6 +17,7 @@ docs/notes/school/*
 docs/notes/personal/
 test
 test/*
+work/
 docs/
 school/
 school/*
@@ -24,3 +25,4 @@ school/java3
 school/mobilecomp2
 school/AndroidProjects
 .eclipse_workspaces/sts/
+playground

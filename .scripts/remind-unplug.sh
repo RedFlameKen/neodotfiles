@@ -3,7 +3,7 @@
 notified=false
 battery=BAT0
 
-alarm_point=95
+alarm_point=98
 
 interval=15
 

@@ -8,16 +8,16 @@ end
 vim.keymap.set("n", "<leader>ps", packerSync)
 
 return require('packer').startup(function(use)
-	use 'wbthomason/packer.nvim'
+    use 'wbthomason/packer.nvim'
 
-	use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.6',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-	}
-	use 'nvim-telescope/telescope-ui-select.nvim'
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.6',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
+    use 'nvim-telescope/telescope-ui-select.nvim'
     use 'ellisonleao/gruvbox.nvim'
     use 'rose-pine/neovim'
-	use 'srcery-colors/srcery-vim'
+    use 'srcery-colors/srcery-vim'
     --[[
 	use {
 		'srcery-colors/srcery-vim',
@@ -26,38 +26,38 @@ return require('packer').startup(function(use)
 			vim.cmd('colorscheme srcery')
 		end
 	}
-    ]]--
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		'redflameken/nvim-treesitter-context',
+    ]] --
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        'redflameken/nvim-treesitter-context',
         'nvim-treesitter/playground',
-		run = ':TSUpdate'
-	}
+        run = ':TSUpdate'
+    }
     use "freed-wu/tmux-language-server"
     use "junegunn/goyo.vim"
     use "nvim-tree/nvim-tree.lua"
     use "stevearc/oil.nvim"
     use "chrisbra/colorizer"
-	use "nvim-lua/plenary.nvim"
+    use "nvim-lua/plenary.nvim"
     -- use "github/copilot.vim"
     use "tpope/vim-fugitive"
-	use "mbbill/undotree"
+    use "mbbill/undotree"
     use "nvim-tree/nvim-web-devicons"
-	use {
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		requires = { {"nvim-lua/plenary.nvim"} }
-	}
-    use {'williamboman/mason.nvim'}
-    use {'williamboman/mason-lspconfig.nvim'}
-    use {'jay-babu/mason-nvim-dap.nvim'}
-    use {'neovim/nvim-lspconfig'}
-    use {'hrsh7th/nvim-cmp'}
-    use {'hrsh7th/cmp-nvim-lsp'}
-    use {'hrsh7th/cmp-nvim-lsp-signature-help'}
-    use {'saadparwaiz1/cmp_luasnip'}
-    use {"rafamadriz/friendly-snippets"}
-    use {"L3MON4D3/LuaSnip", run = "make install_jsregexp"}
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    }
+    use { 'williamboman/mason.nvim' }
+    use { 'williamboman/mason-lspconfig.nvim' }
+    use { 'jay-babu/mason-nvim-dap.nvim' }
+    use { 'neovim/nvim-lspconfig' }
+    use { 'hrsh7th/nvim-cmp' }
+    use { 'hrsh7th/cmp-nvim-lsp' }
+    use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
+    use { 'saadparwaiz1/cmp_luasnip' }
+    use { "rafamadriz/friendly-snippets" }
+    use { "L3MON4D3/LuaSnip", run = "make install_jsregexp" }
     use 'mfussenegger/nvim-lint'
     use 'mfussenegger/nvim-jdtls'
     use 'mfussenegger/nvim-dap'
@@ -77,8 +77,14 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
         latex = { enabled = false }
     })
-    use {'redflameken/vim-android', branch = "master" }
+    use { 'redflameken/vim-android', branch = "master" }
     use 'dense-analysis/ale'
     use 'stevearc/conform.nvim'
-
+    use {
+        'chomosuke/typst-preview.nvim',
+        tag = 'v1.*',
+        config = function()
+            require 'typst-preview'.setup {}
+        end,
+    }
 end)
