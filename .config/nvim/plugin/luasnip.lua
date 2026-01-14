@@ -11,28 +11,28 @@ local i = ls.insert_node
 local r = ls.restore_node
 local rep = extra.rep
 
-vim.keymap.set({"i", "s"}, "<A-k>", function()
+vim.keymap.set({ "i", "s" }, "<A-k>", function()
     if ls.expand_or_jumpable() then
         ls.expand_or_jump()
     end
-end, {silent = true}
+end, { silent = true }
 )
 
-vim.keymap.set({"i", "s"}, "<A-j>", function()
+vim.keymap.set({ "i", "s" }, "<A-j>", function()
     if ls.jumpable(-1) then
         ls.jump(-1)
     end
-end, {silent = true}
+end, { silent = true }
 )
 
-vim.keymap.set({"i", "s"}, "<A-l>", function() ls.expand() end, {silent = true})
+vim.keymap.set({ "i", "s" }, "<A-l>", function() ls.expand() end, { silent = true })
 
 ls.add_snippets("c", {
     s("ifndef", {
-        t({'#ifndef '}), i(1, "MACRO"),
-        t({'', '#define '}), rep(1), t({'', ''}),
+        t({ '#ifndef ' }), i(1, "MACRO"),
+        t({ '', '#define ' }), rep(1), t({ '', '' }),
         i(2),
-        t({'', '#endif'})
+        t({ '', '#endif' })
     }),
 })
 
@@ -57,18 +57,18 @@ ls.add_snippets("cpp", {
         }),
     }),
     s("ifndef", {
-        t({'#ifndef '}), i(1, "MACRO"),
-        t({'', '#define '}), rep(1), t({'', ''}),
+        t({ '#ifndef ' }), i(1, "MACRO"),
+        t({ '', '#define ' }), rep(1), t({ '', '' }),
         i(2),
-        t({'', '#endif'})
+        t({ '', '#endif' })
     }),
     s("func", {
-        i(1, "type"), t(" "), i(2, "name"), t("("), i(3), t({") {", "\t"}),
+        i(1, "type"), t(" "), i(2, "name"), t("("), i(3), t({ ") {", "\t" }),
         i(4),
-        t({'', "}"})
+        t({ '', "}" })
     }),
     s("protofunc", {
-        i(1, "type"), t(" "), i(2, "name"), t("("), i(3), t({");"}),
+        i(1, "type"), t(" "), i(2, "name"), t("("), i(3), t({ ");" }),
     }),
 })
 
@@ -167,6 +167,40 @@ ls.add_snippets("java", {
 
 })
 
+ls.add_snippets("typst", {
+    s("init_notes", {
+        t({
+            '#set page(',
+            '   paper: "us-letter",',
+            '   margin:  (x: 1in, y: 1in),',
+            ')',
+            '',
+            '#set text(',
+            '   font: "arial",',
+            '   size: 11pt',
+            ')',
+            '',
+            '*' .. latex_author .. '* \\',
+            '*' .. latex_organization .. '* \\',
+            '*'}), i(1, 'SUBJECT'), t({  '* \\',
+            '',
+            '#set par(',
+            '   first-line-indent: (',
+            '       amount: 1em,',
+            '       all: false,',
+            '   ),',
+            '   justify: true',
+            ')',
+            '',
+            '#align(center)[= '}), i(2, 'Title'), t({ ']',
+            '',
+            '',
+        }),
+        i(3)
+    })
+}
+)
+
 ls.add_snippets("tex", {
     s("init", {
         t({
@@ -182,19 +216,19 @@ ls.add_snippets("tex", {
             '\\thispagestyle{empty}',
             '\\begin{center}',
             '    \\vspace*{\\fill}',
-            '    \\section*{\\huge{'}), i(1, 'Title'), t({'}}',
-            '    \\vfill',
-            '    \\section*{\\normalfont{by}}',
-            '    \\section*{\\normalfont{' .. latex_author .. '}}',
-            '    \\section*{\\normalfont{' .. latex_organization .. '}}',
-            '    \\section*{\\normalfont{'}), i(2), t({'}}',
-            '    \\vfill',
-            '\\end{center}',
-            '',
-            '\\pagebreak',
-            '',
-            ''
-        }), i(3),
+            '    \\section*{\\huge{' }), i(1, 'Title'), t({ '}}',
+        '    \\vfill',
+        '    \\section*{\\normalfont{by}}',
+        '    \\section*{\\normalfont{' .. latex_author .. '}}',
+        '    \\section*{\\normalfont{' .. latex_organization .. '}}',
+        '    \\section*{\\normalfont{' }), i(2), t({ '}}',
+        '    \\vfill',
+        '\\end{center}',
+        '',
+        '\\pagebreak',
+        '',
+        ''
+    }), i(3),
         t({
             '',
             '',
@@ -213,17 +247,19 @@ ls.add_snippets("tex", {
         }),
         t({
             '\\noindent',
-            '\\textbf{'}), i(1, 'SUBJECT'), t({'} \\\\', ''}),
+            '\\textbf{' }), i(1, 'SUBJECT'), t({ '} \\\\', '' }),
         t({
-            '\\textbf{'.. latex_author .. '} \\\\',
-            '\\textbf{'.. latex_organization .. '} ',
+            '\\textbf{' .. latex_author .. '} \\\\',
+            '\\textbf{' .. latex_organization .. '} ',
             '',
-            '\\centerline{\\textbf{'}), i(2, 'Title'), t({'}} ', '',}),
+            '\\centerline{\\textbf{' }), i(2, 'Title'), t({ '}} ', '', }),
         t({
             '',
             '',
             '',
             '\\end{document}',
-        })
+        }),
+        i(3)
+
     })
 })
