@@ -263,3 +263,67 @@ ls.add_snippets("tex", {
 
     })
 })
+
+ls.add_snippets("make", {
+    s("java_init", {
+        t({
+            'source_dir := '}), i(1, "src/"),
+        t({
+            '',
+            'sources := $(shell find $(source_dir) -iname "*.java")',
+            'main_class := '}), i(2, "Main"),
+        t({
+            '',
+            '.PHONY: build',
+            '',
+            'build: $(sources)',
+            '\tjavac -d bin $(sources)',
+            '',
+            'run: build',
+            '\tjava -cp bin $(main_class)',
+            '',
+            'clean:',
+            '\trm -rf bin/*',
+        }),
+    }),
+    s("c_init", {
+        t({
+            'project_name := '}), i(1, "project_name"),
+        t({
+            '',
+            'sources := $(shell find src/ -iname "*.c" ! -name "main.c")',
+            'headers := $(shell find src/ -iname "*.h")',
+            '',
+            'main_file := '}), i(2, "src/main.c"),
+        t({
+            '',
+            'test_sources := $(shell find test/ -iname "*.c" ! -name "test.c")',
+            'test_headers := $(shell find test/ -iname "*.h")',
+            '',
+            'main_test_file := '}), i(3, "test/test.c"),
+        t({
+            '',
+            'libs := '}), i(4, ""),
+        t({
+            '',
+            'flags := '}), i(5, "-g"),
+        t({
+            '',
+            '.PHONY: build',
+            '',
+            'build: $(sources) $(headers) $(main_file)',
+            '\tcc -x c -std=c11 -o bin/$(project_name) $(main_file) $(sources) $(shell pkg-config --cflags --libs $(libs)) $(flags)',
+        }),
+        t({
+            '',
+            'tests: $(sources) $(headers) $(main_test_file) $(test_sources) $(test_headers)',
+            '\tcc -x c -std=c11 -o bin/test $(main_test_file) $(test_sources) $(sources) $(shell pkg-config --cflags --libs $(libs)) $(flags)',
+            '\tbin/test'
+        }),
+        t({
+            '',
+            'clean:',
+            '\trm -rf bin/*',
+        }),
+    })
+})

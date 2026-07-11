@@ -28,6 +28,12 @@ dap.adapters.codelldb = {
   }
 }
 
+dap.adapters.gdb = {
+  type = 'executable',
+  command = "gdb",
+  args = {"--interpreter=dap", "--eval-command", "set print pretty on"}
+}
+
 dap.adapters.dart = {
   type = 'executable',
   command = '/home/redflameken/.local/share/nvim/mason/packages/dart-debug-adapter/dart-debug-adapter',
@@ -48,20 +54,34 @@ dap.configurations.dart = {
   },
 }
 
-dap.configurations.cpp = {
+dap.configurations.c = {
   {
     name = "Launch file",
-    type = "codelldb",
+    type = "gdb",
     request = "launch",
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
-    -- cwd = '${workspaceFolder}',
+    args = {},
+    cwd = '${workspaceFolder}',
     stopOnEntry = false,
   },
 }
 
-dap.configurations.c = dap.configurations.cpp
+-- dap.configurations.cpp = {
+--   {
+--     name = "Launch file",
+--     type = "codelldb",
+--     request = "launch",
+--     program = function()
+--       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+--     end,
+--     -- cwd = '${workspaceFolder}',
+--     stopOnEntry = false,
+--   },
+-- }
+
+dap.configurations.cpp = dap.configurations.c
 
 dap.configurations.rust = {
   {

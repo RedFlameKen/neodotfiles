@@ -56,13 +56,10 @@ alias vga-disconnect="xrandr --output VGA-1 --off"
 alias hdmi-connect="xrandr --output HDMI-1 --auto --right-of LVDS-1"
 alias hdmi-disconnect="xrandr --output HDMI-1 --off"
 
-alias echo-cancel="pactl load-module module-echo-cancel aec_method=webrtc aec_args='analog_gain_control=0 digital_gain_control=1'"
-alias listen-mic="pactl load-module module-loopback latency_msec=2"
-
 alias :q="exit"
 
 # Sound
-alias echo-cancel="pactl load-module module-echo-cancel aec_args='analog_gain_control=0' eac_method=webrtc"
+alias echo-cancel="pactl load-module module-echo-cancel source_master='alsa_input.pci-0000_00_1b.0.analog-stereo' aec_method=webrtc aec_args='analog_gain_control=0 digital_gain_control=1'"
 alias listen-mic="pactl load-module module-loopback"
 
 alias echo-cancel-off="pactl unload-module module-echo-cancel"

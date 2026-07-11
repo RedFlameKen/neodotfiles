@@ -3,8 +3,29 @@ local oil = require("oil")
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
+local function open_explorer(direction, file)
+    local term_buf_id = vim.api.nvim_create_buf(true, false)
+
+    vim.api.nvim_open_win(term_buf_id, true, {
+        split = direction,
+    })
+    if file ~= nil then
+        vim.cmd.edit(file)
+    else
+        oil.open()
+    end
+end
+
+vim.api.nvim_create_user_command("Sexplore", function(args)
+    open_explorer("below", args.fargs[1])
+end, {nargs="?", complete="file_in_path"})
+
+vim.api.nvim_create_user_command("Vexplore", function(args)
+    open_explorer("right", args.fargs[1])
+end, {nargs="?", complete="file_in_path"})
+
 local config = {
-    default_file_explorer = false,
+    default_file_explorer = true,
     skip_confirm_on_simple_edits = true,
     prompt_save_on_select_new_entry = true,
     constrain_cursor = "editable",

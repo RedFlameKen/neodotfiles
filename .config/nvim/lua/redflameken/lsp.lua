@@ -15,7 +15,7 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd("LspAttach", {
     desc = "LSP keybinds",
     callback = function()
-        vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
+        vim.keymap.set({"n", "v"}, "<leader>la", vim.lsp.buf.code_action)
         vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
         vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.signature_help {border = "rounded"} end)
         vim.keymap.set("n", "<leader>ld", function() require"telescope.builtin".diagnostics() end)
@@ -33,6 +33,18 @@ vim.lsp.config.clangd = {
 vim.lsp.config['bashls'] = {
     cmd = { 'bash-language-server', 'start' },
     filetypes = { 'bash', 'sh' },
+}
+
+vim.lsp.config['pylsp'] = {
+    cmd = { "pylsp" },
+    filetypes = { 'python' },
+    root_dir = vim.fn.getcwd(),
+}
+
+vim.lsp.config['pyright'] = {
+    cmd = { "pyright-langserver", "--stdio" },
+    filetypes = { 'python' },
+    root_dir = vim.fn.getcwd(),
 }
 
 vim.lsp.config['kotlin_language_server'] = {
@@ -99,7 +111,7 @@ vim.lsp.config["jsonls"] = {
 vim.lsp.config['ts_ls'] = {
     cmd = { 'typescript-language-server', '--stdio' },
     root_markers = { 'eslint.config.js' },
-    filetypes = { 'typescript', 'ts', 'javascript', 'js' },
+    filetypes = { 'typescript', 'ts', 'javascript', 'js', 'typescriptreact', 'javascriptreact', 'tsx', 'jsx' },
     settings = {
         javascript = {
             validate = true

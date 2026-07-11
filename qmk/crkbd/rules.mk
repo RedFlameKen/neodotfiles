@@ -1,5 +1,4 @@
 SRC+=keymaps/redflameken/atlas.c
-DEFAULT_FOLDER = crkbd/rev1
 SPLIT_KEYBOARD = yes
 SERIAL_DRIVER = bitbang
 

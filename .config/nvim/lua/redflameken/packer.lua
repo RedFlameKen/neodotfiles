@@ -11,7 +11,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.6',
+        'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use 'nvim-telescope/telescope-ui-select.nvim'
@@ -29,9 +29,11 @@ return require('packer').startup(function(use)
     ]] --
     use {
         'nvim-treesitter/nvim-treesitter',
-        'redflameken/nvim-treesitter-context',
-        'nvim-treesitter/playground',
+        branch = 'main',
         run = ':TSUpdate'
+    }
+    use {
+        'redflameken/nvim-treesitter-context',
     }
     use "freed-wu/tmux-language-server"
     use "junegunn/goyo.vim"

@@ -15,3 +15,5 @@ export SAVEHIST=1000
 export HISTFILE=~/.sh_history
 export XDG_CONFIG_HOME=~/.config
 export MANPAGER="nvim +Man!"
+export NOTES_DIR=~/docs/notes
+export SCHOOL_NOTES_DIR=~/docs/notes/school

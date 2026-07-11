@@ -25,7 +25,7 @@ $arch_blue:     #1793d1;
     font-family: "JetBrainsMono Nerd Font Propo";
     font-size: 14px;
     color: $foreground;
-    background-color: $background-trans;
+    background-color: transparent;
 }
 
 .right_widgets,
@@ -121,8 +121,8 @@ $arch_blue:     #1793d1;
 }
 
 .volume {
-  padding-left: 3px;
-  padding-right: 3px;
+  padding-left: 10px;
+  padding-right: 2px;
 }
 
 .tray {

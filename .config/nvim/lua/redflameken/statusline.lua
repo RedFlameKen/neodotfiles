@@ -122,6 +122,7 @@ local modes = {
     {"S", 	{name = "SELECT-LINE",      highlight = highlights.modeselect,  sephighlight = highlights.modeselecttogitsep }},
     {"t", 	{name = "Terminal-I",       highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep }},
     {"nt", 	{name = "Terminal",         highlight = highlights.modeinsert,  sephighlight = highlights.modeinserttogitsep }},
+    {"?", 	{name = "Unknown",          highlight = highlights.modenormal,  sephighlight = highlights.modenormaltogitsep }},
 }
 
 local function getModeHighlight(mode)
@@ -130,7 +131,7 @@ local function getModeHighlight(mode)
             return mode_highlight[2]
         end
     end
-    return modes["n"]
+    return modes["?"]
 end
 
 local function mode()

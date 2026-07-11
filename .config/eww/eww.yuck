@@ -1,6 +1,6 @@
 (include "widgets.yuck")
 (defwindow bar
-    :monitor 0
+    :monitor '["<primary>", 1, 0]'
     :geometry (geometry :x "0%"
                         :y "0%"
                         :width "100%"

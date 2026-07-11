@@ -1,9 +1,21 @@
 output '*' color_profile icc /usr/share/color/icc/colord/Gamma6500K.icc
 
-# output VGA-1 mode 1280x1024 pos 0 0
+# Horizontal Monitors
+# output VGA-1 mode 1280x1024 pos 1366 0
+# output VGA-1 mode 1280x720 pos 1366 0
+# output LVDS-1 mode 1366x768 pos 0 0
+# output VGA-1 mode 1920x1080 pos 1366 0
+
+# Vertical Monitors
+# output VGA-1 mode 1280x720 pos 1366 0
 # output LVDS-1 mode 1366x768 pos 0 1024
+# output VGA-1 mode 1920x1080 pos 0 0
+# output LVDS-1 mode 1366x768 pos 0 1080
 output LVDS-1 mode 1366x768 pos 0 0
-output HDMI-A-1 resolution 1280x720 pos 1366 0
+# output HDMI-A-1 resolution 1280x720 pos 1366 0
+
+# output LVDS-1 mode 1366x768 pos 0 1080
+# output HDMI-A-1 resolution 1280x720 pos 1366 0
 # output HDMI-A-1 resolution 1280x720 pos 1366 1025
 # output HDMI-A-1 resolution 1920x1080 pos 1366 1025
 
@@ -52,10 +64,11 @@ set $ws9 9󱁤
 
 # workspace $ws1 output LVDS-1
 # workspace $ws2 output VGA-1
-workspace $ws5 output VGA-1
-workspace $ws7 output VGA-1
+workspace $ws4 output VGA-1
+workspace $ws5 output LVDS-1
+workspace $ws7 output LVDS-1
 
-workspace $ws1
+workspace $ws4
 
 assign [class="discord"] $ws5
 assign [class="WebCord"] $ws5
@@ -66,6 +79,12 @@ assign [class="Spotify"] $ws7
 assign [class="Minecraft.*"] $ws2
 
 for_window [app_id='org.wezfurlong.wezterm'] resize set 400 400
+
+for_window [title="KDE.Connect.Daemon"] opacity set 1
+for_window [title="KDE.Connect.Daemon"] fullscreen disable
+for_window [title="KDE.Connect.Daemon"] floating enable
+for_window [title="KDE.Connect.Daemon"] resize set 100ppt 100ppt
+
 
 # startup settings
 
@@ -243,7 +262,7 @@ bindsym $mod+g workspace $ws5
 bindsym $mod+t workspace $ws6
 bindsym $mod+b workspace $ws7
 
-# bindsym $mod+z workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
 
 bindsym $mod+n workspace next
 bindsym $mod+p workspace prev

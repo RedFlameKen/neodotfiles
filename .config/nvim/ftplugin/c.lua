@@ -20,3 +20,7 @@ vim.keymap.set("n", "<leader>lm", function() buildProject() end)
 vim.keymap.set("n", "<leader>lr", function() buildProject(true) end)
 
 vim.keymap.set("n", "<leader>lsr", function() buildProject(true, true) end)
+
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2

@@ -1,24 +1,27 @@
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = {
-        "javascript",
-        "cpp",
-        "c",
-        "lua",
-        "vim",
-        "vimdoc",
-        "query"
-    },
+-- require'nvim-treesitter'.setup {
+--     sync_install = false,
+--     auto_install = true,
+-- }
 
-    sync_install = false,
-
-    auto_install = true,
-
-    highlight = {
-        enable = true,
-
-        additional_vim_regex_highlighting = false,
-    },
+local parsers_to_install = {
+    "javascript",
+    "cpp",
+    "c",
+    "lua",
+    "vim",
+    "vimdoc",
+    "query"
 }
+
+require'nvim-treesitter'.install(parsers_to_install)
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    callback = function(e)
+        if vim.treesitter.get_parser(e.buf) ~= nil then
+            vim.treesitter.start(e.buf)
+        end
+    end
+})
 
 require'treesitter-context'.setup({
     enable = true,

@@ -45,6 +45,9 @@ vim.opt.undofile = true
 vim.g.have_nerd_font = true
 vim.g.c_syntax_for_h = 1
 
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
+
 ---@class TermBufConfig
 local termbuf_conf = {
     default_win_height = 12
