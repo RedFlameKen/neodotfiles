@@ -69,9 +69,25 @@ function M.commit_current_file()
     -- ColorMyPencils()
 end
 
+--- This method will create and switch to a new branch
+function M.switch()
+    local branchName = vim.fn.input{
+        prompt = "Create and Switch to branch: ",
+        completion = "custom,v:lua.get_git_branches"
+    }
+    if Cancelled(branchName) then
+        return
+    end
+    vim.cmd("!git switch -c " .. branchName)
+    -- ColorMyPencils()
+end
+
 --- This method will create a new branch
 function M.branch()
-    local branchName = vim.fn.input{prompt = "New branch: ", completion = "history"}
+    local branchName = vim.fn.input{
+        prompt = "New branch: ",
+        completion = "custom,v:lua.get_git_branches"
+    }
     if Cancelled(branchName) then
         return
     end
@@ -79,9 +95,19 @@ function M.branch()
     -- ColorMyPencils()
 end
 
+function M.get_branches()
+    return vim.fn.system("git branch --all --format='%(refname:short)'")
+end
+
+_G.get_git_branches = M.get_branches
+
 --- This method will switch to the provided branch
 function M.checkout()
-    local branchName = vim.fn.input{prompt = "Checkout > ", completion = "history"}
+    local branchName = vim.fn.input({
+        prompt = "Checkout > ",
+        completion = "custom,v:lua.get_git_branches",
+    })
+
     if Cancelled(branchName) then
         return
     end
