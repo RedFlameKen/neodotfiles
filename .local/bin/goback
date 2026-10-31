@@ -1,18 +1,82 @@
 #!/bin/bash
 
-STATE_FILE=$HOME/.local/share/goback_dir
+STATE_FILE=$HOME/.local/share/goback.json
+
+if [ ! -f $STATE_FILE ] || [ "$(cat $STATE_FILE)" == "" ]; then
+    echo "[]" > $STATE_FILE
+fi
 
 if [ $# -le 0 ]; then
-    $HOME/.local/bin/muxfind -d $(cat $STATE_FILE)
+    location="$(jq -r '.[0]' $STATE_FILE)"
+    if [ "$location" == "null" ]; then
+        echo "No locations saved!"
+        exit 1
+    fi
+    $HOME/.local/bin/muxfind -d $location
     exit 0
 fi
-while getopts "ls" option; do
+
+function printLocations(){
+    echo "Saved locations:"
+    jq -r 'to_entries[] | "\(.key): \(.value)"' $STATE_FILE
+}
+
+while getopts "lmnrs" option; do
 	case $option in
         l)
-            cat $STATE_FILE
+            printLocations
             ;;
+		m)
+            if [ $# -lt 3  ]; then
+                echo "Missing arguments!"
+                echo "Usage: goback -n <FROM> <TO>"
+                echo "example: goback -n 3 1"
+                exit 1
+            fi
+            if [[ ! $2 =~ ^[0-9]+$ ]] || [[ ! $3 =~ ^[0-9]+$ ]]; then
+                echo "Argument must be a number!"
+                exit 1
+            fi
+            updated="$(jq -r ".[$2] as \$s | . - [.[$2]] as \$new | [\$new[0:$3][], \$s, \$new[$3:][]]" $STATE_FILE)"
+            echo $updated > $STATE_FILE
+            printf "Location Repositioned!\n"
+			;;
+		n)
+            if [ -z $2 ]; then
+                echo "Missing argument!"
+                echo "example usage: goback -n 0"
+                exit 1
+            fi
+            if [[ ! $2 =~ ^[0-9]+$ ]]; then
+                echo "Argument must be a number!"
+                exit 1
+            fi
+            location="$(jq -r ".[$2]" $STATE_FILE)"
+            if [ "$location" == "null" ]; then
+                echo "No location saved in slot $2"
+                printLocations
+                exit 1
+            fi
+            $HOME/.local/bin/muxfind -d $location
+			;;
+        r)
+            if [ -z $2 ]; then
+                echo "Missing argument!"
+                echo "example usage: goback -r 0"
+                exit 1
+            fi
+
+            if [[ ! $2 =~ ^[0-9]+$ ]]; then
+                echo "Argument must be a number!"
+                exit 1
+            fi
+            updated=$(jq ". - [.[$2]] " $STATE_FILE)
+            echo $updated > $STATE_FILE
+            printf "Location Removed!\n"
+			;;
 		s)
-            echo $(pwd) > $STATE_FILE
+            updated=$(jq ". + [\"$(pwd)\"] " $STATE_FILE)
+            echo $updated > $STATE_FILE
             printf "Location Saved!\n"
 			;;
 		*)
