@@ -89,4 +89,18 @@ return require('packer').startup(function(use)
             require 'typst-preview'.setup {}
         end,
     }
+
+    -- Now that I'm in my internship, where all of the employees are producing
+    -- software that's mostly vibe-coded, I feel that this is the perfect time
+    -- for me to try out vibe-coding. Sometimes, I feel that writing the code
+    -- myself has me lagging behind. Watching my co-worker who finishes multiple
+    -- issues within a day, while I'm only able to finish 1 to 3 with manual
+    -- reviewing, writing, and occasionally asking opencode about how to
+    -- implement something, or asking it to verify implementations. But I want
+    -- to do in in the way that ThePrimeagen does it---with 99. I would like to
+    -- vibe-code in a way where I define how I want the software to work, while
+    -- the LLM writes the implementations
+    use {
+        'ThePrimeagen/99'
+    }
 end)

@@ -29,6 +29,16 @@ vim.keymap.set("n", "<C-Down>", "<C-e>")
 vim.keymap.set({"n", "v"}, "<leader>y", "\"+y")
 vim.keymap.set({"n", "v"}, "<leader>Y", "\"+y$")
 
+-- Align by string using column
+vim.keymap.set("v", "<leader>cl", function()
+    local input = vim.fn.input("Align by: ");
+    if Cancelled(input) then
+        return
+    end
+
+    vim.cmd("'<,'>! column -t -s" .. input .. " -o" .. input)
+end)
+
 -- vim.keymap.set("n", "<leader>ee", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>ee", require"oil".open)
 vim.keymap.set("n", "<leader>m", "<CMD>Mason<CR>")
@@ -36,7 +46,7 @@ vim.keymap.set("n", "<leader>m", "<CMD>Mason<CR>")
 -- Color binds
 -- vim.keymap.set("n", "<leader>cp", "<CMD>lua ColorMyPencils()<CR>")
 vim.keymap.set("n", "<leader>ch", "<CMD>ColorHighlight<CR>")
-vim.keymap.set("n", "<leader>cl", "<CMD>CLC<CR>")
+-- vim.keymap.set("n", "<leader>cl", "<CMD>CLC<CR>")
 
 -- quick fix list binds
 vim.keymap.set("n", "<leader>lh", "<CMD>cw<CR>")
