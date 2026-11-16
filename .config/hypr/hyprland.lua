@@ -107,7 +107,7 @@ end)
 
 -- program variables
 local terminal = "alacritty"
-local terminal_tmux = "kitty --hold zsh -c tmux new"
+local terminal_tmux = "alacritty -e tmux new"
 local fileManager = "thunar"
 local browser = "floorp"
 local menu = "~/.local/bin/rofi-runner"
