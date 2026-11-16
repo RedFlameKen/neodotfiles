@@ -245,11 +245,11 @@ hl.config({
 -- }
 --
 
--- hl.gesture({
---     fingers = 3,
---     direction = "horizontal",
---     workspace = true,
--- })
+hl.gesture({
+    fingers = 3,
+    direction = "horizontal",
+    action = "workspace",
+})
 
 hl.config({
     misc = {
