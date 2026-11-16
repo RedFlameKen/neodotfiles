@@ -7,7 +7,7 @@ fi
 
 set_wp(){
     echo "setting wallpaper..."
-    swww img -t grow --transition-duration 1 --transition-pos top-right --resize crop ~/.wallpapers/wp$1.*
+    awww img -t grow --transition-duration 1 --transition-pos top-right --resize crop ~/.wallpapers/wp$1.*
     echo $1 > ~/.local/state/curwp
 }
 
@@ -57,13 +57,13 @@ print_help(){
 
 echo "
 Usage: 
-swwwWallpaper [num <number>|cur|next|prev|rand|help]
+awwwWallpaper [num <number>|cur|next|prev|rand|help]
 
 num
     select a sepecific number of a wallpaper from ~/.wallpapers
 
     Example:
-    swwwWallpaper num 13
+    awwwWallpaper num 13
 
     this will set the wallpaper to ~/.wallpapers/wp13.jpg
 
@@ -102,7 +102,7 @@ help
 echo "invalid usage!
 
 Usage:
-swwwWallpaper [num <number>|cur|next|prev|rand|help]
+awwwWallpaper [num <number>|cur|next|prev|rand|help]
 
 options:
     num <number>    -- sets the wallpaper to the entered number
