@@ -52,8 +52,6 @@ hl.workspace_rule({
 
 hl.window_rule({
     match = { workspace = "3" },
-    border_size = 0,
-    rounding    = 0,
 })
 
 hl.window_rule({
@@ -150,8 +148,8 @@ hl.config({
     general = {
         -- # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-        gaps_in = 3,
-        gaps_out = 5,
+        gaps_in = 2,
+        gaps_out = 2,
         border_size = 2,
         -- col.active_border = rgba(FFC371EE) rgba(FF5F6DEE) 90deg
         -- col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
@@ -162,8 +160,7 @@ hl.config({
 
         layout = "dwindle",
 
-        -- Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
-        allow_tearing = false,
+        allow_tearing = true,
     }
 })
 
@@ -171,7 +168,7 @@ hl.config({
     decoration = {
         -- See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-        rounding = 10,
+        rounding = 0,
 
         blur = {
             enabled = true,
@@ -187,28 +184,57 @@ hl.config({
         -- shadow_range = 4,
         -- shadow_render_power = 3,
         -- col.shadow = { colors = {"rgba(1a1a1aee)"} },
+    },
+    animations = {
+        enabled = true,
     }
 })
 
--- animations {
---     enabled = yes
---
---     # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
---
---     bezier = myBezier, 0.05, 0.9, 0.1, 1.05
---
---     animation = windows, 1, 7, myBezier
---     animation = windowsOut, 1, 7, default, popin 80%
---     animation = border, 1, 10, default
---     animation = borderangle, 1, 8, default
---     animation = fade, 1, 4, default
---     animation = workspaces, 1, 3, default
--- }
+hl.curve("straight", {
+    type = "bezier",
+    points = {
+        {0.05, 0.9},
+        {0.1, 1.05}
+    },
+})
+
+hl.animation({
+    leaf = "windows",
+    enabled = true,
+    speed = 2,
+    bezier = "straight"
+})
+
+hl.animation({
+    leaf = "windowsOut",
+    enabled = true,
+    speed = 2,
+    bezier = "straight",
+})
+
+hl.animation({
+    leaf = "border",
+    enabled = true,
+    speed = 10,
+    bezier = "default",
+})
+
+hl.animation({
+    leaf = "fade",
+    enabled = true,
+    speed = 4,
+    bezier = "default",
+})
+
+hl.animation({
+    leaf = "workspaces",
+    enabled = true,
+    speed = 2,
+    bezier = "straight"
+})
 
 hl.config({
     dwindle = {
-        -- See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-        -- pseudotile = true, --- master switch for pseudotiling. Enabling is bound to mod + P in the keybinds section below
         preserve_split = true -- you probably want this
     }
 })
@@ -219,11 +245,11 @@ hl.config({
 -- }
 --
 
--- hl.gesture({
---     fingers = 3,
---     direction = "horizontal",
---     workspace = true,
--- })
+hl.gesture({
+    fingers = 3,
+    direction = "horizontal",
+    action = "workspace",
+})
 
 hl.config({
     misc = {
@@ -233,7 +259,7 @@ hl.config({
     }
 })
 
--- blurls = waybar
+-- blurls = waybarmonitors
 
 -- Keybinds Section
 
