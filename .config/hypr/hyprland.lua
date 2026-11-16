@@ -271,6 +271,7 @@ hl.bind(mod .. " + W", hl.dsp.exec_cmd(browser))
 hl.bind(mod .. " + Shift + W", hl.dsp.exec_cmd(browser .. " --private-window"))
 hl.bind(mod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind(mod .. " + Shift + R", hl.dsp.reload_config())
 
 hl.bind(mod .. " + C", hl.dsp.window.close())
 hl.bind("Alt + F4", hl.dsp.window.close())
