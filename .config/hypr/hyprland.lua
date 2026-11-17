@@ -350,15 +350,15 @@ hl.bind(mod .. " + Shift + L", hl.dsp.window.move({direction = "right"}))
 hl.bind(mod .. " + Shift + K", hl.dsp.window.move({direction = "up" }))
 hl.bind(mod .. " + Shift + J", hl.dsp.window.move({direction = "down" }))
 
-hl.bind(mod .. " + Shift + Control + H",	hl.dsp.window.move({ monitor = "left" }))
-hl.bind(mod .. " + Shift + Control + L",	hl.dsp.window.move({ monitor = "right" }))
-hl.bind(mod .. " + Shift + Control + K",	hl.dsp.window.move({ monitor = "up" }))
-hl.bind(mod .. " + Shift + Control + J",	hl.dsp.window.move({ monitor = "down" }))
-
-hl.bind(mod .. " + Shift + Control + left",	hl.dsp.window.move({ monitor = "left" }))
-hl.bind(mod .. " + Shift + Control + right",	hl.dsp.window.move({ monitor = "right" }))
-hl.bind(mod .. " + Shift + Control + up",	hl.dsp.window.move({ monitor = "up" }))
-hl.bind(mod .. " + Shift + Control + down",	hl.dsp.window.move({ monitor = "down" }))
+hl.bind(mod .. " + Control + Shift + H",	hl.dsp.workspace.move({ monitor = "left" }))
+hl.bind(mod .. " + Control + Shift + L",	hl.dsp.workspace.move({ monitor = "right" }))
+hl.bind(mod .. " + Control + Shift + K",	hl.dsp.workspace.move({ monitor = "up" }))
+hl.bind(mod .. " + Control + Shift + J",	hl.dsp.workspace.move({ monitor = "down" }))
+                          
+hl.bind(mod .. " + Control + Shift + left",	hl.dsp.workspace.move({ monitor = "left" }))
+hl.bind(mod .. " + Control + Shift + right",hl.dsp.workspace.move({ monitor = "right" }))
+hl.bind(mod .. " + Control + Shift + up",	hl.dsp.workspace.move({ monitor = "up" }))
+hl.bind(mod .. " + Control + Shift + down",	hl.dsp.workspace.move({ monitor = "down" }))
 
 -- resize window 
 hl.bind(mod .. " + Control + left", hl.dsp.window.resize({ x = -100, y = 0 }))
