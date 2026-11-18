@@ -69,9 +69,9 @@
 
     "custom/theme": {
         "format": "󰏘",
-        "on-click": "~/.scripts/swwwWallpaper.sh next",
-        "on-click-right": "~/.scripts/swwwWallpaper.sh prev",
-        "on-click-middle": "~/.scripts/swwwWallpaper.sh rand",
+        "on-click": "~/.scripts/awwwWallpaper.sh next",
+        "on-click-right": "~/.scripts/awwwWallpaper.sh prev",
+        "on-click-middle": "~/.scripts/awwwWallpaper.sh rand",
         "tooltip": false
     },
 

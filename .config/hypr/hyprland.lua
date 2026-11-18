@@ -21,6 +21,13 @@ hl.monitor({
     scale    = "auto",
 })
 
+-- hl.monitor({
+--     output   = "HDMI-A-1",
+--     mode     = "1920x1080@60",
+--     position = "1366x0",
+--     scale    = "1",
+--     bitdepth = 10
+-- })
 
 -- bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "VGA-1, 1280x1024@60, 0x0, 1, bitdepth, 10"
 
@@ -100,6 +107,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("~/.config/waybar/scripts/reload.sh")
     -- hl.exec_cmd("eww open bar")
     hl.exec_cmd("systemctl --user start plasma-polkit-agent.service")
+    hl.dispatch(hl.dsp.focus({workspace = 4}))
 end)
 
 
@@ -245,6 +253,20 @@ hl.config({
 -- }
 --
 
+hl.window_rule({
+    name = "xwayland-video-bridge-fixes",
+    match = {
+        class = "xwaylandvideobridge"
+    },
+
+    no_initial_focus = true,
+    no_focus = true,
+    no_anim = true,
+    no_blur = true,
+    max_size = {1,1},
+    opacity = 0.0
+})
+
 hl.gesture({
     fingers = 3,
     direction = "horizontal",
@@ -279,8 +301,15 @@ hl.bind(mod .. " + Shift + V", hl.dsp.window.fullscreen_state({ internal = 0, cl
 hl.bind(mod .. " + V", hl.dsp.window.fullscreen())
 
 hl.bind(mod .. "+ SPACE", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mod .. " + Alt  + SPACE", hl.dsp.window.cycle_next({ floating = true }))
-hl.bind(mod .. "+ Shift + SPACE", hl.dsp.window.cycle_next({ next = false, tiled = true }))
+hl.bind(mod .. "+ Shift + SPACE", function()
+    if hl.get_active_window().floating == true then
+        hl.dispatch(hl.dsp.window.cycle_next({ tiled = true }))
+    else
+        hl.dispatch(hl.dsp.window.cycle_next({ floating = true }))
+    end
+
+end)
+
 hl.bind(mod .. "+ Control + SPACE", hl.dsp.window.pin())
 
 hl.bind(mod .. "+ Control + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
@@ -350,15 +379,15 @@ hl.bind(mod .. " + Shift + L", hl.dsp.window.move({direction = "right"}))
 hl.bind(mod .. " + Shift + K", hl.dsp.window.move({direction = "up" }))
 hl.bind(mod .. " + Shift + J", hl.dsp.window.move({direction = "down" }))
 
-hl.bind(mod .. " + Shift + Control + H",	hl.dsp.window.move({ monitor = "left" }))
-hl.bind(mod .. " + Shift + Control + L",	hl.dsp.window.move({ monitor = "right" }))
-hl.bind(mod .. " + Shift + Control + K",	hl.dsp.window.move({ monitor = "up" }))
-hl.bind(mod .. " + Shift + Control + J",	hl.dsp.window.move({ monitor = "down" }))
-
-hl.bind(mod .. " + Shift + Control + left",	hl.dsp.window.move({ monitor = "left" }))
-hl.bind(mod .. " + Shift + Control + right",	hl.dsp.window.move({ monitor = "right" }))
-hl.bind(mod .. " + Shift + Control + up",	hl.dsp.window.move({ monitor = "up" }))
-hl.bind(mod .. " + Shift + Control + down",	hl.dsp.window.move({ monitor = "down" }))
+hl.bind(mod .. " + Control + Shift + H",	hl.dsp.workspace.move({ monitor = "left" }))
+hl.bind(mod .. " + Control + Shift + L",	hl.dsp.workspace.move({ monitor = "right" }))
+hl.bind(mod .. " + Control + Shift + K",	hl.dsp.workspace.move({ monitor = "up" }))
+hl.bind(mod .. " + Control + Shift + J",	hl.dsp.workspace.move({ monitor = "down" }))
+                          
+hl.bind(mod .. " + Control + Shift + left",	hl.dsp.workspace.move({ monitor = "left" }))
+hl.bind(mod .. " + Control + Shift + right",hl.dsp.workspace.move({ monitor = "right" }))
+hl.bind(mod .. " + Control + Shift + up",	hl.dsp.workspace.move({ monitor = "up" }))
+hl.bind(mod .. " + Control + Shift + down",	hl.dsp.workspace.move({ monitor = "down" }))
 
 -- resize window 
 hl.bind(mod .. " + Control + left", hl.dsp.window.resize({ x = -100, y = 0 }))
