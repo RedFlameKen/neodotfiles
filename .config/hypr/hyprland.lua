@@ -279,8 +279,15 @@ hl.bind(mod .. " + Shift + V", hl.dsp.window.fullscreen_state({ internal = 0, cl
 hl.bind(mod .. " + V", hl.dsp.window.fullscreen())
 
 hl.bind(mod .. "+ SPACE", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mod .. " + Alt  + SPACE", hl.dsp.window.cycle_next({ floating = true }))
-hl.bind(mod .. "+ Shift + SPACE", hl.dsp.window.cycle_next({ next = false, tiled = true }))
+hl.bind(mod .. "+ Shift + SPACE", function()
+    if hl.get_active_window().floating == true then
+        hl.dispatch(hl.dsp.window.cycle_next({ tiled = true }))
+    else
+        hl.dispatch(hl.dsp.window.cycle_next({ floating = true }))
+    end
+
+end)
+
 hl.bind(mod .. "+ Control + SPACE", hl.dsp.window.pin())
 
 hl.bind(mod .. "+ Control + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
