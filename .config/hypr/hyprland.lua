@@ -21,6 +21,13 @@ hl.monitor({
     scale    = "auto",
 })
 
+-- hl.monitor({
+--     output   = "HDMI-A-1",
+--     mode     = "1920x1080@60",
+--     position = "1366x0",
+--     scale    = "1",
+--     bitdepth = 10
+-- })
 
 -- bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "VGA-1, 1280x1024@60, 0x0, 1, bitdepth, 10"
 
@@ -100,6 +107,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("~/.config/waybar/scripts/reload.sh")
     -- hl.exec_cmd("eww open bar")
     hl.exec_cmd("systemctl --user start plasma-polkit-agent.service")
+    hl.dispatch(hl.dsp.focus({workspace = 4}))
 end)
 
 
@@ -244,6 +252,20 @@ hl.config({
 --     new_is_master = true
 -- }
 --
+
+hl.window_rule({
+    name = "xwayland-video-bridge-fixes",
+    match = {
+        class = "xwaylandvideobridge"
+    },
+
+    no_initial_focus = true,
+    no_focus = true,
+    no_anim = true,
+    no_blur = true,
+    max_size = {1,1},
+    opacity = 0.0
+})
 
 hl.gesture({
     fingers = 3,
