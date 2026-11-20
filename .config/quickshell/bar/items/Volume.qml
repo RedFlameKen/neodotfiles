@@ -28,7 +28,12 @@ BarItem {
                 color: Audio.mutedMic ? Theme.orange_l : Theme.white_l
                 property string icon: Audio.mutedMic ? "" : ""
 
-                text: `${icon}  ${Math.round(Audio.volumeMic)}%`
+                font {
+                    family: Theme.fontMono
+                    pixelSize: Theme.fontSizePixels
+                }
+
+                text: `${icon} ${Math.round(Audio.volumeMic)}%`
             }
         }
 
@@ -55,7 +60,12 @@ BarItem {
                                         Audio.volume <= 30 ? "󰕿" :
                                         Audio.volume <= 70 ? "󰖀" : "󰕾";
 
-                text: `${icon}  ${Math.round(Audio.volume)}%`
+                font {
+                    family: Theme.fontMono
+                    pixelSize: Theme.fontSizePixels
+                }
+
+                text: `${icon} ${Math.round(Audio.volume)}%`
             }
         }
     }
