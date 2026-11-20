@@ -38,7 +38,7 @@ Scope {
                         left: parent.left
                     }
 
-                    Clock {}
+                    Launcher {}
                 }
 
                 RowLayout {
