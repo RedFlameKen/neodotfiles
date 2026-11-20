@@ -9,6 +9,8 @@ import "../"
 
 BarItem {
     id: root
+    visible: SystemTray.items.values.length > 0
+
     property PanelWindow window
 
     content: RowLayout {
