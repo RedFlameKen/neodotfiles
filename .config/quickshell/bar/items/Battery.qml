@@ -11,7 +11,7 @@ BarItem {
                                Theme.white_l;
 
     property double percentage: Power.percentage
-    property string percentageText: `${percentage * 100}%`
+    property string percentageText: `${Math.round(percentage * 100)}%`
     property string icon:   Power.state == 1 ?
                                 percentage < 0.2 ? "󰢟" :
                                 percentage < 0.4 ? "󰂆" :

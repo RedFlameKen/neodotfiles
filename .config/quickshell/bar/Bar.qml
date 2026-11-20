@@ -60,6 +60,7 @@ Scope {
                         right: parent.right
                     }
 
+                    Volume {}
                     Tray {
                         window: bar
                     }
