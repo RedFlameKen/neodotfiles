@@ -60,6 +60,7 @@ Scope {
                         right: parent.right
                     }
 
+                    TemperatureMonitor {}
                     Volume {}
                     Tray {
                         window: bar
