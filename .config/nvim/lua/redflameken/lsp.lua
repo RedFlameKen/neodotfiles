@@ -195,6 +195,18 @@ vim.lsp.config['lua_ls'] = {
     }
 }
 
+vim.lsp.config['qmlls'] = {
+    cmd = { '/usr/lib/qt6/bin/qmlls' },
+    filetypes = { 'qml', 'qmljs' },
+    single_file_support = true,
+    root_dir = function(bufnr, on_dir)
+        local root = vim.fs.root(bufnr, {".qmlls.ini"})
+
+        if root then
+            on_dir(root)
+        end
+    end,
+}
 vim.lsp.config['sqls'] = {
     cmd = { 'sqls' },
     filetypes = { 'sql' },
@@ -213,6 +225,7 @@ vim.lsp.enable({
     'phpactor',
     'digestif',
     'sqls',
+    'qmlls',
     'kotlin_language_server'
 })
 
