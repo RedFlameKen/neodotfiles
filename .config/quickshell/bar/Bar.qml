@@ -60,6 +60,7 @@ Scope {
                         right: parent.right
                     }
 
+                    Themer {}
                     TemperatureMonitor {}
                     Volume {}
                     Tray {
