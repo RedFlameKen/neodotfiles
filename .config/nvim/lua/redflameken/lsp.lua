@@ -189,7 +189,6 @@ vim.lsp.config['lua_ls'] = {
             },
             workspace = {
                 library = {
-                    vim.env.VIMRUNTIME
                 }
             }
         }
