@@ -4,7 +4,7 @@ import "../../utils"
 
 BarItem {
     id: root
-
+    visible: Power.usingBattery
 
     property string textColor: Power.state == 1 ? Theme.yellow_l : 
                                Power.state == 2 ? Theme.white_l :

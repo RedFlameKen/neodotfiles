@@ -8,7 +8,7 @@ import QtQuick
 Singleton {
     id: root
 
-    property bool onBattery: battery != null ? UPower.onBattery : false
+    property bool usingBattery: UPower.onBattery
     property string percentage: battery != null ? battery.percentage : 0
     property string state: battery != null ? battery.state : 6
 
