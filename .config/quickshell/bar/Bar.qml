@@ -5,6 +5,8 @@ import Quickshell
 import QtQuick
 import QtQuick.Layouts
 import "items"
+import "../components"
+import "../utils"
 
 Scope {
     id: root

@@ -1,6 +1,8 @@
 import "../../bar"
 import "../../utils"
+import "../../components"
 import QtQuick
+import QtQuick.Layouts
 
 BarItem {
     id: root
@@ -12,11 +14,11 @@ BarItem {
             id: mouseArea
 
             implicitWidth: playerContent.implicitWidth + 10
-            implicitHeight: text.implicitHeight
+            implicitHeight: playerContent.implicitHeight
 
             clip: true
 
-            Row {
+            RowLayout {
                 anchors.centerIn: parent
 
                 id: playerContent
@@ -42,24 +44,23 @@ BarItem {
                     text: this.icon
                 }
 
-                Text {
-                    id: text
-
-                    color: Theme.white_l
-                    verticalAlignment: Text.AlignVCenter
+                Marquee {
+                    id: marqueeText
+                    textColor: Theme.white_l
+                    implicitWidth: Math.min(300, marqueeText.contentWidth)
+                    implicitHeight: marqueeText.contentHeight
+                    scrolling: root.visible
 
                     font {
                         family: Theme.fontMono
                         pixelSize: Theme.fontSizePixels
                     }
 
-                    property string icon
-
-                    text: `${PlayerControl.trackTitle.slice(0, 30)}`
-
+                    text: `${PlayerControl.trackTitle}`
                 }
             }
 
         }
     }
 }
+
