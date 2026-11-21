@@ -6,7 +6,7 @@ import QtQuick
 Singleton {
     id: root
 
-    property string time: systemClock.date
+    property string time: systemClock ? systemClock.date : null
 
     SystemClock {
         id: systemClock

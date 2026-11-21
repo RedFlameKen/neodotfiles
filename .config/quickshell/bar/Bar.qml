@@ -4,7 +4,7 @@ pragma ComponentBehavior: Bound
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import "items"
+import "modules"
 import "../components"
 import "../utils"
 

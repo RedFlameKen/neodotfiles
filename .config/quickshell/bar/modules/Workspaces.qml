@@ -1,6 +1,7 @@
 pragma ComponentBehavior: Bound
 import "../../bar"
 import "../../utils"
+import "../../wm"
 import QtQuick
 import QtQuick.Layouts
 
@@ -21,7 +22,6 @@ BarItem {
         "7": "",
         "default": "󱁤",
     }
-
 
     content: Item {
         implicitWidth: rowLayout.implicitWidth + 10

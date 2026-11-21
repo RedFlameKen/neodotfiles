@@ -5,7 +5,8 @@ import Quickshell.Services.Mpris
 Singleton {
 
     readonly property var players: Mpris.players ? Mpris.players : null
-    readonly property MprisPlayer player: Mpris.players ? Mpris.players.values[0] : null
+    readonly property MprisPlayer player: Mpris.players ? Mpris.players.values[0] 
+                                          ? Mpris.players.values[0] : null : null
 
     readonly property string trackTitle: player ? player.trackTitle : ""
     readonly property string trackArtist: player ? player.trackArtist : ""

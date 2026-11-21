@@ -1,5 +1,6 @@
 import "../../bar"
 import "../../utils"
+import "../../system"
 import QtQuick
 
 BarItem {
