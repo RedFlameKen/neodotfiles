@@ -1,0 +1,9 @@
+{
+    "workspace": {
+        "library": [
+            "/usr/share/nvim/runtime",
+            "/usr/share/hypr/stubs"
+        ]
+    }
+
+}
