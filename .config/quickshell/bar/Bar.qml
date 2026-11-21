@@ -5,8 +5,6 @@ import Quickshell
 import QtQuick
 import QtQuick.Layouts
 import "modules"
-import "../components"
-import "../utils"
 
 Scope {
     id: root
@@ -39,45 +37,43 @@ Scope {
 
                 RowLayout {
                     id: leftItems
-                    spacing: 10
+                    spacing: 5
 
                     anchors {
                         left: parent.left
                     }
 
                     Launcher {}
+                    Themer {}
                     Workspaces {
                         monitorName: bar.modelData.name
                         defaultMonitor: root.defaultMonitor
                     }
-                }
-
-                RowLayout {
-                    id: centerItems
-                    spacing: 10
-
-                    anchors {
-                        centerIn: parent
-                    }
-
                     Player {}
                 }
 
                 RowLayout {
+                    id: centerItems
+                    spacing: 5
+
+                    anchors {
+                        centerIn: parent
+                    }
+                }
+
+                RowLayout {
                     id: rightItems
-                    spacing: 10
+                    spacing: 5
 
                     anchors {
                         right: parent.right
                     }
 
-                    Themer {}
                     TemperatureMonitor {}
                     Volume {}
-                    Tray {
-                        window: bar
-                    }
+                    Calendar {}
                     Clock {}
+                    Tray { window: bar }
                     Battery {}
                 }
             }
