@@ -58,7 +58,7 @@ Scope {
                         centerIn: parent
                     }
 
-                    Clock {}
+                    Player {}
                 }
 
                 RowLayout {
