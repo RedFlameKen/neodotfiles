@@ -16,8 +16,22 @@ BarItem {
 
             implicitWidth: playerContent.implicitWidth + 10
             implicitHeight: playerContent.implicitHeight
-
             clip: true
+
+            cursorShape: Qt.PointingHandCursor
+            acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.RightButton
+
+            onClicked: mouse => {
+                if (mouse.button == Qt.LeftButton) {
+                    PlayerControl.toggle()
+                } else
+                if (mouse.button == Qt.MiddleButton) {
+                    PlayerControl.previous()
+                } else
+                if (mouse.button == Qt.RightButton) {
+                    PlayerControl.next()
+                }
+            }
 
             RowLayout {
                 anchors.centerIn: parent

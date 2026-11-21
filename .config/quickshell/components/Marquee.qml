@@ -12,6 +12,7 @@ Flickable {
     clip: true
     contentWidth: marqueeText.width + 30
     contentHeight: marqueeText.height
+    interactive: false
 
     Text {
         id: marqueeText

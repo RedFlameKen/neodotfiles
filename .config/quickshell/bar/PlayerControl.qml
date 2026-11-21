@@ -27,5 +27,17 @@ Singleton {
             player.playbackState = MprisPlaybackState.Stopped
     }
 
+    property var toggle: () => {
+        player.togglePlaying()
+    }
+
+    property var next: () => {
+        player.next()
+    }
+
+    property var previous: () => {
+        player.previous()
+    }
+
 
 }
