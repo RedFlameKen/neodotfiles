@@ -6,8 +6,10 @@ import QtQuick.Layouts
 
 BarItem {
     id: root
+    visible: root.workspaces.length > 0
     required property string monitorName
     required property string defaultMonitor
+    property var workspaces: HyprlandWorkspaces.getWorkspaces(root.monitorName, root.defaultMonitor, 5)
 
     property var icons: {
         "1": "󰈹",
@@ -31,7 +33,7 @@ BarItem {
             anchors.centerIn: parent
 
             Repeater {
-                model: HyprlandWorkspaces.getWorkspaces(root.monitorName, root.defaultMonitor, 5)
+                model: root.workspaces
 
                 MouseArea {
                     id: mouseArea
