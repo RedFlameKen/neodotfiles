@@ -6,7 +6,8 @@ import QtQuick.Layouts
 
 BarItem {
     id: root
-    visible: PlayerControl.player != null
+    visible: PlayerControl.player != null && PlayerControl.state != "Stopped"
+    property int maxCharCount: 50
     content: Row {
         id: rootRow
 
@@ -47,9 +48,9 @@ BarItem {
                 Marquee {
                     id: marqueeText
                     textColor: Theme.white_l
-                    implicitWidth: Math.min(300, marqueeText.contentWidth)
+                    implicitWidth: Math.min(300, marqueeText.contentWidth - 30)
                     implicitHeight: marqueeText.contentHeight
-                    scrolling: root.visible
+                    scrolling: root.visible && marqueeText.text.length > root.maxCharCount
 
                     font {
                         family: Theme.fontMono
