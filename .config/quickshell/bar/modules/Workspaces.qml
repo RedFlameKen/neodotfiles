@@ -40,6 +40,7 @@ BarItem {
                     required property var modelData
                     implicitWidth: text.implicitWidth
                     implicitHeight: text.implicitHeight
+                    hoverEnabled: true
 
                     cursorShape: Qt.PointingHandCursor
                     acceptedButtons: Qt.LeftButton
@@ -66,7 +67,8 @@ BarItem {
                             pixelSize: Theme.fontSizePixels
                         }
 
-                        color: HyprlandWorkspaces.currentWorkspace ?
+                        color: mouseArea.containsMouse ? Theme.white : 
+                        HyprlandWorkspaces.currentWorkspace ?
                         HyprlandWorkspaces.currentWorkspace.id == modelData.id
                         ? Theme.green_l :
                         modelData.urgent ? Theme.red_l : 
