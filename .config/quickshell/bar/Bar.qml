@@ -1,10 +1,15 @@
 // qmllint disable uncreatable-type
+pragma ComponentBehavior: Bound
+
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
 import "items"
 
 Scope {
+    id: root
+    property var defaultMonitor: Quickshell.screens[0].name
+
     Variants {
         model: Quickshell.screens
 
@@ -39,6 +44,10 @@ Scope {
                     }
 
                     Launcher {}
+                    Workspaces {
+                        monitorName: bar.modelData.name
+                        defaultMonitor: root.defaultMonitor
+                    }
                 }
 
                 RowLayout {
