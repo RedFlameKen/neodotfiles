@@ -6,9 +6,11 @@ BarItem {
     id: root
     visible: Power.usingBattery
 
-    property string textColor: Power.state == 1 ? Theme.yellow_l : 
-                               Power.state == 2 ? Theme.white_l :
-                               Theme.white_l;
+    property string textColor:  Power.state == 1 ? Theme.yellow_l : 
+                                Power.state == 2 ?
+                                    Power.percentage <= 20 ? Theme.orange_l :
+                                    Power.percentage <= 10 ? Theme.red_l :
+                                    Theme.white_l : Theme.white_l
 
     property double percentage: Power.percentage
     property string percentageText: `${Math.round(percentage * 100)}%`
